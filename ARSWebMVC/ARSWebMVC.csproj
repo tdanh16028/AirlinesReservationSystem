@@ -271,6 +271,7 @@
     <Content Include="Models\DBUsersModel.edmx.diagram">
       <DependentUpon>DBUsersModel.edmx</DependentUpon>
     </Content>
+    <None Include="Properties\PublishProfiles\eProject20180702115114 - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
