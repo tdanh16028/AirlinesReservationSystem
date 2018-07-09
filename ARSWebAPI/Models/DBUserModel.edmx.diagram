@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="d6037cefdc614500983b3f55ee1a9f43" Name="Diagram1">
+        <EntityTypeShape EntityType="DBUserModel.AdminAccount" Width="1.5" PointX="7.75" PointY="7.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBUserModel.Airplane" Width="1.5" PointX="3" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBUserModel.AirplaneClass" Width="1.5" PointX="0.75" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBUserModel.AirplaneInfo" Width="1.5" PointX="3" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBUserModel.AirplaneType" Width="1.5" PointX="0.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBUserModel.City" Width="1.5" PointX="0.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBUserModel.FlightSchedule" Width="1.5" PointX="5.25" PointY="3.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBUserModel.Profile" Width="1.5" PointX="5.25" PointY="8" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBUserModel.Route" Width="1.5" PointX="3" PointY="6.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBUserModel.Ticket" Width="1.5" PointX="7.5" PointY="3.125" IsExpanded="true" />
+        <AssociationConnector Association="DBUserModel.FK_Airplane_AirplaneType" ManuallyRouted="false" />
+        <AssociationConnector Association="DBUserModel.FK_FlightSchedule_Airplane" ManuallyRouted="false" />
+        <AssociationConnector Association="DBUserModel.FK_AirplaneInfo_AirplaneClass" ManuallyRouted="false" />
+        <AssociationConnector Association="DBUserModel.FK_Ticket_AirplaneClass" ManuallyRouted="false" />
+        <AssociationConnector Association="DBUserModel.FK_AirplaneInfo_AirplaneType" ManuallyRouted="false" />
+        <AssociationConnector Association="DBUserModel.FK_Route_CityA" ManuallyRouted="false" />
+        <AssociationConnector Association="DBUserModel.FK_Route_CityB" ManuallyRouted="false" />
+        <AssociationConnector Association="DBUserModel.FK_FlightSchedule_Route" ManuallyRouted="false" />
+        <AssociationConnector Association="DBUserModel.FK_Ticket_Profile" ManuallyRouted="false" />
+        <AssociationConnector Association="DBUserModel.TicketFlightSchedule" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
