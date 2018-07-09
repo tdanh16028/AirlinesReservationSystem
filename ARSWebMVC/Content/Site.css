@@ -1,5 +1,8 @@
 ﻿
-
+a:hover, a:visited, a:active {
+    color: white;
+    text-decoration: none;
+}
 .form-register {
     border-radius: 1%;
     margin: auto;
@@ -51,15 +54,8 @@
             animation: mymove 0.5s;
         }
 
-        .func-login .form-login .btn-submit {
-            background-color: rgba(255, 0, 0, 0.7);
-        }
+       
 
-        .func-login .form-login input {
-            background-color: rgba(200, 200, 200, 0.2);
-            color: white;
-            border: 1px solid rgba(0, 0, 0, 0.3);
-        }
 @keyframes mymove {
 
     10% {

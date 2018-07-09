@@ -3,31 +3,30 @@
     ViewBag.Title = "Login";
 }
 <section class=" func-login">
-    <div class="container">
-        @using (Html.BeginForm("Login", "UserAccount", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal form-login col-md-6", role = "form" }))
+    <div class="container ">
+        @using (Html.BeginForm("Login", "UserAccount", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal form-login login-form col-md-6", role = "form" }))
         {
             @Html.AntiForgeryToken()
             <h4 class="text-center">Login</h4>
-            <hr />
-
-            <span class="text-center">@ViewBag.ErrorMessage</span>
-            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-
-            <div class="form-group">
-                <label class="text-white">@Html.LabelFor(m => m.UserID, new { @class = " control-label" }) <label class="text-white">:</label> </label>
-                @Html.TextBoxFor(m => m.UserID, new { @class = "form-control" })
-                @Html.ValidationMessageFor(m => m.UserID, "", new { @class = "text-danger" })
+            <span class="text-center text-danger">@ViewBag.ErrorMessage</span>
+            <div class="row margin">
+                <div class="input-field col s12">
+                    <i class="mdi-social-person-outline prefix"></i>
+                    @Html.TextBoxFor(m => m.UserID)
+                    @Html.ValidationMessageFor(m => m.UserID, "", new { @class = "text-danger" })
+                </div>
             </div>
-           
-            <div class="form-group">
-                <label class="text-white">@Html.LabelFor(m => m.Password, new { @class = " control-label" }) <label class="text-white">:</label> </label>
-                @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
-                @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
+            <div class="row margin">
+                <div class="input-field col s12">
+                    <i class="mdi-action-lock-outline prefix"></i>
+                    @Html.PasswordFor(m => m.Password)
+                    @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
+                </div>
             </div>
-
-            <div class="form-group">
-                <hr />
-                <input type="submit" value="Log in" class="btn btn-default col btn-submit" />
+            <div class="row">
+                <div class="input-field col s12">
+                    <button type="submit" class="btn waves-effect waves-light col s12">Login</button>
+                </div>
             </div>
         }
     </div>

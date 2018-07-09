@@ -31,7 +31,7 @@
 
             <div class="col-md inputGroupContainer">
                 <div class="input-group">
-                    <input class="form-control" placeholder = "ConfirmPassword" name="txtConfirmPassword" type="password"/>
+                    <input class="form-control" placeholder="ConfirmPassword" name="txtConfirmPassword" type="password" />
                 </div>
                 <span class=" text-danger">@ViewBag.ErrorConfirmPassword</span>
             </div>
@@ -84,9 +84,8 @@
                 @Html.ValidationMessageFor(s => s.EmailAddress, "", new { @class = "text-danger" })
             </div>
         </div>
-
+      
         <div class="form-group">
-
             <div class="col-md inputGroupContainer d-flex flex-row">
                 <label class="control-label mr-2">Gender :</label>
                 <div class="pl-1">
@@ -98,6 +97,7 @@
                     </label>
                 </div>
             </div>
+
         </div>
         <div class="form-group">
             <div class="col-md inputGroupContainer">
@@ -110,7 +110,7 @@
         <div class="form-group">
             <div class="col-md inputGroupContainer">
                 <div class="input-group">
-                    @Html.TextBoxFor(s => s.CreditCard, "", new { @class = "form-control ", placeholder = "CreditCard"})
+                    @Html.TextBoxFor(s => s.CreditCard, "", new { @class = "form-control ", placeholder = "CreditCard" })
                 </div>
                 @Html.ValidationMessageFor(s => s.CreditCard, "", new { @class = "text-danger" })
             </div>
@@ -119,7 +119,7 @@
         <div class="form-group">
             <label class="col-md"></label>
             <div class="col-md d-flex flex-row-reverse">
-                <button type="submit" class="btn btn-dark">Submit</button>
+                <button type="submit" class="btn btn-dark">Submit<i class="material-icons right">send</i></button>
             </div>
         </div>
     }

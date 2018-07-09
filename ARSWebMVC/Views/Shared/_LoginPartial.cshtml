@@ -12,11 +12,9 @@
 else
 {
     <li class="nav-item">
-        <span class=" disabled active nav-link ">
-            Hello:
-            @Html.ActionLink(@user.UserID.ToString(), "Profile", "UserAccount", null, new { @class = "text-white" })
-
-            @Html.ActionLink("(logout)", "Logout", "UserAccount", null, new { @class = "text-white-50" })
-        </span>
+            @Html.ActionLink(@user.UserID.ToString(), "Profile", "UserAccount", null, new { @class = "text-white " })
+    </li>
+    <li>
+        @Html.ActionLink("(logout)", "Logout", "UserAccount", null, new { @class = "text-white-50" })
     </li>
 }
