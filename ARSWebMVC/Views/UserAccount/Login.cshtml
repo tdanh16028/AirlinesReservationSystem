@@ -11,10 +11,10 @@
             <div class="text-center"><span class=" text-danger">@ViewBag.ErrorMessage</span></div>
             <div class="row margin">
                 <div class="input-field col s12">
-                    <div class="col s1 pt-2">
+                    <div class="col s1 pt-2 col-sm-2">
                         <i class="fas fa-user fa-2x"></i>
                     </div>
-                    <div class="col s11 pl-4">
+                    <div class="col s11 pl-4 col-sm-10">
                         @Html.TextBoxFor(m => m.UserID)
                         @Html.ValidationMessageFor(m => m.UserID, "", new { @class = "text-danger" })
                     </div>
