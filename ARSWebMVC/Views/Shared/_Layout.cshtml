@@ -17,8 +17,8 @@
                 @Html.ActionLink("Logo", "Index", "Home", null, new { @class = "brand-logo" })
                 <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
                 <ul class="right hide-on-med-and-down">
-                    <li>@Html.ActionLink("Login", "Login", "UserAccount", null, new { @class = "" })</li>
-                    <li>@Html.ActionLink("Register", "Register", "UserAccount", null, new { @class = "" })</li>
+                    <li>@Html.ActionLink("Home", "Index", "Home", null, new { @class = "" })</li>
+                    @Html.Partial("_LoginPartial")
                 </ul>
             </div>
         </div>

@@ -3,18 +3,20 @@
 @if (Session["UserProfile"] == null)
 {
     <li >
-        @Html.ActionLink("Login", "Login", "UserAccount", null, new { @class = "nav-link" })
+        @Html.ActionLink("Login", "Login", "UserAccount", null, new { @class = "" })
     </li>
     <li >
-        @Html.ActionLink("Register", "Register", "UserAccount", null, new { @class = "nav-link" })
+        @Html.ActionLink("Register", "Register", "UserAccount", null, new { @class = "" })
     </li>
 }
 else
 {
-    <li class="d-flex flex-row">
-        <span class="p-2">Hello :</span>
-        @Html.ActionLink(@user.UserID.ToString(), "Profile", "UserAccount", null, new { @class = "p-2" })
-        @Html.ActionLink("(logout)", "Logout", "UserAccount", null, new { @class = "p-2" })
+    <li >
+        <div class="d-flex flex-row">
+            <span class="pl-2">Hello :</span>
+            @Html.ActionLink(@user.UserID.ToString(), "Profile", "UserAccount", null, new { @class = "pl-2" })
+            @Html.ActionLink("(logout)", "Logout", "UserAccount", null, new { @class = "pl-2" })
+        </div>
     </li>
     <li>
         
