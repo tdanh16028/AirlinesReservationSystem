@@ -9,6 +9,9 @@ namespace ARSWinForm.HelperClass.ModelHelper
 {
     class AirplaneClassWrapper : AbstractModelWrapper<AirplaneClass>
     {
-        private readonly APIWrapper<AirplaneClass>.ARSAPI LIST = APIWrapper<AirplaneClass>.ARSAPI.AIRPLANE_CLASSES;
+        public AirplaneClassWrapper()
+        {
+            LIST = APIWrapper<AirplaneClass>.ARSAPI.AIRPLANE_CLASSES;
+        }
     }
 }

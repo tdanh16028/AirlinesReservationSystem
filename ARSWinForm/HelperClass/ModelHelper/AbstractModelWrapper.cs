@@ -11,7 +11,7 @@ namespace ARSWinForm.HelperClass.ModelHelper
 {
     abstract class AbstractModelWrapper<T>
     {
-        private APIWrapper<T>.ARSAPI LIST;
+        protected APIWrapper<T>.ARSAPI LIST = 0;
 
         public async Task<List<T>> List()
         {

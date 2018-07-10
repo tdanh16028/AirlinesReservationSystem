@@ -18,12 +18,12 @@ namespace ARSWinForm.HelperClass
 
         private const string HOST_NAME = "http://localhost:49261";
         private const string ROOT_API = HOST_NAME + "/api";
-        private Dictionary<ARSAPI, string> API_URL = new Dictionary<ARSAPI, string>()
+        private readonly Dictionary<ARSAPI, string> API_URL = new Dictionary<ARSAPI, string>()
         {
             { ARSAPI.AIRPLANE_CLASSES, "/AirplaneClasses" }
         };
 
-        private HttpClient client;
+        private HttpClient client = new HttpClient();
 
         public APIWrapper(ARSAPI api, int id) : this(api, id.ToString())
         {
