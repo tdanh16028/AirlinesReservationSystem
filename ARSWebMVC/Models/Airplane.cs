@@ -22,6 +22,7 @@ namespace ARSWebMVC.Models
     
         public string AirplaneCode { get; set; }
         public int TypeID { get; set; }
+        public bool IsActive { get; set; }
     
         public virtual AirplaneType AirplaneType { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

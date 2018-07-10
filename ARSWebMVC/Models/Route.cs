@@ -25,6 +25,7 @@ namespace ARSWebMVC.Models
         public int CityBID { get; set; }
         public int SkyMiles { get; set; }
         public double BasePrice { get; set; }
+        public bool IsActive { get; set; }
     
         public virtual City City { get; set; }
         public virtual City City1 { get; set; }

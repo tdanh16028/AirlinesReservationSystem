@@ -25,7 +25,7 @@ namespace ARSWebMVC.Controllers
             }
             else
             {
-                Ticket rs = db.Tickets.SingleOrDefault(s => s.ConfirmationCode == code);
+                Ticket rs = db.Tickets.SingleOrDefault(s => s.TicketCode == code);
                 if (rs != null)
                 {
                     return RedirectToAction("TicketDetail", rs);

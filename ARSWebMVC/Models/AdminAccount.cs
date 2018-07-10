@@ -19,5 +19,6 @@ namespace ARSWebMVC.Models
         public string Password { get; set; }
         public string Name { get; set; }
         public string Role { get; set; }
+        public bool IsActive { get; set; }
     }
 }

@@ -94,7 +94,7 @@
 
         <div class="row">
             <div class="input-field col s12">
-                @Html.PasswordFor(s => s.CreditCard)
+                @Html.TextBoxFor(s => s.CreditCard)
                 <label for="password">CreditCard</label>
                 @Html.ValidationMessageFor(s => s.CreditCard, "", new { @class = "text-danger" })
             </div>

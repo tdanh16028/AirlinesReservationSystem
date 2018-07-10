@@ -14,11 +14,16 @@ namespace ARSWebMVC.Models
     
     public partial class Ticket
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Ticket()
+        {
+            this.FlightSchedules = new HashSet<FlightSchedule>();
+        }
+    
         public long ID { get; set; }
         public long ProfileID { get; set; }
-        public long FlightScheduleID { get; set; }
         public string Status { get; set; }
-        public string ConfirmationCode { get; set; }
+        public string TicketCode { get; set; }
         public int ChildrenCount { get; set; }
         public int AdultCount { get; set; }
         public int SeniorCount { get; set; }
@@ -27,7 +32,8 @@ namespace ARSWebMVC.Models
         public double TotalCost { get; set; }
     
         public virtual AirplaneClass AirplaneClass { get; set; }
-        public virtual FlightSchedule FlightSchedule { get; set; }
         public virtual Profile Profile { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<FlightSchedule> FlightSchedules { get; set; }
     }
 }

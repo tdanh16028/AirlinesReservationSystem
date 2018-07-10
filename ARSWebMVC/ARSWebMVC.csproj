@@ -171,49 +171,49 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AdminAccount.cs">
-      <DependentUpon>DBUsersModel.tt</DependentUpon>
+      <DependentUpon>DBUserModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Airplane.cs">
-      <DependentUpon>DBUsersModel.tt</DependentUpon>
+      <DependentUpon>DBUserModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\AirplaneClass.cs">
-      <DependentUpon>DBUsersModel.tt</DependentUpon>
+      <DependentUpon>DBUserModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\AirplaneInfo.cs">
-      <DependentUpon>DBUsersModel.tt</DependentUpon>
+      <DependentUpon>DBUserModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\AirplaneType.cs">
-      <DependentUpon>DBUsersModel.tt</DependentUpon>
+      <DependentUpon>DBUserModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\City.cs">
-      <DependentUpon>DBUsersModel.tt</DependentUpon>
+      <DependentUpon>DBUserModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\DBUsersModel.Context.cs">
+    <Compile Include="Models\DBUserModel.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>DBUsersModel.Context.tt</DependentUpon>
+      <DependentUpon>DBUserModel.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\DBUsersModel.cs">
+    <Compile Include="Models\DBUserModel.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>DBUsersModel.tt</DependentUpon>
+      <DependentUpon>DBUserModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\DBUsersModel.Designer.cs">
+    <Compile Include="Models\DBUserModel.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>DBUsersModel.edmx</DependentUpon>
+      <DependentUpon>DBUserModel.edmx</DependentUpon>
     </Compile>
     <Compile Include="Models\FlightSchedule.cs">
-      <DependentUpon>DBUsersModel.tt</DependentUpon>
+      <DependentUpon>DBUserModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Profile.cs">
-      <DependentUpon>DBUsersModel.tt</DependentUpon>
+      <DependentUpon>DBUserModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Route.cs">
-      <DependentUpon>DBUsersModel.tt</DependentUpon>
+      <DependentUpon>DBUserModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Ticket.cs">
-      <DependentUpon>DBUsersModel.tt</DependentUpon>
+      <DependentUpon>DBUserModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -234,15 +234,15 @@
     <Content Include="images\35580.jpg" />
     <Content Include="images\681111.jpg" />
     <Content Include="images\bg_1.jpg" />
-    <Content Include="Models\DBUsersModel.Context.tt">
+    <Content Include="Models\DBUserModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>DBUsersModel.Context.cs</LastGenOutput>
-      <DependentUpon>DBUsersModel.edmx</DependentUpon>
+      <DependentUpon>DBUserModel.edmx</DependentUpon>
+      <LastGenOutput>DBUserModel.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="Models\DBUsersModel.tt">
+    <Content Include="Models\DBUserModel.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>DBUsersModel.edmx</DependentUpon>
-      <LastGenOutput>DBUsersModel.cs</LastGenOutput>
+      <DependentUpon>DBUserModel.edmx</DependentUpon>
+      <LastGenOutput>DBUserModel.cs</LastGenOutput>
     </Content>
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
@@ -266,12 +266,12 @@
     <Content Include="Content\bootstrap-reboot.css.map" />
     <Content Include="Content\bootstrap-grid.min.css.map" />
     <Content Include="Content\bootstrap-grid.css.map" />
-    <EntityDeploy Include="Models\DBUsersModel.edmx">
+    <EntityDeploy Include="Models\DBUserModel.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>DBUsersModel.Designer.cs</LastGenOutput>
+      <LastGenOutput>DBUserModel.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <Content Include="Models\DBUsersModel.edmx.diagram">
-      <DependentUpon>DBUsersModel.edmx</DependentUpon>
+    <Content Include="Models\DBUserModel.edmx.diagram">
+      <DependentUpon>DBUserModel.edmx</DependentUpon>
     </Content>
     <None Include="Properties\PublishProfiles\eProject20180702115114 - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />

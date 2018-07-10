@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="DBUserModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="DBUserModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="AdminAccount">
           <Key>
             <PropertyRef Name="ID" />
@@ -14,6 +14,7 @@
           <Property Name="Password" Type="varchar" MaxLength="32" Nullable="false" />
           <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="Role" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
         </EntityType>
         <EntityType Name="Airplane">
           <Key>
@@ -21,6 +22,7 @@
           </Key>
           <Property Name="AirplaneCode" Type="varchar" MaxLength="10" Nullable="false" />
           <Property Name="TypeID" Type="int" Nullable="false" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
         </EntityType>
         <EntityType Name="AirplaneClass">
           <Key>
@@ -44,6 +46,7 @@
           </Key>
           <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Name" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
         </EntityType>
         <EntityType Name="City">
           <Key>
@@ -64,6 +67,7 @@
           <Property Name="FirstSeatAvail" Type="int" Nullable="false" />
           <Property Name="BusinessSeatAvail" Type="int" Nullable="false" />
           <Property Name="ClubSeatAvail" Type="int" Nullable="false" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
         </EntityType>
         <EntityType Name="Profile">
           <Key>
@@ -81,6 +85,7 @@
           <Property Name="Age" Type="int" Nullable="false" />
           <Property Name="CreditCard" Type="varchar" MaxLength="16" Nullable="false" />
           <Property Name="SkyMiles" Type="int" Nullable="false" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
         </EntityType>
         <EntityType Name="Route">
           <Key>
@@ -91,6 +96,7 @@
           <Property Name="CityBID" Type="int" Nullable="false" />
           <Property Name="SkyMiles" Type="int" Nullable="false" />
           <Property Name="BasePrice" Type="float" Nullable="false" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
         </EntityType>
         <EntityType Name="Ticket">
           <Key>
@@ -98,15 +104,22 @@
           </Key>
           <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="ProfileID" Type="bigint" Nullable="false" />
-          <Property Name="FlightScheduleID" Type="bigint" Nullable="false" />
           <Property Name="Status" Type="varchar" MaxLength="10" Nullable="false" />
-          <Property Name="ConfirmationCode" Type="varchar" MaxLength="16" Nullable="false" />
+          <Property Name="TicketCode" Type="varchar" MaxLength="16" Nullable="false" />
           <Property Name="ChildrenCount" Type="int" Nullable="false" />
           <Property Name="AdultCount" Type="int" Nullable="false" />
           <Property Name="SeniorCount" Type="int" Nullable="false" />
           <Property Name="AirplaneClassID" Type="int" Nullable="false" />
           <Property Name="OrderDate" Type="date" Nullable="false" />
           <Property Name="TotalCost" Type="float" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TicketFlightSchedule">
+          <Key>
+            <PropertyRef Name="TicketID" />
+            <PropertyRef Name="FlightScheduleID" />
+          </Key>
+          <Property Name="TicketID" Type="bigint" Nullable="false" />
+          <Property Name="FlightScheduleID" Type="bigint" Nullable="false" />
         </EntityType>
         <Association Name="FK_Airplane_AirplaneType">
           <End Role="AirplaneType" Type="Self.AirplaneType" Multiplicity="1" />
@@ -204,18 +217,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Ticket_FlightSchedule">
-          <End Role="FlightSchedule" Type="Self.FlightSchedule" Multiplicity="1" />
-          <End Role="Ticket" Type="Self.Ticket" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="FlightSchedule">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="Ticket">
-              <PropertyRef Name="FlightScheduleID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_Ticket_Profile">
           <End Role="Profile" Type="Self.Profile" Multiplicity="1" />
           <End Role="Ticket" Type="Self.Ticket" Multiplicity="*" />
@@ -225,6 +226,30 @@
             </Principal>
             <Dependent Role="Ticket">
               <PropertyRef Name="ProfileID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TicketFlightSchedule_FlightSchedule">
+          <End Role="FlightSchedule" Type="Self.FlightSchedule" Multiplicity="1" />
+          <End Role="TicketFlightSchedule" Type="Self.TicketFlightSchedule" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FlightSchedule">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="TicketFlightSchedule">
+              <PropertyRef Name="FlightScheduleID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TicketFlightSchedule_Ticket">
+          <End Role="Ticket" Type="Self.Ticket" Multiplicity="1" />
+          <End Role="TicketFlightSchedule" Type="Self.TicketFlightSchedule" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ticket">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="TicketFlightSchedule">
+              <PropertyRef Name="TicketID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -239,6 +264,7 @@
           <EntitySet Name="Profile" EntityType="Self.Profile" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Route" EntityType="Self.Route" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Ticket" EntityType="Self.Ticket" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TicketFlightSchedule" EntityType="Self.TicketFlightSchedule" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK_Airplane_AirplaneType" Association="Self.FK_Airplane_AirplaneType">
             <End Role="AirplaneType" EntitySet="AirplaneType" />
             <End Role="Airplane" EntitySet="Airplane" />
@@ -271,17 +297,20 @@
             <End Role="AirplaneClass" EntitySet="AirplaneClass" />
             <End Role="Ticket" EntitySet="Ticket" />
           </AssociationSet>
-          <AssociationSet Name="FK_Ticket_FlightSchedule" Association="Self.FK_Ticket_FlightSchedule">
-            <End Role="FlightSchedule" EntitySet="FlightSchedule" />
-            <End Role="Ticket" EntitySet="Ticket" />
-          </AssociationSet>
           <AssociationSet Name="FK_Ticket_Profile" Association="Self.FK_Ticket_Profile">
             <End Role="Profile" EntitySet="Profile" />
             <End Role="Ticket" EntitySet="Ticket" />
           </AssociationSet>
+          <AssociationSet Name="FK_TicketFlightSchedule_FlightSchedule" Association="Self.FK_TicketFlightSchedule_FlightSchedule">
+            <End Role="FlightSchedule" EntitySet="FlightSchedule" />
+            <End Role="TicketFlightSchedule" EntitySet="TicketFlightSchedule" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TicketFlightSchedule_Ticket" Association="Self.FK_TicketFlightSchedule_Ticket">
+            <End Role="Ticket" EntitySet="Ticket" />
+            <End Role="TicketFlightSchedule" EntitySet="TicketFlightSchedule" />
+          </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="DBUserModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -294,6 +323,7 @@
           <Property Name="Password" Type="String" MaxLength="32" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Role" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
         </EntityType>
         <EntityType Name="Airplane">
           <Key>
@@ -301,6 +331,7 @@
           </Key>
           <Property Name="AirplaneCode" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="TypeID" Type="Int32" Nullable="false" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
           <NavigationProperty Name="AirplaneType" Relationship="Self.FK_Airplane_AirplaneType" FromRole="Airplane" ToRole="AirplaneType" />
           <NavigationProperty Name="FlightSchedules" Relationship="Self.FK_FlightSchedule_Airplane" FromRole="Airplane" ToRole="FlightSchedule" />
         </EntityType>
@@ -330,6 +361,7 @@
           </Key>
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Name" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
           <NavigationProperty Name="Airplanes" Relationship="Self.FK_Airplane_AirplaneType" FromRole="AirplaneType" ToRole="Airplane" />
           <NavigationProperty Name="AirplaneInfoes" Relationship="Self.FK_AirplaneInfo_AirplaneType" FromRole="AirplaneType" ToRole="AirplaneInfo" />
         </EntityType>
@@ -354,9 +386,10 @@
           <Property Name="FirstSeatAvail" Type="Int32" Nullable="false" />
           <Property Name="BusinessSeatAvail" Type="Int32" Nullable="false" />
           <Property Name="ClubSeatAvail" Type="Int32" Nullable="false" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
           <NavigationProperty Name="Airplane" Relationship="Self.FK_FlightSchedule_Airplane" FromRole="FlightSchedule" ToRole="Airplane" />
           <NavigationProperty Name="Route" Relationship="Self.FK_FlightSchedule_Route" FromRole="FlightSchedule" ToRole="Route" />
-          <NavigationProperty Name="Tickets" Relationship="Self.FK_Ticket_FlightSchedule" FromRole="FlightSchedule" ToRole="Ticket" />
+          <NavigationProperty Name="Tickets" Relationship="Self.TicketFlightSchedule" FromRole="FlightSchedule" ToRole="Ticket" />
         </EntityType>
         <EntityType Name="Profile">
           <Key>
@@ -374,6 +407,7 @@
           <Property Name="Age" Type="Int32" Nullable="false" />
           <Property Name="CreditCard" Type="String" MaxLength="16" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="SkyMiles" Type="Int32" Nullable="false" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
           <NavigationProperty Name="Tickets" Relationship="Self.FK_Ticket_Profile" FromRole="Profile" ToRole="Ticket" />
         </EntityType>
         <EntityType Name="Route">
@@ -385,6 +419,7 @@
           <Property Name="CityBID" Type="Int32" Nullable="false" />
           <Property Name="SkyMiles" Type="Int32" Nullable="false" />
           <Property Name="BasePrice" Type="Double" Nullable="false" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
           <NavigationProperty Name="City" Relationship="Self.FK_Route_CityA" FromRole="Route" ToRole="City" />
           <NavigationProperty Name="City1" Relationship="Self.FK_Route_CityB" FromRole="Route" ToRole="City" />
           <NavigationProperty Name="FlightSchedules" Relationship="Self.FK_FlightSchedule_Route" FromRole="Route" ToRole="FlightSchedule" />
@@ -395,9 +430,8 @@
           </Key>
           <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="ProfileID" Type="Int64" Nullable="false" />
-          <Property Name="FlightScheduleID" Type="Int64" Nullable="false" />
           <Property Name="Status" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="ConfirmationCode" Type="String" MaxLength="16" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="TicketCode" Type="String" MaxLength="16" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="ChildrenCount" Type="Int32" Nullable="false" />
           <Property Name="AdultCount" Type="Int32" Nullable="false" />
           <Property Name="SeniorCount" Type="Int32" Nullable="false" />
@@ -405,8 +439,8 @@
           <Property Name="OrderDate" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="TotalCost" Type="Double" Nullable="false" />
           <NavigationProperty Name="AirplaneClass" Relationship="Self.FK_Ticket_AirplaneClass" FromRole="Ticket" ToRole="AirplaneClass" />
-          <NavigationProperty Name="FlightSchedule" Relationship="Self.FK_Ticket_FlightSchedule" FromRole="Ticket" ToRole="FlightSchedule" />
           <NavigationProperty Name="Profile" Relationship="Self.FK_Ticket_Profile" FromRole="Ticket" ToRole="Profile" />
+          <NavigationProperty Name="FlightSchedules" Relationship="Self.TicketFlightSchedule" FromRole="Ticket" ToRole="FlightSchedule" />
         </EntityType>
         <Association Name="FK_Airplane_AirplaneType">
           <End Role="AirplaneType" Type="Self.AirplaneType" Multiplicity="1" />
@@ -504,18 +538,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Ticket_FlightSchedule">
-          <End Role="FlightSchedule" Type="Self.FlightSchedule" Multiplicity="1" />
-          <End Role="Ticket" Type="Self.Ticket" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="FlightSchedule">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="Ticket">
-              <PropertyRef Name="FlightScheduleID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_Ticket_Profile">
           <End Role="Profile" Type="Self.Profile" Multiplicity="1" />
           <End Role="Ticket" Type="Self.Ticket" Multiplicity="*" />
@@ -527,6 +549,10 @@
               <PropertyRef Name="ProfileID" />
             </Dependent>
           </ReferentialConstraint>
+        </Association>
+        <Association Name="TicketFlightSchedule">
+          <End Role="FlightSchedule" Type="Self.FlightSchedule" Multiplicity="*" />
+          <End Role="Ticket" Type="Self.Ticket" Multiplicity="*" />
         </Association>
         <EntityContainer Name="DBUserEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="AdminAccounts" EntityType="Self.AdminAccount" />
@@ -571,12 +597,12 @@
             <End Role="Route" EntitySet="Routes" />
             <End Role="FlightSchedule" EntitySet="FlightSchedules" />
           </AssociationSet>
-          <AssociationSet Name="FK_Ticket_FlightSchedule" Association="Self.FK_Ticket_FlightSchedule">
-            <End Role="FlightSchedule" EntitySet="FlightSchedules" />
-            <End Role="Ticket" EntitySet="Tickets" />
-          </AssociationSet>
           <AssociationSet Name="FK_Ticket_Profile" Association="Self.FK_Ticket_Profile">
             <End Role="Profile" EntitySet="Profiles" />
+            <End Role="Ticket" EntitySet="Tickets" />
+          </AssociationSet>
+          <AssociationSet Name="TicketFlightSchedule" Association="Self.TicketFlightSchedule">
+            <End Role="FlightSchedule" EntitySet="FlightSchedules" />
             <End Role="Ticket" EntitySet="Tickets" />
           </AssociationSet>
         </EntityContainer>
@@ -594,6 +620,7 @@
                 <ScalarProperty Name="Password" ColumnName="Password" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="Role" ColumnName="Role" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -602,6 +629,7 @@
               <MappingFragment StoreEntitySet="Airplane">
                 <ScalarProperty Name="AirplaneCode" ColumnName="AirplaneCode" />
                 <ScalarProperty Name="TypeID" ColumnName="TypeID" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -627,6 +655,7 @@
               <MappingFragment StoreEntitySet="AirplaneType">
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -649,6 +678,7 @@
                 <ScalarProperty Name="FirstSeatAvail" ColumnName="FirstSeatAvail" />
                 <ScalarProperty Name="BusinessSeatAvail" ColumnName="BusinessSeatAvail" />
                 <ScalarProperty Name="ClubSeatAvail" ColumnName="ClubSeatAvail" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -667,6 +697,7 @@
                 <ScalarProperty Name="Age" ColumnName="Age" />
                 <ScalarProperty Name="CreditCard" ColumnName="CreditCard" />
                 <ScalarProperty Name="SkyMiles" ColumnName="SkyMiles" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -678,6 +709,7 @@
                 <ScalarProperty Name="CityBID" ColumnName="CityBID" />
                 <ScalarProperty Name="SkyMiles" ColumnName="SkyMiles" />
                 <ScalarProperty Name="BasePrice" ColumnName="BasePrice" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -686,9 +718,8 @@
               <MappingFragment StoreEntitySet="Ticket">
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="ProfileID" ColumnName="ProfileID" />
-                <ScalarProperty Name="FlightScheduleID" ColumnName="FlightScheduleID" />
                 <ScalarProperty Name="Status" ColumnName="Status" />
-                <ScalarProperty Name="ConfirmationCode" ColumnName="ConfirmationCode" />
+                <ScalarProperty Name="TicketCode" ColumnName="TicketCode" />
                 <ScalarProperty Name="ChildrenCount" ColumnName="ChildrenCount" />
                 <ScalarProperty Name="AdultCount" ColumnName="AdultCount" />
                 <ScalarProperty Name="SeniorCount" ColumnName="SeniorCount" />
@@ -698,6 +729,14 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <AssociationSetMapping Name="TicketFlightSchedule" TypeName="DBUserModel.TicketFlightSchedule" StoreEntitySet="TicketFlightSchedule">
+            <EndProperty Name="FlightSchedule">
+              <ScalarProperty Name="ID" ColumnName="FlightScheduleID" />
+            </EndProperty>
+            <EndProperty Name="Ticket">
+              <ScalarProperty Name="ID" ColumnName="TicketID" />
+            </EndProperty>
+          </AssociationSetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

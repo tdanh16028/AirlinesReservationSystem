@@ -27,6 +27,7 @@ namespace ARSWebMVC.Models
         public int FirstSeatAvail { get; set; }
         public int BusinessSeatAvail { get; set; }
         public int ClubSeatAvail { get; set; }
+        public bool IsActive { get; set; }
     
         public virtual Airplane Airplane { get; set; }
         public virtual Route Route { get; set; }
