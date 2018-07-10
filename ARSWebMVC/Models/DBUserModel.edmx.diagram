@@ -12,7 +12,7 @@
         <EntityTypeShape EntityType="DBUserModel.AirplaneType" Width="1.5" PointX="0.75" PointY="3.75" IsExpanded="true" />
         <EntityTypeShape EntityType="DBUserModel.City" Width="1.5" PointX="0.75" PointY="10.75" IsExpanded="true" />
         <EntityTypeShape EntityType="DBUserModel.FlightSchedule" Width="1.5" PointX="5.25" PointY="3.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="DBUserModel.Profile" Width="1.5" PointX="5.25" PointY="8.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBUserModel.Profile" Width="1.5" PointX="10.125" PointY="2.875" IsExpanded="true" />
         <EntityTypeShape EntityType="DBUserModel.Route" Width="1.5" PointX="3" PointY="10.375" IsExpanded="true" />
         <EntityTypeShape EntityType="DBUserModel.Ticket" Width="1.5" PointX="7.5" PointY="3" IsExpanded="true" />
         <AssociationConnector Association="DBUserModel.FK_Airplane_AirplaneType" ManuallyRouted="false" />

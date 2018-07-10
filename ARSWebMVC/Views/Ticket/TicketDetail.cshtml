@@ -1,7 +1,7 @@
-﻿@using ARSWebMVC.Models
+﻿@model ARSWebMVC.Models.Ticket
 @{
     ViewBag.Title = "TicketDetail";
-   
+
 }
 <section class="ticketdetail pt-5 pb-5">
     <div class="container">
@@ -15,11 +15,11 @@
                     <h5 class="text-center text-md-left"> NAME OF PASSENGER&nbsp;:</h5>
                 </div>
                 <div class="col">
-                    asdasda
+                    <span>@Model.Profile.FirstName</span>
+                    <span>@Model.Profile.LastName</span>
                 </div>
             </div>
-            <hr class="mb-5"s />
-
+            <hr class="mb-5" />
             @if (Model.Status == "blocked")
             {
                 <div class="d-flex justify-content-around">
@@ -51,11 +51,11 @@
             else if (Model.Status == "aborted")
             {
                 <h4 class="text-center">Tickets canceled</h4>
-                <a class="btn waves-effect waves-light" href="../Home" >
+                <a class="btn waves-effect waves-light" href="../Home">
                     Home Page
                     <i class="material-icons right">remove_circle</i>
                 </a>
-                
+
             }
             else
             {

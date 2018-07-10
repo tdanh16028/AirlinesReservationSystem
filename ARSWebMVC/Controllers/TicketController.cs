@@ -38,10 +38,16 @@ namespace ARSWebMVC.Controllers
             }
         }
 
-        public ActionResult TicketDetail(Object ticket)
+        public ActionResult TicketDetail(Ticket ticket)
         {
-            return View(ticket);
+            if (ticket.TicketCode == "")
+            {
+                return View(ticket);
+            }
+            else
+            {
+                return View("Index");
+            }
         }
-
     }
 }
