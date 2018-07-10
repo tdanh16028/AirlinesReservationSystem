@@ -11,7 +11,9 @@ namespace ARSWebAPI.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.Runtime.Serialization;
+
+    [DataContract]
     public partial class AirplaneClass
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -21,12 +23,18 @@ namespace ARSWebAPI.Models
             this.Tickets = new HashSet<Ticket>();
         }
     
+        [DataMember]
         public int ID { get; set; }
+
+        [DataMember]
         public string Class { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        [DataMember]
         public virtual ICollection<AirplaneInfo> AirplaneInfoes { get; set; }
+
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        [DataMember]
         public virtual ICollection<Ticket> Tickets { get; set; }
     }
 }

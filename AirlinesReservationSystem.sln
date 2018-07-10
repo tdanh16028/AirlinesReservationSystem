@@ -9,8 +9,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ARSWebMVC", "ARSWebMVC\ARSW
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ARSWinForm", "ARSWinForm\ARSWinForm.csproj", "{D283C01A-7C39-4846-931A-212C0E1F55A2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleApp1", "ConsoleApp1\ConsoleApp1.csproj", "{5D08278B-9159-4C09-89C2-84D8FE2D8630}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -29,10 +27,6 @@ Global
 		{D283C01A-7C39-4846-931A-212C0E1F55A2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D283C01A-7C39-4846-931A-212C0E1F55A2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D283C01A-7C39-4846-931A-212C0E1F55A2}.Release|Any CPU.Build.0 = Release|Any CPU
-		{5D08278B-9159-4C09-89C2-84D8FE2D8630}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{5D08278B-9159-4C09-89C2-84D8FE2D8630}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{5D08278B-9159-4C09-89C2-84D8FE2D8630}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{5D08278B-9159-4C09-89C2-84D8FE2D8630}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
