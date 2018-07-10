@@ -38,7 +38,7 @@ namespace ARSWebMVC.Controllers
             }
         }
 
-        public ActionResult TicketDetail(Ticket ticket)
+        public ActionResult TicketDetail(Object ticket)
         {
             return View(ticket);
         }
