@@ -335,15 +335,6 @@
           <NavigationProperty Name="AirplaneType" Relationship="Self.FK_Airplane_AirplaneType" FromRole="Airplane" ToRole="AirplaneType" />
           <NavigationProperty Name="FlightSchedules" Relationship="Self.FK_FlightSchedule_Airplane" FromRole="Airplane" ToRole="FlightSchedule" />
         </EntityType>
-        <EntityType Name="AirplaneClass">
-          <Key>
-            <PropertyRef Name="ID" />
-          </Key>
-          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Class" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
-          <NavigationProperty Name="AirplaneInfoes" Relationship="Self.FK_AirplaneInfo_AirplaneClass" FromRole="AirplaneClass" ToRole="AirplaneInfo" />
-          <NavigationProperty Name="Tickets" Relationship="Self.FK_Ticket_AirplaneClass" FromRole="AirplaneClass" ToRole="Ticket" />
-        </EntityType>
         <EntityType Name="AirplaneInfo">
           <Key>
             <PropertyRef Name="AirplaneTypeID" />
@@ -352,8 +343,8 @@
           <Property Name="AirplaneTypeID" Type="Int32" Nullable="false" />
           <Property Name="ClassID" Type="Int32" Nullable="false" />
           <Property Name="SeatCount" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="AirplaneClass" Relationship="Self.FK_AirplaneInfo_AirplaneClass" FromRole="AirplaneInfo" ToRole="AirplaneClass" />
           <NavigationProperty Name="AirplaneType" Relationship="Self.FK_AirplaneInfo_AirplaneType" FromRole="AirplaneInfo" ToRole="AirplaneType" />
+          <NavigationProperty Name="AirplaneClass" Relationship="DBUserModel.FK_AirplaneInfo_AirplaneClass" FromRole="AirplaneInfo" ToRole="AirplaneClass" />
         </EntityType>
         <EntityType Name="AirplaneType">
           <Key>
@@ -438,9 +429,9 @@
           <Property Name="AirplaneClassID" Type="Int32" Nullable="false" />
           <Property Name="OrderDate" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="TotalCost" Type="Double" Nullable="false" />
-          <NavigationProperty Name="AirplaneClass" Relationship="Self.FK_Ticket_AirplaneClass" FromRole="Ticket" ToRole="AirplaneClass" />
           <NavigationProperty Name="Profile" Relationship="Self.FK_Ticket_Profile" FromRole="Ticket" ToRole="Profile" />
           <NavigationProperty Name="FlightSchedules" Relationship="Self.TicketFlightSchedule" FromRole="Ticket" ToRole="FlightSchedule" />
+          <NavigationProperty Name="AirplaneClass" Relationship="DBUserModel.FK_Ticket_AirplaneClass" FromRole="Ticket" ToRole="AirplaneClass" />
         </EntityType>
         <Association Name="FK_Airplane_AirplaneType">
           <End Role="AirplaneType" Type="Self.AirplaneType" Multiplicity="1" />
@@ -463,30 +454,6 @@
             </Principal>
             <Dependent Role="FlightSchedule">
               <PropertyRef Name="AirplaneCode" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_AirplaneInfo_AirplaneClass">
-          <End Role="AirplaneClass" Type="Self.AirplaneClass" Multiplicity="1" />
-          <End Role="AirplaneInfo" Type="Self.AirplaneInfo" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="AirplaneClass">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="AirplaneInfo">
-              <PropertyRef Name="ClassID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Ticket_AirplaneClass">
-          <End Role="AirplaneClass" Type="Self.AirplaneClass" Multiplicity="1" />
-          <End Role="Ticket" Type="Self.Ticket" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="AirplaneClass">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="Ticket">
-              <PropertyRef Name="AirplaneClassID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -557,7 +524,6 @@
         <EntityContainer Name="DBUserEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="AdminAccounts" EntityType="Self.AdminAccount" />
           <EntitySet Name="Airplanes" EntityType="Self.Airplane" />
-          <EntitySet Name="AirplaneClasses" EntityType="Self.AirplaneClass" />
           <EntitySet Name="AirplaneInfoes" EntityType="Self.AirplaneInfo" />
           <EntitySet Name="AirplaneTypes" EntityType="Self.AirplaneType" />
           <EntitySet Name="Cities" EntityType="Self.City" />
@@ -572,14 +538,6 @@
           <AssociationSet Name="FK_FlightSchedule_Airplane" Association="Self.FK_FlightSchedule_Airplane">
             <End Role="Airplane" EntitySet="Airplanes" />
             <End Role="FlightSchedule" EntitySet="FlightSchedules" />
-          </AssociationSet>
-          <AssociationSet Name="FK_AirplaneInfo_AirplaneClass" Association="Self.FK_AirplaneInfo_AirplaneClass">
-            <End Role="AirplaneClass" EntitySet="AirplaneClasses" />
-            <End Role="AirplaneInfo" EntitySet="AirplaneInfoes" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Ticket_AirplaneClass" Association="Self.FK_Ticket_AirplaneClass">
-            <End Role="AirplaneClass" EntitySet="AirplaneClasses" />
-            <End Role="Ticket" EntitySet="Tickets" />
           </AssociationSet>
           <AssociationSet Name="FK_AirplaneInfo_AirplaneType" Association="Self.FK_AirplaneInfo_AirplaneType">
             <End Role="AirplaneType" EntitySet="AirplaneTypes" />
@@ -605,7 +563,49 @@
             <End Role="FlightSchedule" EntitySet="FlightSchedules" />
             <End Role="Ticket" EntitySet="Tickets" />
           </AssociationSet>
+          <EntitySet Name="AirplaneClasses" EntityType="DBUserModel.AirplaneClass" />
+          <AssociationSet Name="FK_AirplaneInfo_AirplaneClass" Association="DBUserModel.FK_AirplaneInfo_AirplaneClass">
+            <End Role="AirplaneClass" EntitySet="AirplaneClasses" />
+            <End Role="AirplaneInfo" EntitySet="AirplaneInfoes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Ticket_AirplaneClass" Association="DBUserModel.FK_Ticket_AirplaneClass">
+            <End Role="AirplaneClass" EntitySet="AirplaneClasses" />
+            <End Role="Ticket" EntitySet="Tickets" />
+          </AssociationSet>
         </EntityContainer>
+        <EntityType Name="AirplaneClass">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Class" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="AirplaneInfoes" Relationship="DBUserModel.FK_AirplaneInfo_AirplaneClass" FromRole="AirplaneClass" ToRole="AirplaneInfo" />
+          <NavigationProperty Name="Tickets" Relationship="DBUserModel.FK_Ticket_AirplaneClass" FromRole="AirplaneClass" ToRole="Ticket" />
+        </EntityType>
+        <Association Name="FK_AirplaneInfo_AirplaneClass">
+          <End Type="DBUserModel.AirplaneClass" Role="AirplaneClass" Multiplicity="1" />
+          <End Type="DBUserModel.AirplaneInfo" Role="AirplaneInfo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AirplaneClass">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="AirplaneInfo">
+              <PropertyRef Name="ClassID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Ticket_AirplaneClass">
+          <End Type="DBUserModel.AirplaneClass" Role="AirplaneClass" Multiplicity="1" />
+          <End Type="DBUserModel.Ticket" Role="Ticket" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AirplaneClass">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Ticket">
+              <PropertyRef Name="AirplaneClassID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -630,14 +630,6 @@
                 <ScalarProperty Name="AirplaneCode" ColumnName="AirplaneCode" />
                 <ScalarProperty Name="TypeID" ColumnName="TypeID" />
                 <ScalarProperty Name="IsActive" ColumnName="IsActive" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="AirplaneClasses">
-            <EntityTypeMapping TypeName="DBUserModel.AirplaneClass">
-              <MappingFragment StoreEntitySet="AirplaneClass">
-                <ScalarProperty Name="ID" ColumnName="ID" />
-                <ScalarProperty Name="Class" ColumnName="Class" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -737,6 +729,14 @@
               <ScalarProperty Name="ID" ColumnName="TicketID" />
             </EndProperty>
           </AssociationSetMapping>
+          <EntitySetMapping Name="AirplaneClasses">
+            <EntityTypeMapping TypeName="DBUserModel.AirplaneClass">
+              <MappingFragment StoreEntitySet="AirplaneClass">
+                <ScalarProperty Name="Class" ColumnName="Class" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

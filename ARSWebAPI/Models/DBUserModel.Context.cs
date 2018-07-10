@@ -27,7 +27,6 @@ namespace ARSWebAPI.Models
     
         public virtual DbSet<AdminAccount> AdminAccounts { get; set; }
         public virtual DbSet<Airplane> Airplanes { get; set; }
-        public virtual DbSet<AirplaneClass> AirplaneClasses { get; set; }
         public virtual DbSet<AirplaneInfo> AirplaneInfoes { get; set; }
         public virtual DbSet<AirplaneType> AirplaneTypes { get; set; }
         public virtual DbSet<City> Cities { get; set; }
@@ -35,5 +34,6 @@ namespace ARSWebAPI.Models
         public virtual DbSet<Profile> Profiles { get; set; }
         public virtual DbSet<Route> Routes { get; set; }
         public virtual DbSet<Ticket> Tickets { get; set; }
+        public virtual DbSet<AirplaneClass> AirplaneClasses { get; set; }
     }
 }

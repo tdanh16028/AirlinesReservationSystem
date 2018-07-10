@@ -31,9 +31,9 @@ namespace ARSWebAPI.Models
         public System.DateTime OrderDate { get; set; }
         public double TotalCost { get; set; }
     
-        public virtual AirplaneClass AirplaneClass { get; set; }
         public virtual Profile Profile { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<FlightSchedule> FlightSchedules { get; set; }
+        public virtual AirplaneClass AirplaneClass { get; set; }
     }
 }
