@@ -10,25 +10,18 @@
             <h4 class="text-center">Login</h4>
             <div class="text-center"><span class=" text-danger">@ViewBag.ErrorMessage</span></div>
             <div class="row margin">
-                <div class="input-field col s12">
-                    <div class="col s1 pt-2 col-sm-2">
-                        <i class="fas fa-user fa-2x"></i>
-                    </div>
-                    <div class="col s11 pl-4 col-sm-10">
-                        @Html.TextBoxFor(m => m.UserID)
-                        @Html.ValidationMessageFor(m => m.UserID, "", new { @class = "text-danger" })
-                    </div>
+                <div class="input-field col s12 pl-5 pr-5">
+                    <p class="label-text">Username :</p>
+                    @Html.TextBoxFor(m => m.UserID)
+                    @Html.ValidationMessageFor(m => m.UserID, "", new { @class = "text-danger", placeholder = "UserName" })
+
                 </div>
             </div>
             <div class="row margin">
-                <div class="input-field col s12">
-                    <div class="col s1 pt-2">
-                        <i class="fas fa-unlock fa-2x"></i>
-                    </div>
-                    <div class="col s11 pl-4">
-                        @Html.PasswordFor(m => m.Password)
-                        @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
-                    </div>
+                <div class="input-field col s12 pr-5 pl-5">
+                    <p class="label-text">Password :</p>
+                    @Html.PasswordFor(m => m.Password)
+                    @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger", placeholder = "Password" })
                 </div>
             </div>
             <div class="row">
