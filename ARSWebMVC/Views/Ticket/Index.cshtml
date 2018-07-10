@@ -1,0 +1,23 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+<div class="container pt-5">
+    <form class="form-ticketstatus card-panel col-10 m-auto">
+        <h2>TicketStatus</h2>
+        <hr />
+        <div class="form-group row">
+            <label class="col-md-3  col-form-label pt-3 text-dark">ConfirmationCode : </label>
+            <div class="col-md-9">
+                <input type="password" class="form-control col-md-4 " placeholder="Your Code">
+            </div>
+        </div>
+        <hr />
+        @Html.ActionLink("Home Page", "Index", "Home", null, new { @class = "waves-effect waves-light btn mr-4" })
+        <button class="btn waves-effect waves-light" type="submit" name="action">
+            Submit
+            <i class="material-icons right">send</i>
+        </button>
+    </form>
+</div>

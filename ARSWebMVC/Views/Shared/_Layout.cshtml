@@ -10,8 +10,9 @@
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
 </head>
+
 <body>
-    <nav class="teal lighten-2">
+    <nav class="teal lighten-2 Mynavbar">
         <div class="container">
             <div class="nav-wrapper">
                 @Html.ActionLink("Logo", "Index", "Home", null, new { @class = "brand-logo" })
@@ -24,10 +25,7 @@
         </div>
     </nav>
 
-
-
-
-    <ul class="sidenav  blue-grey darken-1 white-text pt-5 pl-3" id="mobile-demo">
+    <ul class="sidenav pt-5 pl-3 pr-3" id="mobile-demo">
         @Html.Partial("_LoginPartial")
     </ul>
     <div class="body-content">
