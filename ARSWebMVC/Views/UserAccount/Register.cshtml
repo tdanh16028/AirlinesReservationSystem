@@ -41,6 +41,7 @@
             <div class="input-field col s6">
                 @Html.TextBoxFor(s => s.LastName, "", new { @class = " " })
                 <label for="last_name">Last Name</label>
+                @Html.ValidationMessageFor(s => s.LastName, "", new { @class = "text-danger" })
             </div>
         </div>
 
