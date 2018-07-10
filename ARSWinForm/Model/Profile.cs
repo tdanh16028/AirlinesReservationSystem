@@ -7,25 +7,33 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace ARSWebAPI.Models
+namespace ARSWinForm.Model
 {
     using System;
     using System.Collections.Generic;
     
-    public partial class AirplaneClass
+    public partial class Profile
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public AirplaneClass()
+        public Profile()
         {
-            this.AirplaneInfoes = new HashSet<AirplaneInfo>();
             this.Tickets = new HashSet<Ticket>();
         }
     
-        public int ID { get; set; }
-        public string Class { get; set; }
+        public long ID { get; set; }
+        public string UserID { get; set; }
+        public string Password { get; set; }
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
+        public string Address { get; set; }
+        public string PhoneNumber { get; set; }
+        public string EmailAddress { get; set; }
+        public bool Sex { get; set; }
+        public int Age { get; set; }
+        public string CreditCard { get; set; }
+        public int SkyMiles { get; set; }
+        public bool IsActive { get; set; }
     
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<AirplaneInfo> AirplaneInfoes { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Ticket> Tickets { get; set; }
     }

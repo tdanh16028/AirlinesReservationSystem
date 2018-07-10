@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace ARSWebAPI.Models
+namespace ARSWinForm.Model
 {
     using System;
     using System.Collections.Generic;

@@ -31,11 +31,23 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=11.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.11.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Net.Http.Formatting">
       <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.2.4\lib\net45\System.Net.Http.Formatting.dll</HintPath>
     </Reference>
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -59,7 +71,56 @@
     <Compile Include="FormTest.Designer.cs">
       <DependentUpon>FormTest.cs</DependentUpon>
     </Compile>
+    <Compile Include="HelperClass\APIHelper.cs" />
     <Compile Include="HelperClass\APIWrapper.cs" />
+    <Compile Include="HelperClass\ARSUtilities.cs" />
+    <Compile Include="HelperClass\ModelHelper\AbstractModelWrapper.cs" />
+    <Compile Include="HelperClass\ModelHelper\AirplaneClassWrapper.cs" />
+    <Compile Include="Model\AdminAccount.cs">
+      <DependentUpon>DBUserModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Airplane.cs">
+      <DependentUpon>DBUserModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\AirplaneClass.cs">
+      <DependentUpon>DBUserModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\AirplaneInfo.cs">
+      <DependentUpon>DBUserModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\AirplaneType.cs">
+      <DependentUpon>DBUserModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\City.cs">
+      <DependentUpon>DBUserModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\DBUserModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DBUserModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\DBUserModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DBUserModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\DBUserModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DBUserModel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Model\FlightSchedule.cs">
+      <DependentUpon>DBUserModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Profile.cs">
+      <DependentUpon>DBUserModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Route.cs">
+      <DependentUpon>DBUserModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Ticket.cs">
+      <DependentUpon>DBUserModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="FormMain.resx">
@@ -77,6 +138,14 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EntityDeploy Include="Model\DBUserModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>DBUserModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="Model\DBUserModel.edmx.diagram">
+      <DependentUpon>DBUserModel.edmx</DependentUpon>
+    </None>
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -89,6 +158,21 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Model\DBUserModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>DBUserModel.Context.cs</LastGenOutput>
+      <DependentUpon>DBUserModel.edmx</DependentUpon>
+    </Content>
+    <Content Include="Model\DBUserModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>DBUserModel.edmx</DependentUpon>
+      <LastGenOutput>DBUserModel.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

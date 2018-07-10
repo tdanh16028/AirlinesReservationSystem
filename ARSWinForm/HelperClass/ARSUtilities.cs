@@ -6,7 +6,7 @@ using System.Runtime.Serialization.Json;
 using System.Text;
 using System.Web;
 
-namespace ARSWebAPI.HelperClass
+namespace ARSWinForm.HelperClass
 {
     public class ARSUtilities
     {

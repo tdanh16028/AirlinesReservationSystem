@@ -7,26 +7,27 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace ARSWebAPI.Models
+namespace ARSWinForm.Model
 {
     using System;
     using System.Collections.Generic;
     
-    public partial class AirplaneClass
+    public partial class City
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public AirplaneClass()
+        public City()
         {
-            this.AirplaneInfoes = new HashSet<AirplaneInfo>();
-            this.Tickets = new HashSet<Ticket>();
+            this.Routes = new HashSet<Route>();
+            this.Routes1 = new HashSet<Route>();
         }
     
         public int ID { get; set; }
-        public string Class { get; set; }
+        public string Code { get; set; }
+        public string City1 { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<AirplaneInfo> AirplaneInfoes { get; set; }
+        public virtual ICollection<Route> Routes { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Ticket> Tickets { get; set; }
+        public virtual ICollection<Route> Routes1 { get; set; }
     }
 }

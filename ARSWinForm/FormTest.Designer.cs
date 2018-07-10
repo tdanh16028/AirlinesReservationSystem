@@ -60,6 +60,7 @@
             this.Controls.Add(this.dgv);
             this.Name = "FormTest";
             this.Text = "FormTest";
+            this.Load += new System.EventHandler(this.FormTest_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgv)).EndInit();
             this.ResumeLayout(false);
 
