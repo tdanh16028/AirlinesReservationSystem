@@ -323,6 +323,7 @@
     <Content Include="Views\UserAccount\Profile.cshtml" />
     <Content Include="Views\UserAccount\Register.cshtml" />
     <Content Include="Views\Ticket\Index.cshtml" />
+    <Content Include="Views\Ticket\TicketDetail.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

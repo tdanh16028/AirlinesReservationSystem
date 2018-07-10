@@ -57,11 +57,16 @@ body {
         .func-login .form-login span {
             animation: mymove 0.5s;
         }
+.ticketdetail button {
+    display: inline-flex;
+    align-items: center;
+}
+    .ticketdetail button i {
+        line-height: normal;
+    }
 
-       
 
 @keyframes mymove {
-
     10% {
         color: red;
     }

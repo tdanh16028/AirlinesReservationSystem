@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using ARSWebMVC.Models;
 
 namespace ARSWebMVC.Controllers
 {
@@ -13,5 +14,13 @@ namespace ARSWebMVC.Controllers
         {
             return View();
         }
+
+        public ActionResult TicketDetail()
+        {
+            Ticket ticket = new Ticket();
+            ticket.Status = "";
+            return View(ticket);
+        }
+
     }
 }
