@@ -14,34 +14,39 @@
 </head>
 
 <body>
-    <nav class="teal lighten-2 Mynavbar">
+    <nav class="blue darken-1 Mynavbar">
         <div class="container">
             <div class="nav-wrapper">
-                @Html.ActionLink("Logo", "Index", "Home", null, new { @class = "brand-logo" })
                 <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
-                <ul class="right hide-on-med-and-down">
-                    <li>@Html.ActionLink("Home", "Index", "Home", null, new { @class = "" })</li>
-                    <li>@Html.ActionLink("Ticket", "Index", "Ticket", null, new { @class = "" })</li>
-                    @if (Session["UserProfile"] == null)
-                    {
-                        <li class="">
-                            @Html.ActionLink("Login", "Login", "UserAccount", null, new { @class = "" })
-                        </li>
-                        <li class="">
-                            @Html.ActionLink("Register", "Register", "UserAccount", null, new { @class = "" })
-                        </li>
-                    }
-                    else
-                    {
-                        <li class="  ">
-                            <div class="d-flex flex-row ">
-                                <span class="pl-2 ">Hello :</span>
-                                @Html.ActionLink(@user.UserID.ToString(), "Profile", "UserAccount", null, new { @class = "pl-2  " })
-                                @Html.ActionLink("(logout)", "Logout", "UserAccount", null, new { @class = "pl-2  text-md-dark" })
-                            </div>
-                        </li>
-                    }
-                </ul>
+                @Html.ActionLink("Logo", "Index", "Home", null, new { @class = "brand-logo" })
+                <div class="row  hide-on-med-and-down">
+                  
+                    <ul class="col-11 ml-auto pt-1 d-flex">
+                        <li>@Html.ActionLink("Home", "Index", "Home", null, new { @class = "" })</li>
+                        <li>@Html.ActionLink("Ticket", "Index", "Ticket", null, new { @class = "" })</li>
+                        @if (Session["UserProfile"] == null)
+                        {
+                            <li class="ml-auto">
+                                <div class="d-flex flex-row ">
+                                    @Html.ActionLink("Login", "Login", "UserAccount", null, new { @class = "" })
+                                    @Html.ActionLink("Register", "Register", "UserAccount", null, new { @class = "" })
+                                </div>
+
+                            </li>
+
+                        }
+                        else
+                        {
+                            <li class="">
+                                <div class="d-flex flex-row ">
+                                    <span class="pl-2 ">Hello :</span>
+                                    @Html.ActionLink(@user.UserID.ToString(), "Profile", "UserAccount", null, new { @class = "pl-2  " })
+                                    @Html.ActionLink("(logout)", "Logout", "UserAccount", null, new { @class = "pl-2  text-md-dark" })
+                                </div>
+                            </li>
+                        }
+                    </ul>
+                </div>
             </div>
         </div>
     </nav>

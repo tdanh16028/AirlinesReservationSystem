@@ -17,7 +17,7 @@ namespace ARSWebMVC.Controllers
         [HttpPost]
         public ActionResult Index(FormCollection form)
         {
-            var code = form["txtConfirmationCode"].ToString();
+            var code = form["txtConfirmationCode"];
             if (code == null || code == "")
             {
                 ViewBag.ErrorMessage = "Invalid ConfirmationCode";
@@ -40,14 +40,21 @@ namespace ARSWebMVC.Controllers
 
         public ActionResult TicketDetail(Ticket ticket)
         {
-            if (ticket.TicketCode == "")
+            if (ticket.TicketCode != null)
             {
-                return View(ticket);
+                var rs = db.Tickets.SingleOrDefault(s => s.TicketCode == ticket.TicketCode);
+                return View(rs);
             }
             else
             {
                 return View("Index");
             }
+        }
+
+        public ActionResult AllFlightUser()
+        {
+
+            return PartialView();
         }
     }
 }

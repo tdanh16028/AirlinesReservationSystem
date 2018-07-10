@@ -1,4 +1,4 @@
-﻿@model ARSWebMVC.Models.Ticket
+﻿@using ARSWebMVC.Models
 @{
     ViewBag.Title = "TicketDetail";
 
@@ -10,17 +10,96 @@
             <div class="teal p-3"></div>
         </div>
         <div class=" card-panel mt-0">
+
             <div class="row">
                 <div class="col">
-                    <h5 class="text-center text-md-left"> NAME OF PASSENGER&nbsp;:</h5>
+                    <b class="text-center text-md-left pt-2"> NAME OF PASSENGER&nbsp;:</b>
                 </div>
-                <div class="col">
-                    <span>@Model.Profile.FirstName</span>
+                <div class="col-8 ml-auto text-center">
                     <span>@Model.Profile.LastName</span>
+                    <span>@Model.Profile.FirstName</span>
+                    <hr class="m-1" />
                 </div>
             </div>
+
+            <div class="row">
+                <div class="col">
+                    <b class="text-center pt-2">TICKET CODE&nbsp;:</b>
+                </div>
+                <div class="col-8 ml-auto text-center">
+                    <span>@Model.TicketCode</span>
+                    <hr class="m-1" />
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col">
+                    <b class="text-center pt-2">STATUS&nbsp;:</b>
+                </div>
+                <div class="col-8 ml-auto text-center">
+                    <span>@Model.Status</span>
+                    <hr class="m-1" />
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col">
+                    <b class="text-center pt-2">CHILDREN COUNT&nbsp;:</b>
+                </div>
+                <div class="col-8 ml-auto text-center">
+                    <span>@Model.ChildrenCount</span>
+                    <hr class="m-1" />
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col">
+                    <b class="text-center pt-2">ADULT COUNT&nbsp;:</b>
+                </div>
+                <div class="col-8 ml-auto text-center">
+                    <span>@Model.AdultCount</span>
+                    <hr class="m-1" />
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col">
+                    <b class="text-center pt-2">CLASS&nbsp;:</b>
+                </div>
+                <div class="col-8 ml-auto text-center">
+                    <span>@Model.AirplaneClassID</span>
+                    <hr class="m-1" />
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col">
+                    <b class="text-center pt-2">ORDER DATE&nbsp;:</b>
+                </div>
+                <div class="col-8 ml-auto text-center">
+                    <span>@Model.OrderDate</span>
+                    <hr class="m-1" />
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col">
+                    <b class="text-center pt-2">TOTAL COST&nbsp;:</b>
+                </div>
+                <div class="col-8 ml-auto text-center">
+                    <span>@Model.TotalCost</span><span>&nbsp;$</span>
+                    <hr class="m-1" />
+                </div>
+            </div>
+
+            <div>Your Flights</div>
+
+  
+
+
+
             <hr class="mb-5" />
-            @if (Model.Status == "blocked")
+            @if (Model.Status == "Blocked")
             {
                 <div class="d-flex justify-content-around">
                     <button class=" btn waves-effect waves-light d-flex" type="submit" name="action">
@@ -34,7 +113,7 @@
                     </button>
                 </div>
             }
-            else if (Model.Status == "reservred")
+            else if (Model.Status == "Reversed")
             {
                 <div class="d-flex justify-content-around">
                     <button class="btn waves-effect waves-light d-flex" type="submit" name="action">
@@ -48,10 +127,10 @@
                     </button>
                 </div>
             }
-            else if (Model.Status == "aborted")
+            else if (Model.Status == "Cancelled")
             {
-                <h4 class="text-center">Tickets canceled</h4>
-                <a class="btn waves-effect waves-light" href="../Home">
+                <h4 class="text-center">Tickets cancelled</h4>
+                <a class="btn waves-effect waves-light" href="/../Home">
                     Home Page
                     <i class="material-icons right">remove_circle</i>
                 </a>
