@@ -134,6 +134,7 @@ namespace eProject_main.Controllers
                 else
                 {
                     profile.Password = CreateMD5(profile.Password);
+                    profile.IsActive = true;
                     db.Profiles.Add(profile);
                     db.SaveChanges();
                     return RedirectToAction("Index", "Home");

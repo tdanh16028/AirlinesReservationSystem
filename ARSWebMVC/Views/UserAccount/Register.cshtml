@@ -47,7 +47,7 @@
 
         <div class="row">
             <div class="input-field col s12">
-                @Html.PasswordFor(s => s.Address)
+                @Html.TextBoxFor(s => s.Address)
                 <label for="password">Address</label>
                 @Html.ValidationMessageFor(s => s.Address, "", new { @class = "text-danger" })
             </div>
@@ -55,7 +55,7 @@
 
         <div class="row">
             <div class="input-field col s12">
-                @Html.PasswordFor(s => s.PhoneNumber)
+                @Html.TextBoxFor(s => s.PhoneNumber)
                 <label for="password">PhoneNumber</label>
                 @Html.ValidationMessageFor(s => s.PhoneNumber, "", new { @class = "text-danger" })
             </div>
@@ -63,7 +63,7 @@
 
         <div class="row">
             <div class="input-field col s12">
-                @Html.PasswordFor(s => s.EmailAddress)
+                @Html.TextBoxFor(s => s.EmailAddress)
                 <label for="password">EmailAddress</label>
                 @Html.ValidationMessageFor(s => s.EmailAddress, "", new { @class = "text-danger" })
             </div>
@@ -89,8 +89,6 @@
             </div>
             <div class="col s6"></div>
         </div>
-
-
 
         <div class="row">
             <div class="input-field col s12">
