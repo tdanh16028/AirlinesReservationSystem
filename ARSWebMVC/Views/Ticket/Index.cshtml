@@ -3,22 +3,26 @@
     ViewBag.Title = "Index";
 }
 
+
 <div class="container pt-5">
-    <form class="form-ticketstatus card-panel col-10 m-auto">
+    @using (Html.BeginForm("Index", "Ticket", null, FormMethod.Post, new { @class = " form-ticketstatus card-panel col-10 m-auto " }))
+    {
         <h2>TicketStatus</h2>
         <hr />
         <div class="form-group row">
-            <label class="col-md-3  col-form-label pt-3 text-dark">ConfirmationCode : </label>
-            <div class="col-md-9">
-                <input type="password" class="form-control col-md-4 " placeholder="Your Code">
+            <label class="col-md-3 col-sm-12 col-form-label pt-3 text-dark">ConfirmationCode : </label>
+            <div class="col-md">
+                <input type="text" name="txtConfirmationCode" class=" col-md-4 " placeholder="Your Code">
+                <span class="text-danger col-md">@ViewBag.ErrorMessage</span>
             </div>
         </div>
+        
         <hr />
         @Html.ActionLink("Home Page", "Index", "Home", null, new { @class = "waves-effect waves-light btn mr-4" })
 
-        <a href="/Ticket/TicketDetail" class="btn waves-effect waves-light">
+        <button type="submit" class="btn waves-effect waves-light">
             Submit
             <i class="material-icons right">send</i>
-        </a>
-    </form>
+        </button>
+    }
 </div>

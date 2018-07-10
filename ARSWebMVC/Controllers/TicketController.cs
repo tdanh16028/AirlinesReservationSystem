@@ -9,16 +9,37 @@ namespace ARSWebMVC.Controllers
 {
     public class TicketController : Controller
     {
+        DBUserEntities db = new DBUserEntities();
         // GET: Ticket
-        public ActionResult Index()
-        {
+        public ActionResult Index() {
             return View();
         }
-
-        public ActionResult TicketDetail()
+        [HttpPost]
+        public ActionResult Index(FormCollection form)
         {
-            Ticket ticket = new Ticket();
-            ticket.Status = "";
+            var code = form["txtConfirmationCode"].ToString();
+            if (code == null || code == "")
+            {
+                ViewBag.ErrorMessage = "Invalid ConfirmationCode";
+                return View();
+            }
+            else
+            {
+                Ticket rs = db.Tickets.SingleOrDefault(s => s.ConfirmationCode == code);
+                if (rs != null)
+                {
+                    return RedirectToAction("TicketDetail", rs);
+                }
+                else
+                {
+                    ViewBag.ErrorMessage = "Invalid ConfirmationCode";
+                    return View();
+                }
+            }
+        }
+
+        public ActionResult TicketDetail(Ticket ticket)
+        {
             return View(ticket);
         }
 

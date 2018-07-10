@@ -19,6 +19,7 @@
                 <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
                 <ul class="right hide-on-med-and-down">
                     <li>@Html.ActionLink("Home", "Index", "Home", null, new { @class = "" })</li>
+                    <li>@Html.ActionLink("Ticket", "Index", "Ticket", null, new { @class = "" })</li>
                     @Html.Partial("_LoginPartial")
                 </ul>
             </div>
@@ -26,6 +27,7 @@
     </nav>
 
     <ul class="sidenav pt-5 pl-3 pr-3" id="mobile-demo">
+        <li>@Html.ActionLink("Ticket", "Index", "Ticket", null, new { @class = "" })</li>
         @Html.Partial("_LoginPartial")
     </ul>
     <div class="body-content">

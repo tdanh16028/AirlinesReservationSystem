@@ -28,6 +28,7 @@ namespace ARSWebMVC
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
+                      "~/Content/BootstrapCustom.css",
                       "~/Content/Site.css"));
         }
     }

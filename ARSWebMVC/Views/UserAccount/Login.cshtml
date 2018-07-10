@@ -18,14 +18,14 @@
                 </div>
             </div>
             <div class="row margin">
-                <div class="input-field col s12 pl-md-5 pr-md-5 pl-sm-0 pr-sm-0">
+                <div class="input-field col-12 pl-md-5 pr-md-5 pl-sm-0 pr-sm-0">
                     <p class="label-text">Password :</p>
                     @Html.PasswordFor(m => m.Password)
                     @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger", placeholder = "Password" })
                 </div>
             </div>
             <div class="row">
-                <div class="input-field col s12">
+                <div class="input-field col-12">
                     <button type="submit" class="btn waves-effect waves-light col s12">Login</button>
                 </div>
             </div>
