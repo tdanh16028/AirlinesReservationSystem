@@ -40,7 +40,7 @@ namespace ARSWinForm
                 table.Rows.Add(row);
             }
 
-            dgv.DataSource = table;
+            dgvAirplaneClass.DataSource = table;
         }
 
         private void FormTest_Load(object sender, EventArgs e)

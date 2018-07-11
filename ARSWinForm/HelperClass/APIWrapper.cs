@@ -13,21 +13,39 @@ namespace ARSWinForm.HelperClass
     {
         public enum ARSAPI
         {
-            AIRPLANE_CLASSES
+            ADMIN_ACCOUNT,
+            AIRPLANE,
+            AIRPLANE_CLASS,
+            AIRPLANE_INFO,
+            AIRPLANE_TYPE,
+            CITY,
+            FLIGHT_SCHEDULE,
+            PROFILE,
+            ROUTE,
+            TICKET
         }
 
         private const string HOST_NAME = "http://localhost:49261";
         private const string ROOT_API = HOST_NAME + "/api";
         private readonly Dictionary<ARSAPI, string> API_URL = new Dictionary<ARSAPI, string>()
         {
-            { ARSAPI.AIRPLANE_CLASSES, "/AirplaneClasses" }
+            { ARSAPI.ADMIN_ACCOUNT, "/AdminAccounts" },
+            { ARSAPI.AIRPLANE, "/Airplanes" },
+            { ARSAPI.AIRPLANE_CLASS, "/AirplaneClasses" },
+            { ARSAPI.AIRPLANE_INFO, "/AirplaneInfoes" },
+            { ARSAPI.AIRPLANE_TYPE, "/AirplaneTypes" },
+            { ARSAPI.CITY, "/Cities" },
+            { ARSAPI.FLIGHT_SCHEDULE, "/FlightSchedules" },
+            { ARSAPI.PROFILE, "/Profiles" },
+            { ARSAPI.ROUTE, "/Routes" },
+            { ARSAPI.TICKET, "/Tickets" }
         };
 
         private HttpClient client = new HttpClient();
 
         public APIWrapper(ARSAPI api, int id) : this(api, id.ToString())
         {
-            
+
         }
 
         public APIWrapper(ARSAPI api, string id = "")

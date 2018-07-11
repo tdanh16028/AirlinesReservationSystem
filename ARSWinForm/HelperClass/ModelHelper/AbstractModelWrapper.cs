@@ -11,11 +11,11 @@ namespace ARSWinForm.HelperClass.ModelHelper
 {
     abstract class AbstractModelWrapper<T>
     {
-        protected APIWrapper<T>.ARSAPI LIST = 0;
+        protected APIWrapper<T>.ARSAPI MODEL_API = 0;
 
         public async Task<List<T>> List()
         {
-            APIWrapper<T> apiWrapper = new APIWrapper<T>(LIST);
+            APIWrapper<T> apiWrapper = new APIWrapper<T>(MODEL_API);
             HttpResponseMessage response = await apiWrapper.GET();
 
             if (response.IsSuccessStatusCode)
@@ -34,6 +34,77 @@ namespace ARSWinForm.HelperClass.ModelHelper
             }
 
             return null;
+        }
+
+        public async Task<T> Get(string id)
+        {
+            APIWrapper<T> apiWrapper = new APIWrapper<T>(MODEL_API, id);
+            HttpResponseMessage response = await apiWrapper.GET();
+
+            if (response.IsSuccessStatusCode)
+            {
+                var responseData = response.Content.ReadAsStringAsync().Result;
+                T lstResult = ARSUtilities.JsonToObject<T>(responseData.ToString());
+
+                return lstResult;
+            }
+
+            return default(T);
+        }
+
+        public async Task<T> Get(int id)
+        {
+            return await Get(id.ToString());
+        }
+
+        public async Task<bool> Put(string id, T data)
+        {
+            APIWrapper<T> apiWrapper = new APIWrapper<T>(MODEL_API, id);
+            HttpResponseMessage response = await apiWrapper.PUT(data);
+
+            if (response.IsSuccessStatusCode)
+            {
+                return true;
+            }
+
+            return false;
+        }
+
+        public async Task<bool> Put(int id, T data)
+        {
+            return await Put(id.ToString(), data);
+        }
+
+        public async Task<bool> Post(T data)
+        {
+            APIWrapper<T> apiWrapper = new APIWrapper<T>(MODEL_API);
+            HttpResponseMessage response = await apiWrapper.PUT(data);
+
+            if (response.IsSuccessStatusCode)
+            {
+                return true;
+            }
+
+            return false;
+        }
+
+
+        public async Task<bool> Delete(string id)
+        {
+            APIWrapper<T> apiWrapper = new APIWrapper<T>(MODEL_API, id);
+            HttpResponseMessage response = await apiWrapper.DELETE();
+
+            if (response.IsSuccessStatusCode)
+            {
+                return true;
+            }
+
+            return false;
+        }
+
+        public async Task<bool> Delete(int id)
+        {
+            return await Delete(id.ToString());
         }
     }
 }
