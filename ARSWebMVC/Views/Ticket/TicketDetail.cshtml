@@ -1,4 +1,5 @@
-﻿@using ARSWebMVC.Models
+﻿@model ARSWebMVC.Models.Ticket
+@using ARSWebMVC.Models
 @{
     ViewBag.Title = "TicketDetail";
 
@@ -54,6 +55,16 @@
 
             <div class="row">
                 <div class="col">
+                    <b class="text-center pt-2">SENIOR COUNT&nbsp;:</b>
+                </div>
+                <div class="col-8 ml-auto text-center">
+                    <span>@Model.SeniorCount</span>
+                    <hr class="m-1" />
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col">
                     <b class="text-center pt-2">ADULT COUNT&nbsp;:</b>
                 </div>
                 <div class="col-8 ml-auto text-center">
@@ -67,7 +78,7 @@
                     <b class="text-center pt-2">CLASS&nbsp;:</b>
                 </div>
                 <div class="col-8 ml-auto text-center">
-                    <span>@Model.AirplaneClassID</span>
+                    <span>@Model.AirplaneClass.Class class</span>
                     <hr class="m-1" />
                 </div>
             </div>
@@ -77,7 +88,24 @@
                     <b class="text-center pt-2">ORDER DATE&nbsp;:</b>
                 </div>
                 <div class="col-8 ml-auto text-center">
-                    <span>@Model.OrderDate</span>
+                    <span>@Model.OrderDate.ToString("dd/MM/yyyy")</span>
+                    <hr class="m-1" />
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col">
+                    <b class="text-center pt-2">SKYMILE&nbsp;:</b>
+                </div>
+                <div class="col-8 ml-auto text-center">
+                    @{
+                        int totalSkymile = 0;
+                        foreach (FlightSchedule flightSchedule in Model.FlightSchedules)
+                        {
+                            totalSkymile = flightSchedule.Route.SkyMiles + totalSkymile;
+                        }
+                        <span>@(totalSkymile) </span>
+                    }
                     <hr class="m-1" />
                 </div>
             </div>
@@ -87,22 +115,66 @@
                     <b class="text-center pt-2">TOTAL COST&nbsp;:</b>
                 </div>
                 <div class="col-8 ml-auto text-center">
-                    <span>@Model.TotalCost</span><span>&nbsp;$</span>
+                    <span>$&nbsp;</span><span>@Model.TotalCost</span>
                     <hr class="m-1" />
                 </div>
             </div>
 
-            <div>Your Flights</div>
+            <div class="row">
+                <ul class="collapsible col-12">
+                    <li>
+                        <div class="collapsible-header"><i class="material-icons">flight</i>Flights Detail</div>
+                        <div class="collapsible-body">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th class="text-sm-center">AIRPLANE CODE</th>
+                                        <th class="text-sm-center">AIRPLANE TYPE</th>
+                                        <th class="text-sm-center">DEPARTORE DATE</th>
+                                        <th class="text-sm-center">FROM</th>
+                                        <th class="text-sm-center">TO</th>
+                                        <th class="text-sm-center">COST</th>
+                                        <th class="text-sm-center">SKYMILE</th>
 
-  
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (FlightSchedule flightSchedule in Model.FlightSchedules)
+                                    {
+                                        <tr>
+                                            <td>@flightSchedule.AirplaneCode</td>
+                                            <td>@flightSchedule.Airplane.AirplaneType.Name</td>
+                                            <td>@flightSchedule.DepartureDate.ToString("dd/MM/yyyy")</td>
+                                            <td>@flightSchedule.Route.City.City1</td>
+                                            <td>@flightSchedule.Route.City1.City1</td>
+                                            @{
+                                                double rate = 1;
 
+                                                if (Model.AirplaneClass.ID == 1)
+                                                {
+                                                    rate = 1.75;
+                                                }
+                                                else if (Model.AirplaneClass.ID == 2)
+                                                {
+                                                    rate = 1.57;
+                                                }
 
-
+                                                <td><span>$&nbsp;</span>@Math.Round((flightSchedule.Route.BasePrice * rate) * (Model.ChildrenCount + Model.AdultCount + Model.SeniorCount), 2)</td>
+                                            }
+                                            <td>@flightSchedule.Route.SkyMiles</td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                    </li>
+                </ul>
+            </div>
             <hr class="mb-5" />
             @if (Model.Status == "Blocked")
             {
                 <div class="d-flex justify-content-around">
-                    <button class=" btn waves-effect waves-light d-flex" type="submit" name="action">
+                    <button class=" btn waves-effect waves-light d-flex  " type="submit" name="action">
                         Cancellation
                         <i class="material-icons right">remove_circle</i>
                     </button>
@@ -116,7 +188,8 @@
             else if (Model.Status == "Reversed")
             {
                 <div class="d-flex justify-content-around">
-                    <button class="btn waves-effect waves-light d-flex" type="submit" name="action">
+
+                    <button class="btn waves-effect waves-light d-flex " type="submit" name="action">
                         Cancellation
                         <i class="material-icons right">remove_circle</i>
                     </button>
@@ -125,6 +198,7 @@
                         Reschedule Ticket
                         <i class="material-icons right">autorenew</i>
                     </button>
+
                 </div>
             }
             else if (Model.Status == "Cancelled")
@@ -139,7 +213,7 @@
             else
             {
                 <div class="d-flex justify-content-around">
-                    <button class=" btn waves-effect waves-light d-flex" type="submit" name="action">
+                    <button class=" btn waves-effect waves-light d-flex " type="submit" name="action">
                         Cancellation
                         <i class="material-icons right">remove_circle</i>
                     </button>

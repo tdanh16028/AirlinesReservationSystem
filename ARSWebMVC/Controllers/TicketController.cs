@@ -50,11 +50,5 @@ namespace ARSWebMVC.Controllers
                 return View("Index");
             }
         }
-
-        public ActionResult AllFlightUser()
-        {
-
-            return PartialView();
-        }
     }
 }
