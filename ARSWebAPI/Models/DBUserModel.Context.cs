@@ -18,7 +18,6 @@ namespace ARSWebAPI.Models
         public DBUserEntities()
             : base("name=DBUserEntities")
         {
-            base.Configuration.ProxyCreationEnabled = false;
         }
     
         protected override void OnModelCreating(DbModelBuilder modelBuilder)

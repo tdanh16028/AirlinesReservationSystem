@@ -27,8 +27,8 @@ namespace ARSWebAPI.Models
         public double BasePrice { get; set; }
         public bool IsActive { get; set; }
     
-        public virtual City City { get; set; }
-        public virtual City City1 { get; set; }
+        public virtual City CityA { get; set; }
+        public virtual City CityB { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<FlightSchedule> FlightSchedules { get; set; }
     }
