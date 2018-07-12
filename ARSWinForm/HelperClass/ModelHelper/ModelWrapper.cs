@@ -1,7 +1,9 @@
 ﻿using ARSWinForm.Model;
+using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -37,6 +39,34 @@ namespace ARSWinForm.HelperClass.ModelHelper
         public AirplaneInfoWrapper()
         {
             MODEL_API = APIWrapper<AirplaneInfo>.ARSAPI.AIRPLANE_INFO;
+        }
+
+        public new async Task<List<AirplaneInfo>> Get(string id)
+        {
+            APIWrapper<AirplaneInfo> apiWrapper = new APIWrapper<AirplaneInfo>(MODEL_API, id);
+            HttpResponseMessage response = await apiWrapper.GET();
+
+            if (response.IsSuccessStatusCode)
+            {
+                var responseData = response.Content.ReadAsStringAsync().Result;
+                JArray parsed = JArray.Parse(responseData.ToString());
+                List<AirplaneInfo> lstResult = new List<AirplaneInfo>();
+
+                foreach (var pair in parsed)
+                {
+                    AirplaneInfo obj = ARSUtilities.JsonToObject<AirplaneInfo>(pair.ToString());
+                    lstResult.Add(obj);
+                }
+
+                return lstResult;
+            }
+
+            return null;
+        }
+
+        public new async Task<List<AirplaneInfo>> Get(int id)
+        {
+            return await Get(id.ToString());
         }
     }
 
