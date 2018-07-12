@@ -19,7 +19,6 @@ namespace eProject_main.Controllers
         {
             return RedirectToAction("Login");
         }
-
         //GET: Customer/Login
         public ActionResult Login()
         {
@@ -51,7 +50,7 @@ namespace eProject_main.Controllers
                         SkyMiles = Convert.ToInt32(res.SkyMiles)
                     };
                     Session["UserProfile"] = userProfile;
-                    return RedirectToAction("Index", "Home");
+                    return RedirectToAction( "Index","Home");
                 }
                 else
                 {

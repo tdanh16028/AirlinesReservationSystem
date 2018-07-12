@@ -2,9 +2,10 @@
 @{ Profile user = (Profile)HttpContext.Current.Session["UserProfile"]; }
 @if (Session["UserProfile"] == null)
 {
-    <li class="nav-item ml-md-auto">
-        @Html.ActionLink("Login", "Login", "UserAccount", null, new { @class = "nav-link " })
-    </li>
+<li class="nav-item ml-md-auto">
+    @*@Html.ActionLink("Login", "Login", "UserAccount", null, new { @class = "nav-link " })*@
+    <a id="btnlogin"  class="nav-link">Login</a>
+</li>
     <li class="nav-item ">
         @Html.ActionLink("Register", "Register", "UserAccount", null, new { @class = "nav-link " })
     </li>
