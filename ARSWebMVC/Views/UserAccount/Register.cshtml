@@ -2,13 +2,13 @@
 @{
     ViewBag.Title = "Register";
 }
-<div class=" pt-5 ">
+<div class=" pt-5 animated wow fadeIn" >
     @using (Html.BeginForm("Register", "UserAccount", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = " col-md-4 col-sm-12 form-register card " }))
     {
         <h2 class="text-center"><b>Registration Form</b></h2>
         <hr />
 
-        <div class="row">
+        <div class="row ">
             <div class="input-field col col-12">
                 <div class="md-form ">
                     <i class="fa fa-user prefix grey-text"></i>
