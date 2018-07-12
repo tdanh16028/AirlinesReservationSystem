@@ -2,8 +2,8 @@
 @{
     ViewBag.Title = "Login";
 }
-<section class="func-login mt-5 mb-5">
-    <div id="func-login-col" class=" col-md-4 m-auto card">
+<section id="func-login" class=" mt-5 mb-5">
+    <div id="func-login-col" class=" col-md-3 m-auto card">
             <!-- Card body -->
                 <!-- Material form register -->
                 @using (Html.BeginForm("Login", "UserAccount", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))

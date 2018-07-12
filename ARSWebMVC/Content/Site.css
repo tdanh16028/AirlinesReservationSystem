@@ -35,15 +35,9 @@ a:hover, a:visited, a:active {
 }
 
 .query-flight-details {
-    background-image: url("../images/681111.jpg");
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
+
 }
 
-    .query-flight-details .form-query-flight-details {
-        padding-bottom: 30%;
-    }
 
 .ticketdetail .table-scrol {
 overflow: auto;
