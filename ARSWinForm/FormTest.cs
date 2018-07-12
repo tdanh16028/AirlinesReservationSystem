@@ -29,14 +29,16 @@ namespace ARSWinForm
             DataTable table = new DataTable();
             table.Columns.Add("ID");
             table.Columns.Add("Class");
+            table.Columns.Add("PriceRate");
 
             List<AirplaneClass> airplaneClasses = await (new AirplaneClassWrapper()).List();
 
             foreach (AirplaneClass airplaneClass in airplaneClasses)
             {
                 DataRow row = table.NewRow();
-                row["ID"] = airplaneClass.ID.ToString();
+                row["ID"] = airplaneClass.ID;
                 row["Class"] = airplaneClass.Class;
+                row["PriceRate"] = airplaneClass.PriceRate;
                 table.Rows.Add(row);
             }
 

@@ -41,8 +41,10 @@
             this.dgvAirplaneClass.AllowUserToDeleteRows = false;
             this.dgvAirplaneClass.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvAirplaneClass.Location = new System.Drawing.Point(12, 12);
+            this.dgvAirplaneClass.MultiSelect = false;
             this.dgvAirplaneClass.Name = "dgvAirplaneClass";
             this.dgvAirplaneClass.ReadOnly = true;
+            this.dgvAirplaneClass.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvAirplaneClass.Size = new System.Drawing.Size(615, 299);
             this.dgvAirplaneClass.TabIndex = 0;
             // 
