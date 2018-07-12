@@ -34,13 +34,13 @@
             this.logoutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.managementToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.accountToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.airplaneToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.flightScheduleTicketToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.adminToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.customerProfileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.airplaneToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.airplaneToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.airplaneTypeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.classOfSeatToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.flightScheduleTicketToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cityToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.routeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.flightScheduleToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -73,13 +73,13 @@
             // loginToolStripMenuItem
             // 
             this.loginToolStripMenuItem.Name = "loginToolStripMenuItem";
-            this.loginToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.loginToolStripMenuItem.Size = new System.Drawing.Size(107, 22);
             this.loginToolStripMenuItem.Text = "Login";
             // 
             // logoutToolStripMenuItem
             // 
             this.logoutToolStripMenuItem.Name = "logoutToolStripMenuItem";
-            this.logoutToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.logoutToolStripMenuItem.Size = new System.Drawing.Size(107, 22);
             this.logoutToolStripMenuItem.Text = "Logout";
             // 
             // managementToolStripMenuItem
@@ -101,6 +101,18 @@
             this.accountToolStripMenuItem.Size = new System.Drawing.Size(187, 22);
             this.accountToolStripMenuItem.Text = "Account";
             // 
+            // adminToolStripMenuItem
+            // 
+            this.adminToolStripMenuItem.Name = "adminToolStripMenuItem";
+            this.adminToolStripMenuItem.Size = new System.Drawing.Size(153, 22);
+            this.adminToolStripMenuItem.Text = "Admin";
+            // 
+            // customerProfileToolStripMenuItem
+            // 
+            this.customerProfileToolStripMenuItem.Name = "customerProfileToolStripMenuItem";
+            this.customerProfileToolStripMenuItem.Size = new System.Drawing.Size(153, 22);
+            this.customerProfileToolStripMenuItem.Text = "Customer Profile";
+            // 
             // airplaneToolStripMenuItem
             // 
             this.airplaneToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -110,6 +122,24 @@
             this.airplaneToolStripMenuItem.Name = "airplaneToolStripMenuItem";
             this.airplaneToolStripMenuItem.Size = new System.Drawing.Size(187, 22);
             this.airplaneToolStripMenuItem.Text = "Airplane";
+            // 
+            // airplaneToolStripMenuItem1
+            // 
+            this.airplaneToolStripMenuItem1.Name = "airplaneToolStripMenuItem1";
+            this.airplaneToolStripMenuItem1.Size = new System.Drawing.Size(140, 22);
+            this.airplaneToolStripMenuItem1.Text = "Airplane";
+            // 
+            // airplaneTypeToolStripMenuItem
+            // 
+            this.airplaneTypeToolStripMenuItem.Name = "airplaneTypeToolStripMenuItem";
+            this.airplaneTypeToolStripMenuItem.Size = new System.Drawing.Size(140, 22);
+            this.airplaneTypeToolStripMenuItem.Text = "Airplane Type";
+            // 
+            // classOfSeatToolStripMenuItem
+            // 
+            this.classOfSeatToolStripMenuItem.Name = "classOfSeatToolStripMenuItem";
+            this.classOfSeatToolStripMenuItem.Size = new System.Drawing.Size(140, 22);
+            this.classOfSeatToolStripMenuItem.Text = "Class of Seat";
             // 
             // flightScheduleTicketToolStripMenuItem
             // 
@@ -122,58 +152,28 @@
             this.flightScheduleTicketToolStripMenuItem.Size = new System.Drawing.Size(187, 22);
             this.flightScheduleTicketToolStripMenuItem.Text = "Flight Schedule && Ticket";
             // 
-            // adminToolStripMenuItem
-            // 
-            this.adminToolStripMenuItem.Name = "adminToolStripMenuItem";
-            this.adminToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.adminToolStripMenuItem.Text = "Admin";
-            // 
-            // customerProfileToolStripMenuItem
-            // 
-            this.customerProfileToolStripMenuItem.Name = "customerProfileToolStripMenuItem";
-            this.customerProfileToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.customerProfileToolStripMenuItem.Text = "Customer Profile";
-            // 
-            // airplaneToolStripMenuItem1
-            // 
-            this.airplaneToolStripMenuItem1.Name = "airplaneToolStripMenuItem1";
-            this.airplaneToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
-            this.airplaneToolStripMenuItem1.Text = "Airplane";
-            // 
-            // airplaneTypeToolStripMenuItem
-            // 
-            this.airplaneTypeToolStripMenuItem.Name = "airplaneTypeToolStripMenuItem";
-            this.airplaneTypeToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.airplaneTypeToolStripMenuItem.Text = "Airplane Type";
-            // 
-            // classOfSeatToolStripMenuItem
-            // 
-            this.classOfSeatToolStripMenuItem.Name = "classOfSeatToolStripMenuItem";
-            this.classOfSeatToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.classOfSeatToolStripMenuItem.Text = "Class of Seat";
-            // 
             // cityToolStripMenuItem
             // 
             this.cityToolStripMenuItem.Name = "cityToolStripMenuItem";
-            this.cityToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.cityToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
             this.cityToolStripMenuItem.Text = "City";
             // 
             // routeToolStripMenuItem
             // 
             this.routeToolStripMenuItem.Name = "routeToolStripMenuItem";
-            this.routeToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.routeToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
             this.routeToolStripMenuItem.Text = "Route";
             // 
             // flightScheduleToolStripMenuItem
             // 
             this.flightScheduleToolStripMenuItem.Name = "flightScheduleToolStripMenuItem";
-            this.flightScheduleToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.flightScheduleToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
             this.flightScheduleToolStripMenuItem.Text = "Flight Schedule";
             // 
             // ticketToolStripMenuItem
             // 
             this.ticketToolStripMenuItem.Name = "ticketToolStripMenuItem";
-            this.ticketToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.ticketToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
             this.ticketToolStripMenuItem.Text = "Ticket";
             // 
             // exitToolStripMenuItem
