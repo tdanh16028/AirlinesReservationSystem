@@ -1,0 +1,141 @@
+﻿@model ARSWebMVC.Models.Profile
+@{
+    ViewBag.Title = "Register";
+}
+<div class=" pt-5 ">
+    @using (Html.BeginForm("Register", "UserAccount", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = " col-md-4 col-sm-12 form-register card " }))
+    {
+        <h2 class="text-center"><b>Registration Form</b></h2>
+        <hr />
+
+        <div class="row">
+            <div class="input-field col col-12">
+                <div class="md-form ">
+                    <i class="fa fa-user prefix grey-text"></i>
+                    @Html.TextBoxFor(s => s.UserID, null, new { @class = "form-control" })
+                    <label for="UserID">Your name</label>
+                    @Html.ValidationMessageFor(s => s.UserID, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="input-field col col-12">
+                <div class="md-form">
+                    <i class="fa fa-lock prefix grey-text"></i>
+                    @Html.PasswordFor(s => s.Password, new { @class = "form-control" })
+                    <label for="Password">Password</label>
+                    @Html.ValidationMessageFor(s => s.Password, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="input-field col col-12">
+                <div class="md-form">
+
+                    <i class="fa fa-lock prefix grey-text"></i>
+                    <input name="txtConfirmPassword" id="ConfirmPassword" type="password" class="form-control" />
+                    <label for="ConfirmPassword">Confirm Password</label>
+                    <span class=" text-danger">@ViewBag.ErrorConfirmPassword</span>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="row">
+            <div class="input-field col s6">
+                <div class="md-form">
+                    <i class="fa fa-edit prefix grey-text"></i>
+                    @Html.TextBoxFor(s => s.FirstName, null, new { @class = "form-control" })
+                    <label for="FirstName">First Name</label>
+                    @Html.ValidationMessageFor(s => s.FirstName, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="input-field col s6">
+                <div class="md-form">
+                    <i class="fa fa-edit prefix grey-text"></i>
+                    @Html.TextBoxFor(s => s.LastName, null, new { @class = "form-control" })
+                    <label for="FirstName">Last Name</label>
+                    @Html.ValidationMessageFor(s => s.LastName, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="input-field col s12">
+                <div class="md-form">
+                    <i class="fa fa-map prefix grey-text"></i>
+                    @Html.TextBoxFor(s => s.Address, null, new { @class = "form-control" })
+                    <label for="Address">Address</label>
+                    @Html.ValidationMessageFor(s => s.Address, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="input-field col s12">
+                <div class="md-form">
+                    <i class="fa fa-phone prefix grey-text"></i>
+                    @Html.TextBoxFor(s => s.PhoneNumber, null, new { @class = "form-control" })
+                    <label for="PhoneNumber">PhoneNumber</label>
+                    @Html.ValidationMessageFor(s => s.PhoneNumber, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="input-field col s12">
+                <div class="md-form">
+                    <i class="fa fa-envelope prefix grey-text"></i>
+                    @Html.TextBoxFor(s => s.EmailAddress, null, new { @class = "form-control" })
+                    <label for="EmailAddress">EmailAddress</label>
+                    @Html.ValidationMessageFor(s => s.EmailAddress, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>
+
+
+        <div class="row">
+            <div class="col s12">
+                <i class="fas fa-transgender prefix grey-text mr-3"></i>
+                <label>
+                    @Html.RadioButtonFor(s => s.Sex, true, new { @checked = true }) <span>Male</span>
+                </label>
+                <label>
+                    @Html.RadioButtonFor(s => s.Sex, false)<span class="ml-2">Female</span>
+                </label>
+            </div>
+        </div>
+
+        <div class="row ">
+            <div class="input-field col s6">
+                <div class="md-form">
+                    <i class="far fa-calendar-alt prefix grey-text"></i>
+                    @Html.TextBoxFor(s => s.Age, "", new { type = "number", min = "6", value = "6", max = "100", @class = "form-control" })
+                    <label for="Age" class="pb-2">Age</label>
+                    @Html.ValidationMessageFor(s => s.Age, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="col s6"></div>
+        </div>
+
+     
+        <div class="row">
+            <div class="input-field col s12">
+                <div class="md-form">
+                    <i class="fa fa-credit-card prefix grey-text"></i>
+                    @Html.TextBoxFor(s => s.CreditCard, null, new { @class = "form-control" })
+                    <label for="CreditCard">CreditCard</label>
+                    @Html.ValidationMessageFor(s => s.CreditCard, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md d-flex flex-row-reverse">
+                <button type="submit" class="btn teal d-flex">Register</button>
+            </div>
+        </div>
+    }
+</div>

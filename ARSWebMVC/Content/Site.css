@@ -1,24 +1,46 @@
-﻿body {
-    padding-top: 50px;
-    padding-bottom: 20px;
+﻿
+body {
+    background-color: rgba(0, 0, 0, 0.07);
 }
 
-/* Set padding to keep content from hitting the edges */
-.body-content {
-    padding-left: 15px;
-    padding-right: 15px;
+a:hover, a:visited, a:active {
+    color: white;
+    text-decoration: none;
+}
+.func-login i {
+    margin-top: 8px;
+    padding-left:1em;
+    font-size: 1em !important;
+}
+.form-register {
+    border-radius: 1%;
+    margin: auto;
+    box-shadow: 0px 0px 30px -10px #888888;
+    padding: 40px;
+}
+    
+    .form-register #success_message {
+        display: none;
+    }
+    .form-register i {
+        margin-top:8px;
+        font-size: 1em !important;
+    }
+
+.frm-userProfile {
+    margin: auto;
+    box-shadow: 0px 0px 30px -10px #000000;
+    background-color: white;
+    padding: 5%;
 }
 
-/* Override the default bootstrap behavior where horizontal description lists 
-   will truncate terms that are too long to fit in the left column 
-*/
-.dl-horizontal dt {
-    white-space: normal;
+.query-flight-details {
+
 }
 
-/* Set width on the form input elements since they're 100% wide by default */
-input,
-select,
-textarea {
-    max-width: 280px;
+
+.ticketdetail .table-scrol {
+overflow: auto;
 }
+
+
