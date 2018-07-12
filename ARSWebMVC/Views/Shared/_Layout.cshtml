@@ -4,9 +4,12 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title - My ASP.NET Application</title>
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.2/css/materialize.min.css">
+    <!-- Font Awesome -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
+    <!-- Bootstrap core CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Material Design Bootstrap -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.5.4/css/mdb.min.css" rel="stylesheet">
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
     @using ARSWebMVC.Models
@@ -14,47 +17,34 @@
 </head>
 
 <body>
-    <nav class="teal accent-5 Mynavbar">
+    <!--Navbar-->
+    <nav class="navbar navbar-expand-md navbar-dark  teal">
+
+        <!-- Navbar brand -->
         <div class="container">
-            <div class="nav-wrapper">
-                <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
-                @Html.ActionLink("Logo", "Index", "Home", null, new { @class = "brand-logo" })
-                <div class="row  hide-on-med-and-down">
-                  
-                    <ul class="col-11 ml-auto pt-1 d-flex">
-                        <li>@Html.ActionLink("Home", "Index", "Home", null, new { @class = "" })</li>
-                        <li>@Html.ActionLink("Ticket", "Index", "Ticket", null, new { @class = "" })</li>
-                        @if (Session["UserProfile"] == null)
-                        {
-                            <li class="ml-auto">
-                                <div class="d-flex flex-row ">
-                                    @Html.ActionLink("Login", "Login", "UserAccount", null, new { @class = "" })
-                                    @Html.ActionLink("Register", "Register", "UserAccount", null, new { @class = "" })
-                                </div>
+            @Html.ActionLink("AirlinesReservation", "Index", "Home", null, new { @class = "navbar-brand" })
 
-                            </li>
+            <!-- Collapse button -->
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#basicExampleNav" aria-controls="basicExampleNav"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
 
-                        }
-                        else
-                        {
-                            <li class="">
-                                <div class="d-flex flex-row ">
-                                    <span class="pl-2 ">Hello :</span>
-                                    @Html.ActionLink(@user.UserID.ToString(), "Profile", "UserAccount", null, new { @class = "pl-2  " })
-                                    @Html.ActionLink("(logout)", "Logout", "UserAccount", null, new { @class = "pl-2  text-md-dark" })
-                                </div>
-                            </li>
-                        }
-                    </ul>
-                </div>
+            <!-- Collapsible content -->
+            <div class="collapse navbar-collapse" id="basicExampleNav">
+                <!-- Links -->
+                <ul class="navbar-nav d-flex w-100">
+                    <li class="nav-item ">
+                        @Html.ActionLink("Ticket", "Index", "Ticket", null, new { @class = "nav-link active" })
+                    </li>
+                    @Html.Partial("_LoginPartial")
+                </ul>
+                <!-- Links -->
             </div>
         </div>
+        <!-- Collapsible content -->
     </nav>
-
-    <ul class="sidenav pt-5 pl-3 pr-3" id="mobile-demo">
-        <li>@Html.ActionLink("Ticket", "Index", "Ticket", null, new { @class = "" })</li>
-        @Html.Partial("_LoginPartial")
-    </ul>
+    <!-- Button trigger modal -->
     <div class="body-content">
         @RenderBody()
         <hr />
@@ -62,8 +52,14 @@
             <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
         </footer>
     </div>
-
-    @Scripts.Render("~/bundles/jquery")
+    <!-- JQuery -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <!-- Bootstrap tooltips -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.13.0/umd/popper.min.js"></script>
+    <!-- Bootstrap core JavaScript -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <!-- MDB core JavaScript -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.5.4/js/mdb.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.2/js/materialize.min.js"></script>
     @RenderSection("scripts", required: false)
 

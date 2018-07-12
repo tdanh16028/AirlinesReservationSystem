@@ -1,9 +1,1 @@
-﻿.btn {
-    align-items: center;
-}
-    .btn:focus, .btn.focus{
-        box-shadow: none;
-    }
-    .btn i{
-        line-height: normal;
-    }
+﻿

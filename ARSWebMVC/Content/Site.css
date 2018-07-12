@@ -7,16 +7,24 @@ a:hover, a:visited, a:active {
     color: white;
     text-decoration: none;
 }
-
+.func-login i {
+    margin-top: 8px;
+    padding-left:1em;
+    font-size: 1em !important;
+}
 .form-register {
     border-radius: 1%;
     margin: auto;
     box-shadow: 0px 0px 30px -10px #888888;
     padding: 40px;
 }
-
+    
     .form-register #success_message {
         display: none;
+    }
+    .form-register i {
+        margin-top:8px;
+        font-size: 1em !important;
     }
 
 .frm-userProfile {
@@ -37,46 +45,8 @@ a:hover, a:visited, a:active {
         padding-bottom: 30%;
     }
 
-.func-login {
-    background-image: url("../images/35580.jpg");
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: cover;
-    padding-bottom: 20%;
-    padding-top: 5%;
-}
-
-    .func-login .form-login {
-        border-radius: 1%;
-        margin: auto;
-        box-shadow: 0px 0px 80px 2px #000000;
-        background-color: rgba(200, 200, 200, 0.2);
-        padding: 50px;
-    }
-
-        .func-login .form-login span {
-            animation: mymove 0.5s;
-        }
-
-.ticketdetail  .collapsible-body {
-    overflow-x: scroll;
+.ticketdetail .table-scrol {
+overflow: auto;
 }
 
 
-@keyframes mymove {
-    10% {
-        color: red;
-    }
-
-    20% {
-        color: white;
-    }
-
-    80% {
-        color: red;
-    }
-
-    100% {
-        color: white;
-    }
-}

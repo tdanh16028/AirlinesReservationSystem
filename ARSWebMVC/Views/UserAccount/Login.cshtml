@@ -3,32 +3,53 @@
     ViewBag.Title = "Login";
 }
 <section class=" func-login">
-    <div class="container ">
-        @using (Html.BeginForm("Login", "UserAccount", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal form-login login-form col-md-6", role = "form" }))
-        {
-            @Html.AntiForgeryToken()
-            <h4 class="text-center">Login</h4>
-            <div class="text-center"><span class=" text-danger">@ViewBag.ErrorMessage</span></div>
-            <div class="row margin">
-                <div class="input-field col s12 pl-md-5 pr-md-5 pl-sm-0 pr-sm-0">
-                    <p class="label-text">Username :</p>
-                    @Html.TextBoxFor(m => m.UserID)
-                    @Html.ValidationMessageFor(m => m.UserID, "", new { @class = "text-danger", placeholder = "UserName" })
+    <div class="container mt-5 mb-5">
 
-                </div>
+        
+        <div class="card col-md-5 m-auto">
+
+            <!-- Card body -->
+            <div class="card-body">
+
+                <!-- Material form register -->
+                @using (Html.BeginForm("Login", "UserAccount", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+                {
+                    @Html.AntiForgeryToken()
+                    <p class="h4 text-center py-4">Sign up</p>
+                    <div class="text-md-center"><span class="text-danger">
+    @ViewBag.ErrorMessage
+</span></div>
+                    <!-- Material input text -->
+                    <div class="md-form">
+                        <i class="fa fa-user prefix grey-text"></i>
+                        @Html.TextBoxFor(m => m.UserID, "", new { @class = "form-control", @id = "materialFormCardNameEx" })
+                        <label for="materialFormCardNameEx" class="font-weight-light">Your name</label>
+                        @Html.ValidationMessageFor(m => m.UserID, "", new { @class = "text-danger" })
+                    </div>
+
+                    <!-- Material input password -->
+                    <div class="md-form">
+                        <i class="fa fa-lock prefix grey-text"></i>
+                        @Html.PasswordFor(m => m.Password, new { @class = "form-control", @id = "materialFormCardPasswordEx" })
+                        <label for="materialFormCardPasswordEx" class="font-weight-light">Your password</label>
+                        @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
+                    </div>
+
+                    <div class="text-center py-4 mt-3">
+                        <button class="btn teal" type="submit">Login</button>
+                    </div>
+                }
+                <!-- Material form register -->
+
             </div>
-            <div class="row margin">
-                <div class="input-field col-12 pl-md-5 pr-md-5 pl-sm-0 pr-sm-0">
-                    <p class="label-text">Password :</p>
-                    @Html.PasswordFor(m => m.Password)
-                    @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger", placeholder = "Password" })
-                </div>
-            </div>
-            <div class="row">
-                <div class="input-field col-12">
-                    <button type="submit" class="btn waves-effect waves-light col s12">Login</button>
-                </div>
-            </div>
-        }
+            <!-- Card body -->
+
+        </div>
+
+        <!-- Button trigger modal -->
+
     </div>
+
 </section>
+<!-- Card -->
+<!-- Card -->
