@@ -25,7 +25,7 @@ namespace ARSWinForm
         private void btnCreate_Click(object sender, EventArgs e)
         {
             FormAdminAccountCE f = new FormAdminAccountCE();
-            f.MdiParent = this.MdiParent;
+            // f.MdiParent = this.MdiParent;
 
             // Hien form Create len va doi cho den khi form bi tat di
             f.ShowDialog();

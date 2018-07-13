@@ -58,11 +58,18 @@ namespace ARSWinForm
         {
             // Lay gia tri tren form gan vao account
             adminAccount.Username = txtUsername.Text;
-            adminAccount.Password = txtPassword.Text;
             adminAccount.Name = txtName.Text;
             adminAccount.Role = txtRole.Text;
             adminAccount.IsActive = rbtnActive.Checked;
 
+            // Neu dang o che do tao account moi thi phai lay gia tri trong o password gan vao account.
+            // Neu dang o che do chinh sua ma gia tri trong o password khac voi gia tri password cua account
+            // nghia la nguoi dung da thay doi password, phai cap nhat luon password
+            if (mode == FormMode.CREATE || txtPassword.Text != adminAccount.Password)
+            {
+                adminAccount.Password = ARSUtilities.Md5Hash(txtPassword.Text);
+            }
+            
             // Tao mot API
             AdminAccountWrapper adminAccountWrapper = new AdminAccountWrapper();
             // Tao bien luu ket qua tra ve
@@ -93,11 +100,7 @@ namespace ARSWinForm
 
         private void btnCancel_Click(object sender, EventArgs e)
         {
-            txtUsername.Text = "";
-            txtPassword.Text = "";
-            txtName.Text = "";
-            txtRole.Text = "";
-            rbtnActive.Checked = true;
+            Close();
         }
 
     }

@@ -78,12 +78,15 @@ namespace ARSWinForm.HelperClass.ModelHelper
         public async Task<bool> Post(T data)
         {
             APIWrapper<T> apiWrapper = new APIWrapper<T>(MODEL_API);
-            HttpResponseMessage response = await apiWrapper.PUT(data);
+            HttpResponseMessage response = await apiWrapper.POST(data);
 
             if (response.IsSuccessStatusCode)
             {
                 return true;
             }
+
+            string res = response.Content.ReadAsStringAsync().Result;
+            JArray parsed = JArray.Parse(res);
 
             return false;
         }
