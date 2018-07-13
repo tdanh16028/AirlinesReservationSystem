@@ -36,7 +36,7 @@
                 <!-- Links -->
                 <ul class="navbar-nav d-flex w-100">
                     <li class="nav-item ">
-                        @Html.ActionLink("Ticket", "Index", "Ticket", null, new { @class = "nav-link active" })
+                        @Html.ActionLink("CheckingAvailability", "CheckingAvailability", "Home", null, new { @class = "nav-link" })
                     </li>
                     @Html.Partial("_LoginPartial")
                 </ul>
@@ -55,12 +55,12 @@
                     <span aria-hidden="true">&times;</span>
                 </button>
                 <div class="modal-body">
-                    @Html.Partial("Login")
+                  
                 </div>
             </div>
         </div>
     </div>
-    <div class="body-content container-fluid pt-5 ">
+    <div class="body-content pt-5 ">
         @RenderBody()
         <hr />
     </div>

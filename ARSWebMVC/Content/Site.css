@@ -39,7 +39,7 @@ a:hover, a:visited, a:active {
 }
 
 
-.ticketdetail .table-scrol {
+ .table-scroll {
 overflow: auto;
 }
 

@@ -17,6 +17,7 @@ namespace ARSWebMVC.Controllers
         [HttpPost]
         public ActionResult Index(FormCollection form)
         {
+            if (Session["UserProfile"] == null) return RedirectToAction("Login","UserAccount");
             var code = form["txtConfirmationCode"];
             if (code == null || code == "")
             {

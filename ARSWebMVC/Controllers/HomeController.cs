@@ -10,20 +10,15 @@ namespace ARSWebMVC.Controllers
     {
         public ActionResult Index()
         {
+            return RedirectToAction("CheckingAvailability");
+        }
+
+        public ActionResult CheckingAvailability() {
             return View();
         }
 
-        public ActionResult About()
+        public ActionResult ListRoute()
         {
-            ViewBag.Message = "Your application description page.";
-
-            return View();
-        }
-
-        public ActionResult Contact()
-        {
-            ViewBag.Message = "Your contact page.";
-
             return View();
         }
     }

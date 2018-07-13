@@ -125,19 +125,19 @@
                         Flight Details
                     </a>
                 </div>
-                <div class="row table-scrol" ">
+                <div class="row table-scroll ">
                     <div class="collapse w-100" id="collapseExample">
                         <div class="mt-3 ">
-                            <table class="table " ">
+                            <table class="table">
                                 <thead>
                                     <tr>
-                                        <th >AIRPLANE CODE</th>
+                                        <th class="text-center">AIRPLANE CODE</th>
                                         <th >AIRPLANE TYPE</th>
-                                        <th >DEPARTORE DATE</th>
+                                        <th >DEPARTURE DATE</th>
                                         <th >FROM</th>
                                         <th>TO</th>
                                         <th >COST</th>
-                                        <th >SKYMILE</th>
+                                        <th class="text-right" >SKYMILE</th>
 
                                     </tr>
                                 </thead>
@@ -145,11 +145,11 @@
                                     @foreach (FlightSchedule flightSchedule in Model.FlightSchedules)
                                     {
                                         <tr class="">
-                                            <td>@flightSchedule.AirplaneCode</td>
+                                            <td class="text-center">@flightSchedule.AirplaneCode</td>
                                             <td>@flightSchedule.Airplane.AirplaneType.Name</td>
                                             <td>@flightSchedule.DepartureDate.ToString("dd/MM/yyyy")</td>
                                             <td>@flightSchedule.Route.City.City1</td>
-                                            <td>@flightSchedule.Route.City1.City1</td>
+                                            <td class="text-left">@flightSchedule.Route.City1.City1</td>
                                             @{
                                                 double rate = 1;
 
@@ -164,7 +164,7 @@
 
                                                 <td><span>$&nbsp;</span>@Math.Round((flightSchedule.Route.BasePrice * rate) * (Model.ChildrenCount + Model.AdultCount + Model.SeniorCount), 2)</td>
                                             }
-                                            <td>@flightSchedule.Route.SkyMiles</td>
+                                            <td class="text-right">@flightSchedule.Route.SkyMiles</td>
                                         </tr>
                                     }
                                 </tbody>
