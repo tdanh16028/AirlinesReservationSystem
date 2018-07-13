@@ -1,5 +1,8 @@
-﻿using Newtonsoft.Json.Linq;
+﻿using ARSWinForm.HelperClass.ModelHelper;
+using ARSWinForm.Model;
+using Newtonsoft.Json.Linq;
 using System;
+using System.Collections.Generic;
 using System.Data;
 using System.Net.Http;
 using System.Net.Http.Headers;
@@ -14,19 +17,77 @@ namespace ARSWinForm
             InitializeComponent();
         }
 
-        private async void AdminAccount_Load(object sender, EventArgs e)
+        private void AdminAccount_Load(object sender, EventArgs e)
         {
-            // Dia chi API
-            string url = "http://localhost:61765/api/AdminAccounts/";
+            LoadDataGridView();
+        }
 
-            // Cu phap goi API
-            HttpClient client = new HttpClient();
-            client.BaseAddress = new Uri(url);
-            client.DefaultRequestHeaders.Accept.Clear();
-            client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+        private void btnCreate_Click(object sender, EventArgs e)
+        {
+            FormAdminAccountCE f = new FormAdminAccountCE();
+            f.MdiParent = this.MdiParent;
+            f.Show();
+        }
 
-            // Nhan ket qua tra ve tu API
-            HttpResponseMessage response = await client.GetAsync(url);
+        private void btnEdit_Click(object sender, EventArgs e)
+        {
+            // Lay tai khoan admin dang duoc chon trong bang
+            AdminAccount adminAccount = GetSelectedAdminAccount();
+
+            // Neu hien tai khong co tai khoan nao duoc chon thi hien thong bao
+            if (adminAccount == null)
+            {
+                MessageBox.Show("You must choose an account to edit!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                return;
+            }
+
+            // Neu co tai khoan dang duoc chon thi hien form chinh sua thong tin len, truyen du lieu qua
+            FormAdminAccountCE f = new FormAdminAccountCE(adminAccount, HelperClass.FormMode.EDIT);
+            f.MdiParent = this.MdiParent;
+            f.Show();
+        }
+        
+        private async void btnDelete_Click(object sender, EventArgs e)
+        {
+            // Lay tai khoan admin dang duoc chon trong bang
+            AdminAccount adminAccount = GetSelectedAdminAccount();
+
+            // Neu hien tai khong co tai khoan nao duoc chon thi hien thong bao
+            if (adminAccount == null)
+            {
+                MessageBox.Show("You must choose an account to edit!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                return;
+            }
+
+            // Neu co tai khoan dang duoc chon thi sua cot IsActive lai thanh False
+            adminAccount.IsActive = false;
+
+            // Gui len server de cap nhat lai cot IsActive trong CSDL
+            AdminAccountWrapper adminAccountWrapper = new AdminAccountWrapper();
+            bool isSuccess = await adminAccountWrapper.Put(adminAccount.ID, adminAccount);
+
+            // Kiem tra ket qua tra ve
+            if (isSuccess)
+            {
+                // Neu ket qua la thanh cong, hien thong bao thanh cong
+                MessageBox.Show("Account status was set to inactive!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            } else
+            {
+                // Neu ket qua that bai, hien thong bao loi
+                MessageBox.Show("An error has occurred!", "Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void btnReload_Click(object sender, EventArgs e)
+        {
+            LoadDataGridView();
+        }
+
+        private async void LoadDataGridView()
+        {
+            // Goi API lay du lieu ve
+            AdminAccountWrapper adminAccountWrapper = new AdminAccountWrapper();
+            List<AdminAccount> lstAdminAccount = await adminAccountWrapper.List();
 
             // Tao bang de chua du lieu tra ve tu API
             DataTable table = new DataTable();
@@ -38,31 +99,23 @@ namespace ARSWinForm
             table.Columns.Add("IsActive");
 
             // Kiem tra xem ket qua goi API co thanh cong hay khong
-            if (response.IsSuccessStatusCode)
+            if (lstAdminAccount != null)
             {
-                // Lay du lieu tra ve tu API
-                var responseData = response.Content.ReadAsStringAsync().Result;
-                JArray parser = JArray.Parse(responseData.ToString());
-
-                // Sau khi lay du lieu, ta se co cac dong` du lieu
                 // Lap qua tung "dong` du lieu"
-                foreach (var pair in parser)
+                foreach (AdminAccount adminAccount in lstAdminAccount)
                 {
                     // Tao mot dong` trong bang winForm
                     DataRow row = table.NewRow();
-                    JObject obj = JObject.Parse(pair.ToString());
-                    int count = 0;
 
-                    // Lap qua cac cot trong "dong` du lieu"
-                    foreach (var s in obj)
-                    {
-                        // Lay du lieu trong cot, gan' len cot trong dong` WinForm
-                        row[count++] = s.Value.ToString();
-                    }
+                    // Gan du lieu len dong moi tao
+                    row["ID"] = adminAccount.ID;
+                    row["Username"] = adminAccount.Username;
+                    row["Password"] = adminAccount.Password;
+                    row["Name"] = adminAccount.Name;
+                    row["Role"] = adminAccount.Role;
+                    row["IsActive"] = adminAccount.IsActive;
 
-                    // Sau khi lap qua het cac cot trong dong du lieu
-                    // Ta co mot dong WinForm hoan chinh
-                    // Lay dong WinForm gan len bang WinForm
+                    // Gan dong moi tao vao bang
                     table.Rows.Add(row);
                 }
 
@@ -73,41 +126,26 @@ namespace ARSWinForm
             }
         }
 
-        private void btnCreate_Click(object sender, EventArgs e)
+        private AdminAccount GetSelectedAdminAccount()
         {
-            FormAdminAccountCE f = new FormAdminAccountCE();
-            f.Show();
-        }
+            // Neu khong co dong nao dang duoc chon thi tra ve null
+            if (dgvAdmin.SelectedRows.Count != 1) return null;
 
-        private void btnEdit_Click(object sender, EventArgs e)
-        {
-            FormAdminAccountCE f = new FormAdminAccountCE();
-            f.Show();
-        }
+            // Neu co 1 dong dang duoc chon thi lay dong do ra
+            DataGridViewRow row = dgvAdmin.SelectedRows[0];
 
-        private void btnDetail_Click(object sender, EventArgs e)
-        {
-            if (dgvAdmin.SelectedRows.Count == 1)
-            {
-                //lay dong dau cua bang admin
-                int id = Convert.ToInt32(dgvAdmin.SelectedRows[0].Cells[0].Value);
-                Detail_AdminAccount f = new Detail_AdminAccount(id);
-                f.ShowDialog();
-            } 
-            else
-            {               //neu ko co ket qua tra ve thi bao loi
-                MessageBox.Show("You must select one to see details");
-            }
-        }
+            // Lay du lieu trong dong do va tao ra mot AdminAccount moi
+            AdminAccount adminAccount = new AdminAccount() {
+                ID = Convert.ToInt32(row.Cells["ID"].Value),
+                Username = row.Cells["Username"].Value.ToString(),
+                Password = row.Cells["Password"].Value.ToString(),
+                Name = row.Cells["Name"].Value.ToString(),
+                Role = row.Cells["Role"].Value.ToString(),
+                IsActive = Convert.ToBoolean(row.Cells["IsActive"].Value)
+            };
 
-        private void btnDelete_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void btnReload_Click(object sender, EventArgs e)
-        {
-
+            // Tra AdminAccount vua tao ve
+            return adminAccount;
         }
     }
 }

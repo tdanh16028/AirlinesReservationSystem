@@ -104,13 +104,14 @@
             // adminToolStripMenuItem
             // 
             this.adminToolStripMenuItem.Name = "adminToolStripMenuItem";
-            this.adminToolStripMenuItem.Size = new System.Drawing.Size(153, 22);
+            this.adminToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.adminToolStripMenuItem.Text = "Admin";
+            this.adminToolStripMenuItem.Click += new System.EventHandler(this.adminToolStripMenuItem_Click);
             // 
             // customerProfileToolStripMenuItem
             // 
             this.customerProfileToolStripMenuItem.Name = "customerProfileToolStripMenuItem";
-            this.customerProfileToolStripMenuItem.Size = new System.Drawing.Size(153, 22);
+            this.customerProfileToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.customerProfileToolStripMenuItem.Text = "Customer Profile";
             // 
             // airplaneToolStripMenuItem

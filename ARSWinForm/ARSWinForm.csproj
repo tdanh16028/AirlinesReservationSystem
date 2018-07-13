@@ -188,6 +188,7 @@
     <Compile Include="HelperClass\APIHelper.cs" />
     <Compile Include="HelperClass\APIWrapper.cs" />
     <Compile Include="HelperClass\ARSUtilities.cs" />
+    <Compile Include="HelperClass\EnumFormMode.cs" />
     <Compile Include="HelperClass\ModelHelper\AbstractModelWrapper.cs" />
     <Compile Include="HelperClass\ModelHelper\ModelWrapper.cs" />
     <Compile Include="Model\AdminAccount.cs">

@@ -16,5 +16,12 @@ namespace ARSWinForm
         {
             InitializeComponent();
         }
+
+        private void adminToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FormAdminAccountList f = new FormAdminAccountList();
+            f.MdiParent = this;
+            f.Show();
+        }
     }
 }
