@@ -26,7 +26,12 @@ namespace ARSWinForm
         {
             FormAdminAccountCE f = new FormAdminAccountCE();
             f.MdiParent = this.MdiParent;
-            f.Show();
+
+            // Hien form Create len va doi cho den khi form bi tat di
+            f.ShowDialog();
+
+            // Load lai bang sau khi form Create da tat
+            LoadDataGridView();
         }
 
         private void btnEdit_Click(object sender, EventArgs e)
@@ -43,8 +48,13 @@ namespace ARSWinForm
 
             // Neu co tai khoan dang duoc chon thi hien form chinh sua thong tin len, truyen du lieu qua
             FormAdminAccountCE f = new FormAdminAccountCE(adminAccount, HelperClass.FormMode.EDIT);
-            f.MdiParent = this.MdiParent;
-            f.Show();
+            // f.MdiParent = this.MdiParent;
+
+            // Hien form Edit len va doi cho den khi form bi tat di
+            f.ShowDialog();
+
+            // Load lai bang sau khi form Edit da tat
+            LoadDataGridView();
         }
         
         private async void btnDelete_Click(object sender, EventArgs e)
@@ -71,6 +81,10 @@ namespace ARSWinForm
             {
                 // Neu ket qua la thanh cong, hien thong bao thanh cong
                 MessageBox.Show("Account status was set to inactive!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                // Load lai bang
+                LoadDataGridView();
+
             } else
             {
                 // Neu ket qua that bai, hien thong bao loi
@@ -83,8 +97,20 @@ namespace ARSWinForm
             LoadDataGridView();
         }
 
-        private async void LoadDataGridView()
+        public async void LoadDataGridView()
         {
+            // Luu lai dong hien tai dang chon
+            int currentRowIndex;
+
+            // Neu hien tai khong co dong nao duoc chon thi mac dinh la dong so 0
+            if (dgvAdmin.SelectedRows.Count == 0)
+            {
+                currentRowIndex = 0;
+            } else
+            {
+                currentRowIndex = dgvAdmin.Rows.IndexOf(dgvAdmin.SelectedRows[0]);
+            }
+
             // Goi API lay du lieu ve
             AdminAccountWrapper adminAccountWrapper = new AdminAccountWrapper();
             List<AdminAccount> lstAdminAccount = await adminAccountWrapper.List();
@@ -123,6 +149,9 @@ namespace ARSWinForm
                 // Ta co bang WinForm hoan chinh
                 // Gan bang WinForm len DataGridView
                 dgvAdmin.DataSource = table;
+
+                // Chon lai dong ban dau duoc chon truoc khi reload
+                dgvAdmin.Rows[currentRowIndex].Selected = true;
             }
         }
 
