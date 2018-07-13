@@ -12,6 +12,7 @@ namespace ARSWinForm.HelperClass.ModelHelper
     abstract class AbstractModelWrapper<T>
     {
         protected APIWrapper<T>.ARSAPI MODEL_API = 0;
+        private string errorMessage;
 
         public async Task<List<T>> List()
         {
@@ -33,6 +34,7 @@ namespace ARSWinForm.HelperClass.ModelHelper
                 return lstResult;
             }
 
+            SaveErrorMessage(response);
             return null;
         }
 
@@ -49,6 +51,7 @@ namespace ARSWinForm.HelperClass.ModelHelper
                 return lstResult;
             }
 
+            SaveErrorMessage(response);
             return default(T);
         }
 
@@ -67,6 +70,7 @@ namespace ARSWinForm.HelperClass.ModelHelper
                 return true;
             }
 
+            SaveErrorMessage(response);
             return false;
         }
 
@@ -85,9 +89,7 @@ namespace ARSWinForm.HelperClass.ModelHelper
                 return true;
             }
 
-            string res = response.Content.ReadAsStringAsync().Result;
-            JArray parsed = JArray.Parse(res);
-
+            SaveErrorMessage(response);
             return false;
         }
 
@@ -102,12 +104,25 @@ namespace ARSWinForm.HelperClass.ModelHelper
                 return true;
             }
 
+            SaveErrorMessage(response);
             return false;
         }
 
         public async Task<bool> Delete(int id)
         {
             return await Delete(id.ToString());
+        }
+
+        private void SaveErrorMessage(HttpResponseMessage response)
+        {
+            string res = response.Content.ReadAsStringAsync().Result;
+            JObject jObject = JObject.Parse(res);
+            errorMessage = jObject["ExceptionMessage"].ToString();
+        }
+
+        public string GetErrorMessage()
+        {
+            return errorMessage;
         }
     }
 }

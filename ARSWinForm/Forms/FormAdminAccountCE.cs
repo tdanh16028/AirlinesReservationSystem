@@ -95,6 +95,10 @@ namespace ARSWinForm
                 MessageBox.Show("Operation completed successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 // Tat form CE
                 this.Close();
+            } else
+            {
+                // Neu that bai, hien thong bao loi
+                MessageBox.Show("An error has occurred:\n" + adminAccountWrapper.GetErrorMessage(), "Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
