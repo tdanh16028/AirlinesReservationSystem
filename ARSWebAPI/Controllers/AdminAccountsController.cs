@@ -55,7 +55,7 @@ namespace ARSWebAPI.Controllers
             {
                 db.SaveChanges();
             }
-            catch (DbUpdateConcurrencyException)
+            catch (Exception ex)
             {
                 if (!AdminAccountExists(id))
                 {
@@ -63,7 +63,8 @@ namespace ARSWebAPI.Controllers
                 }
                 else
                 {
-                    throw;
+                    while (ex.InnerException != null) ex = ex.InnerException;
+                    return InternalServerError(ex);
                 }
             }
 
@@ -79,8 +80,16 @@ namespace ARSWebAPI.Controllers
                 return BadRequest(ModelState);
             }
 
-            db.AdminAccounts.Add(adminAccount);
-            db.SaveChanges();
+            try
+            {
+                db.AdminAccounts.Add(adminAccount);
+                db.SaveChanges();
+            }
+            catch (Exception ex)
+            {
+                while (ex.InnerException != null) ex = ex.InnerException;
+                return InternalServerError(ex);
+            }
 
             return CreatedAtRoute("DefaultApi", new { id = adminAccount.ID }, adminAccount);
         }
