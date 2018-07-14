@@ -31,7 +31,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.txtCode = new System.Windows.Forms.TextBox();
-            this.txtCity = new System.Windows.Forms.TextBox();
+            this.txtName = new System.Windows.Forms.TextBox();
             this.btnSubmit = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
             this.SuspendLayout();
@@ -61,12 +61,12 @@
             this.txtCode.Size = new System.Drawing.Size(100, 22);
             this.txtCode.TabIndex = 4;
             // 
-            // txtCity
+            // txtName
             // 
-            this.txtCity.Location = new System.Drawing.Point(118, 176);
-            this.txtCity.Name = "txtCity";
-            this.txtCity.Size = new System.Drawing.Size(100, 22);
-            this.txtCity.TabIndex = 5;
+            this.txtName.Location = new System.Drawing.Point(118, 176);
+            this.txtName.Name = "txtName";
+            this.txtName.Size = new System.Drawing.Size(100, 22);
+            this.txtName.TabIndex = 5;
             // 
             // btnSubmit
             // 
@@ -95,13 +95,13 @@
             this.ClientSize = new System.Drawing.Size(305, 385);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnSubmit);
-            this.Controls.Add(this.txtCity);
+            this.Controls.Add(this.txtName);
             this.Controls.Add(this.txtCode);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Name = "FormCityCE";
             this.Text = "CE_Route";
-            this.Load += new System.EventHandler(this.Create_City_Load);
+            this.Load += new System.EventHandler(this.FormCityCE_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -111,7 +111,7 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox txtCode;
-        private System.Windows.Forms.TextBox txtCity;
+        private System.Windows.Forms.TextBox txtName;
         private System.Windows.Forms.Button btnSubmit;
         private System.Windows.Forms.Button btnCancel;
     }
