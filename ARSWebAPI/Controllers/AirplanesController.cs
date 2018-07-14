@@ -90,7 +90,7 @@ namespace ARSWebAPI.Controllers
             {
                 if (AirplaneExists(airplane.AirplaneCode))
                 {
-                    return Conflict();
+                    return Content(HttpStatusCode.Conflict, "Airplane code already existed!");
                 }
                 else
                 {
