@@ -55,7 +55,7 @@ namespace ARSWebAPI.Controllers
             {
                 db.SaveChanges();
             }
-            catch (DbUpdateConcurrencyException)
+            catch (Exception ex)
             {
                 if (!AirplaneClassExists(id))
                 {
@@ -63,7 +63,8 @@ namespace ARSWebAPI.Controllers
                 }
                 else
                 {
-                    throw;
+                    while (ex.InnerException != null) ex = ex.InnerException;
+                    return InternalServerError(ex);
                 }
             }
 
@@ -79,8 +80,16 @@ namespace ARSWebAPI.Controllers
                 return BadRequest(ModelState);
             }
 
-            db.AirplaneClasses.Add(airplaneClass);
-            db.SaveChanges();
+            try
+            {
+                db.AirplaneClasses.Add(airplaneClass);
+                db.SaveChanges();
+            }
+            catch (Exception ex)
+            {
+                while (ex.InnerException != null) ex = ex.InnerException;
+                return InternalServerError(ex);
+            }
 
             return CreatedAtRoute("DefaultApi", new { id = airplaneClass.ID }, airplaneClass);
         }
