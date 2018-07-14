@@ -72,7 +72,7 @@ namespace ARSWebAPI.Controllers
             {
                 db.SaveChanges();
             }
-            catch (DbUpdateConcurrencyException)
+            catch (Exception ex)
             {
                 if (!AirplaneInfoExists(id))
                 {
@@ -80,7 +80,8 @@ namespace ARSWebAPI.Controllers
                 }
                 else
                 {
-                    throw;
+                    while (ex.InnerException != null) ex = ex.InnerException;
+                    return InternalServerError(ex);
                 }
             }
 
@@ -102,7 +103,7 @@ namespace ARSWebAPI.Controllers
             {
                 db.SaveChanges();
             }
-            catch (DbUpdateException)
+            catch (Exception ex)
             {
                 if (AirplaneInfoExists(airplaneInfo.AirplaneTypeID))
                 {
@@ -110,7 +111,8 @@ namespace ARSWebAPI.Controllers
                 }
                 else
                 {
-                    throw;
+                    while (ex.InnerException != null) ex = ex.InnerException;
+                    return InternalServerError(ex);
                 }
             }
 
