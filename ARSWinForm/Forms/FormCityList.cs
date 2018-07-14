@@ -57,43 +57,6 @@ namespace ARSWinForm
             LoadDataGridView();
         }
 
-        private async void btnDelete_Click(object sender, EventArgs e)
-        {
-            // Lay thanh pho dang duoc chon trong bang
-            City city = GetSelectedCity();
-
-            // Neu hien tai khong co tai khoan nao duoc chon thi hien thong bao
-            if (city == null)
-            {
-                MessageBox.Show("You must choose an account to edit!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                return;
-            }
-            // Gui len server de cap nhat lai cot IsActive trong CSDL
-            CityWrapper cityWrapper = new CityWrapper();
-            bool isSuccess = await cityWrapper.Put(city.ID, city);
-
-            // Kiem tra ket qua tra ve
-            if (isSuccess)
-            {
-                // Neu ket qua la thanh cong, hien thong bao thanh cong
-                MessageBox.Show("Account status was set to inactive!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-                // Load lai bang
-                LoadDataGridView();
-
-            }
-            else
-            {
-                // Neu ket qua that bai, hien thong bao loi
-                MessageBox.Show("An error has occurred!", "Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
-
-        private City GetSelectedCity()
-        {
-            throw new NotImplementedException();
-        }
-
         private void btnReload_Click(object sender, EventArgs e)
         {
             LoadDataGridView();
@@ -148,6 +111,25 @@ namespace ARSWinForm
                 // Chon lai dong ban dau duoc chon truoc khi reload
                 dgvCity.Rows[currentRowIndex].Selected = true;
             }
+        }
+        private City GetSelectedCity()
+        {
+            // Neu khong co dong nao dang duoc chon thi tra ve null
+            if (dgvCity.SelectedRows.Count != 1) return null;
+
+            // Neu co 1 dong dang duoc chon thi lay dong do ra
+            DataGridViewRow row = dgvCity.SelectedRows[0];
+
+            // Lay du lieu trong dong do va tao ra mot AdminAccount moi
+            City city = new City()
+            {
+              
+                Code = row.Cells["Code"].Value.ToString(),
+                Name = row.Cells["Name"].Value.ToString(),
+            };
+
+            // Tra AdminAccount vua tao ve
+            return city;
         }
     }
 }

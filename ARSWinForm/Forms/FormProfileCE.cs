@@ -1,5 +1,7 @@
 ﻿using ARSWinForm.HelperClass;
+using ARSWinForm.HelperClass.ModelHelper;
 using ARSWinForm.Model;
+using System;
 using System.Windows.Forms;
 
 namespace ARSWinForm
@@ -65,14 +67,67 @@ namespace ARSWinForm
             }
         }
 
-        private void btnSubmit_Click(object sender, System.EventArgs e)
+        private async void btnSubmit_Click(object sender, System.EventArgs e)
         {
+            // Lay gia tri tren form gan vao account
+            profile.UserID = txtUserID.Text;
+            profile.Password = txtPassword.Text;
+            profile.FirstName = txtFirstName.Text;
+            profile.LastName = txtLastName.Text;
+            profile.Address = txtAddress.Text;
+            profile.PhoneNumber = txtPhoneNumber.Text;
+            profile.EmailAddress = txtEmailAddress.Text;
+            profile.Sex = rbtnMale.Checked;
+            profile.Age = Convert.ToInt32(numAge);
+            profile.CreditCard = txtCreditCard.Text;
+            profile.SkyMiles = Convert.ToInt32(numSkyMiles);
+            profile.IsActive = rbtnActive.Checked;
 
+            // Neu dang o che do tao account moi thi phai lay gia tri trong o password gan vao account.
+            // Neu dang o che do chinh sua ma gia tri trong o password khac voi gia tri password cua account
+            // nghia la nguoi dung da thay doi password, phai cap nhat luon password
+            if (mode == FormMode.CREATE || txtPassword.Text != profile.Password)
+            {
+                profile.Password = ARSUtilities.Md5Hash(txtPassword.Text);
+            }
+
+            // Tao mot API
+            ProfileWrapper profileWrapper = new ProfileWrapper();
+            // Tao bien luu ket qua tra ve
+            bool isSuccess;
+
+            // Kiem tra xem dang o che do nao
+            if (mode == FormMode.CREATE)
+            {
+                // Neu dang o che do them moi (CREATE)
+                // POST account len server
+                isSuccess = await profileWrapper.Post(profile);
+            }
+            else
+            {
+                // Neu dang o che do chinh sua (EDIT)
+                // PUT account len server
+                isSuccess = await profileWrapper.Put(Convert.ToInt32(profile.ID), profile);
+            }
+
+            // Kiem tra ket qua tra ve
+            if (isSuccess)
+            {
+                // Neu thanh cong
+                MessageBox.Show("Operation completed successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                // Tat form CE
+                this.Close();
+            }
+            else
+            {
+                // Neu that bai, hien thong bao loi
+                MessageBox.Show("An error has occurred:\n" + profileWrapper.GetErrorMessage(), "Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void btnCancel_Click(object sender, System.EventArgs e)
         {
-
+            Close();
         }
     }
 }

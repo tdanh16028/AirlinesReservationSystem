@@ -31,7 +31,6 @@
             this.dgvCity = new System.Windows.Forms.DataGridView();
             this.btnSubmit = new System.Windows.Forms.Button();
             this.btnEdit = new System.Windows.Forms.Button();
-            this.btnDelete = new System.Windows.Forms.Button();
             this.btnReload = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCity)).BeginInit();
             this.SuspendLayout();
@@ -41,8 +40,10 @@
             this.dgvCity.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvCity.Location = new System.Drawing.Point(-1, -1);
             this.dgvCity.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.dgvCity.MultiSelect = false;
             this.dgvCity.Name = "dgvCity";
             this.dgvCity.RowTemplate.Height = 24;
+            this.dgvCity.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvCity.Size = new System.Drawing.Size(800, 380);
             this.dgvCity.TabIndex = 0;
             // 
@@ -59,7 +60,7 @@
             // 
             // btnEdit
             // 
-            this.btnEdit.Location = new System.Drawing.Point(259, 402);
+            this.btnEdit.Location = new System.Drawing.Point(361, 402);
             this.btnEdit.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnEdit.Name = "btnEdit";
             this.btnEdit.Size = new System.Drawing.Size(75, 23);
@@ -68,20 +69,9 @@
             this.btnEdit.UseVisualStyleBackColor = true;
             this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
             // 
-            // btnDelete
-            // 
-            this.btnDelete.Location = new System.Drawing.Point(517, 402);
-            this.btnDelete.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.btnDelete.Name = "btnDelete";
-            this.btnDelete.Size = new System.Drawing.Size(75, 23);
-            this.btnDelete.TabIndex = 4;
-            this.btnDelete.Text = "Delete";
-            this.btnDelete.UseVisualStyleBackColor = true;
-            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
-            // 
             // btnReload
             // 
-            this.btnReload.Location = new System.Drawing.Point(652, 402);
+            this.btnReload.Location = new System.Drawing.Point(601, 402);
             this.btnReload.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnReload.Name = "btnReload";
             this.btnReload.Size = new System.Drawing.Size(75, 23);
@@ -96,7 +86,6 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.btnReload);
-            this.Controls.Add(this.btnDelete);
             this.Controls.Add(this.btnEdit);
             this.Controls.Add(this.btnSubmit);
             this.Controls.Add(this.dgvCity);
@@ -114,7 +103,6 @@
         private System.Windows.Forms.DataGridView dgvCity;
         private System.Windows.Forms.Button btnSubmit;
         private System.Windows.Forms.Button btnEdit;
-        private System.Windows.Forms.Button btnDelete;
         private System.Windows.Forms.Button btnReload;
     }
 }

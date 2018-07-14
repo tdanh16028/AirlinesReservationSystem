@@ -59,38 +59,6 @@ namespace ARSWinForm
 
         }
 
-        private async void btnDelete_Click(object sender, EventArgs e)
-        {
-            // Lay airplane class dang duoc chon trong bang
-            AirplaneClass airplaneClass = GetSelectedAirplaneClass();
-
-            // Neu hien tai khong co tai khoan nao duoc chon thi hien thong bao
-            if (airplaneClass == null)
-            {
-                MessageBox.Show("You must choose a class to edit!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                return;
-            }
-            // Gui len server de cap nhat lai cot IsActive trong CSDL
-            AirplaneClassWrapper airplaneClassWrapper = new AirplaneClassWrapper();
-            bool isSuccess = await airplaneClassWrapper.Put(airplaneClass.ID, airplaneClass);
-
-            // Kiem tra ket qua tra ve
-            if (isSuccess)
-            {
-                // Neu ket qua la thanh cong, hien thong bao thanh cong
-                MessageBox.Show("Delete Class Success!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-                // Load lai bang
-                LoadDataGridView();
-
-            }
-            else
-            {
-                // Neu ket qua that bai, hien thong bao loi
-                MessageBox.Show("An error has occurred!", "Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
-
         private AirplaneClass GetSelectedAirplaneClass()
         {
             // Neu khong co dong nao dang duoc chon thi tra ve null

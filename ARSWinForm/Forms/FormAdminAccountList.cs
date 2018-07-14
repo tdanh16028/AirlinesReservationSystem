@@ -88,7 +88,7 @@ namespace ARSWinForm
             } else
             {
                 // Neu ket qua that bai, hien thong bao loi
-                MessageBox.Show("An error has occurred!", "Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("An error has occurred!\n" + adminAccountWrapper.GetErrorMessage(), "Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 

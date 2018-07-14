@@ -31,7 +31,7 @@ namespace ARSWinForm
             else
             {
                 // Neu dang o che do them moi
-                // Tao moi mot account
+                // Tao moi mot class
                 airplaneClass = new AirplaneClass();
                 // Gan gia tri mac dinh cho ID (ID no se tu tang nen minh khong can phai tao)
                 airplaneClass.ID = 0;
