@@ -38,20 +38,26 @@
             // 
             // dgvAirplane
             // 
+            this.dgvAirplane.AllowUserToAddRows = false;
+            this.dgvAirplane.AllowUserToDeleteRows = false;
             this.dgvAirplane.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvAirplane.Location = new System.Drawing.Point(1, 0);
-            this.dgvAirplane.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.dgvAirplane.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.dgvAirplane.MultiSelect = false;
             this.dgvAirplane.Name = "dgvAirplane";
+            this.dgvAirplane.ReadOnly = true;
+            this.dgvAirplane.RowHeadersVisible = false;
             this.dgvAirplane.RowTemplate.Height = 24;
-            this.dgvAirplane.Size = new System.Drawing.Size(800, 401);
+            this.dgvAirplane.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvAirplane.Size = new System.Drawing.Size(600, 326);
             this.dgvAirplane.TabIndex = 0;
             // 
             // btnCreate
             // 
-            this.btnCreate.Location = new System.Drawing.Point(64, 409);
-            this.btnCreate.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnCreate.Location = new System.Drawing.Point(48, 332);
+            this.btnCreate.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnCreate.Name = "btnCreate";
-            this.btnCreate.Size = new System.Drawing.Size(75, 23);
+            this.btnCreate.Size = new System.Drawing.Size(56, 19);
             this.btnCreate.TabIndex = 1;
             this.btnCreate.Text = "Create";
             this.btnCreate.UseVisualStyleBackColor = true;
@@ -59,10 +65,10 @@
             // 
             // btnEdit
             // 
-            this.btnEdit.Location = new System.Drawing.Point(191, 409);
-            this.btnEdit.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnEdit.Location = new System.Drawing.Point(143, 332);
+            this.btnEdit.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnEdit.Name = "btnEdit";
-            this.btnEdit.Size = new System.Drawing.Size(75, 23);
+            this.btnEdit.Size = new System.Drawing.Size(56, 19);
             this.btnEdit.TabIndex = 2;
             this.btnEdit.Text = "Edit";
             this.btnEdit.UseVisualStyleBackColor = true;
@@ -70,10 +76,10 @@
             // 
             // btnDelete
             // 
-            this.btnDelete.Location = new System.Drawing.Point(496, 407);
-            this.btnDelete.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnDelete.Location = new System.Drawing.Point(372, 331);
+            this.btnDelete.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnDelete.Name = "btnDelete";
-            this.btnDelete.Size = new System.Drawing.Size(75, 23);
+            this.btnDelete.Size = new System.Drawing.Size(56, 19);
             this.btnDelete.TabIndex = 4;
             this.btnDelete.Text = "Delete";
             this.btnDelete.UseVisualStyleBackColor = true;
@@ -81,10 +87,10 @@
             // 
             // btnReload
             // 
-            this.btnReload.Location = new System.Drawing.Point(659, 407);
-            this.btnReload.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnReload.Location = new System.Drawing.Point(494, 331);
+            this.btnReload.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnReload.Name = "btnReload";
-            this.btnReload.Size = new System.Drawing.Size(75, 23);
+            this.btnReload.Size = new System.Drawing.Size(56, 19);
             this.btnReload.TabIndex = 5;
             this.btnReload.Text = "Reload";
             this.btnReload.UseVisualStyleBackColor = true;
@@ -92,15 +98,15 @@
             // 
             // FormAirplaneList
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(600, 366);
             this.Controls.Add(this.btnReload);
             this.Controls.Add(this.btnDelete);
             this.Controls.Add(this.btnEdit);
             this.Controls.Add(this.btnCreate);
             this.Controls.Add(this.dgvAirplane);
-            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "FormAirplaneList";
             this.Text = "Airplane";
             this.Load += new System.EventHandler(this.Airplane_Load);

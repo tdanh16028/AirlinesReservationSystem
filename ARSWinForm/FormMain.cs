@@ -48,5 +48,10 @@ namespace ARSWinForm
         {
             OpenChildForm(new FormCityList());
         }
+
+        private void airplaneToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            OpenChildForm(new FormAirplaneList());
+        }
     }
 }
