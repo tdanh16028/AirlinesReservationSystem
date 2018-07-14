@@ -38,5 +38,15 @@ namespace ARSWinForm
         {
             OpenChildForm(new FormAdminAccountList());
         }
+
+        private void customerProfileToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            OpenChildForm(new FormProfileList());
+        }
+
+        private void cityToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            OpenChildForm(new FormCityList());
+        }
     }
 }

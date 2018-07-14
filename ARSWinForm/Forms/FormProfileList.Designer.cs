@@ -38,10 +38,15 @@
             // 
             // dgvProfile
             // 
+            this.dgvProfile.AllowUserToAddRows = false;
+            this.dgvProfile.AllowUserToDeleteRows = false;
             this.dgvProfile.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvProfile.Location = new System.Drawing.Point(1, -1);
+            this.dgvProfile.MultiSelect = false;
             this.dgvProfile.Name = "dgvProfile";
+            this.dgvProfile.ReadOnly = true;
             this.dgvProfile.RowTemplate.Height = 24;
+            this.dgvProfile.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvProfile.Size = new System.Drawing.Size(798, 385);
             this.dgvProfile.TabIndex = 0;
             // 
@@ -53,6 +58,7 @@
             this.btnCreate.TabIndex = 1;
             this.btnCreate.Text = "Create";
             this.btnCreate.UseVisualStyleBackColor = true;
+            this.btnCreate.Click += new System.EventHandler(this.btnCreate_Click);
             // 
             // btnEdit
             // 
@@ -62,15 +68,17 @@
             this.btnEdit.TabIndex = 2;
             this.btnEdit.Text = "Edit";
             this.btnEdit.UseVisualStyleBackColor = true;
+            this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
             // 
             // btnDelete
             // 
-            this.btnDelete.Location = new System.Drawing.Point(423, 408);
+            this.btnDelete.Location = new System.Drawing.Point(459, 408);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(75, 23);
             this.btnDelete.TabIndex = 3;
             this.btnDelete.Text = "Delete";
             this.btnDelete.UseVisualStyleBackColor = true;
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
             // btnReload
             // 
@@ -80,6 +88,7 @@
             this.btnReload.TabIndex = 4;
             this.btnReload.Text = "Reload";
             this.btnReload.UseVisualStyleBackColor = true;
+            this.btnReload.Click += new System.EventHandler(this.btnReload_Click);
             // 
             // FormProfileList
             // 
@@ -93,6 +102,7 @@
             this.Controls.Add(this.dgvProfile);
             this.Name = "FormProfileList";
             this.Text = "FormProfileList";
+            this.Load += new System.EventHandler(this.FormProfileList_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvProfile)).EndInit();
             this.ResumeLayout(false);
 

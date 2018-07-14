@@ -77,12 +77,13 @@
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(12, 121);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(57, 17);
+            this.label2.Size = new System.Drawing.Size(96, 17);
             this.label2.TabIndex = 9;
-            this.label2.Text = "Type ID";
+            this.label2.Text = "Airplane Type";
             // 
             // cboType
             // 
+            this.cboType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboType.FormattingEnabled = true;
             this.cboType.Location = new System.Drawing.Point(122, 121);
             this.cboType.Name = "cboType";

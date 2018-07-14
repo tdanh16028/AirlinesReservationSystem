@@ -1,6 +1,6 @@
 ﻿namespace ARSWinForm
 {
-    partial class numAge
+    partial class FormProfileCE
     {
         /// <summary>
         /// Required designer variable.
@@ -49,12 +49,14 @@
             this.rbtnMale = new System.Windows.Forms.RadioButton();
             this.rbtnFemale = new System.Windows.Forms.RadioButton();
             this.rbtnActive = new System.Windows.Forms.RadioButton();
-            this.rbtnIsActive = new System.Windows.Forms.RadioButton();
-            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
+            this.rbtnInActive = new System.Windows.Forms.RadioButton();
+            this.numAge = new System.Windows.Forms.NumericUpDown();
             this.numSkyMiles = new System.Windows.Forms.NumericUpDown();
             this.btnSubmit = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
+            this.label11 = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
+            ((System.ComponentModel.ISupportInitialize)(this.numAge)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numSkyMiles)).BeginInit();
             this.SuspendLayout();
             // 
@@ -207,7 +209,7 @@
             // rbtnMale
             // 
             this.rbtnMale.AutoSize = true;
-            this.rbtnMale.Location = new System.Drawing.Point(75, 416);
+            this.rbtnMale.Location = new System.Drawing.Point(146, 418);
             this.rbtnMale.Name = "rbtnMale";
             this.rbtnMale.Size = new System.Drawing.Size(59, 21);
             this.rbtnMale.TabIndex = 20;
@@ -229,7 +231,7 @@
             // rbtnActive
             // 
             this.rbtnActive.AutoSize = true;
-            this.rbtnActive.Location = new System.Drawing.Point(412, 416);
+            this.rbtnActive.Location = new System.Drawing.Point(495, 416);
             this.rbtnActive.Name = "rbtnActive";
             this.rbtnActive.Size = new System.Drawing.Size(67, 21);
             this.rbtnActive.TabIndex = 22;
@@ -237,23 +239,23 @@
             this.rbtnActive.Text = "Active";
             this.rbtnActive.UseVisualStyleBackColor = true;
             // 
-            // rbtnIsActive
+            // rbtnInActive
             // 
-            this.rbtnIsActive.AutoSize = true;
-            this.rbtnIsActive.Location = new System.Drawing.Point(568, 416);
-            this.rbtnIsActive.Name = "rbtnIsActive";
-            this.rbtnIsActive.Size = new System.Drawing.Size(81, 21);
-            this.rbtnIsActive.TabIndex = 23;
-            this.rbtnIsActive.TabStop = true;
-            this.rbtnIsActive.Text = "Is Active";
-            this.rbtnIsActive.UseVisualStyleBackColor = true;
+            this.rbtnInActive.AutoSize = true;
+            this.rbtnInActive.Location = new System.Drawing.Point(600, 416);
+            this.rbtnInActive.Name = "rbtnInActive";
+            this.rbtnInActive.Size = new System.Drawing.Size(78, 21);
+            this.rbtnInActive.TabIndex = 23;
+            this.rbtnInActive.TabStop = true;
+            this.rbtnInActive.Text = "InActive";
+            this.rbtnInActive.UseVisualStyleBackColor = true;
             // 
-            // numericUpDown1
+            // numAge
             // 
-            this.numericUpDown1.Location = new System.Drawing.Point(146, 358);
-            this.numericUpDown1.Name = "numericUpDown1";
-            this.numericUpDown1.Size = new System.Drawing.Size(178, 22);
-            this.numericUpDown1.TabIndex = 24;
+            this.numAge.Location = new System.Drawing.Point(146, 358);
+            this.numAge.Name = "numAge";
+            this.numAge.Size = new System.Drawing.Size(178, 22);
+            this.numAge.TabIndex = 24;
             // 
             // numSkyMiles
             // 
@@ -270,6 +272,7 @@
             this.btnSubmit.TabIndex = 26;
             this.btnSubmit.Text = "Submit";
             this.btnSubmit.UseVisualStyleBackColor = true;
+            this.btnSubmit.Click += new System.EventHandler(this.btnSubmit_Click);
             // 
             // btnCancel
             // 
@@ -279,8 +282,27 @@
             this.btnCancel.TabIndex = 27;
             this.btnCancel.Text = "Cancel";
             this.btnCancel.UseVisualStyleBackColor = true;
+            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
-            // numAge
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(373, 418);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(48, 17);
+            this.label11.TabIndex = 9;
+            this.label11.Text = "Status";
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(35, 416);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(56, 17);
+            this.label12.TabIndex = 4;
+            this.label12.Text = "Gender";
+            // 
+            // FormProfileCE
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -288,8 +310,8 @@
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnSubmit);
             this.Controls.Add(this.numSkyMiles);
-            this.Controls.Add(this.numericUpDown1);
-            this.Controls.Add(this.rbtnIsActive);
+            this.Controls.Add(this.numAge);
+            this.Controls.Add(this.rbtnInActive);
             this.Controls.Add(this.rbtnActive);
             this.Controls.Add(this.rbtnFemale);
             this.Controls.Add(this.rbtnMale);
@@ -301,19 +323,22 @@
             this.Controls.Add(this.txtFirstName);
             this.Controls.Add(this.txtPassword);
             this.Controls.Add(this.txtUserID);
+            this.Controls.Add(this.label11);
             this.Controls.Add(this.label10);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.label6);
+            this.Controls.Add(this.label12);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Name = "numAge";
+            this.Name = "FormProfileCE";
             this.Text = "FormProfileCE";
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
+            this.Load += new System.EventHandler(this.FormProfileCE_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.numAge)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numSkyMiles)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -343,10 +368,12 @@
         private System.Windows.Forms.RadioButton rbtnMale;
         private System.Windows.Forms.RadioButton rbtnFemale;
         private System.Windows.Forms.RadioButton rbtnActive;
-        private System.Windows.Forms.RadioButton rbtnIsActive;
-        private System.Windows.Forms.NumericUpDown numericUpDown1;
+        private System.Windows.Forms.RadioButton rbtnInActive;
+        private System.Windows.Forms.NumericUpDown numAge;
         private System.Windows.Forms.NumericUpDown numSkyMiles;
         private System.Windows.Forms.Button btnSubmit;
         private System.Windows.Forms.Button btnCancel;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Label label12;
     }
 }
