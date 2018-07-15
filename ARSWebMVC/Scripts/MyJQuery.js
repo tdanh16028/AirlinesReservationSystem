@@ -9,4 +9,9 @@
         $("#exampleModal").modal();
     });
 });
-
+$(function () {
+    $('#exampleModal').on('hidden.bs.modal', function (e) {
+        console.log("Modal hidden");
+        $(".modal-body").html("");
+    });
+});
