@@ -64,7 +64,7 @@ namespace ARSWebAPI.Controllers
                 else
                 {
                     while (ex.InnerException != null) ex = ex.InnerException;
-                    return InternalServerError(ex);
+                    return Content(HttpStatusCode.InternalServerError, ex.Message);
                 }
             }
 
@@ -88,7 +88,7 @@ namespace ARSWebAPI.Controllers
             catch (Exception ex)
             {
                 while (ex.InnerException != null) ex = ex.InnerException;
-                return InternalServerError(ex);
+                return Content(HttpStatusCode.InternalServerError, ex.Message);
             }
 
             return CreatedAtRoute("DefaultApi", new { id = airplaneType.ID }, airplaneType);
