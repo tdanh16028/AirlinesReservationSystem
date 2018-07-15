@@ -44,6 +44,10 @@ namespace ARSWebMVC.Controllers
         [HttpPost]
         public ActionResult FlightStatus(string airplaneCode)
         {
+            if (airplaneCode ==null)
+            {
+                return RedirectToAction("QueryFlightDetails");
+            }
             List<FlightSchedule> rs = db.FlightSchedules.Where(s => s.AirplaneCode == airplaneCode).ToList();
             if (rs != null && rs.Count >0)
             {
