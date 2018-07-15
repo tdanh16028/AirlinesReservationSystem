@@ -117,6 +117,7 @@ namespace ARSWinForm
 
             // Luu lai dong hien tai dang o dau` bang? trong dataGridView
             int firstRowIndex = dgvAirplane.FirstDisplayedScrollingRowIndex;
+            if (firstRowIndex == -1) firstRowIndex = 0;
 
             // Goi API lay du lieu ve
             AirplaneWrapper airplaneWrapper = new AirplaneWrapper();
