@@ -330,6 +330,8 @@
     <Content Include="Views\Ticket\AllFlightUser.cshtml" />
     <Content Include="Views\Home\CheckingAvailability.cshtml" />
     <Content Include="Views\Home\ListRoute.cshtml" />
+    <Content Include="Views\Home\DatePic.cshtml" />
+    <Content Include="Views\Home\TicketDetailTemp.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

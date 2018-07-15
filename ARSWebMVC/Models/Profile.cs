@@ -64,7 +64,7 @@ namespace ARSWebMVC.Models
         [MaxLength(16, ErrorMessage = "CreditCard must be less than 16 characters")]
         public string CreditCard { get; set; }
         public long ID { get; set; }
-   
+        
         public int SkyMiles { get; set; }
         public bool IsActive { get; set; }
     

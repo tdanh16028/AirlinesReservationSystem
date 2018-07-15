@@ -1,9 +1,9 @@
 ﻿@model ARSWebMVC.Models.Ticket
 @using ARSWebMVC.Models
 @{
-    ViewBag.Title = "TicketDetail";
-
+    ViewBag.Title = "TicketDetailTemp";
 }
+
 <section class="ticketdetail animated wow fadeIn pt-5 pb-5">
     <div class="container">
         <div class="card">
@@ -18,8 +18,8 @@
                         <b class="text-center text-md-left pt-2"> NAME OF PASSENGER&nbsp;:</b>
                     </div>
                     <div class="col-8 ml-auto text-center">
-                        <span>@Model.Profile.LastName</span>
-                        <span>@Model.Profile.FirstName</span>
+                        <span>LastName</span>
+                        <span>FirstName</span>
                         <hr class="m-1" />
                     </div>
                 </div>
@@ -29,7 +29,7 @@
                         <b class="text-center pt-2">TICKET CODE&nbsp;:</b>
                     </div>
                     <div class="col-8 ml-auto text-center">
-                        <span>@Model.TicketCode</span>
+                        <span>TicketCode</span>
                         <hr class="m-1" />
                     </div>
                 </div>
@@ -39,7 +39,7 @@
                         <b class="text-center pt-2">STATUS&nbsp;:</b>
                     </div>
                     <div class="col-8 ml-auto text-center">
-                        <span>@Model.Status</span>
+                        <span>Status</span>
                         <hr class="m-1" />
                     </div>
                 </div>
@@ -49,7 +49,7 @@
                         <b class="text-center pt-2">CHILDREN COUNT&nbsp;:</b>
                     </div>
                     <div class="col-8 ml-auto text-center">
-                        <span>@Model.ChildrenCount</span>
+                        <span>ChildrenCount</span>
                         <hr class="m-1" />
                     </div>
                 </div>
@@ -59,7 +59,7 @@
                         <b class="text-center pt-2">SENIOR COUNT&nbsp;:</b>
                     </div>
                     <div class="col-8 ml-auto text-center">
-                        <span>@Model.SeniorCount</span>
+                        <span>SeniorCount</span>
                         <hr class="m-1" />
                     </div>
                 </div>
@@ -69,7 +69,7 @@
                         <b class="text-center pt-2">ADULT COUNT&nbsp;:</b>
                     </div>
                     <div class="col-8 ml-auto text-center">
-                        <span>@Model.AdultCount</span>
+                        <span>AdultCount</span>
                         <hr class="m-1" />
                     </div>
                 </div>
@@ -79,7 +79,7 @@
                         <b class="text-center pt-2">CLASS&nbsp;:</b>
                     </div>
                     <div class="col-8 ml-auto text-center">
-                        <span>@Model.AirplaneClass.Class class</span>
+                        <span>AirplaneClass.Class class</span>
                         <hr class="m-1" />
                     </div>
                 </div>
@@ -89,7 +89,7 @@
                         <b class="text-center pt-2">ORDER DATE&nbsp;:</b>
                     </div>
                     <div class="col-8 ml-auto text-center">
-                        <span>@Model.OrderDate.ToString("dd/MM/yyyy")</span>
+                        <span>OrderDate.ToString</span>
                         <hr class="m-1" />
                     </div>
                 </div>
@@ -99,14 +99,7 @@
                         <b class="text-center pt-2">SKYMILE&nbsp;:</b>
                     </div>
                     <div class="col-8 ml-auto text-center">
-                        @{
-                            int totalSkymile = 0;
-                            foreach (FlightSchedule flightSchedule in Model.FlightSchedules)
-                            {
-                                totalSkymile = flightSchedule.Route.SkyMiles + totalSkymile;
-                            }
-                            <span>@(totalSkymile) </span>
-                        }
+                        <span>SKYMILE</span>
                         <hr class="m-1" />
                     </div>
                 </div>
@@ -116,7 +109,7 @@
                         <b class="text-center pt-2">TOTAL COST&nbsp;:</b>
                     </div>
                     <div class="col-8 ml-auto text-center">
-                        <span>$&nbsp;</span><span>@Model.TotalCost</span>
+                        <span>$&nbsp;</span><span>TotalCost</span>
                         <hr class="m-1" />
                     </div>
                 </div>
@@ -132,41 +125,25 @@
                                 <thead>
                                     <tr>
                                         <th class="text-center">AIRPLANE CODE</th>
-                                        <th >AIRPLANE TYPE</th>
-                                        <th >DEPARTURE DATE</th>
-                                        <th >FROM</th>
+                                        <th>AIRPLANE TYPE</th>
+                                        <th>DEPARTURE DATE</th>
+                                        <th>FROM</th>
                                         <th>TO</th>
-                                        <th >COST</th>
-                                        <th class="text-right" >SKYMILE</th>
+                                        <th>COST</th>
+                                        <th class="text-right">SKYMILE</th>
 
                                     </tr>
                                 </thead>
                                 <tbody class="p-3">
-                                    @foreach (FlightSchedule flightSchedule in Model.FlightSchedules)
-                                    {
                                         <tr class="">
-                                            <td class="text-center">@flightSchedule.AirplaneCode</td>
-                                            <td>@flightSchedule.Airplane.AirplaneType.Name</td>
-                                            <td>@flightSchedule.DepartureDate.ToString("dd/MM/yyyy")</td>
-                                            <td>@flightSchedule.Route.City.City1</td>
-                                            <td class="text-left">@flightSchedule.Route.City1.City1</td>
-                                            @{
-                                                double rate = 1;
-
-                                                if (Model.AirplaneClass.ID == 1)
-                                                {
-                                                    rate = 1.75;
-                                                }
-                                                else if (Model.AirplaneClass.ID == 2)
-                                                {
-                                                    rate = 1.57;
-                                                }
-
-                                                <td><span>$&nbsp;</span>@Math.Round((flightSchedule.Route.BasePrice * rate) * (Model.ChildrenCount + Model.AdultCount + Model.SeniorCount), 2)</td>
-                                            }
-                                            <td class="text-right">@flightSchedule.Route.SkyMiles</td>
+                                            <td class="text-center">AirplaneCode</td>
+                                            <td>AirplaneType.Name</td>
+                                            <td>flightSchedule.DepartureDate</td>
+                                            <td>flightSchedule.Route.City.City1</td>
+                                            <td class="text-left">flightSchedule.Route.City1.City1</td>
+                                            <td><span>$&nbsp;</span>COST</td>
+                                            <td class="text-right">flightSchedule.Route.SkyMiles</td>
                                         </tr>
-                                    }
                                 </tbody>
                             </table>
                         </div>
@@ -174,58 +151,18 @@
                 </div>
                 <hr class="mb-5" />
                 <div class="justify-content-center">
-                    @if (Model.Status == "Blocked")
-                    {
-                    <div class="d-md-flex justify-content-md-around">
-
-                        @Html.ActionLink("Cancellation", "Cancelled", "Ticket", new { ticketCode = Model.TicketCode }, new { @class = "btn danger-color-dark d-flex" })
-
-                        <button class="btn teal d-flex" type="submit" name="action">
-                            Confirm Ticket
-                        </button>
-
-                        @Html.ActionLink("Confirm Ticket", "ConfirmTicket", "Ticket", new { ticketCode = Model.TicketCode }, new { @class = "btn teal d-flex" })
-                    </div>
-                    }
-                    else if (Model.Status == "Reversed")
-                    {
-                    <div class="d-md-flex justify-content-md-around">
-
-                        @Html.ActionLink("Cancellation", "Cancelled", "Ticket", new { ticketCode = Model.TicketCode }, new { @class = "btn danger-color-dark d-flex" })
-
-                        <button class="btn teal d-flex" type="submit" name="action">
-                            Reschedule Ticket
-                        </button>
-                    </div>
-                    }
-                    else if (Model.Status == "Cancelled")
-                    {
-                        <h4 class="text-center">Tickets cancelled</h4>
-                        <div class="text-center">
-                            <a class="btn-outline-default btn teal" href="/../Home">
-                                Home Page
-                            </a>
-                        </div>
-
-                    }
-                    else
-                    {
+                    
                         <div class="d-md-flex justify-content-md-around">
-                            <button class=" btn danger-color-dark d-flex " type="submit" name="action">
-                                Cancellation
+
+                            <button class="btn teal d-flex" type="submit" name="action">
+                                Order
                             </button>
 
                             <button class="btn teal d-flex" type="submit" name="action">
-                                Confirm Ticket
-
-                            </button>
-
-                            <button class="btn teal d-flex" type="submit" name="action">
-                                Reschedule Ticket
-
+                                Block
                             </button>
                         </div>
-                    }
+                    
                 </div>
 
 

@@ -1,0 +1,96 @@
+﻿
+@{
+    ViewBag.Title = "DatePic";
+}
+
+<section class="datePicKer pt-5">
+    <div class="container">
+        <div class="card  animated wow fadeIn">
+            <div class="card-body">
+                <h3 class="mb-5 text-center">Checking Availability</h3>
+                <!-- Default form grid -->
+                <form>
+                    <!-- Grid row -->
+                    <div class="row">
+                        <!-- Grid column -->
+                        <div class=" col-sm-12 col-md">
+                            <div class="form-group">
+                                <label>Pick the starting date :</label>
+                                <input type="date" name="bday" min="today" max="3000-12-31" class="form-control">
+                            </div>
+                        </div>
+                        <div class="col col-sm-2">
+                            Nếu ở trước chọn khứ hổi thì hiện form ngày về
+                        </div>
+                        <div class=" col-sm-12 col-md ">
+                            <!-- Default input -->
+                            <label>Pick the ending date :</label>
+                            <input type="date" name="bday" min="1000-01-01" max="3000-12-31" class="form-control">
+                        </div>
+                        <!-- Grid column -->
+                    </div>
+
+                    <div class="row pt-5">
+                        <div class="col-md text-center">
+                            <div class="form-group">
+                                <label for="exampleFormControlSelect1">ChildrentCount</label>
+                                <select class="form-control" id="exampleFormControlSelect1">
+                                    <option>0</option>
+                                    <option>1</option>
+                                    <option>2</option>
+                                    <option>3</option>
+                                    <option>4</option>
+                                    <option>5</option>
+                                    <option>6</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md text-center">
+                            <div class="form-group">
+                                <label for="exampleFormControlSelect1">AdultCount</label>
+                                <select class="form-control" id="exampleFormControlSelect1">
+                                    <option>0</option>
+                                    <option>1</option>
+                                    <option>2</option>
+                                    <option>3</option>
+                                    <option>4</option>
+                                    <option>5</option>
+                                    <option>6</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md text-center">
+                            <div class="form-group">
+                                <label for="exampleFormControlSelect1">SeniorCount</label>
+                                <select class="form-control" id="exampleFormControlSelect1">
+                                    <option>0</option>
+                                    <option>1</option>
+                                    <option>2</option>
+                                    <option>3</option>
+                                    <option>4</option>
+                                    <option>5</option>
+                                    <option>6</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md text-center">
+                            <div class="form-group">
+                                <label for="exampleFormControlSelect1">Class</label>
+                                <select class="form-control disabled" id="exampleFormControlSelect1">
+                                    <option>1</option>
+                                    <option>2</option>
+                                    <option>3</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+
+                <div class="text-center mt-5">
+                    <a class="btn teal" href="/Home/ListRoute"><i class="fas fa-search prefix mr-3"></i>Search</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+

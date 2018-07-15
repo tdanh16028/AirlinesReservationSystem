@@ -58,6 +58,7 @@ namespace eProject_main.Controllers
                         SkyMiles = Convert.ToInt32(res.SkyMiles)
                     };
                     Session["UserProfile"] = userProfile;
+                    ViewBag.LoginTitle = "Success";
                     return RedirectToAction( "Index","Home");
                 }
                 else

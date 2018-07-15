@@ -16,10 +16,7 @@ else
         <a class="nav-link dropdown-toggle " id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">@user.UserID.ToString()</a>
         <div class="dropdown-menu dropdown-primary" aria-labelledby="navbarDropdownMenuLink">
             @Html.ActionLink("Profile", "Profile", "UserAccount", null, new { @class = "dropdown-item" })
-            @Html.ActionLink("Ticket", "Index", "Ticket", null, new { @class = "dropdown-item" })
-            @Html.ActionLink("(logout)", "Logout", "UserAccount", null, new { @class = "dropdown-item" })
-
-
+            @Html.ActionLink("Lgout", "Logout", "UserAccount", null, new { @class = "dropdown-item" })
         </div>
     </li>
 }
