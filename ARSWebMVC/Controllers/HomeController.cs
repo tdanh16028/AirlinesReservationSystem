@@ -9,6 +9,7 @@ namespace ARSWebMVC.Controllers
 {
     public class HomeController : Controller
     {
+        DBUserEntities db = new DBUserEntities();
         public ActionResult Index()
         {
             return RedirectToAction("CheckingAvailability");
@@ -32,6 +33,27 @@ namespace ARSWebMVC.Controllers
         {
             
             return View();
+        }
+
+
+        public ActionResult QueryFlightDetails()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult FlightStatus(string airplaneCode)
+        {
+            List<FlightSchedule> rs = db.FlightSchedules.Where(s => s.AirplaneCode == airplaneCode).ToList();
+            if (rs != null && rs.Count >0)
+            {
+                return View(rs);
+            }
+            else
+            {
+                ViewBag.FlightStatusErrorMessage = "Not found";
+                return View("QueryFlightDetails");
+            }
         }
     }
 }

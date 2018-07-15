@@ -9,118 +9,116 @@
         <div class="card">
 
             <div class="card-panel p-0 mb-0">
-                <div class="grey lighten-4 p-3"></div>
-                <div class="teal p-3"></div>
+                <div class="lighten-4 pt-4 pb-4 pl-3 ticketheader">
+                    <div class="row">
+                        <b class="text-center teal border text-white p-2">TICKET CODE:&nbsp;<span>@Model.TicketCode</span></b>
+                    </div>
+                    <div class=" p-2"></div>
+                </div>
             </div>
             <div class=" mt-0 p-4">
-                <div class="row">
-                    <div class="col">
-                        <b class="text-center text-md-left pt-2"> NAME OF PASSENGER&nbsp;:</b>
-                    </div>
-                    <div class="col-8 ml-auto text-center">
-                        <span>@Model.Profile.LastName</span>
-                        <span>@Model.Profile.FirstName</span>
-                        <hr class="m-1" />
-                    </div>
-                </div>
 
                 <div class="row">
-                    <div class="col">
-                        <b class="text-center pt-2">TICKET CODE&nbsp;:</b>
-                    </div>
-                    <div class="col-8 ml-auto text-center">
-                        <span>@Model.TicketCode</span>
-                        <hr class="m-1" />
-                    </div>
-                </div>
+                    <div class="col-md-6">
+                        <div class="row">
+                            <div class="col-12 col-sm-4">
+                                <b class="text-center text-md-left pt-2">PASSENGER&nbsp;NAME</b>
+                            </div>
+                            <div class="col-sm-8 ml-auto text-md-center">
+                                <span>@Model.Profile.LastName</span>
+                                <span>@Model.Profile.FirstName</span>
+                                <hr class="m-1" />
+                            </div>
+                        </div>
+                        
+                        <div class="row">
+                            <div class="col-12 col-sm-4">
+                                <b class="text-center pt-2">CHILDREN COUNT</b>
+                            </div>
+                            <div class="col-sm-8 col-12 ml-auto text-md-center">
+                                <span>@Model.ChildrenCount</span>
+                                <hr class="m-1" />
+                            </div>
+                        </div>
 
-                <div class="row">
-                    <div class="col">
-                        <b class="text-center pt-2">STATUS&nbsp;:</b>
-                    </div>
-                    <div class="col-8 ml-auto text-center">
-                        <span>@Model.Status</span>
-                        <hr class="m-1" />
-                    </div>
-                </div>
+                        <div class="row">
+                            <div class="col-12 col-sm-4">
+                                <b class="text-center pt-2 col-12 pl-0">SENIOR COUNT</b>
+                            </div>
+                            <div class="col-12 col-sm-8 ml-auto text-md-center">
+                                <span>@Model.SeniorCount</span>
+                                <hr class="m-1" />
+                            </div>
+                        </div>
 
-                <div class="row">
-                    <div class="col">
-                        <b class="text-center pt-2">CHILDREN COUNT&nbsp;:</b>
-                    </div>
-                    <div class="col-8 ml-auto text-center">
-                        <span>@Model.ChildrenCount</span>
-                        <hr class="m-1" />
-                    </div>
-                </div>
+                        <div class="row">
+                            <div class="col-12 col-sm-4">
+                                <b class="text-center pt-2">ADULT COUNT</b>
+                            </div>
+                            <div class="col-sm-8 col-12 ml-auto text-md-center">
+                                <span>@Model.AdultCount</span>
+                                <hr class="m-1" />
+                            </div>
+                        </div>
 
-                <div class="row">
-                    <div class="col">
-                        <b class="text-center pt-2">SENIOR COUNT&nbsp;:</b>
                     </div>
-                    <div class="col-8 ml-auto text-center">
-                        <span>@Model.SeniorCount</span>
-                        <hr class="m-1" />
-                    </div>
-                </div>
+                    <div class="col-md-6">
 
-                <div class="row">
-                    <div class="col">
-                        <b class="text-center pt-2">ADULT COUNT&nbsp;:</b>
-                    </div>
-                    <div class="col-8 ml-auto text-center">
-                        <span>@Model.AdultCount</span>
-                        <hr class="m-1" />
-                    </div>
-                </div>
 
-                <div class="row">
-                    <div class="col">
-                        <b class="text-center pt-2">CLASS&nbsp;:</b>
-                    </div>
-                    <div class="col-8 ml-auto text-center">
-                        <span>@Model.AirplaneClass.Class class</span>
-                        <hr class="m-1" />
-                    </div>
-                </div>
+                        <div class="row">
+                            <div class="col-12 col-sm-4">
+                                <b class="text-center pt-2">CLASS</b>
+                            </div>
+                            <div class="col-12 col-sm-8 ml-auto text-md-center">
+                                <span>@Model.AirplaneClass.Class class</span>
+                                <hr class="m-1" />
+                            </div>
+                        </div>
 
-                <div class="row">
-                    <div class="col">
-                        <b class="text-center pt-2">ORDER DATE&nbsp;:</b>
-                    </div>
-                    <div class="col-8 ml-auto text-center">
-                        <span>@Model.OrderDate.ToString("dd/MM/yyyy")</span>
-                        <hr class="m-1" />
-                    </div>
-                </div>
+                        <div class="row">
+                            <div class="col-12 col-sm-4">
+                                <b class="text-center pt-2">ORDER DATE</b>
+                            </div>
+                            <div class="col-12 col-sm-8 ml-auto text-md-center">
+                                <span>@Model.OrderDate.ToString("dd/MM/yyyy")</span>
+                                <hr class="m-1" />
+                            </div>
+                        </div>
 
-                <div class="row">
-                    <div class="col">
-                        <b class="text-center pt-2">SKYMILE&nbsp;:</b>
-                    </div>
-                    <div class="col-8 ml-auto text-center">
-                        @{
-                            int totalSkymile = 0;
-                            foreach (FlightSchedule flightSchedule in Model.FlightSchedules)
-                            {
-                                totalSkymile = flightSchedule.Route.SkyMiles + totalSkymile;
-                            }
-                            <span>@(totalSkymile) </span>
-                        }
-                        <hr class="m-1" />
-                    </div>
-                </div>
+                        <div class="row">
+                            <div class="col-12 col-sm-4">
+                                <b class="text-center pt-2">SKYMILE</b>
+                            </div>
+                            <div class="col-12 col-sm-8 ml-auto text-md-center">
+                                @{
+                                    int totalSkymile = 0;
+                                    foreach (FlightSchedule flightSchedule in Model.FlightSchedules)
+                                    {
+                                        totalSkymile = flightSchedule.Route.SkyMiles + totalSkymile;
+                                    }
+                                    <span>@(totalSkymile) </span>
+                                }
+                                <hr class="m-1" />
+                            </div>
+                        </div>
 
-                <div class="row">
-                    <div class="col">
-                        <b class="text-center pt-2">TOTAL COST&nbsp;:</b>
-                    </div>
-                    <div class="col-8 ml-auto text-center">
-                        <span>$&nbsp;</span><span>@Model.TotalCost</span>
-                        <hr class="m-1" />
+                        <div class="row">
+                            <div class="col-12 col-sm-4">
+                                <b class="text-center pt-2">TOTAL COST</b>
+                            </div>
+                            <div class="col-12 col-sm-8 ml-auto text-md-center">
+                                <span>$&nbsp;</span><span>@Model.TotalCost</span>
+                                <hr class="m-1" />
+                            </div>
+                        </div>
+
+
+
                     </div>
                 </div>
-                <div class="row justify-content-center">
+                
+
+                <div class="row justify-content-center pt-3">
                     <a class="btn btn-outline-info" data-toggle="collapse" href="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
                         Flight Details
                     </a>
@@ -176,31 +174,31 @@
                 <div class="justify-content-center">
                     @if (Model.Status == "Blocked")
                     {
-                    <div class="d-md-flex justify-content-md-around">
+                        <div class="d-md-flex justify-content-md-around">
 
-                        @Html.ActionLink("Cancellation", "Cancelled", "Ticket", new { ticketCode = Model.TicketCode }, new { @class = "btn danger-color-dark d-flex" })
+                            @Html.ActionLink("Cancellation", "Cancelled", "Ticket", new { ticketCode = Model.TicketCode }, new { @class = "btn danger-color-dark d-flex" })
 
-                        <button class="btn teal d-flex" type="submit" name="action">
-                            Confirm Ticket
-                        </button>
+                            <button class="btn teal d-flex" type="submit" name="action">
+                                Confirm Ticket
+                            </button>
 
-                        @Html.ActionLink("Confirm Ticket", "ConfirmTicket", "Ticket", new { ticketCode = Model.TicketCode }, new { @class = "btn teal d-flex" })
-                    </div>
+                            @Html.ActionLink("Confirm Ticket", "ConfirmTicket", "Ticket", new { ticketCode = Model.TicketCode }, new { @class = "btn teal d-flex" })
+                        </div>
                     }
                     else if (Model.Status == "Reversed")
                     {
-                    <div class="d-md-flex justify-content-md-around">
+                        <div class="d-md-flex justify-content-md-around">
 
-                        @Html.ActionLink("Cancellation", "Cancelled", "Ticket", new { ticketCode = Model.TicketCode }, new { @class = "btn danger-color-dark d-flex" })
+                            @Html.ActionLink("Cancellation", "Cancelled", "Ticket", new { ticketCode = Model.TicketCode }, new { @class = "btn danger-color-dark d-flex" })
 
-                        <button class="btn teal d-flex" type="submit" name="action">
-                            Reschedule Ticket
-                        </button>
-                    </div>
+                            <button class="btn teal d-flex" type="submit" name="action">
+                                Reschedule Ticket
+                            </button>
+                        </div>
                     }
                     else if (Model.Status == "Cancelled")
                     {
-                        <h4 class="text-center">Tickets cancelled</h4>
+                        <h4 class="text-center"><b class="text-center pt-2">STATUS:&nbsp;<span>@Model.Status</span></b></h4>
                         <div class="text-center">
                             <a class="btn-outline-default btn teal" href="/../Home">
                                 Home Page

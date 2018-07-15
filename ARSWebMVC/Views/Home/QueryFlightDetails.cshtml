@@ -1,0 +1,45 @@
+﻿
+@{
+    ViewBag.Title = "QueryFlightDetails";
+}
+<section class="">
+    <div class="container mt-5">
+        <div class="card  animated wow fadeIn">
+            <div class="card-body">
+                <h5 class="mb-5">Query Flight Details</h5>
+                <!-- Default form grid -->
+                @using (Html.BeginForm("FlightStatus", "Home", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+                {
+                    <!-- Grid row -->
+                    <div class="row">
+                        <!-- Grid column -->
+                        <div class=" col-sm-12 col-md">
+                            <!-- Default input -->
+                            <label>Airplane Code :</label>
+                            <input type="text" class="form-control" name="airplaneCode" placeholder="">
+                        </div>
+                        <div class="col col-sm-2">
+                            
+                        </div>
+                        <div class=" col-sm-12 col-md ">
+                            <!-- Default input -->
+                            <label>Pick date :</label>
+                            <input type="date" name="bday" min="1000-01-01" max="3000-12-31" class="form-control">
+                        </div>
+                        <!-- Grid column -->
+                    </div>
+                    <!-- Default unchecked -->
+                  
+                        <h2 class="text-danger text-center">@ViewBag.FlightStatusErrorMessage</h2>
+                    
+                    <div class="text-center mt-5">
+                        <button class="btn teal" type="submit"><i class="fas fa-search prefix mr-3"></i>Search</button>
+                    </div>
+                }
+
+            </div>
+        </div>
+    </div>
+</section>
+
+
