@@ -12,11 +12,21 @@ namespace ARSWebMVC.Controllers
         DBUserEntities db = new DBUserEntities();
         // GET: Ticket
         public ActionResult Index() {
-            return View();
+
+            if (Session["UserProfile"] == null)
+            {
+                
+                return RedirectToAction("Login", "UserAccount", ViewBag.ErrorMessage = "Please Login");
+            }
+            else {
+                return View();
+            }
+
         }
         [HttpPost]
         public ActionResult Index(FormCollection form)
         {
+            if (Session["UserProfile"] == null) return RedirectToAction("Login","UserAccount");
             var code = form["txtConfirmationCode"];
             if (code == null || code == "")
             {
@@ -48,6 +58,43 @@ namespace ARSWebMVC.Controllers
             else
             {
                 return View("Index");
+            }
+        }
+
+        public ActionResult Cancelled(string ticketCode) {
+           
+            var rs = db.Tickets.SingleOrDefault(s => s.TicketCode == ticketCode);
+
+            if (rs != null)
+            {
+                rs.Status = "Cancelled";
+                
+                db.SaveChanges();
+
+                return RedirectToAction("TicketDetail", rs);
+            }
+            else
+            {
+                return RedirectToAction("TicketDetail");
+            }
+        }
+
+        public ActionResult ConfirmTicket(string ticketCode)
+        {
+
+            var rs = db.Tickets.SingleOrDefault(s => s.TicketCode == ticketCode);
+
+            if (rs != null)
+            {
+                rs.Status = "Reversed";
+
+                db.SaveChanges();
+
+                return RedirectToAction("TicketDetail", rs);
+            }
+            else
+            {
+                return RedirectToAction("TicketDetail");
             }
         }
     }

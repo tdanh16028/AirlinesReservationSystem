@@ -1,0 +1,56 @@
+﻿@model List<ARSWebMVC.Models.FlightSchedule>
+
+@{
+    ViewBag.Title = "FlightStatus";
+}
+<section class="pt-5">
+        <div class="container">
+            <div class="card p-5  animated wow fadeIn">
+                <h3 class="text-center mb-5">Flight Status</h3>
+                <div class=" w-100 table-scroll">
+
+                    <table class="table table-hover">
+
+                        <!--Table head-->
+                        <thead>
+                            <tr>
+                                <th>FLIGHTCODE</th>
+                                <th>FROM</th>
+                                <th>TO</th>
+                                <th class="text-center">First Class Available</th>
+                                <th class="text-center">Business Class Available</th>
+                                <th class="text-center">Clubt Class Available</th>
+                                <th class="text-right">SkyMile</th>
+
+                            </tr>
+                        </thead>
+                        <!--Table head-->
+                        <!--Table body-->
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <th class="">@item.AirplaneCode</th>
+
+                                    <td class="align-self-center">@item.Route.City.City1</td>
+                                    <td class="align-self-center">@item.Route.City1.City1</td>
+                                    <td class="text-center"><a class=" p-3">@item.FirstSeatAvail</a></td>
+                                    <td class="text-center"><a class="p-3">@item.BusinessSeatAvail</a></td>
+                                    <td class="text-center"><a class=" p-3">@item.ClubSeatAvail</a></td>
+                                    <td class="text-right">@item.Route.SkyMiles</td>
+                                </tr>
+                            }
+                        </tbody>
+                        <!--Table body-->
+
+                    </table>
+                </div>
+                <div class="text-center">
+                    <a class="btn-outline-default btn teal" href="../Home/QueryFlightDetails">
+                        Back
+                    </a>
+                </div>
+            </div>
+        </div>
+    
+    </section>

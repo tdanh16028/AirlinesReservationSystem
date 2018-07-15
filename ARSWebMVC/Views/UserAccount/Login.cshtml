@@ -3,9 +3,9 @@
     ViewBag.Title = "Login";
 }
 @*<section id="func-login" class="mt-5 mb-5">*@
-<section id="func-login">
+<section id="func-login" class="mt-5 mb-5">
     @*<div id="func-login-col" class="col-md-3 m-auto card">*@
-    <div id="func-login-col" class="m-auto">
+    <div id="func-login-col" class="m-auto col-md-4 card">
         <!-- Card body -->
         <!-- Material form register -->
         @using (Html.BeginForm("Login", "UserAccount", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
@@ -34,7 +34,7 @@
             </div>
 
             <div class="text-center py-4 mt-3">
-                <button class="btn teal" type="submit">Login</button>
+                <button class="btn teal" id="btn_login_submit" type="submit">Login</button>
             </div>
         }
         <!-- Material form register -->

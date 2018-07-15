@@ -25,6 +25,14 @@ namespace eProject_main.Controllers
             return View();
         }
 
+        //GET: Customer/LoginPartial
+        public ActionResult LoginPartial()
+        {
+            return PartialView("Login");
+        }
+
+
+
         // POST: Customer/Login
         [HttpPost]
         public ActionResult Login([Bind(Include = "UserID, Password")] Profile profile)
@@ -50,6 +58,7 @@ namespace eProject_main.Controllers
                         SkyMiles = Convert.ToInt32(res.SkyMiles)
                     };
                     Session["UserProfile"] = userProfile;
+                    ViewBag.LoginTitle = "Success";
                     return RedirectToAction( "Index","Home");
                 }
                 else
