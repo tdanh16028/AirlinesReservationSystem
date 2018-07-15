@@ -1,0 +1,20 @@
+﻿@using ARSWebMVC.Models
+@model Queue<List<ARSWebMVC.Models.Route>>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+Start time: @ViewBag.StartTime</p>
+<p>End time: @ViewBag.EndTime</p>
+<p>Total sec: @ViewBag.TotalSec</p>
+
+@foreach (var lstRoute in Model)
+{
+    <h3>Route count: @lstRoute.Count</h3>
+    foreach (var route in lstRoute)
+    {
+        <p>From @route.CityA.Name to @route.CityB.Name</p>
+    }
+}
