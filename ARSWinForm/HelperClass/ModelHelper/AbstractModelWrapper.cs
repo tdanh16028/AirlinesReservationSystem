@@ -12,6 +12,7 @@ namespace ARSWinForm.HelperClass.ModelHelper
     abstract class AbstractModelWrapper<T>
     {
         protected APIWrapper<T>.ARSAPI MODEL_API = 0;
+        private string errorMessage;
 
         public async Task<List<T>> List()
         {
@@ -33,6 +34,7 @@ namespace ARSWinForm.HelperClass.ModelHelper
                 return lstResult;
             }
 
+            SaveErrorMessage(response);
             return null;
         }
 
@@ -49,6 +51,7 @@ namespace ARSWinForm.HelperClass.ModelHelper
                 return lstResult;
             }
 
+            SaveErrorMessage(response);
             return default(T);
         }
 
@@ -67,6 +70,7 @@ namespace ARSWinForm.HelperClass.ModelHelper
                 return true;
             }
 
+            SaveErrorMessage(response);
             return false;
         }
 
@@ -78,13 +82,14 @@ namespace ARSWinForm.HelperClass.ModelHelper
         public async Task<bool> Post(T data)
         {
             APIWrapper<T> apiWrapper = new APIWrapper<T>(MODEL_API);
-            HttpResponseMessage response = await apiWrapper.PUT(data);
+            HttpResponseMessage response = await apiWrapper.POST(data);
 
             if (response.IsSuccessStatusCode)
             {
                 return true;
             }
 
+            SaveErrorMessage(response);
             return false;
         }
 
@@ -99,12 +104,25 @@ namespace ARSWinForm.HelperClass.ModelHelper
                 return true;
             }
 
+            SaveErrorMessage(response);
             return false;
         }
 
         public async Task<bool> Delete(int id)
         {
             return await Delete(id.ToString());
+        }
+
+        private void SaveErrorMessage(HttpResponseMessage response)
+        {
+            string res = response.Content.ReadAsStringAsync().Result;
+            JObject jObject = JObject.Parse(res);
+            errorMessage = jObject["ExceptionMessage"].ToString();
+        }
+
+        public string GetErrorMessage()
+        {
+            return errorMessage;
         }
     }
 }
