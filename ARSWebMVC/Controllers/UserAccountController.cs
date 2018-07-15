@@ -35,7 +35,7 @@ namespace eProject_main.Controllers
 
         // POST: Customer/Login
         [HttpPost]
-        public ActionResult Login([Bind(Include = "UserID, Password")] Profile profile)
+        public ActionResult Login(LoginModels profile)
         {
             // Check user exist
             if (profile.UserID != null && profile.Password != null)
