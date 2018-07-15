@@ -55,7 +55,7 @@ namespace ARSWebAPI.Controllers
             {
                 db.SaveChanges();
             }
-            catch (DbUpdateConcurrencyException)
+            catch (Exception ex)
             {
                 if (!TicketExists(id))
                 {
@@ -63,14 +63,9 @@ namespace ARSWebAPI.Controllers
                 }
                 else
                 {
-                    throw;
+                    while (ex.InnerException != null) ex = ex.InnerException;
+                    return Content(HttpStatusCode.InternalServerError, ex.Message);
                 }
-            }
-            catch (DbUpdateException ex)
-            {
-                Exception realEx = ex;
-                while (realEx.InnerException != null) realEx = realEx.InnerException;
-                return InternalServerError(realEx);
             }
 
             return StatusCode(HttpStatusCode.NoContent);
@@ -90,15 +85,10 @@ namespace ARSWebAPI.Controllers
                 db.Tickets.Add(ticket);
                 db.SaveChanges();
             }
-            catch (DbUpdateException ex)
-            {
-                Exception realEx = ex;
-                while (realEx.InnerException != null) realEx = realEx.InnerException;
-                return InternalServerError(realEx);
-            }
             catch (Exception ex)
             {
-                throw ex;
+                while (ex.InnerException != null) ex = ex.InnerException;
+                return Content(HttpStatusCode.InternalServerError, ex.Message);
             }
 
             return CreatedAtRoute("DefaultApi", new { id = ticket.ID }, ticket);

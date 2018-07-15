@@ -55,7 +55,7 @@ namespace ARSWebAPI.Controllers
             {
                 db.SaveChanges();
             }
-            catch (DbUpdateConcurrencyException)
+            catch (Exception ex)
             {
                 if (!AdminAccountExists(id))
                 {
@@ -63,7 +63,8 @@ namespace ARSWebAPI.Controllers
                 }
                 else
                 {
-                    throw;
+                    while (ex.InnerException != null) ex = ex.InnerException;
+                    return Content(HttpStatusCode.InternalServerError, ex.Message);
                 }
             }
 
@@ -79,8 +80,23 @@ namespace ARSWebAPI.Controllers
                 return BadRequest(ModelState);
             }
 
-            db.AdminAccounts.Add(adminAccount);
-            db.SaveChanges();
+            try
+            {
+                db.AdminAccounts.Add(adminAccount);
+                db.SaveChanges();
+            }
+            catch (Exception ex)
+            {
+                if (IsDuplicateUsername(adminAccount.Username))
+                {
+                    return Content(HttpStatusCode.Conflict, "Username already existed!");
+                }
+                else
+                {
+                    while (ex.InnerException != null) ex = ex.InnerException;
+                    return Content(HttpStatusCode.InternalServerError, ex.Message);
+                }
+            }
 
             return CreatedAtRoute("DefaultApi", new { id = adminAccount.ID }, adminAccount);
         }
@@ -114,5 +130,11 @@ namespace ARSWebAPI.Controllers
         {
             return db.AdminAccounts.Count(e => e.ID == id) > 0;
         }
+
+        private bool IsDuplicateUsername(string username)
+        {
+            return db.AdminAccounts.Count(e => e.Username == username) > 0;
+        }
+
     }
 }

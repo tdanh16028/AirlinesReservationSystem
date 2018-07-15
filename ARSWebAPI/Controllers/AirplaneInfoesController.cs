@@ -72,15 +72,16 @@ namespace ARSWebAPI.Controllers
             {
                 db.SaveChanges();
             }
-            catch (DbUpdateConcurrencyException)
+            catch (Exception ex)
             {
-                if (!AirplaneInfoExists(id))
+                if (!AirplaneInfoExists(airplaneInfo.AirplaneTypeID, airplaneInfo.ClassID))
                 {
                     return NotFound();
                 }
                 else
                 {
-                    throw;
+                    while (ex.InnerException != null) ex = ex.InnerException;
+                    return Content(HttpStatusCode.InternalServerError, ex.Message);
                 }
             }
 
@@ -102,15 +103,16 @@ namespace ARSWebAPI.Controllers
             {
                 db.SaveChanges();
             }
-            catch (DbUpdateException)
+            catch (Exception ex)
             {
-                if (AirplaneInfoExists(airplaneInfo.AirplaneTypeID))
+                if (AirplaneInfoExists(airplaneInfo.AirplaneTypeID, airplaneInfo.ClassID))
                 {
-                    return Conflict();
+                    return Content(HttpStatusCode.Conflict, "This airplane type already existed in the database!");
                 }
                 else
                 {
-                    throw;
+                    while (ex.InnerException != null) ex = ex.InnerException;
+                    return Content(HttpStatusCode.InternalServerError, ex.Message);
                 }
             }
 
@@ -142,9 +144,9 @@ namespace ARSWebAPI.Controllers
             base.Dispose(disposing);
         }
 
-        private bool AirplaneInfoExists(int id)
+        private bool AirplaneInfoExists(int airplaneTypeID, int classID)
         {
-            return db.AirplaneInfoes.Count(e => e.AirplaneTypeID == id) > 0;
+            return db.AirplaneInfoes.Count(e => e.AirplaneTypeID == airplaneTypeID && e.ClassID == classID) > 0;
         }
     }
 }

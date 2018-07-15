@@ -55,7 +55,7 @@ namespace ARSWebAPI.Controllers
             {
                 db.SaveChanges();
             }
-            catch (DbUpdateConcurrencyException)
+            catch (Exception ex)
             {
                 if (!ProfileExists(id))
                 {
@@ -63,7 +63,8 @@ namespace ARSWebAPI.Controllers
                 }
                 else
                 {
-                    throw;
+                    while (ex.InnerException != null) ex = ex.InnerException;
+                    return Content(HttpStatusCode.InternalServerError, ex.Message);
                 }
             }
 
@@ -79,8 +80,16 @@ namespace ARSWebAPI.Controllers
                 return BadRequest(ModelState);
             }
 
-            db.Profiles.Add(profile);
-            db.SaveChanges();
+            try
+            {
+                db.Profiles.Add(profile);
+                db.SaveChanges();
+            }
+            catch (Exception ex)
+            {
+                while (ex.InnerException != null) ex = ex.InnerException;
+                return Content(HttpStatusCode.InternalServerError, ex.Message);
+            }
 
             return CreatedAtRoute("DefaultApi", new { id = profile.ID }, profile);
         }
