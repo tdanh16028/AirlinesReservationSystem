@@ -53,5 +53,20 @@ namespace ARSWinForm
         {
             OpenChildForm(new FormAirplaneList());
         }
+
+        private void classOfSeatToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            OpenChildForm(new FormAirplaneClassList());
+        }
+
+        private void routeToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            OpenChildForm(new FormRouteList());
+        }
+
+        private void flightScheduleToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            OpenChildForm(new FormFlightScheduleList());
+        }
     }
 }

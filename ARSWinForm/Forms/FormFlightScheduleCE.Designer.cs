@@ -31,9 +31,9 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.cboActive = new System.Windows.Forms.RadioButton();
-            this.cboIsActive = new System.Windows.Forms.RadioButton();
-            this.cboAirplane = new System.Windows.Forms.ComboBox();
+            this.rbtnActive = new System.Windows.Forms.RadioButton();
+            this.rbtnInActive = new System.Windows.Forms.RadioButton();
+            this.cboAirplaneCode = new System.Windows.Forms.ComboBox();
             this.cboRoute = new System.Windows.Forms.ComboBox();
             this.btnSubmit = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
@@ -67,35 +67,35 @@
             this.label3.TabIndex = 2;
             this.label3.Text = "Departure Date";
             // 
-            // cboActive
+            // rbtnActive
             // 
-            this.cboActive.AutoSize = true;
-            this.cboActive.Location = new System.Drawing.Point(78, 337);
-            this.cboActive.Name = "cboActive";
-            this.cboActive.Size = new System.Drawing.Size(67, 21);
-            this.cboActive.TabIndex = 4;
-            this.cboActive.TabStop = true;
-            this.cboActive.Text = "Active";
-            this.cboActive.UseVisualStyleBackColor = true;
+            this.rbtnActive.AutoSize = true;
+            this.rbtnActive.Location = new System.Drawing.Point(78, 337);
+            this.rbtnActive.Name = "rbtnActive";
+            this.rbtnActive.Size = new System.Drawing.Size(67, 21);
+            this.rbtnActive.TabIndex = 4;
+            this.rbtnActive.TabStop = true;
+            this.rbtnActive.Text = "Active";
+            this.rbtnActive.UseVisualStyleBackColor = true;
             // 
-            // cboIsActive
+            // rbtnInActive
             // 
-            this.cboIsActive.AutoSize = true;
-            this.cboIsActive.Location = new System.Drawing.Point(251, 337);
-            this.cboIsActive.Name = "cboIsActive";
-            this.cboIsActive.Size = new System.Drawing.Size(81, 21);
-            this.cboIsActive.TabIndex = 5;
-            this.cboIsActive.TabStop = true;
-            this.cboIsActive.Text = "Is Active";
-            this.cboIsActive.UseVisualStyleBackColor = true;
+            this.rbtnInActive.AutoSize = true;
+            this.rbtnInActive.Location = new System.Drawing.Point(251, 337);
+            this.rbtnInActive.Name = "rbtnInActive";
+            this.rbtnInActive.Size = new System.Drawing.Size(78, 21);
+            this.rbtnInActive.TabIndex = 5;
+            this.rbtnInActive.TabStop = true;
+            this.rbtnInActive.Text = "InActive";
+            this.rbtnInActive.UseVisualStyleBackColor = true;
             // 
-            // cboAirplane
+            // cboAirplaneCode
             // 
-            this.cboAirplane.FormattingEnabled = true;
-            this.cboAirplane.Location = new System.Drawing.Point(166, 57);
-            this.cboAirplane.Name = "cboAirplane";
-            this.cboAirplane.Size = new System.Drawing.Size(166, 24);
-            this.cboAirplane.TabIndex = 6;
+            this.cboAirplaneCode.FormattingEnabled = true;
+            this.cboAirplaneCode.Location = new System.Drawing.Point(166, 57);
+            this.cboAirplaneCode.Name = "cboAirplaneCode";
+            this.cboAirplaneCode.Size = new System.Drawing.Size(166, 24);
+            this.cboAirplaneCode.TabIndex = 6;
             // 
             // cboRoute
             // 
@@ -113,6 +113,7 @@
             this.btnSubmit.TabIndex = 8;
             this.btnSubmit.Text = "Submit";
             this.btnSubmit.UseVisualStyleBackColor = true;
+            this.btnSubmit.Click += new System.EventHandler(this.btnSubmit_Click);
             // 
             // btnCancel
             // 
@@ -122,6 +123,7 @@
             this.btnCancel.TabIndex = 9;
             this.btnCancel.Text = "Cancel";
             this.btnCancel.UseVisualStyleBackColor = true;
+            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
             // dateTimePicker1
             // 
@@ -132,7 +134,7 @@
             this.dateTimePicker1.Size = new System.Drawing.Size(166, 22);
             this.dateTimePicker1.TabIndex = 10;
             // 
-            // CE_FlightSchedule
+            // FormFlightScheduleCE
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -141,14 +143,15 @@
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnSubmit);
             this.Controls.Add(this.cboRoute);
-            this.Controls.Add(this.cboAirplane);
-            this.Controls.Add(this.cboIsActive);
-            this.Controls.Add(this.cboActive);
+            this.Controls.Add(this.cboAirplaneCode);
+            this.Controls.Add(this.rbtnInActive);
+            this.Controls.Add(this.rbtnActive);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Name = "CE_FlightSchedule";
+            this.Name = "FormFlightScheduleCE";
             this.Text = "CE_FlightSchedule";
+            this.Load += new System.EventHandler(this.FormFlightScheduleCE_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -159,9 +162,9 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.RadioButton cboActive;
-        private System.Windows.Forms.RadioButton cboIsActive;
-        private System.Windows.Forms.ComboBox cboAirplane;
+        private System.Windows.Forms.RadioButton rbtnActive;
+        private System.Windows.Forms.RadioButton rbtnInActive;
+        private System.Windows.Forms.ComboBox cboAirplaneCode;
         private System.Windows.Forms.ComboBox cboRoute;
         private System.Windows.Forms.Button btnSubmit;
         private System.Windows.Forms.Button btnCancel;

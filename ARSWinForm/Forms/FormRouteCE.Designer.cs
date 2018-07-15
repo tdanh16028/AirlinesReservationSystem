@@ -36,8 +36,8 @@
             this.cboToCity = new System.Windows.Forms.ComboBox();
             this.numSkyMiles = new System.Windows.Forms.NumericUpDown();
             this.numBasePrice = new System.Windows.Forms.NumericUpDown();
-            this.cboActive = new System.Windows.Forms.RadioButton();
-            this.cboIsActive = new System.Windows.Forms.RadioButton();
+            this.rbtnActive = new System.Windows.Forms.RadioButton();
+            this.rbtnInActive = new System.Windows.Forms.RadioButton();
             this.btnSubmit = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.numSkyMiles)).BeginInit();
@@ -99,6 +99,11 @@
             // numSkyMiles
             // 
             this.numSkyMiles.Location = new System.Drawing.Point(164, 196);
+            this.numSkyMiles.Maximum = new decimal(new int[] {
+            9999999,
+            0,
+            0,
+            0});
             this.numSkyMiles.Name = "numSkyMiles";
             this.numSkyMiles.Size = new System.Drawing.Size(120, 22);
             this.numSkyMiles.TabIndex = 7;
@@ -106,31 +111,36 @@
             // numBasePrice
             // 
             this.numBasePrice.Location = new System.Drawing.Point(164, 279);
+            this.numBasePrice.Maximum = new decimal(new int[] {
+            9999999,
+            0,
+            0,
+            0});
             this.numBasePrice.Name = "numBasePrice";
             this.numBasePrice.Size = new System.Drawing.Size(120, 22);
             this.numBasePrice.TabIndex = 8;
             // 
-            // cboActive
+            // rbtnActive
             // 
-            this.cboActive.AutoSize = true;
-            this.cboActive.Location = new System.Drawing.Point(55, 356);
-            this.cboActive.Name = "cboActive";
-            this.cboActive.Size = new System.Drawing.Size(67, 21);
-            this.cboActive.TabIndex = 9;
-            this.cboActive.TabStop = true;
-            this.cboActive.Text = "Active";
-            this.cboActive.UseVisualStyleBackColor = true;
+            this.rbtnActive.AutoSize = true;
+            this.rbtnActive.Location = new System.Drawing.Point(55, 356);
+            this.rbtnActive.Name = "rbtnActive";
+            this.rbtnActive.Size = new System.Drawing.Size(67, 21);
+            this.rbtnActive.TabIndex = 9;
+            this.rbtnActive.TabStop = true;
+            this.rbtnActive.Text = "Active";
+            this.rbtnActive.UseVisualStyleBackColor = true;
             // 
-            // cboIsActive
+            // rbtnInActive
             // 
-            this.cboIsActive.AutoSize = true;
-            this.cboIsActive.Location = new System.Drawing.Point(184, 356);
-            this.cboIsActive.Name = "cboIsActive";
-            this.cboIsActive.Size = new System.Drawing.Size(81, 21);
-            this.cboIsActive.TabIndex = 10;
-            this.cboIsActive.TabStop = true;
-            this.cboIsActive.Text = "Is Active";
-            this.cboIsActive.UseVisualStyleBackColor = true;
+            this.rbtnInActive.AutoSize = true;
+            this.rbtnInActive.Location = new System.Drawing.Point(184, 356);
+            this.rbtnInActive.Name = "rbtnInActive";
+            this.rbtnInActive.Size = new System.Drawing.Size(78, 21);
+            this.rbtnInActive.TabIndex = 10;
+            this.rbtnInActive.TabStop = true;
+            this.rbtnInActive.Text = "InActive";
+            this.rbtnInActive.UseVisualStyleBackColor = true;
             // 
             // btnSubmit
             // 
@@ -140,6 +150,7 @@
             this.btnSubmit.TabIndex = 11;
             this.btnSubmit.Text = "Submit";
             this.btnSubmit.UseVisualStyleBackColor = true;
+            this.btnSubmit.Click += new System.EventHandler(this.btnSubmit_Click);
             // 
             // btnCancel
             // 
@@ -149,16 +160,17 @@
             this.btnCancel.TabIndex = 12;
             this.btnCancel.Text = "Cancel";
             this.btnCancel.UseVisualStyleBackColor = true;
+            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
-            // CE_Route
+            // FormRouteCE
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(342, 450);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnSubmit);
-            this.Controls.Add(this.cboIsActive);
-            this.Controls.Add(this.cboActive);
+            this.Controls.Add(this.rbtnInActive);
+            this.Controls.Add(this.rbtnActive);
             this.Controls.Add(this.numBasePrice);
             this.Controls.Add(this.numSkyMiles);
             this.Controls.Add(this.cboToCity);
@@ -167,8 +179,9 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Name = "CE_Route";
+            this.Name = "FormRouteCE";
             this.Text = "CE_Route";
+            this.Load += new System.EventHandler(this.FormRouteCE_Load);
             ((System.ComponentModel.ISupportInitialize)(this.numSkyMiles)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numBasePrice)).EndInit();
             this.ResumeLayout(false);
@@ -186,8 +199,8 @@
         private System.Windows.Forms.ComboBox cboToCity;
         private System.Windows.Forms.NumericUpDown numSkyMiles;
         private System.Windows.Forms.NumericUpDown numBasePrice;
-        private System.Windows.Forms.RadioButton cboActive;
-        private System.Windows.Forms.RadioButton cboIsActive;
+        private System.Windows.Forms.RadioButton rbtnActive;
+        private System.Windows.Forms.RadioButton rbtnInActive;
         private System.Windows.Forms.Button btnSubmit;
         private System.Windows.Forms.Button btnCancel;
     }
