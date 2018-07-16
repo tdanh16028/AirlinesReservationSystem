@@ -1,4 +1,4 @@
-﻿@model ARSWebMVC.Models.Profile
+﻿@model ARSWebMVC.Models.LoginModels
 @{
     ViewBag.Title = "Login";
 }
@@ -16,6 +16,11 @@
                 <span class="text-danger">
                     @ViewBag.ErrorMessage
                 </span>
+                @if (@TempData["Status"] != null)
+                {
+                    <span class="text-danger">Please Login</span>
+                    TempData.Keep("Status");
+                }
             </div>
             <!-- Material input text -->
             <div class="md-form">
@@ -42,5 +47,4 @@
     </div>
     <!-- Button trigger modal -->
 </section>
-<!-- Card -->
 <!-- Card -->

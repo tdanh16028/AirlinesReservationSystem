@@ -35,8 +35,20 @@ namespace eProject_main.Controllers
 
         // POST: Customer/Login
         [HttpPost]
-        public ActionResult Login([Bind(Include = "UserID, Password")] Profile profile)
+        public ActionResult Login(LoginModels profile)
         {
+            string action = "Index";
+            string controller = "";
+            var tmp = TempData["Status"] as string;
+            if (tmp == "Ticket")
+            {
+                controller = "Ticket";
+            }
+            else
+            {
+                controller = "Home";
+            }
+
             // Check user exist
             if (profile.UserID != null && profile.Password != null)
             {
@@ -58,8 +70,8 @@ namespace eProject_main.Controllers
                         SkyMiles = Convert.ToInt32(res.SkyMiles)
                     };
                     Session["UserProfile"] = userProfile;
-                    ViewBag.LoginTitle = "Success";
-                    return RedirectToAction( "Index","Home");
+
+                    return RedirectToAction( action , controller);
                 }
                 else
                 {

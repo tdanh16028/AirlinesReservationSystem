@@ -207,6 +207,7 @@
     <Compile Include="Models\FlightSchedule.cs">
       <DependentUpon>DBUserModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\LoginModels.cs" />
     <Compile Include="Models\Profile.cs">
       <DependentUpon>DBUserModel.tt</DependentUpon>
     </Compile>

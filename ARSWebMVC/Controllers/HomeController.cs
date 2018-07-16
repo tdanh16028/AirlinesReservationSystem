@@ -41,10 +41,17 @@ namespace ARSWebMVC.Controllers
         {
             return View();
         }
-
+        //Post FlightStatus from QueryFlightDetails
         [HttpPost]
         public ActionResult FlightStatus(string airplaneCode)
         {
+            // if airplaneCode == null => back to QueryFlightDetails
+            if (airplaneCode == null)
+            {
+                return RedirectToAction("QueryFlightDetails");
+            }
+
+            //Search in the database returns the list of airplane code is "airplaneCode",if not find returned error message
             List<FlightSchedule> rs = db.FlightSchedules.Where(s => s.AirplaneCode == airplaneCode).ToList();
             if (rs != null && rs.Count >0)
             {

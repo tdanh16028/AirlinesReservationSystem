@@ -10,15 +10,18 @@ namespace ARSWebMVC.Controllers
     public class TicketController : Controller
     {
         DBUserEntities db = new DBUserEntities();
+
+
         // GET: Ticket
         public ActionResult Index() {
-
+            
             if (Session["UserProfile"] == null)
             {
-                
-                return RedirectToAction("Login", "UserAccount", ViewBag.ErrorMessage = "Please Login");
+                TempData["Status"] = "Ticket";
+                return RedirectToAction("Login", "UserAccount");
             }
             else {
+                TempData["Status"] = "";
                 return View();
             }
 
