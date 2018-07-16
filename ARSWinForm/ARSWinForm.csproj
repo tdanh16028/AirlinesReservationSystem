@@ -312,6 +312,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <EntityDeploy Include="Model\DBUserModel.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
@@ -335,6 +336,20 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Image\icons8-administrator-male-26.png" />
+    <Content Include="Image\icons8-airport-24.png" />
+    <Content Include="Image\icons8-airport-48.png" />
+    <Content Include="Image\icons8-airport-64.png" />
+    <Content Include="Image\icons8-business-32.png" />
+    <Content Include="Image\icons8-calendar-16.png" />
+    <Content Include="Image\icons8-city-50.png" />
+    <Content Include="Image\icons8-delete-48.png" />
+    <Content Include="Image\icons8-export-50.png" />
+    <Content Include="Image\icons8-import-50.png" />
+    <Content Include="Image\icons8-passenger-26.png" />
+    <Content Include="Image\icons8-route-32.png" />
+    <Content Include="Image\icons8-ticket-50.png" />
+    <Content Include="Image\icons8-two-tickets-32.png" />
     <Content Include="Model\DBUserModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>DBUserModel.Context.cs</LastGenOutput>
@@ -345,6 +360,19 @@
       <DependentUpon>DBUserModel.edmx</DependentUpon>
       <LastGenOutput>DBUserModel.cs</LastGenOutput>
     </Content>
+    <None Include="Resources\icons8-passenger-26.png" />
+    <None Include="Resources\icons8-business-32.png" />
+    <None Include="Resources\icons8-delete-48.png" />
+    <None Include="Resources\icons8-two-tickets-32.png" />
+    <None Include="Resources\icons8-route-32.png" />
+    <None Include="Resources\icons8-city-50.png" />
+    <None Include="Resources\icons8-calendar-16.png" />
+    <None Include="Resources\icons8-airport-48.png" />
+    <None Include="Resources\icons8-airport-24.png" />
+    <None Include="Resources\icons8-ticket-50.png" />
+    <None Include="Resources\icons8-export-50.png" />
+    <None Include="Resources\icons8-import-50.png" />
+    <None Include="Resources\icons8-administrator-male-26.png" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
