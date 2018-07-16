@@ -41,6 +41,9 @@ namespace ARSWinForm
                 // Chon loai may bay (AirplaneType) tuong ung voi may bay nay
                 cboRoute.SelectedItem = lstAirplaneType.Where(at => at.RouteID == flightSchedule.RouteID).Single();
                 //cboRoute.SelectedItem = lstAirplaneType.Where(at => at.ID == flightSchedule.RouteID).Single();
+
+                dateTimePicker1.Value = flightSchedule.DepartureDate;
+
                 if (flightSchedule.IsActive)
                 {
                     // Neu may bay nay dang active thi check vao radio button Active
@@ -63,10 +66,10 @@ namespace ARSWinForm
 
         private async void btnSubmit_Click(object sender, System.EventArgs e)
         {
-            // Lay gia tri tren form gan vao account
-            flightSchedule.AirplaneCode =((Airplane)cboAirplaneCode.SelectedItem).ID.ToString();
+            // Lay gia tri tren form gan vao FlightSchedule
+            flightSchedule.AirplaneCode = ((Airplane)cboAirplaneCode.SelectedItem).AirplaneCode.ToString();
             flightSchedule.RouteID = ((Route)cboRoute.SelectedItem).ID;
-            flightSchedule.DepartureDate = DateTimePicker.
+            flightSchedule.DepartureDate = dateTimePicker1.Value.Date; 
             flightSchedule.IsActive = rbtnActive.Checked;
             // Tao mot API
             FlightScheduleWrapper flightScheduleWrapper = new FlightScheduleWrapper();
