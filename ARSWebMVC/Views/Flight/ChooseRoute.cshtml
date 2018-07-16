@@ -1,0 +1,19 @@
+﻿@using ARSWebMVC.Models
+@model Queue<List<ARSWebMVC.Models.Route>>
+
+@{
+    ViewBag.Title = "Choose Route";
+}
+
+<h2>Choose Route</h2>
+
+@foreach (List<ARSWebMVC.Models.Route> lstRoute in Model)
+{
+    using (Html.BeginForm("ChooseFlightSchedule", "Flight", new { lstRoute = lstRoute }, FormMethod.Post))
+    {
+        <div>
+            @lstRoute.First().CityA.Name to @lstRoute.Last().CityB.Name
+            <input type="submit" class="btn btn-outline-primary" value="Choose" />
+        </div>
+    }
+}

@@ -164,6 +164,7 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\FlightController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\TicketController.cs" />
     <Compile Include="Controllers\UserAccountController.cs" />
@@ -335,6 +336,8 @@
     <Content Include="Views\Home\TicketDetailTemp.cshtml" />
     <Content Include="Views\Home\QueryFlightDetails.cshtml" />
     <Content Include="Views\Home\FlightStatus.cshtml" />
+    <Content Include="Views\Flight\ChooseFlightSchedule.cshtml" />
+    <Content Include="Views\Flight\ChooseRoute.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
