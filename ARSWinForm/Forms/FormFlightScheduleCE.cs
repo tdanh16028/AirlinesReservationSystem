@@ -3,6 +3,7 @@ using ARSWinForm.HelperClass.ModelHelper;
 using ARSWinForm.Model;
 using System.Collections.Generic;
 using System.Windows.Forms;
+using System.Linq;
 
 namespace ARSWinForm
 {
@@ -38,8 +39,8 @@ namespace ARSWinForm
                 cboAirplaneCode.SelectedItem = flightSchedule.AirplaneCode;
 
                 // Chon loai may bay (AirplaneType) tuong ung voi may bay nay
-                cboRoute.SelectedItem = lstAirplaneType.Where(at => at.ID == airplane.TypeID).Single();
-
+                cboRoute.SelectedItem = lstAirplaneType.Where(at => at.RouteID == flightSchedule.RouteID).Single();
+                //cboRoute.SelectedItem = lstAirplaneType.Where(at => at.ID == flightSchedule.RouteID).Single();
                 if (flightSchedule.IsActive)
                 {
                     // Neu may bay nay dang active thi check vao radio button Active
