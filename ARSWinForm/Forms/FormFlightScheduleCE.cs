@@ -38,8 +38,9 @@ namespace ARSWinForm
                 // Dua airplane code len
                 cboAirplaneCode.SelectedItem = flightSchedule.AirplaneCode;
 
+                var rs = lstAirplaneType.Where(at => at.RouteID == flightSchedule.RouteID).Single();
                 // Chon loai may bay (AirplaneType) tuong ung voi may bay nay
-                cboRoute.SelectedItem = lstAirplaneType.Where(at => at.RouteID == flightSchedule.RouteID).Single();
+                cboRoute.SelectedItem = rs.Route.CityA.Name;
                 //cboRoute.SelectedItem = lstAirplaneType.Where(at => at.ID == flightSchedule.RouteID).Single();
 
                 dateTimePicker1.Value = flightSchedule.DepartureDate;
