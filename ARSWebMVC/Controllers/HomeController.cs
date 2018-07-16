@@ -16,7 +16,8 @@ namespace ARSWebMVC.Controllers
         }
 
         public ActionResult CheckingAvailability() {
-            return View();
+            List<City> lstCity = db.Cities.ToList();
+            return View(lstCity);
         }
 
         public ActionResult ListRoute()
