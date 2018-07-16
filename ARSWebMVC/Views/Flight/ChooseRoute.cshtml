@@ -1,19 +1,33 @@
-﻿@using ARSWebMVC.Models
+﻿
 @model Queue<List<ARSWebMVC.Models.Route>>
-
+@using ARSWebMVC.Models
 @{
     ViewBag.Title = "Choose Route";
 }
+<section>
+    <div class="container card p-5">
+        <h2 class="text-center">Choose Route</h2>
 
-<h2>Choose Route</h2>
+        @foreach (List<ARSWebMVC.Models.Route> lstRoute in Model)
+        {
+            using (Html.BeginForm("ChooseFlightSchedule", "Flight", new { lstRoute = lstRoute }, FormMethod.Post))
+            {
+                <div>
+                    @lstRoute.First().CityA.Name to @lstRoute.Last().CityB.Name
+                    Tong so chang: @lstRoute.Count
+                    Tong so Skymile: @lstRoute.Sum(r => r.SkyMiles)
+                    <hr />
+                    @foreach (ARSWebMVC.Models.Route route in lstRoute)
+                    {
+                    <div class="">
+                        <span class="text-center">FROM</span>
+                        <span class="text-center">@route.CityA.Name</span>
+                    </div>
+                    }
+                    <input type="submit" class="btn btn-outline-primary p-2" value="Choose" />
+                </div>
 
-@foreach (List<ARSWebMVC.Models.Route> lstRoute in Model)
-{
-    using (Html.BeginForm("ChooseFlightSchedule", "Flight", new { lstRoute = lstRoute }, FormMethod.Post))
-    {
-        <div>
-            @lstRoute.First().CityA.Name to @lstRoute.Last().CityB.Name
-            <input type="submit" class="btn btn-outline-primary" value="Choose" />
-        </div>
-    }
-}
+            }
+        }
+    </div>
+</section>
