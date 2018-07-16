@@ -35,6 +35,20 @@ namespace ARSWebAPI.Controllers
             return Ok(adminAccount);
         }
 
+        // POST: api/AdminAccounts/
+        [ResponseType(typeof(AdminAccount))]
+        [HttpPost]
+        public IHttpActionResult CheckLogin(string username, string password)
+        {
+            AdminAccount adminAccount = db.AdminAccounts.Where(aa => aa.Username == username && aa.Password == password).SingleOrDefault();
+            if (adminAccount == null)
+            {
+                return NotFound();
+            }
+
+            return Ok(adminAccount);
+        }
+
         // PUT: api/AdminAccounts/5
         [ResponseType(typeof(void))]
         public IHttpActionResult PutAdminAccount(int id, AdminAccount adminAccount)
