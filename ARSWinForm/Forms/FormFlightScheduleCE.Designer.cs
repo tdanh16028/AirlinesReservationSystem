@@ -70,7 +70,7 @@
             // rbtnActive
             // 
             this.rbtnActive.AutoSize = true;
-            this.rbtnActive.Location = new System.Drawing.Point(78, 337);
+            this.rbtnActive.Location = new System.Drawing.Point(70, 301);
             this.rbtnActive.Name = "rbtnActive";
             this.rbtnActive.Size = new System.Drawing.Size(67, 21);
             this.rbtnActive.TabIndex = 4;
@@ -81,7 +81,7 @@
             // rbtnInActive
             // 
             this.rbtnInActive.AutoSize = true;
-            this.rbtnInActive.Location = new System.Drawing.Point(251, 337);
+            this.rbtnInActive.Location = new System.Drawing.Point(192, 301);
             this.rbtnInActive.Name = "rbtnInActive";
             this.rbtnInActive.Size = new System.Drawing.Size(78, 21);
             this.rbtnInActive.TabIndex = 5;
@@ -92,7 +92,7 @@
             // cboAirplaneCode
             // 
             this.cboAirplaneCode.FormattingEnabled = true;
-            this.cboAirplaneCode.Location = new System.Drawing.Point(166, 57);
+            this.cboAirplaneCode.Location = new System.Drawing.Point(135, 57);
             this.cboAirplaneCode.Name = "cboAirplaneCode";
             this.cboAirplaneCode.Size = new System.Drawing.Size(166, 24);
             this.cboAirplaneCode.TabIndex = 6;
@@ -100,14 +100,14 @@
             // cboRoute
             // 
             this.cboRoute.FormattingEnabled = true;
-            this.cboRoute.Location = new System.Drawing.Point(166, 146);
+            this.cboRoute.Location = new System.Drawing.Point(135, 146);
             this.cboRoute.Name = "cboRoute";
             this.cboRoute.Size = new System.Drawing.Size(166, 24);
             this.cboRoute.TabIndex = 7;
             // 
             // btnSubmit
             // 
-            this.btnSubmit.Location = new System.Drawing.Point(78, 455);
+            this.btnSubmit.Location = new System.Drawing.Point(79, 369);
             this.btnSubmit.Name = "btnSubmit";
             this.btnSubmit.Size = new System.Drawing.Size(75, 23);
             this.btnSubmit.TabIndex = 8;
@@ -117,7 +117,7 @@
             // 
             // btnCancel
             // 
-            this.btnCancel.Location = new System.Drawing.Point(257, 455);
+            this.btnCancel.Location = new System.Drawing.Point(192, 369);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(75, 23);
             this.btnCancel.TabIndex = 9;
@@ -129,7 +129,7 @@
             // 
             this.dateTimePicker1.CustomFormat = "dd/MM/yyyy";
             this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dateTimePicker1.Location = new System.Drawing.Point(166, 224);
+            this.dateTimePicker1.Location = new System.Drawing.Point(135, 224);
             this.dateTimePicker1.Name = "dateTimePicker1";
             this.dateTimePicker1.Size = new System.Drawing.Size(166, 22);
             this.dateTimePicker1.TabIndex = 10;
@@ -138,7 +138,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(391, 509);
+            this.ClientSize = new System.Drawing.Size(330, 407);
             this.Controls.Add(this.dateTimePicker1);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnSubmit);

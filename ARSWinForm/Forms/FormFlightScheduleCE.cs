@@ -1,7 +1,9 @@
 ﻿using ARSWinForm.HelperClass;
 using ARSWinForm.HelperClass.ModelHelper;
 using ARSWinForm.Model;
+using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Windows.Forms;
 
 namespace ARSWinForm
@@ -38,7 +40,7 @@ namespace ARSWinForm
                 cboAirplaneCode.SelectedItem = flightSchedule.AirplaneCode;
 
                 // Chon loai may bay (AirplaneType) tuong ung voi may bay nay
-                cboRoute.SelectedItem = lstAirplaneType.Where(at => at.ID == airplane.TypeID).Single();
+                cboRoute.SelectedItem = lstAirplaneType.Where(at => at.RouteID == flightSchedule.RouteID).Single();
 
                 if (flightSchedule.IsActive)
                 {
@@ -62,10 +64,10 @@ namespace ARSWinForm
 
         private async void btnSubmit_Click(object sender, System.EventArgs e)
         {
-            // Lay gia tri tren form gan vao account
-            flightSchedule.AirplaneCode =((Airplane)cboAirplaneCode.SelectedItem).ID.ToString();
+            // Lay gia tri tren form gan vao 
+            flightSchedule.AirplaneCode =((Airplane)cboAirplaneCode.SelectedItem).AirplaneCode;
             flightSchedule.RouteID = ((Route)cboRoute.SelectedItem).ID;
-            flightSchedule.DepartureDate = DateTimePicker.
+            flightSchedule.DepartureDate = dateTimePicker1.Value;
             flightSchedule.IsActive = rbtnActive.Checked;
             // Tao mot API
             FlightScheduleWrapper flightScheduleWrapper = new FlightScheduleWrapper();

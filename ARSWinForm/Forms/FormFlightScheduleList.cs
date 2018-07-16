@@ -172,9 +172,9 @@ namespace ARSWinForm
                     row["CityAName"] = cityA.Name;
                     row["CityBName"] = cityB.Name;
                     row["DepartureDate"] = flightSchedule.DepartureDate;
-                    row["FirstClassCount"] = flightSchedule.FirstSeatAvail;
-                    row["BusinessClassCount"] = flightSchedule.BusinessSeatAvail;
-                    row["ClubClassCount"] = flightSchedule.ClubSeatAvail;
+                    row["FirstSeatAvail"] = flightSchedule.FirstSeatAvail;
+                    row["BusinessSeatAvail"] = flightSchedule.BusinessSeatAvail;
+                    row["ClubSeatAvail"] = flightSchedule.ClubSeatAvail;
                     row["IsActive"] = flightSchedule.IsActive;
 
                     // Gan dong moi tao vao bang

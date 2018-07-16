@@ -12,7 +12,7 @@ namespace ARSWinForm.HelperClass
 {
     public class ARSUtilities
     {
-        public static T JsonToObject<T>(string json)
+        public static T JsonToObject1<T>(string json)
         {
             // Convert string to stream
             byte[] byteArray = Encoding.UTF8.GetBytes(json);
@@ -20,6 +20,13 @@ namespace ARSWinForm.HelperClass
             DataContractJsonSerializer serializer = new DataContractJsonSerializer(typeof(T));
 
             return (T)serializer.ReadObject(memStream);
+        }
+
+        public static T JsonToObject<T>(string json)
+        {
+            // Convert string to stream
+            T value = Newtonsoft.Json.JsonConvert.DeserializeObject<T>(json);
+            return value;
         }
 
         public static string Md5Hash(string input)
