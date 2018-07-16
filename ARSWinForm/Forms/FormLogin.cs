@@ -1,4 +1,5 @@
-﻿using ARSWinForm.HelperClass.ModelHelper;
+﻿using ARSWinForm.HelperClass;
+using ARSWinForm.HelperClass.ModelHelper;
 using ARSWinForm.Model;
 using System;
 using System.Collections.Generic;
@@ -14,35 +15,55 @@ namespace ARSWinForm.Forms
 {
     public partial class FormLogin : Form
     {
-        
-        public FormLogin()
+        bool isLoggedIn = false;
+        List<AdminAccount> lstAdminAccount;
+        FormMain fMain;
+
+        public FormLogin(FormMain fMain)
         {
             InitializeComponent();
+            this.fMain = fMain;
         }
 
         private async void btnLogin_Click(object sender, EventArgs e)
         {
-
-            AdminAccountWrapper adminAccountWrapper = new AdminAccountWrapper();
-            List<AdminAccount> lstAdminAccount = await adminAccountWrapper.List();
-            
-            if()
+            if(txtUsername.Text == "" || txtPassword.Text == "")
             {
-                MessageBox.Show("Login not successfull","Failed", MessageBoxButtons.OK , MessageBoxIcon.Error);
+                MessageBox.Show("Username and password must not be null","Error", MessageBoxButtons.OK , MessageBoxIcon.Error);
+                return;
+            }
 
-            }
-            else
+            if (lstAdminAccount == null)
             {
-                FormMain f = new FormMain();
-                f.Show();
+                AdminAccountWrapper adminAccountWrapper = new AdminAccountWrapper();
+                lstAdminAccount = await adminAccountWrapper.List();
             }
-          
+
+            string username = txtUsername.Text;
+            string password = ARSUtilities.Md5Hash(txtPassword.Text);
+
+            AdminAccount adminAccount = lstAdminAccount.Where(aa => aa.Username == username && aa.Password.ToLower() == password.ToLower()).SingleOrDefault();
+            if (adminAccount == null)
+            {
+                MessageBox.Show("Wrong username or password!", "Login failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            fMain.isLoggedIn = isLoggedIn = true;
+            Close();
         }
-
-
+        
         private void btnCancel_Click(object sender, EventArgs e)
         {
             Close();
+        }
+
+        private void FormLogin_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (!isLoggedIn)
+            {
+                MessageBox.Show("You must login to use this software!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }

@@ -75,14 +75,17 @@
             // loginToolStripMenuItem
             // 
             this.loginToolStripMenuItem.Name = "loginToolStripMenuItem";
-            this.loginToolStripMenuItem.Size = new System.Drawing.Size(131, 26);
+            this.loginToolStripMenuItem.Size = new System.Drawing.Size(216, 26);
             this.loginToolStripMenuItem.Text = "Login";
+            this.loginToolStripMenuItem.Click += new System.EventHandler(this.loginToolStripMenuItem_Click);
             // 
             // logoutToolStripMenuItem
             // 
+            this.logoutToolStripMenuItem.Enabled = false;
             this.logoutToolStripMenuItem.Name = "logoutToolStripMenuItem";
-            this.logoutToolStripMenuItem.Size = new System.Drawing.Size(131, 26);
+            this.logoutToolStripMenuItem.Size = new System.Drawing.Size(216, 26);
             this.logoutToolStripMenuItem.Text = "Logout";
+            this.logoutToolStripMenuItem.Click += new System.EventHandler(this.logoutToolStripMenuItem_Click);
             // 
             // managementToolStripMenuItem
             // 
@@ -90,6 +93,7 @@
             this.accountToolStripMenuItem,
             this.airplaneToolStripMenuItem,
             this.flightScheduleTicketToolStripMenuItem});
+            this.managementToolStripMenuItem.Enabled = false;
             this.managementToolStripMenuItem.Name = "managementToolStripMenuItem";
             this.managementToolStripMenuItem.Size = new System.Drawing.Size(109, 24);
             this.managementToolStripMenuItem.Text = "Management";
@@ -161,28 +165,28 @@
             // cityToolStripMenuItem
             // 
             this.cityToolStripMenuItem.Name = "cityToolStripMenuItem";
-            this.cityToolStripMenuItem.Size = new System.Drawing.Size(216, 26);
+            this.cityToolStripMenuItem.Size = new System.Drawing.Size(185, 26);
             this.cityToolStripMenuItem.Text = "City";
             this.cityToolStripMenuItem.Click += new System.EventHandler(this.cityToolStripMenuItem_Click);
             // 
             // routeToolStripMenuItem
             // 
             this.routeToolStripMenuItem.Name = "routeToolStripMenuItem";
-            this.routeToolStripMenuItem.Size = new System.Drawing.Size(216, 26);
+            this.routeToolStripMenuItem.Size = new System.Drawing.Size(185, 26);
             this.routeToolStripMenuItem.Text = "Route";
             this.routeToolStripMenuItem.Click += new System.EventHandler(this.routeToolStripMenuItem_Click);
             // 
             // flightScheduleToolStripMenuItem
             // 
             this.flightScheduleToolStripMenuItem.Name = "flightScheduleToolStripMenuItem";
-            this.flightScheduleToolStripMenuItem.Size = new System.Drawing.Size(216, 26);
+            this.flightScheduleToolStripMenuItem.Size = new System.Drawing.Size(185, 26);
             this.flightScheduleToolStripMenuItem.Text = "Flight Schedule";
             this.flightScheduleToolStripMenuItem.Click += new System.EventHandler(this.flightScheduleToolStripMenuItem_Click);
             // 
             // ticketToolStripMenuItem
             // 
             this.ticketToolStripMenuItem.Name = "ticketToolStripMenuItem";
-            this.ticketToolStripMenuItem.Size = new System.Drawing.Size(216, 26);
+            this.ticketToolStripMenuItem.Size = new System.Drawing.Size(185, 26);
             this.ticketToolStripMenuItem.Text = "Ticket";
             // 
             // exitToolStripMenuItem
@@ -190,6 +194,7 @@
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
             this.exitToolStripMenuItem.Size = new System.Drawing.Size(45, 24);
             this.exitToolStripMenuItem.Text = "Exit";
+            this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
             // FormMain
             // 
@@ -204,6 +209,8 @@
             this.Name = "FormMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Airlines Reversation System";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FormMain_FormClosing);
+            this.Load += new System.EventHandler(this.FormMain_Load);
             this.msMainMenu.ResumeLayout(false);
             this.msMainMenu.PerformLayout();
             this.ResumeLayout(false);

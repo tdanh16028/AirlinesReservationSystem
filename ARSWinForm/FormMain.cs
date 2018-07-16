@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ARSWinForm.Forms;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -13,6 +14,7 @@ namespace ARSWinForm
     public partial class FormMain : Form
     {
         private Dictionary<string, Form> listChildForm = new Dictionary<string, Form>();
+        public bool isLoggedIn = false;
 
         public FormMain()
         {
@@ -67,6 +69,50 @@ namespace ARSWinForm
         private void flightScheduleToolStripMenuItem_Click(object sender, EventArgs e)
         {
             OpenChildForm(new FormFlightScheduleList());
+        }
+
+        private void FormMain_Load(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void logoutToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            foreach (Form f in MdiChildren)
+            {
+                f.Close();
+            }
+
+            managementToolStripMenuItem.Enabled = false;
+            loginToolStripMenuItem.Enabled = true;
+            logoutToolStripMenuItem.Enabled = false;
+
+            isLoggedIn = false;
+            loginToolStripMenuItem.PerformClick();
+        }
+
+        private void loginToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FormLogin f = new FormLogin(this);
+            f.ShowDialog();
+            if (!isLoggedIn) return;
+
+            managementToolStripMenuItem.Enabled = true;
+            loginToolStripMenuItem.Enabled = false;
+            logoutToolStripMenuItem.Enabled = true;
+        }
+
+        private void exitToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
+
+        private void FormMain_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (MessageBox.Show("Are you sure to exit?", "Confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation) == DialogResult.No)
+            {
+                e.Cancel = true;
+            }
         }
     }
 }
