@@ -49,7 +49,7 @@
             // 
             this.txtClass.Location = new System.Drawing.Point(112, 43);
             this.txtClass.Name = "txtClass";
-            this.txtClass.Size = new System.Drawing.Size(100, 22);
+            this.txtClass.Size = new System.Drawing.Size(135, 22);
             this.txtClass.TabIndex = 3;
             // 
             // btnSubmit
@@ -85,7 +85,7 @@
             // 
             this.txtPriceRate.Location = new System.Drawing.Point(112, 104);
             this.txtPriceRate.Name = "txtPriceRate";
-            this.txtPriceRate.Size = new System.Drawing.Size(100, 22);
+            this.txtPriceRate.Size = new System.Drawing.Size(135, 22);
             this.txtPriceRate.TabIndex = 7;
             // 
             // FormAirplaneClassCE

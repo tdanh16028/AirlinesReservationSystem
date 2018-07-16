@@ -33,7 +33,7 @@
             this.label3 = new System.Windows.Forms.Label();
             this.rbtnActive = new System.Windows.Forms.RadioButton();
             this.rbtnInActive = new System.Windows.Forms.RadioButton();
-            this.cboAirplaneCode = new System.Windows.Forms.ComboBox();
+            this.cboAirplane = new System.Windows.Forms.ComboBox();
             this.cboRoute = new System.Windows.Forms.ComboBox();
             this.btnSubmit = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
@@ -45,9 +45,9 @@
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(13, 60);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(97, 17);
+            this.label1.Size = new System.Drawing.Size(60, 17);
             this.label1.TabIndex = 0;
-            this.label1.Text = "Airplane Code";
+            this.label1.Text = "Airplane";
             // 
             // label2
             // 
@@ -89,21 +89,25 @@
             this.rbtnInActive.Text = "InActive";
             this.rbtnInActive.UseVisualStyleBackColor = true;
             // 
-            // cboAirplaneCode
+            // cboAirplane
             // 
-            this.cboAirplaneCode.FormattingEnabled = true;
-            this.cboAirplaneCode.Location = new System.Drawing.Point(135, 57);
-            this.cboAirplaneCode.Name = "cboAirplaneCode";
-            this.cboAirplaneCode.Size = new System.Drawing.Size(166, 24);
-            this.cboAirplaneCode.TabIndex = 6;
+            this.cboAirplane.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboAirplane.FormattingEnabled = true;
+            this.cboAirplane.Location = new System.Drawing.Point(106, 57);
+            this.cboAirplane.Name = "cboAirplane";
+            this.cboAirplane.Size = new System.Drawing.Size(212, 24);
+            this.cboAirplane.TabIndex = 6;
+            this.cboAirplane.Format += new System.Windows.Forms.ListControlConvertEventHandler(this.cboAirplane_Format);
             // 
             // cboRoute
             // 
+            this.cboRoute.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboRoute.FormattingEnabled = true;
-            this.cboRoute.Location = new System.Drawing.Point(135, 146);
+            this.cboRoute.Location = new System.Drawing.Point(106, 142);
             this.cboRoute.Name = "cboRoute";
-            this.cboRoute.Size = new System.Drawing.Size(166, 24);
+            this.cboRoute.Size = new System.Drawing.Size(212, 24);
             this.cboRoute.TabIndex = 7;
+            this.cboRoute.Format += new System.Windows.Forms.ListControlConvertEventHandler(this.cboRoute_Format);
             // 
             // btnSubmit
             // 
@@ -143,7 +147,7 @@
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnSubmit);
             this.Controls.Add(this.cboRoute);
-            this.Controls.Add(this.cboAirplaneCode);
+            this.Controls.Add(this.cboAirplane);
             this.Controls.Add(this.rbtnInActive);
             this.Controls.Add(this.rbtnActive);
             this.Controls.Add(this.label3);
@@ -164,7 +168,7 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.RadioButton rbtnActive;
         private System.Windows.Forms.RadioButton rbtnInActive;
-        private System.Windows.Forms.ComboBox cboAirplaneCode;
+        private System.Windows.Forms.ComboBox cboAirplane;
         private System.Windows.Forms.ComboBox cboRoute;
         private System.Windows.Forms.Button btnSubmit;
         private System.Windows.Forms.Button btnCancel;

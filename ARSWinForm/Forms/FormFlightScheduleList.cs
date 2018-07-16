@@ -73,7 +73,7 @@ namespace ARSWinForm
 
             // Gui len server de cap nhat lai cot IsActive trong CSDL
             FlightScheduleWrapper flightScheduleWrapper = new FlightScheduleWrapper();
-            bool isSuccess = await flightScheduleWrapper.Put(flightSchedule.AirplaneCode, flightSchedule);
+            bool isSuccess = await flightScheduleWrapper.Put(flightSchedule.ID.ToString(), flightSchedule);
 
             // Kiem tra ket qua tra ve
             if (isSuccess)

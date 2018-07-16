@@ -84,7 +84,7 @@
             this.txtUsername.Location = new System.Drawing.Point(160, 42);
             this.txtUsername.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtUsername.Name = "txtUsername";
-            this.txtUsername.Size = new System.Drawing.Size(100, 22);
+            this.txtUsername.Size = new System.Drawing.Size(138, 22);
             this.txtUsername.TabIndex = 6;
             // 
             // txtPassword
@@ -92,7 +92,7 @@
             this.txtPassword.Location = new System.Drawing.Point(160, 107);
             this.txtPassword.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtPassword.Name = "txtPassword";
-            this.txtPassword.Size = new System.Drawing.Size(100, 22);
+            this.txtPassword.Size = new System.Drawing.Size(138, 22);
             this.txtPassword.TabIndex = 7;
             // 
             // txtName
@@ -100,7 +100,7 @@
             this.txtName.Location = new System.Drawing.Point(160, 166);
             this.txtName.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtName.Name = "txtName";
-            this.txtName.Size = new System.Drawing.Size(100, 22);
+            this.txtName.Size = new System.Drawing.Size(138, 22);
             this.txtName.TabIndex = 8;
             // 
             // txtRole
@@ -108,7 +108,7 @@
             this.txtRole.Location = new System.Drawing.Point(160, 244);
             this.txtRole.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtRole.Name = "txtRole";
-            this.txtRole.Size = new System.Drawing.Size(100, 22);
+            this.txtRole.Size = new System.Drawing.Size(138, 22);
             this.txtRole.TabIndex = 9;
             // 
             // btnSubmit

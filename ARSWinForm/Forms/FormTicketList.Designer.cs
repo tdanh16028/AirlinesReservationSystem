@@ -40,8 +40,10 @@
             // 
             this.dgvTicket.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvTicket.Location = new System.Drawing.Point(2, 0);
+            this.dgvTicket.MultiSelect = false;
             this.dgvTicket.Name = "dgvTicket";
             this.dgvTicket.RowTemplate.Height = 24;
+            this.dgvTicket.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvTicket.Size = new System.Drawing.Size(797, 393);
             this.dgvTicket.TabIndex = 0;
             // 

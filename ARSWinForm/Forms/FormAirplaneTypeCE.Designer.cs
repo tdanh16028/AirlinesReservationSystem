@@ -58,7 +58,7 @@
             // 
             this.txtName.Location = new System.Drawing.Point(131, 47);
             this.txtName.Name = "txtName";
-            this.txtName.Size = new System.Drawing.Size(156, 22);
+            this.txtName.Size = new System.Drawing.Size(186, 22);
             this.txtName.TabIndex = 4;
             // 
             // btnSubmit
@@ -151,7 +151,7 @@
             this.cboInActive.Text = "InActive";
             this.cboInActive.UseVisualStyleBackColor = true;
             // 
-            // CE_AirplaneType
+            // FormAirplaneTypeCE
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -168,7 +168,7 @@
             this.Controls.Add(this.btnSubmit);
             this.Controls.Add(this.txtName);
             this.Controls.Add(this.label2);
-            this.Name = "CE_AirplaneType";
+            this.Name = "FormAirplaneTypeCE";
             this.Text = "Create_AirplaneType";
             this.Load += new System.EventHandler(this.Create_AirplaneType_Load);
             ((System.ComponentModel.ISupportInitialize)(this.numFirstClassSeat)).EndInit();

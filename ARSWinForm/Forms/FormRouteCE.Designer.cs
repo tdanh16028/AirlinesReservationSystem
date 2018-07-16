@@ -85,7 +85,7 @@
             this.cboFromCity.FormattingEnabled = true;
             this.cboFromCity.Location = new System.Drawing.Point(163, 46);
             this.cboFromCity.Name = "cboFromCity";
-            this.cboFromCity.Size = new System.Drawing.Size(121, 24);
+            this.cboFromCity.Size = new System.Drawing.Size(145, 24);
             this.cboFromCity.TabIndex = 5;
             // 
             // cboToCity
@@ -93,7 +93,7 @@
             this.cboToCity.FormattingEnabled = true;
             this.cboToCity.Location = new System.Drawing.Point(163, 106);
             this.cboToCity.Name = "cboToCity";
-            this.cboToCity.Size = new System.Drawing.Size(121, 24);
+            this.cboToCity.Size = new System.Drawing.Size(145, 24);
             this.cboToCity.TabIndex = 6;
             // 
             // numSkyMiles
@@ -105,7 +105,7 @@
             0,
             0});
             this.numSkyMiles.Name = "numSkyMiles";
-            this.numSkyMiles.Size = new System.Drawing.Size(120, 22);
+            this.numSkyMiles.Size = new System.Drawing.Size(144, 22);
             this.numSkyMiles.TabIndex = 7;
             // 
             // numBasePrice
@@ -117,7 +117,7 @@
             0,
             0});
             this.numBasePrice.Name = "numBasePrice";
-            this.numBasePrice.Size = new System.Drawing.Size(120, 22);
+            this.numBasePrice.Size = new System.Drawing.Size(144, 22);
             this.numBasePrice.TabIndex = 8;
             // 
             // rbtnActive

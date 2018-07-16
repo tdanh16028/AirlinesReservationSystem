@@ -85,7 +85,9 @@
             this.dgvFlightSchedule.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvFlightSchedule.Location = new System.Drawing.Point(-1, 16);
             this.dgvFlightSchedule.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.dgvFlightSchedule.MultiSelect = false;
             this.dgvFlightSchedule.Name = "dgvFlightSchedule";
+            this.dgvFlightSchedule.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvFlightSchedule.Size = new System.Drawing.Size(803, 370);
             this.dgvFlightSchedule.TabIndex = 6;
             // 

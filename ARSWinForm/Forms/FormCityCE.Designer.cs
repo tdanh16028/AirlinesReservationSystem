@@ -58,14 +58,14 @@
             // 
             this.txtCode.Location = new System.Drawing.Point(118, 78);
             this.txtCode.Name = "txtCode";
-            this.txtCode.Size = new System.Drawing.Size(100, 22);
+            this.txtCode.Size = new System.Drawing.Size(136, 22);
             this.txtCode.TabIndex = 4;
             // 
             // txtName
             // 
             this.txtName.Location = new System.Drawing.Point(118, 176);
             this.txtName.Name = "txtName";
-            this.txtName.Size = new System.Drawing.Size(100, 22);
+            this.txtName.Size = new System.Drawing.Size(136, 22);
             this.txtName.TabIndex = 5;
             // 
             // btnSubmit
