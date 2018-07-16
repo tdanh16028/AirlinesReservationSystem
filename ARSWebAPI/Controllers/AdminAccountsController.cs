@@ -64,7 +64,7 @@ namespace ARSWebAPI.Controllers
                 else
                 {
                     while (ex.InnerException != null) ex = ex.InnerException;
-                    return InternalServerError(ex);
+                    return Content(HttpStatusCode.InternalServerError, ex.Message);
                 }
             }
 
@@ -87,8 +87,15 @@ namespace ARSWebAPI.Controllers
             }
             catch (Exception ex)
             {
-                while (ex.InnerException != null) ex = ex.InnerException;
-                return InternalServerError(ex);
+                if (IsDuplicateUsername(adminAccount.Username))
+                {
+                    return Content(HttpStatusCode.Conflict, "Username already existed!");
+                }
+                else
+                {
+                    while (ex.InnerException != null) ex = ex.InnerException;
+                    return Content(HttpStatusCode.InternalServerError, ex.Message);
+                }
             }
 
             return CreatedAtRoute("DefaultApi", new { id = adminAccount.ID }, adminAccount);
@@ -123,5 +130,11 @@ namespace ARSWebAPI.Controllers
         {
             return db.AdminAccounts.Count(e => e.ID == id) > 0;
         }
+
+        private bool IsDuplicateUsername(string username)
+        {
+            return db.AdminAccounts.Count(e => e.Username == username) > 0;
+        }
+
     }
 }
