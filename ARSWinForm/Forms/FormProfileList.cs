@@ -125,6 +125,7 @@ namespace ARSWinForm
             table.Columns.Add("PhoneNumber");
             table.Columns.Add("EmailAddress");
             table.Columns.Add("Sex");
+            table.Columns.Add("Gender");
             table.Columns.Add("Age");
             table.Columns.Add("CreditCard");
             table.Columns.Add("SkyMiles");
@@ -149,6 +150,7 @@ namespace ARSWinForm
                     row["PhoneNumber"] = profile.PhoneNumber;
                     row["EmailAddress"] = profile.EmailAddress;
                     row["Sex"] = profile.Sex;
+                    row["Gender"] = profile.Sex ? "Male" : "Female";
                     row["Age"] = profile.Age;
                     row["CreditCard"] = profile.CreditCard;
                     row["SkyMiles"] = profile.SkyMiles;
@@ -162,6 +164,10 @@ namespace ARSWinForm
                 // Ta co bang WinForm hoan chinh
                 // Gan bang WinForm len DataGridView
                 dgvProfile.DataSource = table;
+
+                // An di mot so cot trong bang
+                dgvProfile.Columns["Password"].Visible = false;
+                dgvProfile.Columns["Sex"].Visible = false;
 
                 // Chon lai dong ban dau duoc chon truoc khi reload
                 dgvProfile.Rows[currentRowIndex].Selected = true;
