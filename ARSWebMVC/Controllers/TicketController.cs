@@ -53,8 +53,15 @@ namespace ARSWebMVC.Controllers
 
         public ActionResult TicketDetail(Ticket ticket)
         {
+
+            if (ticket.Status == "temp")
+            {
+                return View(ticket);
+            }
+
             if (ticket.TicketCode != null)
             {
+
                 var rs = db.Tickets.SingleOrDefault(s => s.TicketCode == ticket.TicketCode);
                 return View(rs);
             }
@@ -63,6 +70,34 @@ namespace ARSWebMVC.Controllers
                 return View("Index");
             }
         }
+
+        public ActionResult TicketDetailTemp()
+        {
+            Ticket tickettemp = new Ticket()
+            {
+                ID = 0,
+                ProfileID = 2,
+                Profile = db.Profiles.Find(2),
+                TicketCode = "000000",
+                Status = "temp",
+                ChildrenCount = 2,
+                AdultCount = 2,
+                SeniorCount = 1,
+                AirplaneClassID = 1,
+                AirplaneClass = db.AirplaneClasses.Find(1),
+                OrderDate = DateTime.Now,
+                TotalCost = 0,
+                FlightSchedules = new List<FlightSchedule>()
+                {
+                    db.FlightSchedules.Where(fs => fs.ID == 1).Single(),
+                    db.FlightSchedules.Where(fs => fs.ID == 4).Single(),
+                    db.FlightSchedules.Where(fs => fs.ID == 5).Single()
+                }
+            };
+
+            return View("TicketDetail", tickettemp);
+        }
+
 
         public ActionResult Cancelled(string ticketCode) {
            

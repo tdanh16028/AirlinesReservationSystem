@@ -29,14 +29,7 @@ namespace ARSWebMVC.Controllers
         {
             return View();
         }
-
-        public ActionResult TicketDetailTemp()
-        {
-            
-            return View();
-        }
-
-
+      
         public ActionResult QueryFlightDetails()
         {
             return View();
