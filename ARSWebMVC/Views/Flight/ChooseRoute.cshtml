@@ -1,23 +1,19 @@
-﻿
-@model Queue<List<ARSWebMVC.Models.Route>>
+﻿@model Dictionary<int, List<ARSWebMVC.Models.Route>>
 @using ARSWebMVC.Models
 @{
     ViewBag.Title = "Choose Route";
-    int i = 0;
 }
 <section>
     <div class="container card p-5 animated wow fadeIn mt-5">
         <h2 class="text-center mb-4">Choose Route</h2>
 
-        @foreach (List<ARSWebMVC.Models.Route> lstRoute in Model)
+        @for (int i = 0; i < Model.Count; i++)
         {
-            using (Html.BeginForm("ChooseFlightSchedule", "Flight", new { lstRoute = lstRoute }, FormMethod.Post))
+            using (Html.BeginForm("ChooseFlightSchedule", "Flight", null, FormMethod.Post))
             {
-                i++;
-
+                <input type="hidden" name="dictRouteID" value="@i" />
+                List<ARSWebMVC.Models.Route> lstRoute = Model[i];
                 <div>
-
-
                     <div></div>
                     <!-- Card -->
                     <div class="card mb-3">
@@ -33,7 +29,7 @@
                                     <input type="submit" class="  btn teal p-2" value="Choose" />
                                 </div>
                             </div>
-                            
+
                             <!-- Button -->
                         </div>
                         <div class="collapse pl-3 pr-3" id="collapseExample@(i)">
@@ -46,7 +42,6 @@
                                             <th>FROM</th>
                                             <th>TO</th>
                                             <th>SKYMILE</th>
-
                                         </tr>
                                     </thead>
                                     @foreach (ARSWebMVC.Models.Route route in lstRoute)

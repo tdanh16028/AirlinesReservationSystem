@@ -32,9 +32,12 @@ namespace ARSWebMVC.Controllers
             dbRoutes = db.Routes.ToList();
             dbCities = db.Cities.ToList();
 
-            Queue<List<Route>> queueListRoute = FindAllPossibleRoute(fromCityID, toCityID);
+            Dictionary<int, List<Route>> dictListRoute = FindAllPossibleRoute(fromCityID, toCityID);
 
-            return View(queueListRoute);
+            // Save dictionary to SESSION
+            Session["DictListRoute"] = dictListRoute;
+
+            return View(dictListRoute);
         }
 
         // GET: Flight/ChooseFlightSchedule
@@ -45,14 +48,15 @@ namespace ARSWebMVC.Controllers
 
         // POST: Flight/ChooseFlightSchedule
         [HttpPost]
-        public ActionResult ChooseFlightSchedule(List<Route> lstRoute)
+        public ActionResult ChooseFlightSchedule(int dictRouteID)
         {
+            List<Route> lstRoute = ((Dictionary<int, List<Route>>)Session["DictListRoute"])[dictRouteID];
             return View();
         }
 
-        private Queue<List<Route>> FindAllPossibleRoute(int cityAID, int cityBID)
+        private Dictionary<int, List<Route>> FindAllPossibleRoute(int cityAID, int cityBID)
         {
-            Queue<List<Route>> queueListRoute = new Queue<List<Route>>();
+            Dictionary<int, List<Route>> dictListRoute = new Dictionary<int, List<Route>>();
             List<List<Route>> lstListRoute = new List<List<Route>>();
             List<Route> lstRoute = new List<Route>();
 
@@ -75,12 +79,13 @@ namespace ARSWebMVC.Controllers
             });
 
             // Add to queue
+            int i = 0;
             foreach (List<Route> lstRouteItem in lstListRoute)
             {
-                queueListRoute.Enqueue(lstRouteItem);
+                dictListRoute.Add(i++, lstRouteItem);
             }
 
-            return queueListRoute;
+            return dictListRoute;
         }
 
         private void RecursiveFindPossibleRoute(int cityAID, int cityBID, ref List<Route> lstRoute, ref List<List<Route>> lstListRoute, List<int> lstLimitID = null)
