@@ -1,0 +1,80 @@
+﻿@model ARSWebMVC.Models.Ticket
+
+@{
+    ViewBag.Title = "Input Passennger Information";
+}
+
+<section class="datePicKer pt-5">
+    <div class="container">
+        <div class="card  animated wow fadeIn">
+            <div class="card-body">
+                <h3 class="mb-5 text-center">Input Passenger Information</h3>
+                <!-- Default form grid -->
+                @using (Html.BeginForm("ChooseFlightSchedule", "Flight", FormMethod.Post))
+                {
+                    <!-- Grid row -->
+                <div class="row">
+                    <!-- Grid column -->
+                    @{string currentDate = DateTime.Now.ToString("yyyy-MM-dd"); }
+                    <div class=" col-sm-12 col-md">
+                        <div class="form-group">
+                            <label>Departure date :</label>
+                            @Html.Editor("departureDate", new { htmlAttributes = new { @class = "form-control", type = "date", Value = currentDate, min = currentDate } })
+                        </div>
+                    </div>
+                    <div class="col col-sm-2">
+                        Nếu ở trước chọn khứ hổi thì hiện form ngày về
+                    </div>
+                    <div class=" col-sm-12 col-md ">
+                        <!-- Default input -->
+                        <label>Pick the ending date :</label>
+                        @Html.Editor("returnDate", new { htmlAttributes = new { @class = "form-control", type = "date", Value = currentDate, min = currentDate } })
+                    </div>
+                    <!-- Grid column -->
+                </div>
+
+                    <div class="row pt-5">
+                        <div class="col-md text-center">
+                            <div class="form-group">
+                                <label for="children-count">Childrent Count</label>
+                                @Html.EditorFor(m => m.ChildrenCount, new { htmlAttributes = new { id = "children-count", @class = "form-control", min = 0 } })
+                            </div>
+                        </div>
+                        <div class="col-md text-center">
+                            <div class="form-group">
+                                <label for="adult-count">AdultCount</label>
+                                @Html.EditorFor(m => m.AdultCount, new { htmlAttributes = new { id = "adult-count", @class = "form-control", min = 0 } })
+                            </div>
+                        </div>
+                        <div class="col-md text-center">
+                            <div class="form-group">
+                                <label for="senior-count">SeniorCount</label>
+                                @Html.EditorFor(m => m.SeniorCount, new { htmlAttributes = new { id = "senior-count", @class = "form-control", min = 0 } })
+                            </div>
+                        </div>
+
+                        @*@{
+                            List<SelectListItem> lstSeatClass = new List<SelectListItem>() {
+                                                        new SelectListItem() { Text = "First class", Value = "1", Selected = true },
+                                                        new SelectListItem() { Text = "Business class", Value = "2" },
+                                                        new SelectListItem() { Text = "Club class", Value = "3" }
+                                                    };
+                        }
+
+                        <div class="col-md text-center">
+                            <div class="form-group">
+                                <label for="seat-class">Class</label>
+                                @Html.DropDownListFor(m => m.AirplaneClassID, lstSeatClass, new { id = "seat-class", @class = "form-control" })
+                            </div>
+                        </div>*@
+                    </div>
+
+                    <div class="text-center mt-5">
+                        <button type="submit" class="btn teal"><i class="fas fa-search prefix mr-3"></i>Submit</button>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</section>
+

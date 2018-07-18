@@ -12,6 +12,14 @@ namespace ARSWebMVC.Controllers
         DBUserEntities db = new DBUserEntities();
         List<Route> dbRoutes;
         List<City> dbCities;
+        List<FlightSchedule> dbFlightSchedule;
+
+        private void InitDB()
+        {
+            if (dbRoutes == null) dbRoutes = db.Routes.ToList();
+            if (dbCities == null) dbCities = db.Cities.ToList();
+            if (dbFlightSchedule == null) dbFlightSchedule = db.FlightSchedules.ToList();
+        }
 
         // GET: Flight
         public ActionResult Index()
@@ -29,8 +37,7 @@ namespace ARSWebMVC.Controllers
         [HttpPost]
         public ActionResult ChooseRoute(int fromCityID, int toCityID)
         {
-            dbRoutes = db.Routes.ToList();
-            dbCities = db.Cities.ToList();
+            InitDB();
 
             Dictionary<int, List<Route>> dictListRoute = FindAllPossibleRoute(fromCityID, toCityID);
 
@@ -38,6 +45,34 @@ namespace ARSWebMVC.Controllers
             Session["DictListRoute"] = dictListRoute;
 
             return View(dictListRoute);
+        }
+
+        // GET: Flight/InputPassengerInfo
+        public ActionResult InputPassengerInfo()
+        {
+            return RedirectToAction("Index", "Home");
+        }
+
+        // POST: Flight/InputPassengerInfo
+        [HttpPost]
+        public ActionResult InputPassengerInfo(int dictRouteID)
+        {
+            Session["DictRouteIDChoice"] = dictRouteID;
+            
+            Ticket ticket = new Ticket()
+            {
+                ID = 0,
+                TicketCode = "N/A",
+                Status = "",
+                ChildrenCount = 0,
+                AdultCount = 0,
+                SeniorCount = 0,
+                AirplaneClassID = 1,
+                OrderDate = DateTime.Now,
+                TotalCost = 0
+            };
+
+            return View(ticket);
         }
 
         // GET: Flight/ChooseFlightSchedule
@@ -48,10 +83,104 @@ namespace ARSWebMVC.Controllers
 
         // POST: Flight/ChooseFlightSchedule
         [HttpPost]
-        public ActionResult ChooseFlightSchedule(int dictRouteID)
+        public ActionResult ChooseFlightSchedule(Ticket ticket, DateTime departureDate, DateTime returnDate)
         {
+            Session["Ticket"] = ticket;
+            int dictRouteID = (int)Session["DictRouteIDChoice"];
             List<Route> lstRoute = ((Dictionary<int, List<Route>>)Session["DictListRoute"])[dictRouteID];
-            return View();
+
+            InitDB();
+
+            List<List<FlightSchedule>> lstFinalFlightSchedule = new List<List<FlightSchedule>>();
+
+            // Lay danh sach tat ca cac chuyen bay cua chang duong dau tien
+            List<FlightSchedule> lstStartFlightSchedule = dbFlightSchedule.Where(
+                    fs => fs.RouteID == lstRoute[0].ID &&
+                    fs.DepartureDate >= departureDate
+                )
+                .OrderBy(fs => fs.DepartureDate)
+                .ToList();
+
+            int totalSeat = ticket.ChildrenCount + ticket.AdultCount + ticket.SeniorCount;
+
+            // Tim ra tat ca cac danh sach chuyen bay phu hop voi yeu cau cua khach
+            foreach (FlightSchedule fs in lstStartFlightSchedule)
+            {
+                List<FlightSchedule> lstCurrentTryFS = new List<FlightSchedule>() { fs };
+                RecursiveFindPossibleFlightSchedule(fs.DepartureDate, totalSeat, lstRoute, 0, ref lstCurrentTryFS, ref lstFinalFlightSchedule);
+            }
+
+            // Loc ra danh sach nhung chuyen bay con du ghe
+            lstFinalFlightSchedule = new List<List<FlightSchedule>>(
+                lstFinalFlightSchedule.Where(lstFs =>
+                    lstFs.Count == lstRoute.Count && (
+                        lstFs.TrueForAll(fs => fs.FirstSeatAvail >= totalSeat) ||
+                        lstFs.TrueForAll(fs => fs.BusinessSeatAvail >= totalSeat) ||
+                        lstFs.TrueForAll(fs => fs.ClubSeatAvail >= totalSeat)
+                    )
+                ).ToList()
+            );
+
+            // Gan them du lieu len cho day du
+            foreach (List<FlightSchedule> lstFS in lstFinalFlightSchedule)
+            {
+                foreach (FlightSchedule fs in lstFS)
+                {
+                    fs.Route = dbRoutes.Find(r => r.ID == fs.RouteID);
+                    fs.Route.CityA = dbCities.Find(c => c.ID == fs.Route.CityAID);
+                    fs.Route.CityB = dbCities.Find(c => c.ID == fs.Route.CityBID);
+                }
+            }
+
+            // Neu danh sach cac su lua chon cuoi cung khong co item nao nghia la
+            // khong tim ra duoc chuyen bay nao phu hop
+            if (lstFinalFlightSchedule.Count == 0)
+            {
+                // Neu khong du chuyen bay thi hien thong bao khong du chuyen bay
+                ViewBag.ChooseFlightScheduleError = "Cannot find any flight schedule suitable for you. Please change your criteria or choose another route.";
+            }
+
+            return View(lstFinalFlightSchedule);
+        }
+
+        private void RecursiveFindPossibleFlightSchedule(DateTime minDate, int minSeatAvail, List<Route> lstRoute, int currentRouteIndex, ref List<FlightSchedule> lstCurrentTryFS, ref List<List<FlightSchedule>> lstPossibleListFS)
+        {
+            // Di toi chang duong bay tiep theo
+            currentRouteIndex++;
+
+            // Tim tat ca chuyen bay cua chang duong nay
+            // Dieu kien:
+            // - Co ngay khoi hanh >= ngay khoi hanh cua chuyen bay truoc no
+            // - Co du so luong ghe trong (hoac First, hoac Business hoac Club)
+            List<FlightSchedule> lstFlightSchedule = dbFlightSchedule.Where(
+                    fs => fs.DepartureDate >= minDate && 
+                    fs.RouteID == lstRoute[currentRouteIndex].ID &&
+                    (
+                        fs.FirstSeatAvail >= minSeatAvail ||
+                        fs.BusinessSeatAvail >= minSeatAvail ||
+                        fs.ClubSeatAvail >= minSeatAvail
+                    )
+                )
+                .OrderBy(fs => fs.DepartureDate)
+                .ToList();
+
+            if (lstFlightSchedule.Count > 0)
+            {
+                foreach (FlightSchedule fs in lstFlightSchedule)
+                {
+                    List<FlightSchedule> lstFS = new List<FlightSchedule>(lstCurrentTryFS);
+                    lstFS.Add(fs);
+
+                    if (currentRouteIndex == lstRoute.Count - 1)
+                    {
+                        lstPossibleListFS.Add(lstFS);
+                    }
+                    else
+                    {
+                        RecursiveFindPossibleFlightSchedule(fs.DepartureDate, minSeatAvail, lstRoute, currentRouteIndex, ref lstFS, ref lstPossibleListFS);
+                    }
+                }
+            }
         }
 
         private Dictionary<int, List<Route>> FindAllPossibleRoute(int cityAID, int cityBID)

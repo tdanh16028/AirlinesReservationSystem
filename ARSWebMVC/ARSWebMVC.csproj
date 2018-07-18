@@ -329,7 +329,6 @@
     <Content Include="Views\UserAccount\Register.cshtml" />
     <Content Include="Views\Ticket\Index.cshtml" />
     <Content Include="Views\Ticket\TicketDetail.cshtml" />
-    <Content Include="Views\Ticket\AllFlightUser.cshtml" />
     <Content Include="Views\Home\CheckingAvailability.cshtml" />
     <Content Include="Views\Home\ListRoute.cshtml" />
     <Content Include="Views\Home\DatePic.cshtml" />
@@ -338,6 +337,7 @@
     <Content Include="Views\Home\FlightStatus.cshtml" />
     <Content Include="Views\Flight\ChooseFlightSchedule.cshtml" />
     <Content Include="Views\Flight\ChooseRoute.cshtml" />
+    <Content Include="Views\Flight\InputPassengerInfo.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
