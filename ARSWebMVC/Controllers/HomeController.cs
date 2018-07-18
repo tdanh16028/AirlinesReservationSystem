@@ -16,7 +16,7 @@ namespace ARSWebMVC.Controllers
         }
 
         public ActionResult CheckingAvailability() {
-            List<City> lstCity = db.Cities.ToList();
+            List<City> lstCity = ARSMVCUtilities.GetDB().Cities.ToList();
             return View(lstCity);
         }
 
@@ -45,7 +45,7 @@ namespace ARSWebMVC.Controllers
             }
 
             //Search in the database returns the list of airplane code is "airplaneCode",if not find returned error message
-            List<FlightSchedule> rs = db.FlightSchedules.Where(s => s.AirplaneCode == airplaneCode).ToList();
+            List<FlightSchedule> rs = ARSMVCUtilities.GetDB().FlightSchedules.Where(s => s.AirplaneCode == airplaneCode).ToList();
             if (rs != null && rs.Count >0)
             {
                 return View(rs);

@@ -16,9 +16,9 @@ namespace ARSWebMVC.Controllers
 
         private void InitDB()
         {
-            if (dbRoutes == null) dbRoutes = db.Routes.ToList();
-            if (dbCities == null) dbCities = db.Cities.ToList();
-            if (dbFlightSchedule == null) dbFlightSchedule = db.FlightSchedules.ToList();
+            if (dbRoutes == null) dbRoutes = ARSMVCUtilities.GetDB().Routes.ToList();
+            if (dbCities == null) dbCities = ARSMVCUtilities.GetDB().Cities.ToList();
+            if (dbFlightSchedule == null) dbFlightSchedule = ARSMVCUtilities.GetDB().FlightSchedules.ToList();
         }
 
         // GET: Flight
@@ -121,7 +121,9 @@ namespace ARSWebMVC.Controllers
                 ).ToList()
             );
 
-            // Gan them du lieu len cho day du
+            // Gan them du lieu len cho day du + chuyen vao Dictionary
+            Dictionary<int, List<FlightSchedule>> dictListFlightSchedule = new Dictionary<int, List<FlightSchedule>>();
+            int i = 0;
             foreach (List<FlightSchedule> lstFS in lstFinalFlightSchedule)
             {
                 foreach (FlightSchedule fs in lstFS)
@@ -130,17 +132,20 @@ namespace ARSWebMVC.Controllers
                     fs.Route.CityA = dbCities.Find(c => c.ID == fs.Route.CityAID);
                     fs.Route.CityB = dbCities.Find(c => c.ID == fs.Route.CityBID);
                 }
+
+                dictListFlightSchedule.Add(i++, lstFS);
             }
 
             // Neu danh sach cac su lua chon cuoi cung khong co item nao nghia la
             // khong tim ra duoc chuyen bay nao phu hop
-            if (lstFinalFlightSchedule.Count == 0)
+            if (dictListFlightSchedule.Count == 0)
             {
                 // Neu khong du chuyen bay thi hien thong bao khong du chuyen bay
                 ViewBag.ChooseFlightScheduleError = "Cannot find any flight schedule suitable for you. Please change your criteria or choose another route.";
             }
 
-            return View(lstFinalFlightSchedule);
+            Session["dictListFS"] = dictListFlightSchedule;
+            return View(dictListFlightSchedule);
         }
 
         private void RecursiveFindPossibleFlightSchedule(DateTime minDate, int minSeatAvail, List<Route> lstRoute, int currentRouteIndex, ref List<FlightSchedule> lstCurrentTryFS, ref List<List<FlightSchedule>> lstPossibleListFS)

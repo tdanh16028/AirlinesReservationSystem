@@ -17,15 +17,19 @@ namespace ARSWebMVC.Controllers
             
             if (Session["UserProfile"] == null)
             {
-                TempData["Status"] = "Ticket";
+                TempData["lastPageVisit"] = new Dictionary<String, Object>() {
+                    { "actionName", "Index" },
+                    { "controllerName", "Ticket" }
+                };
                 return RedirectToAction("Login", "UserAccount");
             }
             else {
-                TempData["Status"] = "";
+                TempData["lastPageVisit"] = null;
                 return View();
             }
 
         }
+
         [HttpPost]
         public ActionResult Index(FormCollection form)
         {
@@ -38,7 +42,7 @@ namespace ARSWebMVC.Controllers
             }
             else
             {
-                Ticket rs = db.Tickets.SingleOrDefault(s => s.TicketCode == code);
+                Ticket rs = ARSMVCUtilities.GetDB().Tickets.SingleOrDefault(s => s.TicketCode == code);
                 if (rs != null)
                 {
                     return RedirectToAction("TicketDetail", rs);
@@ -54,7 +58,7 @@ namespace ARSWebMVC.Controllers
         public ActionResult TicketDetail(Ticket ticket)
         {
 
-            if (ticket.Status == "temp")
+            if (ticket.Status == "Preview")
             {
                 return View(ticket);
             }
@@ -62,7 +66,7 @@ namespace ARSWebMVC.Controllers
             if (ticket.TicketCode != null)
             {
 
-                var rs = db.Tickets.SingleOrDefault(s => s.TicketCode == ticket.TicketCode);
+                var rs = ARSMVCUtilities.GetDB().Tickets.SingleOrDefault(s => s.TicketCode == ticket.TicketCode);
                 return View(rs);
             }
             else
@@ -71,43 +75,185 @@ namespace ARSWebMVC.Controllers
             }
         }
 
-        public ActionResult TicketDetailTemp()
+        public ActionResult PreviewTicket()
         {
-            Ticket tickettemp = new Ticket()
-            {
-                ID = 0,
-                ProfileID = 2,
-                Profile = db.Profiles.Find(2),
-                TicketCode = "000000",
-                Status = "temp",
-                ChildrenCount = 2,
-                AdultCount = 2,
-                SeniorCount = 1,
-                AirplaneClassID = 1,
-                AirplaneClass = db.AirplaneClasses.Find(1),
-                OrderDate = DateTime.Now,
-                TotalCost = 0,
-                FlightSchedules = new List<FlightSchedule>()
-                {
-                    db.FlightSchedules.Where(fs => fs.ID == 1).Single(),
-                    db.FlightSchedules.Where(fs => fs.ID == 4).Single(),
-                    db.FlightSchedules.Where(fs => fs.ID == 5).Single()
-                }
-            };
+            if (Session["Ticket"] == null || Session["lstFSChoice"] == null)
+                return RedirectToAction("Index", "Home");
 
-            return View("TicketDetail", tickettemp);
+            int lstFSChoice = (int)Session["lstFSChoice"];
+            int seatClassID = ((Ticket)Session["Ticket"]).AirplaneClassID;
+            return PreviewTicket(lstFSChoice, seatClassID);
         }
 
+        [HttpPost]
+        public ActionResult PreviewTicket(int lstFSChoice, int seatClassID)
+        {
+            Session["lstFSChoice"] = lstFSChoice;
+            List<FlightSchedule> lstFS = ((Dictionary<int, List<FlightSchedule>>)Session["dictListFS"])[lstFSChoice];
+            Ticket ticket = (Ticket)Session["Ticket"];
+
+            ticket.Profile = new Profile();
+            if (Session["UserProfile"] == null)
+            {
+                ticket.Profile.LastName = "Guest";
+                ticket.Profile.FirstName = "";
+            } else
+            {
+                ticket.Profile = (Profile)Session["UserProfile"];
+                ticket.ProfileID = ticket.Profile.ID;
+                ticket.Profile = ARSMVCUtilities.GetDB().Profiles.Find(ticket.ProfileID);
+            }
+
+            List<FlightSchedule> lstTicketFS = new List<FlightSchedule>();
+            foreach (FlightSchedule fs in lstFS)
+            {
+                FlightSchedule f = ARSMVCUtilities.GetDB().FlightSchedules.Find(fs.ID);
+                lstTicketFS.Add(f);
+
+                //lstTicketFS.Add(new FlightSchedule()
+                //{
+                //    ID = f.ID,
+                //    AirplaneCode = f.AirplaneCode,
+                //    Airplane = new Airplane()
+                //    {
+                //        AirplaneCode = f.AirplaneCode,
+                //        TypeID = f.Airplane.TypeID,
+                //        AirplaneType = new AirplaneType()
+                //        {
+                //            ID = f.Airplane.AirplaneType.ID,
+                //            Name = f.Airplane.AirplaneType.Name
+                //        }
+                //    },
+                //    FirstSeatAvail = f.FirstSeatAvail,
+                //    BusinessSeatAvail = f.BusinessSeatAvail,
+                //    ClubSeatAvail = f.ClubSeatAvail,
+                //    DepartureDate = f.DepartureDate,
+                //    RouteID = f.RouteID,
+                //    Route = new Route()
+                //    {
+                //        CityA = new City()
+                //        {
+                //            ID = f.Route.CityA.ID,
+                //            Code = f.Route.CityA.Code,
+                //            Name = f.Route.CityA.Name
+                //        },
+                //        CityB = new City()
+                //        {
+                //            ID = f.Route.CityB.ID,
+                //            Code = f.Route.CityB.Code,
+                //            Name = f.Route.CityB.Name
+                //        },
+                //        BasePrice = f.Route.BasePrice,
+                //        SkyMiles = f.Route.SkyMiles
+                //    },
+                //    IsActive = f.IsActive,
+                //});
+            }
+
+            ticket.FlightSchedules = lstTicketFS;
+            ticket.AirplaneClassID = seatClassID;
+            AirplaneClass ac = ARSMVCUtilities.GetDB().AirplaneClasses.Find(seatClassID);
+            ticket.AirplaneClass = ac;
+            //ticket.AirplaneClass = new AirplaneClass()
+            //{
+            //    ID = ac.ID,
+            //    Class = ac.Class,
+            //    PriceRate = ac.PriceRate
+            //};
+            ticket.OrderDate = DateTime.Now;
+            ticket.Status = "Preview";
+            ticket.TicketCode = "N/A";
+
+            int totalSeat = ticket.ChildrenCount + ticket.AdultCount + ticket.SeniorCount;
+            double priceRate = ticket.AirplaneClass.PriceRate;
+            double basePrice = lstFS.Sum(fs => fs.Route.BasePrice);
+            ticket.TotalCost = Math.Round(basePrice * priceRate * totalSeat, 2);
+
+            Session["Ticket"] = ticket;
+            return View("TicketDetail", ticket);
+        }
+
+        public ActionResult BuyTicket()
+        {
+            return AddTicket("Reserved");
+        }
+
+        public ActionResult BlockTicket()
+        {
+            return AddTicket("Blocked");
+        }
+
+        private ActionResult AddTicket(string ticketStatus)
+        {
+            if (Session["Ticket"] == null)
+            {
+                RedirectToAction("Index", "Home");
+            }
+
+            if (Session["UserProfile"] == null)
+            {
+                TempData["lastPageVisit"] = new Dictionary<String, Object>() {
+                    { "actionName", "PreviewTicket" },
+                    { "controllerName", "Ticket" }
+                };
+                return RedirectToAction("Login", "UserAccount");
+            }
+
+            Ticket ticket = (Ticket)Session["Ticket"];
+            ticket.Status = ticketStatus;
+
+            // ticket.AirplaneClass = ARSMVCUtilities.GetDB().AirplaneClasses.Find(ticket.AirplaneClassID);
+            // ticket.Profile = ARSMVCUtilities.GetDB().Profiles.Find(1);
+            //foreach (FlightSchedule fs in ticket.FlightSchedules)
+            //{
+            //    fs = new FlightSchedule() {
+            //        ARSMVCUtilities.GetDB().Airplanes.Find(fs.AirplaneCode);
+            //    fs.Route = ARSMVCUtilities.GetDB().Routes.Find(fs.RouteID);
+            //}
+
+
+            //Ticket newTicket = new Ticket()
+            //{
+            //    ProfileID = profile.ID,
+            //    AirplaneClassID = ticket.AirplaneClassID,
+            //    ChildrenCount = ticket.ChildrenCount,
+            //    AdultCount = ticket.AdultCount,
+            //    SeniorCount = ticket.SeniorCount,
+            //    FlightSchedules = lstFS,
+            //    TicketCode = "N/A",
+            //    OrderDate = ticket.OrderDate,
+            //    Status = ticketStatus,
+            //    TotalCost = ticket.TotalCost
+            //};
+
+            try
+            {
+                ARSMVCUtilities.GetDB().Tickets.Add(ticket);
+                ARSMVCUtilities.GetDB().SaveChanges();
+
+                // Gen ticket code
+                ticket.TicketCode = "#" + ticket.ID.ToString();
+                ARSMVCUtilities.GetDB().Entry(ticket).State = System.Data.Entity.EntityState.Modified;
+                ARSMVCUtilities.GetDB().SaveChanges();
+            }
+            catch (Exception ex)
+            {
+                while (ex.InnerException != null) ex = ex.InnerException;
+                throw ex;
+            }
+
+            return View("TicketDetail", ticket);
+        }
 
         public ActionResult Cancelled(string ticketCode) {
            
-            var rs = db.Tickets.SingleOrDefault(s => s.TicketCode == ticketCode);
+            var rs = ARSMVCUtilities.GetDB().Tickets.SingleOrDefault(s => s.TicketCode == ticketCode);
 
             if (rs != null)
             {
                 rs.Status = "Cancelled";
                 
-                db.SaveChanges();
+                ARSMVCUtilities.GetDB().SaveChanges();
 
                 return RedirectToAction("TicketDetail", rs);
             }
@@ -120,13 +266,13 @@ namespace ARSWebMVC.Controllers
         public ActionResult ConfirmTicket(string ticketCode)
         {
 
-            var rs = db.Tickets.SingleOrDefault(s => s.TicketCode == ticketCode);
+            var rs = ARSMVCUtilities.GetDB().Tickets.SingleOrDefault(s => s.TicketCode == ticketCode);
 
             if (rs != null)
             {
-                rs.Status = "Reversed";
+                rs.Status = "Reserved";
 
-                db.SaveChanges();
+                ARSMVCUtilities.GetDB().SaveChanges();
 
                 return RedirectToAction("TicketDetail", rs);
             }
