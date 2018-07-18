@@ -1,0 +1,245 @@
+﻿@using ARSWebMVC.Models
+@using ARSWebMVC.Controllers
+@model Dictionary<int, List<FlightSchedule>>
+
+@{
+    /**/
+
+    ViewBag.Title = "Choose Route";
+
+    Ticket ticket = (Ticket)Session["Ticket"];
+    int totalSeat = ticket.ChildrenCount + ticket.AdultCount + ticket.SeniorCount;
+
+    DBUserEntities db = new DBUserEntities();
+    List<AirplaneClass> dbAirplaneClass = ARSMVCUtilities.GetDB().AirplaneClasses.ToList();
+    List<Airplane> dbAirplane = ARSMVCUtilities.GetDB().Airplanes.ToList();
+    List<AirplaneType> dbAirplaneType = ARSMVCUtilities.GetDB().AirplaneTypes.ToList();
+}
+
+@if (ViewBag.ChooseFlightScheduleError != null)
+{
+    <div class="modal fade" id="modalError" tabindex="-1" role="dialog" aria-labelledby="modalError" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Details</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <p class="text-danger">@ViewBag.ChooseFlightScheduleError</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript">
+        let btnShowError = $('<span data-toggle="modal" data-target="#modalError"></span>')[0];
+        document.body.append(btnShowError);
+        btnShowError.click();
+    </script>
+
+}
+
+<section class="ListRoute pt-5 ">
+    <div class="container">
+        <div class="card p-md-5 p-2 animated wow fadeIn">
+            <h4>Choose Flight Schedule</h4>
+
+            <div class="card-body row">
+                <div class="col-3">FROM</div>
+                <div class="col-3">TO</div>
+                <div class="col">
+                    <div class="row">
+                        <div class="col p-0 text-center">FIRST CLASS</div>
+                        <div class="col p-0 text-center">BUSINESS CLASS</div>
+                        <div class="col p-0 text-center">CLUB CLASS</div>
+                        <div class="col-1 p-0"></div>
+                    </div>
+                </div>
+            </div>
+
+            @foreach (KeyValuePair<Int32, List<FlightSchedule>> kv in Model)
+            {
+                List<FlightSchedule> lstFS = kv.Value;
+                int lstFSChoice = kv.Key;
+                double totalBasePrice = lstFS.Sum(fs => fs.Route.BasePrice);
+
+                using (Html.BeginForm("PreviewTicket", "Ticket", FormMethod.Post))
+                {
+                    <input type="hidden" name="lstFSChoice" value="@lstFSChoice" />
+                    <input type="hidden" name="seatClassID" value="1" />
+
+                    <div class="card border-light mt-3">
+                        <div class="card-body row">
+                            <div class="col-3 d-flex flex-column justify-content-center align-items-start">
+                                @lstFS.First().Route.CityA.Name<br />
+                                <span class="badge badge-dark">@lstFS.First().DepartureDate.ToString("dd/MM/yyyy")</span>
+                            </div>
+                            <div class="col-3 d-flex flex-column justify-content-center align-items-start">
+                                @lstFS.Last().Route.CityB.Name<br />
+                                <span class="badge badge-dark">@lstFS.Last().DepartureDate.ToString("dd/MM/yyyy")</span>
+                            </div>
+                            <div class="col">
+                                <div class="row">
+                                    <div class="col p-0 d-flex align-items-stretch justify-content-center">
+                                        @if (lstFS.TrueForAll(fs => fs.FirstSeatAvail >= totalSeat))
+                                        {
+                                            <button class="btn teal w-100 btnSeatClass" data-seatClass="1">
+                                                $@Math.Round(totalBasePrice * dbAirplaneClass.Find(ac => ac.Class == "First").PriceRate * totalSeat, 2)
+                                            </button>
+                                        }
+                                        else
+                                        {
+                                            <button class="btn teal btn-outline-default w-100" disabled>
+                                                N/A
+                                            </button>
+                                        }
+                                    </div>
+                                    <div class="col p-0 d-flex align-items-stretch justify-content-center">
+                                        @if (lstFS.TrueForAll(fs => fs.BusinessSeatAvail >= totalSeat))
+                                        {
+                                            <button class="btn teal w-100 btnSeatClass" data-seatClass="2">
+                                                $@Math.Round(totalBasePrice * dbAirplaneClass.Find(ac => ac.Class == "Business").PriceRate * totalSeat, 2)
+                                            </button>
+                                        }
+                                        else
+                                        {
+                                            <button class="btn teal btn-outline-default w-100" disabled>
+                                                N/A
+                                            </button>
+                                        }
+                                    </div>
+                                    <div class="col p-0 d-flex align-items-stretch justify-content-center">
+                                        @if (lstFS.TrueForAll(fs => fs.ClubSeatAvail >= totalSeat))
+                                        {
+                                            <button type="submit" class="btn teal w-100 btnSeatClass" data-seatClass="3">
+                                                $@Math.Round(totalBasePrice * dbAirplaneClass.Find(ac => ac.Class == "Club").PriceRate * totalSeat, 2)
+                                            </button>
+                                        }
+                                        else
+                                        {
+                                            <button class="btn teal btn-outline-default w-100" disabled>
+                                                N/A
+                                            </button>
+                                        }
+                                    </div>
+                                    <div class="col-1 p-0 d-flex align-items-center justify-content-center">
+                                        <span style="cursor: pointer" class="btn-details" data-toggle="modal" data-target="#modalDetails">
+                                            <i class="fa fa-info-circle" aria-hidden="true"></i>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="w-100 table-scroll d-none">
+                            <!-- Begin div Table -->
+                            <table class="table table-hover">
+                                <!-- Begin Table -->
+                                <thead>
+                                    <tr>
+                                        <th>Airplane Code</th>
+                                        <th>Airplane Type</th>
+                                        <th>From</th>
+                                        <th>To</th>
+                                        <th class="text-center">First Class</th>
+                                        <th class="text-center">Business Class</th>
+                                        <th class="text-center">Club Class</th>
+                                        <th class="text-right">SkyMile</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (FlightSchedule fs in lstFS)
+                                    {
+                                        <tr>
+                                            <td>@fs.AirplaneCode</td>
+                                            <td>@dbAirplaneType.Find(at => at.ID == dbAirplane.Find(a => a.AirplaneCode == fs.AirplaneCode).TypeID).Name</td>
+                                            <td>
+                                                @fs.Route.CityA.Name<br />
+                                                @fs.DepartureDate.ToString("dd/MM/yyyy")
+                                            </td>
+                                            <td>
+                                                @fs.Route.CityB.Name<br />
+                                                @fs.DepartureDate.ToString("dd/MM/yyyy")
+                                            </td>
+                                            <td class="text-center">
+                                                @if (fs.FirstSeatAvail >= totalSeat)
+                                                {
+                                                    <p class="m-0">@fs.FirstSeatAvail seat(s)</p>
+                                                    <span>available</span>
+                                                }
+                                                else
+                                                {
+                                                    <span>Not enough seat available</span>
+                                                }
+                                            </td>
+                                            <td class="text-center">
+                                                @if (fs.BusinessSeatAvail >= totalSeat)
+                                                {
+                                                    <p class="m-0">@fs.BusinessSeatAvail seat(s)</p>
+                                                    <span>available</span>
+                                                }
+                                                else
+                                                {
+                                                    <span>Not enough seat available</span>
+                                                }
+                                            </td>
+                                            <td class="text-center">
+                                                @if (fs.ClubSeatAvail >= totalSeat)
+                                                {
+                                                    <p class="m-0">@fs.ClubSeatAvail seat(s)</p>
+                                                    <span>available</span>
+                                                }
+                                                else
+                                                {
+                                                    <span>Not enough seat available</span>
+                                                }
+                                            </td>
+                                            <td class="text-right">@fs.Route.SkyMiles</td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        </div> <!-- End div Table -->
+                    </div> <!-- End Card -->
+                }
+            }
+        </div>
+    </div>
+
+    <div class="modal fade" id="modalDetails" tabindex="-1" role="dialog" aria-labelledby="modalDetails" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-fluid" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Details</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    ...
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script type="text/javascript">
+        $('.btn-details').on('click', function () {
+            let tableDetails = $($(this).parents('div.card')[0]).find('div.table-scroll').clone();
+            $('#modalDetails .modal-body').html(tableDetails);
+            $('#modalDetails .modal-body div.table-scroll').removeClass('d-none');
+        });
+
+        $('.btnSeatClass').on('click', function () {
+            $(this).parents('form').find('[name="seatClassID"]').val($(this).data('seatclass'));
+        });
+    </script>
+</section>
+

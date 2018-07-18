@@ -37,10 +37,18 @@ a:hover, a:visited, a:active {
 .query-flight-details {
 
 }
+.ticketheader {
+    
+}
+    .ticketheader b {
+        margin-left: -3rem;
+        padding-left: 3rem !important;
+        padding-right: 1.5rem !important;
+    }
 
 
-.ticketdetail .table-scrol {
-overflow: auto;
+.table-scroll {
+    overflow: auto;
 }
 
 

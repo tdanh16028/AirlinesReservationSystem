@@ -1,4 +1,5 @@
-﻿using ARSWebMVC.Models;
+﻿using ARSWebMVC.Controllers;
+using ARSWebMVC.Models;
 using System;
 using System.Collections.Generic;
 
@@ -25,19 +26,40 @@ namespace eProject_main.Controllers
             return View();
         }
 
+        //GET: Customer/LoginPartial
+        public ActionResult LoginPartial()
+        {
+            return PartialView("Login");
+        }
+
+
+
         // POST: Customer/Login
         [HttpPost]
         public ActionResult Login(LoginModels profile)
         {
+            string action = "Index";
+            string controller = "Home";
+            object routeValue = null;
+
+            if (TempData["lastPageVisit"] != null)
+            {
+                Dictionary<String, Object> lastPageVisit = (Dictionary<String, Object>)TempData["lastPageVisit"];
+                action = lastPageVisit["actionName"].ToString();
+                controller = lastPageVisit["controllerName"].ToString();
+                routeValue = lastPageVisit.ContainsKey("routeValue") ? lastPageVisit["routeValue"] : null;
+            }
+
             // Check user exist
             if (profile.UserID != null && profile.Password != null)
             {
                 var inputPasswordMD5 = CreateMD5(profile.Password);
-                var res = db.Profiles.Where(s => s.UserID == profile.UserID && s.Password == inputPasswordMD5).SingleOrDefault();
+                var res = ARSMVCUtilities.GetDB().Profiles.Where(s => s.UserID == profile.UserID && s.Password == inputPasswordMD5).SingleOrDefault();
                 if (res != null)
                 {
                     Profile userProfile = new Profile()
                     {
+                        ID = res.ID,
                         UserID = res.UserID,
                         FirstName = res.FirstName,
                         LastName = res.LastName,
@@ -50,7 +72,8 @@ namespace eProject_main.Controllers
                         SkyMiles = Convert.ToInt32(res.SkyMiles)
                     };
                     Session["UserProfile"] = userProfile;
-                    return RedirectToAction( "Index","Home");
+
+                    return RedirectToAction(action, controller, routeValue);
                 }
                 else
                 {
@@ -79,18 +102,18 @@ namespace eProject_main.Controllers
             return View(userProfile);
         }
         [HttpPost]
-        public ActionResult ChangePassword([Bind(Include = "UserID,Password")] Profile profile,FormCollection form)
+        public ActionResult ChangePassword([Bind(Include = "UserID,Password")] Profile profile, FormCollection form)
         {
             var oldpass = Convert.ToString(form["old_password"]);
             var cfpass = Convert.ToString(form["confirm_password"]);
-            var rs = db.Profiles.SingleOrDefault(s => s.UserID == profile.UserID);
+            var rs = ARSMVCUtilities.GetDB().Profiles.SingleOrDefault(s => s.UserID == profile.UserID);
             if (rs != null)
             {
                 if (rs.Password != CreateMD5(oldpass))
                 {
                     ViewBag.ErrorOld_password = "Old password is invalid";
                 }
-                else if(cfpass != profile.Password)
+                else if (cfpass != profile.Password)
                 {
                     ViewBag.ErrorConfirm_password = "Password not match";
                 }
@@ -101,7 +124,7 @@ namespace eProject_main.Controllers
                 else
                 {
                     rs.Password = CreateMD5(profile.Password);
-                    db.SaveChanges();
+                    ARSMVCUtilities.GetDB().SaveChanges();
                     return RedirectToAction("Profile");
                 }
             }
@@ -119,7 +142,7 @@ namespace eProject_main.Controllers
 
             if (ModelState.IsValid == true)
             {
-                var rs = db.Profiles.Where(s => s.UserID == profile.UserID).SingleOrDefault();
+                var rs = ARSMVCUtilities.GetDB().Profiles.Where(s => s.UserID == profile.UserID).SingleOrDefault();
                 if (rs != null)
                 {
                     ViewBag.MessageForUsername = "Username is used";
@@ -134,8 +157,8 @@ namespace eProject_main.Controllers
                 {
                     profile.Password = CreateMD5(profile.Password);
                     profile.IsActive = true;
-                    db.Profiles.Add(profile);
-                    db.SaveChanges();
+                    ARSMVCUtilities.GetDB().Profiles.Add(profile);
+                    ARSMVCUtilities.GetDB().SaveChanges();
                     return RedirectToAction("Index", "Home");
                 }
             }
@@ -161,7 +184,7 @@ namespace eProject_main.Controllers
             // Show User Profile
 
 
-            Profile rs = db.Profiles.SingleOrDefault(s => s.UserID == profile.UserID);
+            Profile rs = ARSMVCUtilities.GetDB().Profiles.SingleOrDefault(s => s.UserID == profile.UserID);
             var cfpassword = Convert.ToString(form["txtConfirmPassword"]);
             var cfpasswordMD5 = CreateMD5(cfpassword);
             if (cfpasswordMD5 == rs.Password.ToString())
@@ -176,9 +199,9 @@ namespace eProject_main.Controllers
                     rs.Sex = profile.Sex;
                     rs.Age = profile.Age;
                     rs.CreditCard = profile.CreditCard;
-                    db.SaveChanges();
+                    ARSMVCUtilities.GetDB().SaveChanges();
                 }
-                
+
                 Session["UserProfile"] = profile;
 
                 return RedirectToAction("Profile");
@@ -189,11 +212,7 @@ namespace eProject_main.Controllers
 
         }
 
-
-
-
-
-        public ActionResult Profile()
+        public new ActionResult Profile()
         {
             // If user is not loged in, redirect to login page
             if (Session["UserProfile"] == null) return RedirectToAction("Login");

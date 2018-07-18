@@ -10,6 +10,17 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet">
     <!-- Material Design Bootstrap -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.5.4/css/mdb.min.css" rel="stylesheet">
+
+
+    <!-- JQuery -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <!-- Bootstrap tooltips -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.13.0/umd/popper.min.js"></script>
+    <!-- Bootstrap core JavaScript -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <!-- MDB core JavaScript -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.5.4/js/mdb.min.js"></script>
+
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
     @using ARSWebMVC.Models
@@ -17,26 +28,35 @@
 </head>
 
 <body>
-
+    @(TempData["Status"] = null)
     <!--Navbar-->
     <nav class="navbar navbar-expand-md navbar-dark  teal scrolling-navbar fixed-top">
-
         <!-- Navbar brand -->
         <div class="container">
             @Html.ActionLink("AirlinesReservation", "Index", "Home", null, new { @class = "navbar-brand" })
-
             <!-- Collapse button -->
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#basicExampleNav" aria-controls="basicExampleNav"
                     aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-
             <!-- Collapsible content -->
             <div class="collapse navbar-collapse" id="basicExampleNav">
                 <!-- Links -->
                 <ul class="navbar-nav d-flex w-100">
                     <li class="nav-item ">
-                        @Html.ActionLink("Ticket", "Index", "Ticket", null, new { @class = "nav-link active" })
+                        @Html.ActionLink("CheckingAvailability", "CheckingAvailability", "Home", null, new { @class = "nav-link" })
+                    </li>
+                    <li class="nav-item">
+                        @Html.ActionLink("DatePic", "DatePic", "Home", null, new { @class = "nav-link" })
+                    </li>
+                    <li class="nav-item">
+                        @Html.ActionLink("TicketDetailTemp", "TicketDetailTemp", "Ticket", null, new { @class = "nav-link" })
+                    </li>
+                    <li class="nav-item">
+                        @Html.ActionLink("Ticket", "Index", "Ticket", null, new { @class = "nav-link" })
+                    </li>
+                    <li class="nav-item">
+                        @Html.ActionLink("QueryFlightDetails", "QueryFlightDetails", "Home", null, new { @class = "nav-link" })
                     </li>
                     @Html.Partial("_LoginPartial")
                 </ul>
@@ -49,36 +69,22 @@
     <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
-
                 <button type="button" class="close text-right pr-4 pt-4" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
                 <div class="modal-body">
-                    ...
                 </div>
             </div>
         </div>
     </div>
-    <div class="body-content container-fluid pt-5 wow fadeIn">
+    <div class="body-content pt-5 ">
         @RenderBody()
         <hr />
     </div>
     <footer class="container web-footer">
         <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
     </footer>
-    <!-- JQuery -->
-    <!-- JQuery -->
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <!-- Bootstrap tooltips -->
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.13.0/umd/popper.min.js"></script>
-    <!-- Bootstrap core JavaScript -->
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/js/bootstrap.min.js"></script>
-    <!-- MDB core JavaScript -->
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.5.4/js/mdb.min.js"></script>
-
     <script src="~/Scripts/MyJQuery.js"></script>
     @RenderSection("scripts", required: false)
-
-
 </body>
 </html>
