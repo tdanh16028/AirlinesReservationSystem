@@ -360,6 +360,9 @@
       <DependentUpon>DBUserModel.edmx</DependentUpon>
       <LastGenOutput>DBUserModel.cs</LastGenOutput>
     </Content>
+    <None Include="Resources\icons8-cancel-16.png" />
+    <None Include="Resources\icons8-pencil-24.png" />
+    <None Include="Resources\icons8-add-16.png" />
     <None Include="Resources\icons8-passenger-26.png" />
     <None Include="Resources\icons8-business-32.png" />
     <None Include="Resources\icons8-delete-48.png" />

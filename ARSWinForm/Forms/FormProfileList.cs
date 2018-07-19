@@ -18,8 +18,7 @@ namespace ARSWinForm
         {
             LoadDataGridView();
         }
-
-        private void btnCreate_Click(object sender, System.EventArgs e)
+        private void btnSubmit_Click(object sender, EventArgs e)
         {
             FormProfileCE f = new FormProfileCE();
             // f.MdiParent = this.MdiParent;
@@ -29,9 +28,9 @@ namespace ARSWinForm
 
             // Load lai bang sau khi form Create da tat
             LoadDataGridView();
-        }
 
-        private void btnEdit_Click(object sender, System.EventArgs e)
+        }
+        private void btnEdit_Click(object sender, EventArgs e)
         {
             // Lay tai khoan admin dang duoc chon trong bang
             Profile profile = GetSelectedProfile();
@@ -53,7 +52,6 @@ namespace ARSWinForm
             // Load lai bang sau khi form Edit da tat
             LoadDataGridView();
         }
-
 
         private async void btnDelete_Click(object sender, System.EventArgs e)
         {
@@ -195,6 +193,11 @@ namespace ARSWinForm
 
             // Tra AdminAccount vua tao ve
             return profile;
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

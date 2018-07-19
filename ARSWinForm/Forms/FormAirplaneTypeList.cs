@@ -73,8 +73,7 @@ namespace ARSWinForm
                 dgvAirplaneType.DataSource = table;
             }
         }
-
-        private void btnCreate_Click(object sender, EventArgs e)
+        private void btnSubmit_Click(object sender, EventArgs e)
         {
             FormAirplaneTypeCE f = new FormAirplaneTypeCE();
             f.Show();
@@ -85,6 +84,15 @@ namespace ARSWinForm
             FormAirplaneTypeCE f = new FormAirplaneTypeCE();
             f.Show();
         }
-        
+
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnReload_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

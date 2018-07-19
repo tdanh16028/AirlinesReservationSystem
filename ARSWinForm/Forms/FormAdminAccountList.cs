@@ -22,7 +22,7 @@ namespace ARSWinForm
             LoadDataGridView();
         }
 
-        private void btnCreate_Click(object sender, EventArgs e)
+        private void btnSubmit_Click(object sender, EventArgs e)
         {
             FormAdminAccountCE f = new FormAdminAccountCE();
             // f.MdiParent = this.MdiParent;
@@ -33,7 +33,6 @@ namespace ARSWinForm
             // Load lai bang sau khi form Create da tat
             LoadDataGridView();
         }
-
         private void btnEdit_Click(object sender, EventArgs e)
         {
             // Lay tai khoan admin dang duoc chon trong bang
@@ -56,7 +55,6 @@ namespace ARSWinForm
             // Load lai bang sau khi form Edit da tat
             LoadDataGridView();
         }
-        
         private async void btnDelete_Click(object sender, EventArgs e)
         {
             // Lay tai khoan admin dang duoc chon trong bang
@@ -85,18 +83,17 @@ namespace ARSWinForm
                 // Load lai bang
                 LoadDataGridView();
 
-            } else
+            }
+            else
             {
                 // Neu ket qua that bai, hien thong bao loi
                 MessageBox.Show("An error has occurred!\n" + adminAccountWrapper.GetErrorMessage(), "Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-
         private void btnReload_Click(object sender, EventArgs e)
         {
             LoadDataGridView();
         }
-
         public async void LoadDataGridView()
         {
             // Luu lai dong hien tai dang chon

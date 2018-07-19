@@ -34,6 +34,10 @@ namespace ARSWinForm
                 txtLastName.Text = profile.LastName;
                 numAge.Value =  profile.Age;
                 txtEmailAddress.Text = profile.EmailAddress;
+                txtPhoneNumber.Text = profile.PhoneNumber;
+                txtAddress.Text = profile.Address;
+                txtCreditCard.Text = profile.CreditCard;
+                numSkyMiles.Value = profile.SkyMiles;
                 if (profile.Sex)
                 {
                     rbtnMale.Checked = true;
@@ -42,10 +46,6 @@ namespace ARSWinForm
                 {
                     rbtnFemale.Checked = true;
                 }
-                txtPhoneNumber.Text = profile.PhoneNumber;
-                txtAddress.Text = profile.Address;
-                txtCreditCard.Text = profile.CreditCard;
-                numSkyMiles.Value = profile.SkyMiles;
                 if (profile.IsActive)
                 {
                     // Neu tai khoan nay dang active thi check vao radio button Active
@@ -77,10 +77,10 @@ namespace ARSWinForm
             profile.Address = txtAddress.Text;
             profile.PhoneNumber = txtPhoneNumber.Text;
             profile.EmailAddress = txtEmailAddress.Text;
-            profile.Sex = rbtnMale.Checked;
             profile.Age = Convert.ToInt32(numAge);
             profile.CreditCard = txtCreditCard.Text;
             profile.SkyMiles = Convert.ToInt32(numSkyMiles);
+            profile.Sex = rbtnMale.Checked;
             profile.IsActive = rbtnActive.Checked;
 
             // Neu dang o che do tao account moi thi phai lay gia tri trong o password gan vao account.
