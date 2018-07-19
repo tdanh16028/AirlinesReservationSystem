@@ -19,8 +19,7 @@ namespace ARSWinForm
         {
             LoadDataGridView();
         }
-
-        private void btnCreate_Click(object sender, EventArgs e)
+        private void btnSubmit_Click(object sender, EventArgs e)
         {
             FormRouteCE f = new FormRouteCE();
             // f.MdiParent = this.MdiParent;
@@ -32,7 +31,7 @@ namespace ARSWinForm
             LoadDataGridView();
         }
 
-        private void Edit_Click(object sender, EventArgs e)
+        private void btnEdit_Click(object sender, EventArgs e)
         {
             // Lay tai khoan admin dang duoc chon trong bang
             Route route = GetSelectedRoute();
@@ -40,7 +39,7 @@ namespace ARSWinForm
             // Neu hien tai khong co tai khoan nao duoc chon thi hien thong bao
             if (route == null)
             {
-                MessageBox.Show("You must choose an aiplane to edit!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                MessageBox.Show("You must choose an route to edit!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 return;
             }
 
@@ -53,10 +52,8 @@ namespace ARSWinForm
 
             // Load lai bang sau khi form Edit da tat
             LoadDataGridView();
-
         }
 
- 
         private async void btnDelete_Click(object sender, EventArgs e)
         {
             // Lay may bay dang duoc chon trong bang
@@ -205,5 +202,6 @@ namespace ARSWinForm
             // Tra Airplane vua tao ve
             return route;
         }
+
     }
 }

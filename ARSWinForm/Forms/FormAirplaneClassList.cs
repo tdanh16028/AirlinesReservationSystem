@@ -23,7 +23,7 @@ namespace ARSWinForm
             LoadDataGridView();
             }
 
-        private void btnCreate_Click(object sender, EventArgs e)
+        private void btnSubmit_Click(object sender, EventArgs e)
         {
             FormAirplaneClassCE f = new FormAirplaneClassCE();
             // f.MdiParent = this.MdiParent;
@@ -37,6 +37,7 @@ namespace ARSWinForm
 
         private void btnEdit_Click(object sender, EventArgs e)
         {
+
             // Lay class dang duoc chon trong bang
             AirplaneClass airplaneClass = GetSelectedAirplaneClass();
 
@@ -56,9 +57,12 @@ namespace ARSWinForm
 
             // Load lai bang sau khi form Edit da tat
             LoadDataGridView();
-
         }
 
+        private void btnReload_Click_1(object sender, EventArgs e)
+        {
+            LoadDataGridView();
+        }
         private AirplaneClass GetSelectedAirplaneClass()
         {
             // Neu khong co dong nao dang duoc chon thi tra ve null
@@ -79,10 +83,6 @@ namespace ARSWinForm
             return airplaneClass;
         }
 
-        private void btnReload_Click(object sender, EventArgs e)
-        {
-            LoadDataGridView();
-        }
         public async void LoadDataGridView()
         {
             // Luu lai dong hien tai dang chon

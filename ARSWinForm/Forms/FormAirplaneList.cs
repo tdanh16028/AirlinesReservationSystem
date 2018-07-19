@@ -24,7 +24,7 @@ namespace ARSWinForm
             LoadDataGridView();
         }
 
-        private void btnCreate_Click(object sender, EventArgs e)
+        private void btnSubmit_Click(object sender, EventArgs e)
         {
             FormAirplaneCE f = new FormAirplaneCE();
             // f.MdiParent = this.MdiParent;
@@ -35,7 +35,6 @@ namespace ARSWinForm
             // Load lai bang sau khi form Create da tat
             LoadDataGridView();
         }
-
         private void btnEdit_Click(object sender, EventArgs e)
         {
             // Lay tai khoan admin dang duoc chon trong bang
@@ -58,7 +57,6 @@ namespace ARSWinForm
             // Load lai bang sau khi form Edit da tat
             LoadDataGridView();
         }
-        
         private async void btnDelete_Click(object sender, EventArgs e)
         {
             // Lay may bay dang duoc chon trong bang

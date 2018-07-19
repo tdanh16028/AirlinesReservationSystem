@@ -18,8 +18,7 @@ namespace ARSWinForm
         {
             LoadDataGridView();
         }
-
-        private void btnCreate_Click(object sender, EventArgs e)
+        private void btnSubmit_Click(object sender, EventArgs e)
         {
             FormFlightScheduleCE f = new FormFlightScheduleCE();
             // f.MdiParent = this.MdiParent;
@@ -31,7 +30,7 @@ namespace ARSWinForm
             LoadDataGridView();
         }
 
-        private void Edit_Click(object sender, EventArgs e)
+        private void btnEdit_Click(object sender, EventArgs e)
         {
             // Lay tai khoan admin dang duoc chon trong bang
             FlightSchedule flightSchedule = GetSelectedFlightSchedule();
@@ -53,8 +52,6 @@ namespace ARSWinForm
             // Load lai bang sau khi form Edit da tat
             LoadDataGridView();
         }
-
-
 
         private async void btnDelete_Click(object sender, EventArgs e)
         {
@@ -96,6 +93,8 @@ namespace ARSWinForm
         {
             LoadDataGridView();
         }
+
+
         public async void LoadDataGridView()
         {
             // Luu lai dong hien tai dang chon
@@ -221,5 +220,6 @@ namespace ARSWinForm
             // Tra Airplane vua tao ve
             return flightSchedule;
         }
+
     }
 }
