@@ -51,7 +51,7 @@
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.Location = new System.Drawing.Point(13, 102);
-            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label2.Margin = new System.Windows.Forms.Padding(50, 15, 10, 15);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(53, 21);
             this.label2.TabIndex = 1;
@@ -60,10 +60,11 @@
             // 
             // txtName
             // 
-            this.txtName.Location = new System.Drawing.Point(180, 99);
-            this.txtName.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.txtName.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtName.Location = new System.Drawing.Point(180, 100);
+            this.txtName.Margin = new System.Windows.Forms.Padding(10, 15, 10, 15);
             this.txtName.Name = "txtName";
-            this.txtName.Size = new System.Drawing.Size(254, 29);
+            this.txtName.Size = new System.Drawing.Size(220, 34);
             this.txtName.TabIndex = 4;
             // 
             // btnSubmit
@@ -71,8 +72,8 @@
             this.btnSubmit.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(150)))), ((int)(((byte)(136)))));
             this.btnSubmit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSubmit.ForeColor = System.Drawing.Color.White;
-            this.btnSubmit.Location = new System.Drawing.Point(98, 635);
-            this.btnSubmit.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btnSubmit.Location = new System.Drawing.Point(115, 407);
+            this.btnSubmit.Margin = new System.Windows.Forms.Padding(10);
             this.btnSubmit.Name = "btnSubmit";
             this.btnSubmit.Size = new System.Drawing.Size(103, 40);
             this.btnSubmit.TabIndex = 7;
@@ -85,8 +86,8 @@
             this.btnCancel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(57)))), ((int)(((byte)(13)))));
             this.btnCancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCancel.ForeColor = System.Drawing.Color.White;
-            this.btnCancel.Location = new System.Drawing.Point(242, 635);
-            this.btnCancel.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btnCancel.Location = new System.Drawing.Point(238, 407);
+            this.btnCancel.Margin = new System.Windows.Forms.Padding(10);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(103, 40);
             this.btnCancel.TabIndex = 8;
@@ -98,8 +99,8 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(13, 204);
-            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label1.Location = new System.Drawing.Point(13, 166);
+            this.label1.Margin = new System.Windows.Forms.Padding(50, 15, 10, 15);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(81, 21);
             this.label1.TabIndex = 9;
@@ -110,8 +111,8 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(13, 329);
-            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label3.Location = new System.Drawing.Point(13, 230);
+            this.label3.Margin = new System.Windows.Forms.Padding(50, 15, 10, 15);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(112, 21);
             this.label3.TabIndex = 10;
@@ -122,8 +123,8 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(13, 448);
-            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label4.Location = new System.Drawing.Point(10, 288);
+            this.label4.Margin = new System.Windows.Forms.Padding(50, 15, 10, 15);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(83, 21);
             this.label4.TabIndex = 11;
@@ -132,52 +133,55 @@
             // 
             // numFirstClassSeat
             // 
+            this.numFirstClassSeat.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.numFirstClassSeat.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.numFirstClassSeat.Location = new System.Drawing.Point(180, 202);
-            this.numFirstClassSeat.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.numFirstClassSeat.Location = new System.Drawing.Point(180, 164);
+            this.numFirstClassSeat.Margin = new System.Windows.Forms.Padding(10, 15, 10, 15);
+            this.numFirstClassSeat.Name = "numFirstClassSeat";
+            this.numFirstClassSeat.Size = new System.Drawing.Size(220, 34);
             this.numFirstClassSeat.Maximum = new decimal(new int[] {
             500,
             0,
             0,
             0});
-            this.numFirstClassSeat.Name = "numFirstClassSeat";
-            this.numFirstClassSeat.Size = new System.Drawing.Size(214, 29);
             this.numFirstClassSeat.TabIndex = 12;
             // 
             // numBusinessClassSeat
             // 
-            this.numBusinessClassSeat.Location = new System.Drawing.Point(180, 327);
-            this.numBusinessClassSeat.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.numBusinessClassSeat.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.numBusinessClassSeat.Location = new System.Drawing.Point(180, 228);
+            this.numBusinessClassSeat.Margin = new System.Windows.Forms.Padding(10, 15, 10, 15);
+            this.numBusinessClassSeat.Name = "numBusinessClassSeat";
+            this.numBusinessClassSeat.Size = new System.Drawing.Size(220, 34);
+            this.numBusinessClassSeat.TabIndex = 13;
             this.numBusinessClassSeat.Maximum = new decimal(new int[] {
             500,
             0,
             0,
             0});
-            this.numBusinessClassSeat.Name = "numBusinessClassSeat";
-            this.numBusinessClassSeat.Size = new System.Drawing.Size(214, 29);
-            this.numBusinessClassSeat.TabIndex = 13;
             // 
             // numClubClassSeat
             // 
-            this.numClubClassSeat.Location = new System.Drawing.Point(180, 446);
-            this.numClubClassSeat.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.numClubClassSeat.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.numClubClassSeat.Location = new System.Drawing.Point(180, 286);
+            this.numClubClassSeat.Margin = new System.Windows.Forms.Padding(10, 15, 10, 15);
+            this.numClubClassSeat.Name = "numClubClassSeat";
+            this.numClubClassSeat.Size = new System.Drawing.Size(220, 34);
+            this.numClubClassSeat.TabIndex = 14;
             this.numClubClassSeat.Maximum = new decimal(new int[] {
             500,
             0,
             0,
             0});
-            this.numClubClassSeat.Name = "numClubClassSeat";
-            this.numClubClassSeat.Size = new System.Drawing.Size(214, 29);
-            this.numClubClassSeat.TabIndex = 14;
             // 
             // rbtnActive
             // 
             this.rbtnActive.AutoSize = true;
             this.rbtnActive.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.rbtnActive.Location = new System.Drawing.Point(98, 544);
+            this.rbtnActive.Location = new System.Drawing.Point(115, 350);
             this.rbtnActive.Margin = new System.Windows.Forms.Padding(10, 15, 10, 15);
             this.rbtnActive.Name = "rbtnActive";
-            this.rbtnActive.Size = new System.Drawing.Size(69, 25);
+            this.rbtnActive.Size = new System.Drawing.Size(86, 32);
             this.rbtnActive.TabIndex = 15;
             this.rbtnActive.TabStop = true;
             this.rbtnActive.Text = "Active";
@@ -185,12 +189,12 @@
             // 
             // rbtnInActive
             // 
-            this.rbtnInActive.AutoSize = true;
+            this.cboInActive.AutoSize = true;
             this.rbtnInActive.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.rbtnInActive.Location = new System.Drawing.Point(242, 544);
+            this.rbtnInActive.Location = new System.Drawing.Point(221, 350);
             this.rbtnInActive.Margin = new System.Windows.Forms.Padding(10, 15, 10, 15);
             this.rbtnInActive.Name = "rbtnInActive";
-            this.rbtnInActive.Size = new System.Drawing.Size(82, 25);
+            this.rbtnInActive.Size = new System.Drawing.Size(102, 32);
             this.rbtnInActive.TabIndex = 16;
             this.rbtnInActive.TabStop = true;
             this.rbtnInActive.Text = "InActive";
@@ -217,7 +221,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 21F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(452, 737);
+            this.ClientSize = new System.Drawing.Size(452, 460);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.rbtnInActive);
             this.Controls.Add(this.rbtnActive);

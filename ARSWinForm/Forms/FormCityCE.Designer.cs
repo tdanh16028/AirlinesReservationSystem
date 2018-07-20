@@ -41,8 +41,8 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(58, 136);
-            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label2.Location = new System.Drawing.Point(59, 103);
+            this.label2.Margin = new System.Windows.Forms.Padding(50, 15, 10, 15);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(59, 28);
             this.label2.TabIndex = 1;
@@ -53,8 +53,8 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(58, 313);
-            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label3.Location = new System.Drawing.Point(59, 161);
+            this.label3.Margin = new System.Windows.Forms.Padding(50, 15, 10, 15);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(66, 28);
             this.label3.TabIndex = 2;
@@ -63,18 +63,20 @@
             // 
             // txtCode
             // 
-            this.txtCode.Location = new System.Drawing.Point(162, 133);
-            this.txtCode.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.txtCode.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtCode.Location = new System.Drawing.Point(162, 100);
+            this.txtCode.Margin = new System.Windows.Forms.Padding(10, 15, 10, 15);
             this.txtCode.Name = "txtCode";
-            this.txtCode.Size = new System.Drawing.Size(186, 34);
+            this.txtCode.Size = new System.Drawing.Size(220, 34);
             this.txtCode.TabIndex = 4;
             // 
             // txtName
             // 
-            this.txtName.Location = new System.Drawing.Point(162, 310);
-            this.txtName.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.txtName.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtName.Location = new System.Drawing.Point(162, 158);
+            this.txtName.Margin = new System.Windows.Forms.Padding(10, 15, 10, 15);
             this.txtName.Name = "txtName";
-            this.txtName.Size = new System.Drawing.Size(186, 34);
+            this.txtName.Size = new System.Drawing.Size(220, 34);
             this.txtName.TabIndex = 5;
             // 
             // btnSubmit
@@ -82,8 +84,8 @@
             this.btnSubmit.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(150)))), ((int)(((byte)(136)))));
             this.btnSubmit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSubmit.ForeColor = System.Drawing.Color.White;
-            this.btnSubmit.Location = new System.Drawing.Point(62, 480);
-            this.btnSubmit.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btnSubmit.Location = new System.Drawing.Point(92, 231);
+            this.btnSubmit.Margin = new System.Windows.Forms.Padding(10);
             this.btnSubmit.Name = "btnSubmit";
             this.btnSubmit.Size = new System.Drawing.Size(103, 40);
             this.btnSubmit.TabIndex = 6;
@@ -96,8 +98,8 @@
             this.btnCancel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(57)))), ((int)(((byte)(13)))));
             this.btnCancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCancel.ForeColor = System.Drawing.Color.White;
-            this.btnCancel.Location = new System.Drawing.Point(220, 480);
-            this.btnCancel.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btnCancel.Location = new System.Drawing.Point(215, 231);
+            this.btnCancel.Margin = new System.Windows.Forms.Padding(10);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(103, 40);
             this.btnCancel.TabIndex = 7;
@@ -126,7 +128,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 28F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(402, 564);
+            this.ClientSize = new System.Drawing.Size(402, 298);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnSubmit);

@@ -44,8 +44,8 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(16, 118);
-            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label1.Location = new System.Drawing.Point(16, 96);
+            this.label1.Margin = new System.Windows.Forms.Padding(50, 15, 10, 15);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(134, 28);
             this.label1.TabIndex = 0;
@@ -54,10 +54,10 @@
             // txtAirplaneCode
             // 
             this.txtAirplaneCode.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtAirplaneCode.Location = new System.Drawing.Point(169, 116);
-            this.txtAirplaneCode.Margin = new System.Windows.Forms.Padding(4);
+            this.txtAirplaneCode.Location = new System.Drawing.Point(169, 94);
+            this.txtAirplaneCode.Margin = new System.Windows.Forms.Padding(10, 15, 10, 15);
             this.txtAirplaneCode.Name = "txtAirplaneCode";
-            this.txtAirplaneCode.Size = new System.Drawing.Size(290, 34);
+            this.txtAirplaneCode.Size = new System.Drawing.Size(220, 34);
             this.txtAirplaneCode.TabIndex = 3;
             // 
             // btnSubmit
@@ -65,8 +65,8 @@
             this.btnSubmit.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(150)))), ((int)(((byte)(136)))));
             this.btnSubmit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSubmit.ForeColor = System.Drawing.Color.White;
-            this.btnSubmit.Location = new System.Drawing.Point(103, 416);
-            this.btnSubmit.Margin = new System.Windows.Forms.Padding(4);
+            this.btnSubmit.Location = new System.Drawing.Point(95, 272);
+            this.btnSubmit.Margin = new System.Windows.Forms.Padding(10, 15, 10, 15);
             this.btnSubmit.Name = "btnSubmit";
             this.btnSubmit.Size = new System.Drawing.Size(103, 40);
             this.btnSubmit.TabIndex = 7;
@@ -79,8 +79,8 @@
             this.btnCancel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(57)))), ((int)(((byte)(13)))));
             this.btnCancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCancel.ForeColor = System.Drawing.Color.White;
-            this.btnCancel.Location = new System.Drawing.Point(272, 416);
-            this.btnCancel.Margin = new System.Windows.Forms.Padding(4);
+            this.btnCancel.Location = new System.Drawing.Point(218, 272);
+            this.btnCancel.Margin = new System.Windows.Forms.Padding(10, 15, 10, 15);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(103, 40);
             this.btnCancel.TabIndex = 8;
@@ -92,8 +92,8 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(16, 212);
-            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label2.Location = new System.Drawing.Point(16, 154);
+            this.label2.Margin = new System.Windows.Forms.Padding(50, 15, 10, 15);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(136, 28);
             this.label2.TabIndex = 9;
@@ -103,17 +103,17 @@
             // 
             this.cboType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboType.FormattingEnabled = true;
-            this.cboType.Location = new System.Drawing.Point(169, 212);
-            this.cboType.Margin = new System.Windows.Forms.Padding(4);
+            this.cboType.Location = new System.Drawing.Point(169, 151);
+            this.cboType.Margin = new System.Windows.Forms.Padding(10, 15, 10, 15);
             this.cboType.Name = "cboType";
-            this.cboType.Size = new System.Drawing.Size(290, 36);
+            this.cboType.Size = new System.Drawing.Size(220, 36);
             this.cboType.TabIndex = 10;
             // 
             // rbtnActive
             // 
             this.rbtnActive.AutoSize = true;
             this.rbtnActive.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.rbtnActive.Location = new System.Drawing.Point(169, 320);
+            this.rbtnActive.Location = new System.Drawing.Point(169, 210);
             this.rbtnActive.Margin = new System.Windows.Forms.Padding(10, 15, 10, 15);
             this.rbtnActive.Name = "rbtnActive";
             this.rbtnActive.Size = new System.Drawing.Size(86, 32);
@@ -126,7 +126,7 @@
             // 
             this.rbtnInActive.AutoSize = true;
             this.rbtnInActive.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.rbtnInActive.Location = new System.Drawing.Point(319, 320);
+            this.rbtnInActive.Location = new System.Drawing.Point(275, 210);
             this.rbtnInActive.Margin = new System.Windows.Forms.Padding(10, 15, 10, 15);
             this.rbtnInActive.Name = "rbtnInActive";
             this.rbtnInActive.Size = new System.Drawing.Size(102, 32);
@@ -139,8 +139,8 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(16, 320);
-            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label3.Location = new System.Drawing.Point(16, 212);
+            this.label3.Margin = new System.Windows.Forms.Padding(50, 15, 10, 15);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(67, 28);
             this.label3.TabIndex = 9;
@@ -158,7 +158,7 @@
             this.label4.Margin = new System.Windows.Forms.Padding(0);
             this.label4.Name = "label4";
             this.label4.Padding = new System.Windows.Forms.Padding(50, 0, 0, 0);
-            this.label4.Size = new System.Drawing.Size(505, 81);
+            this.label4.Size = new System.Drawing.Size(426, 81);
             this.label4.TabIndex = 13;
             this.label4.Text = "AirplaneCE";
             this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -167,7 +167,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 28F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(496, 500);
+            this.ClientSize = new System.Drawing.Size(417, 330);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.rbtnInActive);
             this.Controls.Add(this.rbtnActive);
