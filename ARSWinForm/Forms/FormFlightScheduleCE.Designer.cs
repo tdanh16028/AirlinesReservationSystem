@@ -45,7 +45,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(18, 105);
+            this.label1.Location = new System.Drawing.Point(18, 98);
             this.label1.Margin = new System.Windows.Forms.Padding(50, 15, 10, 15);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(87, 28);
@@ -57,7 +57,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(18, 261);
+            this.label2.Location = new System.Drawing.Point(18, 156);
             this.label2.Margin = new System.Windows.Forms.Padding(50, 15, 10, 15);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(65, 28);
@@ -69,7 +69,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(18, 392);
+            this.label3.Location = new System.Drawing.Point(18, 221);
             this.label3.Margin = new System.Windows.Forms.Padding(50, 15, 10, 15);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(152, 28);
@@ -80,7 +80,7 @@
             // rbtnActive
             // 
             this.rbtnActive.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.rbtnActive.Location = new System.Drawing.Point(96, 527);
+            this.rbtnActive.Location = new System.Drawing.Point(120, 280);
             this.rbtnActive.Margin = new System.Windows.Forms.Padding(10, 15, 10, 15);
             this.rbtnActive.Name = "rbtnActive";
             this.rbtnActive.Size = new System.Drawing.Size(103, 29);
@@ -92,7 +92,7 @@
             // rbtnInActive
             // 
             this.rbtnInActive.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.rbtnInActive.Location = new System.Drawing.Point(264, 527);
+            this.rbtnInActive.Location = new System.Drawing.Point(243, 280);
             this.rbtnInActive.Margin = new System.Windows.Forms.Padding(10, 15, 10, 15);
             this.rbtnInActive.Name = "rbtnInActive";
             this.rbtnInActive.Size = new System.Drawing.Size(103, 29);
@@ -105,8 +105,8 @@
             // 
             this.cboAirplane.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboAirplane.FormattingEnabled = true;
-            this.cboAirplane.Location = new System.Drawing.Point(146, 100);
-            this.cboAirplane.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.cboAirplane.Location = new System.Drawing.Point(145, 95);
+            this.cboAirplane.Margin = new System.Windows.Forms.Padding(10, 15, 10, 15);
             this.cboAirplane.Name = "cboAirplane";
             this.cboAirplane.Size = new System.Drawing.Size(290, 36);
             this.cboAirplane.TabIndex = 6;
@@ -116,8 +116,8 @@
             // 
             this.cboRoute.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboRoute.FormattingEnabled = true;
-            this.cboRoute.Location = new System.Drawing.Point(146, 248);
-            this.cboRoute.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.cboRoute.Location = new System.Drawing.Point(145, 153);
+            this.cboRoute.Margin = new System.Windows.Forms.Padding(10, 15, 10, 15);
             this.cboRoute.Name = "cboRoute";
             this.cboRoute.Size = new System.Drawing.Size(290, 36);
             this.cboRoute.TabIndex = 7;
@@ -128,8 +128,8 @@
             this.btnSubmit.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(150)))), ((int)(((byte)(136)))));
             this.btnSubmit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSubmit.ForeColor = System.Drawing.Color.White;
-            this.btnSubmit.Location = new System.Drawing.Point(109, 646);
-            this.btnSubmit.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btnSubmit.Location = new System.Drawing.Point(120, 334);
+            this.btnSubmit.Margin = new System.Windows.Forms.Padding(10);
             this.btnSubmit.Name = "btnSubmit";
             this.btnSubmit.Size = new System.Drawing.Size(103, 40);
             this.btnSubmit.TabIndex = 8;
@@ -142,8 +142,8 @@
             this.btnCancel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(57)))), ((int)(((byte)(13)))));
             this.btnCancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCancel.ForeColor = System.Drawing.Color.White;
-            this.btnCancel.Location = new System.Drawing.Point(264, 646);
-            this.btnCancel.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btnCancel.Location = new System.Drawing.Point(243, 334);
+            this.btnCancel.Margin = new System.Windows.Forms.Padding(10);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(103, 40);
             this.btnCancel.TabIndex = 9;
@@ -155,8 +155,8 @@
             // 
             this.dateTimePicker1.CustomFormat = "dd/MM/yyyy";
             this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dateTimePicker1.Location = new System.Drawing.Point(186, 392);
-            this.dateTimePicker1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.dateTimePicker1.Location = new System.Drawing.Point(208, 216);
+            this.dateTimePicker1.Margin = new System.Windows.Forms.Padding(10, 15, 10, 15);
             this.dateTimePicker1.Name = "dateTimePicker1";
             this.dateTimePicker1.Size = new System.Drawing.Size(227, 34);
             this.dateTimePicker1.TabIndex = 10;
@@ -182,7 +182,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 28F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(454, 712);
+            this.ClientSize = new System.Drawing.Size(454, 390);
             this.Controls.Add(this.label13);
             this.Controls.Add(this.dateTimePicker1);
             this.Controls.Add(this.btnCancel);

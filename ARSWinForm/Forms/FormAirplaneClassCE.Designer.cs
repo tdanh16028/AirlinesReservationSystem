@@ -41,8 +41,8 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(32, 134);
-            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label2.Location = new System.Drawing.Point(32, 85);
+            this.label2.Margin = new System.Windows.Forms.Padding(50, 15, 10, 15);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(57, 28);
             this.label2.TabIndex = 1;
@@ -51,10 +51,10 @@
             // txtClass
             // 
             this.txtClass.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtClass.Location = new System.Drawing.Point(167, 131);
+            this.txtClass.Location = new System.Drawing.Point(148, 83);
             this.txtClass.Margin = new System.Windows.Forms.Padding(10, 15, 10, 15);
             this.txtClass.Name = "txtClass";
-            this.txtClass.Size = new System.Drawing.Size(184, 34);
+            this.txtClass.Size = new System.Drawing.Size(220, 34);
             this.txtClass.TabIndex = 3;
             // 
             // btnSubmit
@@ -62,10 +62,10 @@
             this.btnSubmit.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(150)))), ((int)(((byte)(136)))));
             this.btnSubmit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSubmit.ForeColor = System.Drawing.Color.White;
-            this.btnSubmit.Location = new System.Drawing.Point(61, 335);
+            this.btnSubmit.Location = new System.Drawing.Point(83, 206);
             this.btnSubmit.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnSubmit.Name = "btnSubmit";
-            this.btnSubmit.Size = new System.Drawing.Size(103, 40);
+            this.btnSubmit.Size = new System.Drawing.Size(120, 45);
             this.btnSubmit.TabIndex = 4;
             this.btnSubmit.Text = "Submit";
             this.btnSubmit.UseVisualStyleBackColor = false;
@@ -76,10 +76,10 @@
             this.btnCancel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(57)))), ((int)(((byte)(13)))));
             this.btnCancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCancel.ForeColor = System.Drawing.Color.White;
-            this.btnCancel.Location = new System.Drawing.Point(210, 335);
+            this.btnCancel.Location = new System.Drawing.Point(211, 206);
             this.btnCancel.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(103, 40);
+            this.btnCancel.Size = new System.Drawing.Size(120, 45);
             this.btnCancel.TabIndex = 5;
             this.btnCancel.Text = "Cancel";
             this.btnCancel.UseVisualStyleBackColor = false;
@@ -89,8 +89,8 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(32, 252);
-            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label3.Location = new System.Drawing.Point(32, 143);
+            this.label3.Margin = new System.Windows.Forms.Padding(50, 15, 10, 15);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(96, 28);
             this.label3.TabIndex = 6;
@@ -99,10 +99,10 @@
             // txtPriceRate
             // 
             this.txtPriceRate.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtPriceRate.Location = new System.Drawing.Point(167, 249);
+            this.txtPriceRate.Location = new System.Drawing.Point(148, 141);
             this.txtPriceRate.Margin = new System.Windows.Forms.Padding(10, 15, 10, 15);
             this.txtPriceRate.Name = "txtPriceRate";
-            this.txtPriceRate.Size = new System.Drawing.Size(184, 34);
+            this.txtPriceRate.Size = new System.Drawing.Size(220, 34);
             this.txtPriceRate.TabIndex = 7;
             // 
             // label1
@@ -111,13 +111,13 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(150)))), ((int)(((byte)(136)))));
             this.label1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.label1.Font = new System.Drawing.Font("Segoe UI", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold);
             this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(-1, -1);
+            this.label1.Location = new System.Drawing.Point(0, 0);
             this.label1.Margin = new System.Windows.Forms.Padding(0);
             this.label1.Name = "label1";
-            this.label1.Padding = new System.Windows.Forms.Padding(50, 0, 0, 0);
-            this.label1.Size = new System.Drawing.Size(385, 90);
+            this.label1.Padding = new System.Windows.Forms.Padding(55, 0, 0, 0);
+            this.label1.Size = new System.Drawing.Size(415, 70);
             this.label1.TabIndex = 8;
             this.label1.Text = "AirplaneClassCE";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -126,7 +126,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 28F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(384, 416);
+            this.ClientSize = new System.Drawing.Size(411, 285);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.txtPriceRate);
             this.Controls.Add(this.label3);
