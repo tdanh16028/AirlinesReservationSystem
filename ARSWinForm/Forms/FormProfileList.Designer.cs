@@ -69,7 +69,7 @@
             this.label1.Padding = new System.Windows.Forms.Padding(69, 0, 0, 0);
             this.label1.Size = new System.Drawing.Size(791, 70);
             this.label1.TabIndex = 7;
-            this.label1.Text = "ProfileList";
+            this.label1.Text = "List Profile";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // dgvProfile
@@ -186,6 +186,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 28F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(782, 562);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.btnEdit);
@@ -199,7 +200,7 @@
             this.MinimumSize = new System.Drawing.Size(586, 480);
             this.Name = "FormProfileList";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "FormProfileList";
+            this.Text = "List Profile";
             this.Load += new System.EventHandler(this.FormProfileList_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvProfile)).EndInit();
             this.ResumeLayout(false);

@@ -55,7 +55,7 @@
             this.label1.Padding = new System.Windows.Forms.Padding(55, 0, 0, 0);
             this.label1.Size = new System.Drawing.Size(791, 70);
             this.label1.TabIndex = 8;
-            this.label1.Text = "TicketList";
+            this.label1.Text = "List Ticket";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // dgvTicket
@@ -203,7 +203,7 @@
             this.MinimumSize = new System.Drawing.Size(586, 480);
             this.Name = "FormTicketList";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "FormTicketList";
+            this.Text = "List Ticket";
             ((System.ComponentModel.ISupportInitialize)(this.dgvTicket)).EndInit();
             this.ResumeLayout(false);
 

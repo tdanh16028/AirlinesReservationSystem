@@ -199,13 +199,14 @@
             this.label5.Padding = new System.Windows.Forms.Padding(50, 0, 0, 0);
             this.label5.Size = new System.Drawing.Size(454, 79);
             this.label5.TabIndex = 17;
-            this.label5.Text = "AirplaneTypeCE";
+            this.label5.Text = "Airplane Type";
             this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // FormAirplaneTypeCE
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 28F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(452, 460);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.cboInActive);
@@ -224,7 +225,7 @@
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "FormAirplaneTypeCE";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "AirplaneTypeCE";
+            this.Text = "Airplane Type";
             this.Load += new System.EventHandler(this.Create_AirplaneType_Load);
             ((System.ComponentModel.ISupportInitialize)(this.numFirstClassSeat)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numBusinessClassSeat)).EndInit();

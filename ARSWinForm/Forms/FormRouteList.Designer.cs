@@ -55,7 +55,7 @@
             this.label1.Padding = new System.Windows.Forms.Padding(55, 0, 0, 0);
             this.label1.Size = new System.Drawing.Size(791, 70);
             this.label1.TabIndex = 8;
-            this.label1.Text = "RouteList";
+            this.label1.Text = "List Route";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // dgvRoute
@@ -186,6 +186,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 28F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(778, 549);
             this.Controls.Add(this.btnReload);
             this.Controls.Add(this.btnEdit);
@@ -200,7 +201,7 @@
             this.MinimumSize = new System.Drawing.Size(586, 480);
             this.Name = "FormRouteList";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "FormRoute";
+            this.Text = "List Route";
             this.Load += new System.EventHandler(this.FormRoute_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvRoute)).EndInit();
             this.ResumeLayout(false);

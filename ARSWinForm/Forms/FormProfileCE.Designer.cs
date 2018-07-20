@@ -373,7 +373,7 @@
             this.label13.Padding = new System.Windows.Forms.Padding(50, 0, 0, 0);
             this.label13.Size = new System.Drawing.Size(880, 84);
             this.label13.TabIndex = 28;
-            this.label13.Text = "ProfileCE";
+            this.label13.Text = "Profile";
             this.label13.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // FormProfileCE
@@ -416,7 +416,7 @@
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "FormProfileCE";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "FormProfileCE";
+            this.Text = "Profile";
             this.Load += new System.EventHandler(this.FormProfileCE_Load);
             ((System.ComponentModel.ISupportInitialize)(this.numAge)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numSkyMiles)).EndInit();

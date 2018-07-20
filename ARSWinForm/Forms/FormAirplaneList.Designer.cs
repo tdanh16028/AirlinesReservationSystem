@@ -54,7 +54,7 @@
             this.label1.Padding = new System.Windows.Forms.Padding(55, 0, 0, 0);
             this.label1.Size = new System.Drawing.Size(791, 70);
             this.label1.TabIndex = 9;
-            this.label1.Text = "AirplaneList";
+            this.label1.Text = "List Airplane";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // dgvAirplane
@@ -182,6 +182,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 28F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(782, 553);
             this.Controls.Add(this.btnReload);
             this.Controls.Add(this.btnEdit);
@@ -195,7 +196,7 @@
             this.MinimumSize = new System.Drawing.Size(586, 480);
             this.Name = "FormAirplaneList";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Airplane";
+            this.Text = "List Airplane ";
             this.Load += new System.EventHandler(this.Airplane_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvAirplane)).EndInit();
             this.ResumeLayout(false);
