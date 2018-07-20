@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using ARSWebMVC.Models;
+using static ARSWebMVC.Controllers.ARSMVCUtilities;
 
 namespace ARSWebMVC.Controllers
 {
@@ -15,7 +16,7 @@ namespace ARSWebMVC.Controllers
         // GET: Ticket
         public ActionResult Index() {
             
-            if (Session["UserProfile"] == null)
+            if (Session[SessionKey.UserProfile] == null)
             {
                 TempData["lastPageVisit"] = new Dictionary<String, Object>() {
                     { "actionName", "Index" },
@@ -33,7 +34,7 @@ namespace ARSWebMVC.Controllers
         [HttpPost]
         public ActionResult Index(FormCollection form)
         {
-            if (Session["UserProfile"] == null) return RedirectToAction("Login","UserAccount");
+            if (Session[SessionKey.UserProfile] == null) return RedirectToAction("Login","UserAccount");
             var code = form["txtConfirmationCode"];
             if (code == null || code == "")
             {
@@ -77,29 +78,29 @@ namespace ARSWebMVC.Controllers
 
         public ActionResult PreviewTicket()
         {
-            if (Session["Ticket"] == null || Session["lstFSChoice"] == null)
+            if (Session[SessionKey.Ticket] == null || Session[SessionKey.ListFlightScheduleChosen] == null)
                 return RedirectToAction("Index", "Home");
 
-            int lstFSChoice = (int)Session["lstFSChoice"];
-            int seatClassID = ((Ticket)Session["Ticket"]).AirplaneClassID;
+            int lstFSChoice = (int)Session[SessionKey.ListFlightScheduleChosen];
+            int seatClassID = ((Ticket)Session[SessionKey.Ticket]).AirplaneClassID;
             return PreviewTicket(lstFSChoice, seatClassID);
         }
 
         [HttpPost]
         public ActionResult PreviewTicket(int lstFSChoice, int seatClassID)
         {
-            Session["lstFSChoice"] = lstFSChoice;
-            List<FlightSchedule> lstFS = ((Dictionary<int, List<FlightSchedule>>)Session["dictListFS"])[lstFSChoice];
-            Ticket ticket = (Ticket)Session["Ticket"];
+            Session[SessionKey.ListFlightScheduleChosen] = lstFSChoice;
+            List<FlightSchedule> lstFS = ((Dictionary<int, List<FlightSchedule>>)Session[SessionKey.ListPossibleFlightSchedule])[lstFSChoice];
+            Ticket ticket = (Ticket)Session[SessionKey.Ticket];
 
             ticket.Profile = new Profile();
-            if (Session["UserProfile"] == null)
+            if (Session[SessionKey.UserProfile] == null)
             {
                 ticket.Profile.LastName = "Guest";
                 ticket.Profile.FirstName = "";
             } else
             {
-                ticket.Profile = (Profile)Session["UserProfile"];
+                ticket.Profile = (Profile)Session[SessionKey.UserProfile];
                 ticket.ProfileID = ticket.Profile.ID;
                 ticket.Profile = ARSMVCUtilities.GetDB().Profiles.Find(ticket.ProfileID);
             }
@@ -169,7 +170,7 @@ namespace ARSWebMVC.Controllers
             double basePrice = lstFS.Sum(fs => fs.Route.BasePrice);
             ticket.TotalCost = Math.Round(basePrice * priceRate * totalSeat, 2);
 
-            Session["Ticket"] = ticket;
+            Session[SessionKey.Ticket] = ticket;
             return View("TicketDetail", ticket);
         }
 
@@ -185,12 +186,12 @@ namespace ARSWebMVC.Controllers
 
         private ActionResult AddTicket(string ticketStatus)
         {
-            if (Session["Ticket"] == null)
+            if (Session[SessionKey.Ticket] == null)
             {
                 RedirectToAction("Index", "Home");
             }
 
-            if (Session["UserProfile"] == null)
+            if (Session[SessionKey.UserProfile] == null)
             {
                 TempData["lastPageVisit"] = new Dictionary<String, Object>() {
                     { "actionName", "PreviewTicket" },
@@ -199,7 +200,7 @@ namespace ARSWebMVC.Controllers
                 return RedirectToAction("Login", "UserAccount");
             }
 
-            Ticket ticket = (Ticket)Session["Ticket"];
+            Ticket ticket = (Ticket)Session[SessionKey.Ticket];
             ticket.Status = ticketStatus;
 
             // ticket.AirplaneClass = ARSMVCUtilities.GetDB().AirplaneClasses.Find(ticket.AirplaneClassID);
@@ -281,5 +282,6 @@ namespace ARSWebMVC.Controllers
                 return RedirectToAction("TicketDetail");
             }
         }
+
     }
 }

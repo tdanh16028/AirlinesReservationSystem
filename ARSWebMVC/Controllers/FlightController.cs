@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using static ARSWebMVC.Controllers.ARSMVCUtilities;
 
 namespace ARSWebMVC.Controllers
 {
@@ -42,7 +43,7 @@ namespace ARSWebMVC.Controllers
             Dictionary<int, List<Route>> dictListRoute = FindAllPossibleRoute(fromCityID, toCityID);
 
             // Save dictionary to SESSION
-            Session["DictListRoute"] = dictListRoute;
+            Session[SessionKey.ListPossibleRoute] = dictListRoute;
 
             return View(dictListRoute);
         }
@@ -57,7 +58,7 @@ namespace ARSWebMVC.Controllers
         [HttpPost]
         public ActionResult InputPassengerInfo(int dictRouteID)
         {
-            Session["DictRouteIDChoice"] = dictRouteID;
+            Session[SessionKey.ChosenRouteID] = dictRouteID;
             
             Ticket ticket = new Ticket()
             {
@@ -85,9 +86,9 @@ namespace ARSWebMVC.Controllers
         [HttpPost]
         public ActionResult ChooseFlightSchedule(Ticket ticket, DateTime departureDate, DateTime returnDate)
         {
-            Session["Ticket"] = ticket;
-            int dictRouteID = (int)Session["DictRouteIDChoice"];
-            List<Route> lstRoute = ((Dictionary<int, List<Route>>)Session["DictListRoute"])[dictRouteID];
+            Session[SessionKey.Ticket] = ticket;
+            int dictRouteID = (int)Session[SessionKey.ChosenRouteID];
+            List<Route> lstRoute = ((Dictionary<int, List<Route>>)Session[SessionKey.ListPossibleRoute])[dictRouteID];
 
             InitDB();
 
@@ -144,7 +145,7 @@ namespace ARSWebMVC.Controllers
                 ViewBag.ChooseFlightScheduleError = "Cannot find any flight schedule suitable for you. Please change your criteria or choose another route.";
             }
 
-            Session["dictListFS"] = dictListFlightSchedule;
+            Session[SessionKey.ListPossibleFlightSchedule] = dictListFlightSchedule;
             return View(dictListFlightSchedule);
         }
 

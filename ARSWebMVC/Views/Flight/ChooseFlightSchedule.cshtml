@@ -7,7 +7,7 @@
 
     ViewBag.Title = "Choose Route";
 
-    Ticket ticket = (Ticket)Session["Ticket"];
+    Ticket ticket = (Ticket)Session[SessionKey.Ticket];
     int totalSeat = ticket.ChildrenCount + ticket.AdultCount + ticket.SeniorCount;
 
     DBUserEntities db = new DBUserEntities();

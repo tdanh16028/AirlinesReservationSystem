@@ -14,5 +14,16 @@ namespace ARSWebMVC.Controllers
         {
             return db;
         }
+
+        public static class SessionKey
+        {
+            public static String Ticket => "Ticket";
+            public static String UserProfile => "UserProfile";
+            public static String ListFlightScheduleChosen => "lstFSChoice";
+            public static String ListPossibleFlightSchedule => "dictListFS";
+            public static String ChosenRouteID => "DictRouteIDChoice";
+            public static String ListPossibleRoute => "DictListRoute";
+        }
     }
+
 }
