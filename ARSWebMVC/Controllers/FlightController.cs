@@ -38,6 +38,12 @@ namespace ARSWebMVC.Controllers
         [HttpPost]
         public ActionResult ChooseRoute(int fromCityID, int toCityID)
         {
+            if (fromCityID == toCityID)
+            {
+                TempData["ChooseFromToError"] = "Origin and destination city must be difference";
+                return RedirectToAction("Index", "Home");
+            }
+
             InitDB();
 
             Dictionary<int, List<Route>> dictListRoute = FindAllPossibleRoute(fromCityID, toCityID);
@@ -86,6 +92,12 @@ namespace ARSWebMVC.Controllers
         [HttpPost]
         public ActionResult ChooseFlightSchedule(Ticket ticket, DateTime departureDate, DateTime returnDate)
         {
+            if (ticket.AdultCount == 0 && ticket.SeniorCount == 0)
+            {
+                ViewBag.InputPassengerError = "At least one adult or senior passenger required to block/buy a ticket";
+                return View("InputPassengerInfo", ticket);
+            }
+
             Session[SessionKey.Ticket] = ticket;
             int dictRouteID = (int)Session[SessionKey.ChosenRouteID];
             List<Route> lstRoute = ((Dictionary<int, List<Route>>)Session[SessionKey.ListPossibleRoute])[dictRouteID];
@@ -142,7 +154,8 @@ namespace ARSWebMVC.Controllers
             if (dictListFlightSchedule.Count == 0)
             {
                 // Neu khong du chuyen bay thi hien thong bao khong du chuyen bay
-                ViewBag.ChooseFlightScheduleError = "Cannot find any flight schedule suitable for you. Please change your criteria or choose another route.";
+                ViewBag.ChooseRouteError = "Cannot find any flight schedule suitable for you. Please change your criteria or choose another route.";
+                return View("ChooseRoute", Session[SessionKey.ListPossibleRoute]);
             }
 
             Session[SessionKey.ListPossibleFlightSchedule] = dictListFlightSchedule;

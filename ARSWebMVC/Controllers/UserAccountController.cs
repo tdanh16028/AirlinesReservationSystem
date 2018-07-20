@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
+using static ARSWebMVC.Controllers.ARSMVCUtilities;
 
 namespace eProject_main.Controllers
 {
@@ -202,7 +203,7 @@ namespace eProject_main.Controllers
                     ARSMVCUtilities.GetDB().SaveChanges();
                 }
 
-                Session[SessionKey.UserProfile] = profile;
+                Session[SessionKey.UserProfile] = rs;
 
                 return RedirectToAction("Profile");
             }
