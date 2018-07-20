@@ -32,7 +32,7 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.label1 = new System.Windows.Forms.Label();
             this.dgvTicket = new System.Windows.Forms.DataGridView();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btnReload = new System.Windows.Forms.Button();
             this.btnEdit = new System.Windows.Forms.Button();
             this.btnSubmit = new System.Windows.Forms.Button();
             this.btnDelete = new System.Windows.Forms.Button();
@@ -47,11 +47,11 @@
             this.label1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.label1.Font = new System.Drawing.Font("Segoe UI", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(-7, 0);
+            this.label1.Location = new System.Drawing.Point(-5, 0);
             this.label1.Margin = new System.Windows.Forms.Padding(0);
             this.label1.Name = "label1";
-            this.label1.Padding = new System.Windows.Forms.Padding(50, 0, 0, 0);
-            this.label1.Size = new System.Drawing.Size(905, 99);
+            this.label1.Padding = new System.Windows.Forms.Padding(38, 0, 0, 0);
+            this.label1.Size = new System.Drawing.Size(679, 80);
             this.label1.TabIndex = 8;
             this.label1.Text = "TicketList";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -86,8 +86,8 @@
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dgvTicket.DefaultCellStyle = dataGridViewCellStyle2;
             this.dgvTicket.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.dgvTicket.Location = new System.Drawing.Point(-96, 101);
-            this.dgvTicket.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.dgvTicket.Location = new System.Drawing.Point(0, 82);
+            this.dgvTicket.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.dgvTicket.MultiSelect = false;
             this.dgvTicket.Name = "dgvTicket";
             this.dgvTicket.ReadOnly = true;
@@ -100,24 +100,24 @@
             this.dgvTicket.RowTemplate.Height = 40;
             this.dgvTicket.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             this.dgvTicket.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvTicket.Size = new System.Drawing.Size(994, 379);
+            this.dgvTicket.Size = new System.Drawing.Size(670, 308);
             this.dgvTicket.TabIndex = 9;
             // 
-            // button1
+            // btnReload
             // 
-            this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.button1.BackColor = System.Drawing.Color.White;
-            this.button1.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(150)))), ((int)(((byte)(136)))));
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(150)))), ((int)(((byte)(136)))));
-            this.button1.Location = new System.Drawing.Point(781, 504);
-            this.button1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(100, 43);
-            this.button1.TabIndex = 15;
-            this.button1.Text = "Reload";
-            this.button1.UseVisualStyleBackColor = false;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.btnReload.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnReload.BackColor = System.Drawing.Color.White;
+            this.btnReload.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(150)))), ((int)(((byte)(136)))));
+            this.btnReload.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnReload.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(150)))), ((int)(((byte)(136)))));
+            this.btnReload.Location = new System.Drawing.Point(586, 410);
+            this.btnReload.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnReload.Name = "btnReload";
+            this.btnReload.Size = new System.Drawing.Size(75, 35);
+            this.btnReload.TabIndex = 15;
+            this.btnReload.Text = "Reload";
+            this.btnReload.UseVisualStyleBackColor = false;
+            this.btnReload.Click += new System.EventHandler(this.btnReload_Click);
             // 
             // btnEdit
             // 
@@ -126,10 +126,10 @@
             this.btnEdit.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(150)))), ((int)(((byte)(136)))));
             this.btnEdit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnEdit.ForeColor = System.Drawing.Color.White;
-            this.btnEdit.Location = new System.Drawing.Point(521, 504);
-            this.btnEdit.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnEdit.Location = new System.Drawing.Point(391, 410);
+            this.btnEdit.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnEdit.Name = "btnEdit";
-            this.btnEdit.Size = new System.Drawing.Size(96, 43);
+            this.btnEdit.Size = new System.Drawing.Size(72, 35);
             this.btnEdit.TabIndex = 14;
             this.btnEdit.Text = "Edit";
             this.btnEdit.UseVisualStyleBackColor = false;
@@ -143,23 +143,24 @@
             this.btnSubmit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSubmit.ForeColor = System.Drawing.Color.White;
             this.btnSubmit.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnSubmit.Location = new System.Drawing.Point(392, 504);
-            this.btnSubmit.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnSubmit.Location = new System.Drawing.Point(294, 410);
+            this.btnSubmit.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnSubmit.Name = "btnSubmit";
-            this.btnSubmit.Size = new System.Drawing.Size(98, 43);
+            this.btnSubmit.Size = new System.Drawing.Size(74, 35);
             this.btnSubmit.TabIndex = 13;
-            this.btnSubmit.Text = "Submit";
+            this.btnSubmit.Text = "Create";
             this.btnSubmit.UseVisualStyleBackColor = false;
-            this.btnSubmit.Click += new System.EventHandler(this.btnSubmit_Click);
+            this.btnSubmit.Click += new System.EventHandler(this.btnCreate_Click);
             // 
             // btnDelete
             // 
             this.btnDelete.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(57)))), ((int)(((byte)(53)))));
             this.btnDelete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnDelete.ForeColor = System.Drawing.Color.White;
-            this.btnDelete.Location = new System.Drawing.Point(655, 504);
+            this.btnDelete.Location = new System.Drawing.Point(491, 410);
+            this.btnDelete.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnDelete.Name = "btnDelete";
-            this.btnDelete.Size = new System.Drawing.Size(97, 43);
+            this.btnDelete.Size = new System.Drawing.Size(73, 35);
             this.btnDelete.TabIndex = 12;
             this.btnDelete.Text = "Delete";
             this.btnDelete.UseVisualStyleBackColor = false;
@@ -167,18 +168,20 @@
             // 
             // FormTicketList
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(895, 570);
-            this.Controls.Add(this.button1);
+            this.ClientSize = new System.Drawing.Size(671, 463);
+            this.Controls.Add(this.btnReload);
             this.Controls.Add(this.btnEdit);
             this.Controls.Add(this.btnSubmit);
             this.Controls.Add(this.btnDelete);
             this.Controls.Add(this.dgvTicket);
             this.Controls.Add(this.label1);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "FormTicketList";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FormTicketList";
+            this.Load += new System.EventHandler(this.FormTicketList_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvTicket)).EndInit();
             this.ResumeLayout(false);
 
@@ -187,7 +190,7 @@
         #endregion
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.DataGridView dgvTicket;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnReload;
         private System.Windows.Forms.Button btnEdit;
         private System.Windows.Forms.Button btnSubmit;
         private System.Windows.Forms.Button btnDelete;

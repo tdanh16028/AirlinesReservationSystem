@@ -18,7 +18,7 @@ namespace ARSWinForm
         {
             LoadDataGridView();
         }
-        private void btnSubmit_Click(object sender, EventArgs e)
+        private void btnCreate_Click(object sender, EventArgs e)
         {
             FormProfileCE f = new FormProfileCE();
             // f.MdiParent = this.MdiParent;

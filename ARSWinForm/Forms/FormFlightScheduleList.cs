@@ -195,6 +195,7 @@ namespace ARSWinForm
                 dgvFlightSchedule.FirstDisplayedScrollingRowIndex = firstRowIndex;
             }
         }
+
         private FlightSchedule GetSelectedFlightSchedule()
         {
             // Neu khong co dong nao dang duoc chon thi tra ve null

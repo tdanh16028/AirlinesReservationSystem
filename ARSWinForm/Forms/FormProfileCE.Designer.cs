@@ -380,7 +380,7 @@
             this.label13.Location = new System.Drawing.Point(0, 0);
             this.label13.Margin = new System.Windows.Forms.Padding(0, 0, 0, 25);
             this.label13.Name = "label13";
-            this.label13.Padding = new System.Windows.Forms.Padding(50, 0, 0, 0);
+            this.label13.Padding = new System.Windows.Forms.Padding(55, 0, 0, 0);
             this.label13.Size = new System.Drawing.Size(907, 70);
             this.label13.TabIndex = 28;
             this.label13.Text = "PROFILE";

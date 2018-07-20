@@ -12,6 +12,7 @@ namespace ARSWinForm
     {
         FlightSchedule flightSchedule;
         FormMode mode;
+
         public FormFlightScheduleCE(FlightSchedule flightSchedule = null, FormMode mode = FormMode.CREATE)
         {
             InitializeComponent();

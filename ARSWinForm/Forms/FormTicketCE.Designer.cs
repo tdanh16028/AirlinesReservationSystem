@@ -28,261 +28,313 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DateTimePicker dateTimePicker1;
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
-            this.label9 = new System.Windows.Forms.Label();
-            this.label10 = new System.Windows.Forms.Label();
-            this.label11 = new System.Windows.Forms.Label();
-            this.label12 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
-            this.numericUpDown2 = new System.Windows.Forms.NumericUpDown();
-            this.numericUpDown3 = new System.Windows.Forms.NumericUpDown();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.lbTicketCode = new System.Windows.Forms.Label();
+            this.lbPassengerInfo = new System.Windows.Forms.Label();
+            this.lbTicketInfo = new System.Windows.Forms.Label();
+            this.lbPassengerName = new System.Windows.Forms.Label();
+            this.lbChildrenCount = new System.Windows.Forms.Label();
+            this.lbAdultCount = new System.Windows.Forms.Label();
+            this.lbSeniorCount = new System.Windows.Forms.Label();
+            this.lbSeatClass = new System.Windows.Forms.Label();
+            this.lbOrderDate = new System.Windows.Forms.Label();
+            this.lbStatus = new System.Windows.Forms.Label();
+            this.lbTotalCost = new System.Windows.Forms.Label();
+            this.lbFlightSchedules = new System.Windows.Forms.Label();
+            this.txtPassengerName = new System.Windows.Forms.TextBox();
+            this.numChildrenCount = new System.Windows.Forms.NumericUpDown();
+            this.numAdultCount = new System.Windows.Forms.NumericUpDown();
+            this.numSeniorCount = new System.Windows.Forms.NumericUpDown();
+            this.cboSeatClass = new System.Windows.Forms.ComboBox();
             this.cboStatus = new System.Windows.Forms.ComboBox();
-            this.numericUpDown4 = new System.Windows.Forms.NumericUpDown();
+            this.numTotalCost = new System.Windows.Forms.NumericUpDown();
             this.btnSubmit = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
             this.dgvFlightSchedule = new System.Windows.Forms.DataGridView();
-            this.label13 = new System.Windows.Forms.Label();
-            this.btSubmit = new System.Windows.Forms.Button();
-            this.btCancel = new System.Windows.Forms.Button();
-            dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown4)).BeginInit();
+            this.lbTitle = new System.Windows.Forms.Label();
+            this.dpOrderDate = new System.Windows.Forms.DateTimePicker();
+            this.btnPassengerBrowse = new System.Windows.Forms.Button();
+            this.lbFromTo = new System.Windows.Forms.Label();
+            this.btnEditFlightSchedule = new System.Windows.Forms.Button();
+            ((System.ComponentModel.ISupportInitialize)(this.numChildrenCount)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numAdultCount)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numSeniorCount)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numTotalCost)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvFlightSchedule)).BeginInit();
             this.SuspendLayout();
             // 
-            // dateTimePicker1
+            // lbTicketCode
             // 
-            dateTimePicker1.CustomFormat = "dd/MM/yyyy";
-            dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            dateTimePicker1.Location = new System.Drawing.Point(680, 319);
-            dateTimePicker1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            dateTimePicker1.Name = "dateTimePicker1";
-            dateTimePicker1.Size = new System.Drawing.Size(274, 34);
-            dateTimePicker1.TabIndex = 24;
+            this.lbTicketCode.Font = new System.Drawing.Font("Segoe UI Semibold", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbTicketCode.Location = new System.Drawing.Point(59, 95);
+            this.lbTicketCode.Margin = new System.Windows.Forms.Padding(50, 25, 10, 15);
+            this.lbTicketCode.Name = "lbTicketCode";
+            this.lbTicketCode.Size = new System.Drawing.Size(375, 29);
+            this.lbTicketCode.TabIndex = 0;
+            this.lbTicketCode.Text = "Ticket Code : #";
+            this.lbTicketCode.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // label1
+            // lbPassengerInfo
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(16, 108);
-            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(160, 25);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Ticket Code : #";
+            this.lbPassengerInfo.Font = new System.Drawing.Font("Segoe UI Semibold", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbPassengerInfo.Location = new System.Drawing.Point(59, 154);
+            this.lbPassengerInfo.Margin = new System.Windows.Forms.Padding(50, 15, 10, 15);
+            this.lbPassengerInfo.Name = "lbPassengerInfo";
+            this.lbPassengerInfo.Size = new System.Drawing.Size(375, 29);
+            this.lbPassengerInfo.TabIndex = 1;
+            this.lbPassengerInfo.Text = "Passenger Information";
+            this.lbPassengerInfo.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // label2
+            // lbTicketInfo
             // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(103, 165);
-            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(254, 29);
-            this.label2.TabIndex = 1;
-            this.label2.Text = "Passenger Information";
+            this.lbTicketInfo.Font = new System.Drawing.Font("Segoe UI Semibold", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbTicketInfo.Location = new System.Drawing.Point(494, 154);
+            this.lbTicketInfo.Margin = new System.Windows.Forms.Padding(50, 15, 10, 15);
+            this.lbTicketInfo.Name = "lbTicketInfo";
+            this.lbTicketInfo.Size = new System.Drawing.Size(375, 29);
+            this.lbTicketInfo.TabIndex = 2;
+            this.lbTicketInfo.Text = "Ticket Information";
+            this.lbTicketInfo.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // label3
+            // lbPassengerName
             // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(692, 165);
-            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(204, 29);
-            this.label3.TabIndex = 2;
-            this.label3.Text = "Ticket Information";
+            this.lbPassengerName.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold);
+            this.lbPassengerName.Location = new System.Drawing.Point(59, 213);
+            this.lbPassengerName.Margin = new System.Windows.Forms.Padding(50, 15, 10, 15);
+            this.lbPassengerName.Name = "lbPassengerName";
+            this.lbPassengerName.Size = new System.Drawing.Size(135, 29);
+            this.lbPassengerName.TabIndex = 3;
+            this.lbPassengerName.Text = "Passenger Name";
+            this.lbPassengerName.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // label4
+            // lbChildrenCount
             // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(12, 241);
-            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(164, 28);
-            this.label4.TabIndex = 3;
-            this.label4.Text = "Passenger Name";
+            this.lbChildrenCount.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold);
+            this.lbChildrenCount.Location = new System.Drawing.Point(59, 272);
+            this.lbChildrenCount.Margin = new System.Windows.Forms.Padding(50, 15, 10, 15);
+            this.lbChildrenCount.Name = "lbChildrenCount";
+            this.lbChildrenCount.Size = new System.Drawing.Size(135, 29);
+            this.lbChildrenCount.TabIndex = 4;
+            this.lbChildrenCount.Text = "Children Count";
+            this.lbChildrenCount.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // label5
+            // lbAdultCount
             // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(13, 324);
-            this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(149, 28);
-            this.label5.TabIndex = 4;
-            this.label5.Text = "Children Count";
+            this.lbAdultCount.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold);
+            this.lbAdultCount.Location = new System.Drawing.Point(59, 331);
+            this.lbAdultCount.Margin = new System.Windows.Forms.Padding(50, 15, 10, 15);
+            this.lbAdultCount.Name = "lbAdultCount";
+            this.lbAdultCount.Size = new System.Drawing.Size(135, 29);
+            this.lbAdultCount.TabIndex = 5;
+            this.lbAdultCount.Text = "Adult Count";
+            this.lbAdultCount.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // label6
+            // lbSeniorCount
             // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(13, 415);
-            this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(122, 28);
-            this.label6.TabIndex = 5;
-            this.label6.Text = "Adult Count";
+            this.lbSeniorCount.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold);
+            this.lbSeniorCount.Location = new System.Drawing.Point(59, 390);
+            this.lbSeniorCount.Margin = new System.Windows.Forms.Padding(50, 15, 10, 15);
+            this.lbSeniorCount.Name = "lbSeniorCount";
+            this.lbSeniorCount.Size = new System.Drawing.Size(135, 29);
+            this.lbSeniorCount.TabIndex = 6;
+            this.lbSeniorCount.Text = "Senior Count";
+            this.lbSeniorCount.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // label7
+            // lbSeatClass
             // 
-            this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(16, 510);
-            this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(131, 28);
-            this.label7.TabIndex = 6;
-            this.label7.Text = "Senior Count";
+            this.lbSeatClass.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold);
+            this.lbSeatClass.Location = new System.Drawing.Point(494, 213);
+            this.lbSeatClass.Margin = new System.Windows.Forms.Padding(50, 15, 10, 15);
+            this.lbSeatClass.Name = "lbSeatClass";
+            this.lbSeatClass.Size = new System.Drawing.Size(135, 29);
+            this.lbSeatClass.TabIndex = 7;
+            this.lbSeatClass.Text = "Class";
+            this.lbSeatClass.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // label8
+            // lbOrderDate
             // 
-            this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(548, 241);
-            this.label8.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(57, 28);
-            this.label8.TabIndex = 7;
-            this.label8.Text = "Class";
+            this.lbOrderDate.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold);
+            this.lbOrderDate.Location = new System.Drawing.Point(494, 272);
+            this.lbOrderDate.Margin = new System.Windows.Forms.Padding(50, 15, 10, 15);
+            this.lbOrderDate.Name = "lbOrderDate";
+            this.lbOrderDate.Size = new System.Drawing.Size(135, 29);
+            this.lbOrderDate.TabIndex = 8;
+            this.lbOrderDate.Text = "Order Date";
+            this.lbOrderDate.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // label9
+            // lbStatus
             // 
-            this.label9.AutoSize = true;
-            this.label9.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(546, 324);
-            this.label9.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(112, 28);
-            this.label9.TabIndex = 8;
-            this.label9.Text = "Order Date";
+            this.lbStatus.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold);
+            this.lbStatus.Location = new System.Drawing.Point(494, 331);
+            this.lbStatus.Margin = new System.Windows.Forms.Padding(50, 15, 10, 15);
+            this.lbStatus.Name = "lbStatus";
+            this.lbStatus.Size = new System.Drawing.Size(135, 29);
+            this.lbStatus.TabIndex = 9;
+            this.lbStatus.Text = "Status";
+            this.lbStatus.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // label10
+            // lbTotalCost
             // 
-            this.label10.AutoSize = true;
-            this.label10.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.Location = new System.Drawing.Point(546, 415);
-            this.label10.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(67, 28);
-            this.label10.TabIndex = 9;
-            this.label10.Text = "Status";
+            this.lbTotalCost.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold);
+            this.lbTotalCost.Location = new System.Drawing.Point(494, 390);
+            this.lbTotalCost.Margin = new System.Windows.Forms.Padding(50, 15, 10, 15);
+            this.lbTotalCost.Name = "lbTotalCost";
+            this.lbTotalCost.Size = new System.Drawing.Size(135, 29);
+            this.lbTotalCost.TabIndex = 10;
+            this.lbTotalCost.Text = "Total Cost";
+            this.lbTotalCost.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // label11
+            // lbFlightSchedules
             // 
-            this.label11.AutoSize = true;
-            this.label11.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.Location = new System.Drawing.Point(546, 510);
-            this.label11.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(101, 28);
-            this.label11.TabIndex = 10;
-            this.label11.Text = "Total Cost";
+            this.lbFlightSchedules.Font = new System.Drawing.Font("Segoe UI Semibold", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbFlightSchedules.Location = new System.Drawing.Point(59, 478);
+            this.lbFlightSchedules.Margin = new System.Windows.Forms.Padding(50, 15, 10, 15);
+            this.lbFlightSchedules.Name = "lbFlightSchedules";
+            this.lbFlightSchedules.Size = new System.Drawing.Size(165, 29);
+            this.lbFlightSchedules.TabIndex = 11;
+            this.lbFlightSchedules.Text = "Flight Schedule(s)";
+            this.lbFlightSchedules.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // label12
+            // txtPassengerName
             // 
-            this.label12.AutoSize = true;
-            this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label12.Location = new System.Drawing.Point(12, 566);
-            this.label12.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(209, 29);
-            this.label12.TabIndex = 11;
-            this.label12.Text = "Flight Schedule(s)";
+            this.txtPassengerName.BackColor = System.Drawing.Color.White;
+            this.txtPassengerName.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtPassengerName.Enabled = false;
+            this.txtPassengerName.Location = new System.Drawing.Point(214, 215);
+            this.txtPassengerName.Margin = new System.Windows.Forms.Padding(10, 15, 10, 15);
+            this.txtPassengerName.Name = "txtPassengerName";
+            this.txtPassengerName.Size = new System.Drawing.Size(192, 29);
+            this.txtPassengerName.TabIndex = 12;
             // 
-            // textBox1
+            // numChildrenCount
             // 
-            this.textBox1.Location = new System.Drawing.Point(194, 238);
-            this.textBox1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(250, 34);
-            this.textBox1.TabIndex = 12;
+            this.numChildrenCount.BackColor = System.Drawing.Color.White;
+            this.numChildrenCount.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.numChildrenCount.Enabled = false;
+            this.numChildrenCount.Location = new System.Drawing.Point(214, 274);
+            this.numChildrenCount.Margin = new System.Windows.Forms.Padding(10, 15, 10, 15);
+            this.numChildrenCount.Maximum = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            this.numChildrenCount.Name = "numChildrenCount";
+            this.numChildrenCount.Size = new System.Drawing.Size(220, 29);
+            this.numChildrenCount.TabIndex = 20;
+            this.numChildrenCount.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.numChildrenCount.ThousandsSeparator = true;
             // 
-            // numericUpDown1
+            // numAdultCount
             // 
-            this.numericUpDown1.Location = new System.Drawing.Point(192, 322);
-            this.numericUpDown1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.numericUpDown1.Name = "numericUpDown1";
-            this.numericUpDown1.Size = new System.Drawing.Size(252, 34);
-            this.numericUpDown1.TabIndex = 20;
+            this.numAdultCount.BackColor = System.Drawing.Color.White;
+            this.numAdultCount.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.numAdultCount.Enabled = false;
+            this.numAdultCount.Location = new System.Drawing.Point(214, 333);
+            this.numAdultCount.Margin = new System.Windows.Forms.Padding(10, 15, 10, 15);
+            this.numAdultCount.Maximum = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            this.numAdultCount.Name = "numAdultCount";
+            this.numAdultCount.Size = new System.Drawing.Size(220, 29);
+            this.numAdultCount.TabIndex = 21;
+            this.numAdultCount.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.numAdultCount.ThousandsSeparator = true;
             // 
-            // numericUpDown2
+            // numSeniorCount
             // 
-            this.numericUpDown2.Location = new System.Drawing.Point(190, 413);
-            this.numericUpDown2.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.numericUpDown2.Name = "numericUpDown2";
-            this.numericUpDown2.Size = new System.Drawing.Size(252, 34);
-            this.numericUpDown2.TabIndex = 21;
+            this.numSeniorCount.BackColor = System.Drawing.Color.White;
+            this.numSeniorCount.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.numSeniorCount.Enabled = false;
+            this.numSeniorCount.Location = new System.Drawing.Point(214, 392);
+            this.numSeniorCount.Margin = new System.Windows.Forms.Padding(10, 15, 10, 15);
+            this.numSeniorCount.Maximum = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            this.numSeniorCount.Name = "numSeniorCount";
+            this.numSeniorCount.Size = new System.Drawing.Size(220, 29);
+            this.numSeniorCount.TabIndex = 22;
+            this.numSeniorCount.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.numSeniorCount.ThousandsSeparator = true;
             // 
-            // numericUpDown3
+            // cboSeatClass
             // 
-            this.numericUpDown3.Location = new System.Drawing.Point(190, 510);
-            this.numericUpDown3.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.numericUpDown3.Name = "numericUpDown3";
-            this.numericUpDown3.Size = new System.Drawing.Size(252, 34);
-            this.numericUpDown3.TabIndex = 22;
-            // 
-            // comboBox1
-            // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(679, 238);
-            this.comboBox1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(274, 36);
-            this.comboBox1.TabIndex = 23;
+            this.cboSeatClass.BackColor = System.Drawing.Color.White;
+            this.cboSeatClass.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboSeatClass.Enabled = false;
+            this.cboSeatClass.FormattingEnabled = true;
+            this.cboSeatClass.Location = new System.Drawing.Point(649, 214);
+            this.cboSeatClass.Margin = new System.Windows.Forms.Padding(10, 15, 10, 15);
+            this.cboSeatClass.Name = "cboSeatClass";
+            this.cboSeatClass.Size = new System.Drawing.Size(220, 29);
+            this.cboSeatClass.TabIndex = 23;
             // 
             // cboStatus
             // 
+            this.cboStatus.BackColor = System.Drawing.Color.White;
+            this.cboStatus.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboStatus.FormattingEnabled = true;
-            this.cboStatus.Location = new System.Drawing.Point(679, 412);
-            this.cboStatus.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.cboStatus.Items.AddRange(new object[] {
+            "Blocked",
+            "Reserved",
+            "Cancelled"});
+            this.cboStatus.Location = new System.Drawing.Point(649, 332);
+            this.cboStatus.Margin = new System.Windows.Forms.Padding(10, 15, 10, 15);
             this.cboStatus.Name = "cboStatus";
-            this.cboStatus.Size = new System.Drawing.Size(274, 36);
+            this.cboStatus.Size = new System.Drawing.Size(220, 29);
             this.cboStatus.TabIndex = 25;
             // 
-            // numericUpDown4
+            // numTotalCost
             // 
-            this.numericUpDown4.Location = new System.Drawing.Point(679, 508);
-            this.numericUpDown4.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.numericUpDown4.Name = "numericUpDown4";
-            this.numericUpDown4.Size = new System.Drawing.Size(275, 34);
-            this.numericUpDown4.TabIndex = 26;
+            this.numTotalCost.BackColor = System.Drawing.Color.White;
+            this.numTotalCost.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.numTotalCost.Enabled = false;
+            this.numTotalCost.Location = new System.Drawing.Point(649, 392);
+            this.numTotalCost.Margin = new System.Windows.Forms.Padding(10, 15, 10, 15);
+            this.numTotalCost.Maximum = new decimal(new int[] {
+            99999999,
+            0,
+            0,
+            0});
+            this.numTotalCost.Name = "numTotalCost";
+            this.numTotalCost.Size = new System.Drawing.Size(220, 29);
+            this.numTotalCost.TabIndex = 26;
+            this.numTotalCost.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.numTotalCost.ThousandsSeparator = true;
             // 
             // btnSubmit
             // 
-            this.btnSubmit.Location = new System.Drawing.Point(312, 1281);
-            this.btnSubmit.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btnSubmit.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(150)))), ((int)(((byte)(136)))));
+            this.btnSubmit.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(150)))), ((int)(((byte)(136)))));
+            this.btnSubmit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSubmit.ForeColor = System.Drawing.Color.White;
+            this.btnSubmit.Location = new System.Drawing.Point(609, 471);
+            this.btnSubmit.Margin = new System.Windows.Forms.Padding(10, 35, 10, 10);
             this.btnSubmit.Name = "btnSubmit";
-            this.btnSubmit.Size = new System.Drawing.Size(103, 56);
+            this.btnSubmit.Size = new System.Drawing.Size(120, 45);
             this.btnSubmit.TabIndex = 27;
             this.btnSubmit.Text = "Submit";
-            this.btnSubmit.UseVisualStyleBackColor = true;
+            this.btnSubmit.UseVisualStyleBackColor = false;
+            this.btnSubmit.Click += new System.EventHandler(this.btnSubmit_Click);
             // 
             // btnCancel
             // 
-            this.btnCancel.Location = new System.Drawing.Point(561, 1281);
-            this.btnCancel.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btnCancel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(57)))), ((int)(((byte)(53)))));
+            this.btnCancel.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(57)))), ((int)(((byte)(53)))));
+            this.btnCancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCancel.ForeColor = System.Drawing.Color.White;
+            this.btnCancel.Location = new System.Drawing.Point(749, 471);
+            this.btnCancel.Margin = new System.Windows.Forms.Padding(10, 35, 10, 10);
             this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(103, 56);
+            this.btnCancel.Size = new System.Drawing.Size(120, 45);
             this.btnCancel.TabIndex = 28;
             this.btnCancel.Text = "Cancel";
-            this.btnCancel.UseVisualStyleBackColor = true;
+            this.btnCancel.UseVisualStyleBackColor = false;
+            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
             // dgvFlightSchedule
             // 
@@ -295,7 +347,7 @@
             this.dgvFlightSchedule.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(247)))), ((int)(((byte)(247)))), ((int)(((byte)(247)))));
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 12F);
             dataGridViewCellStyle1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             dataGridViewCellStyle1.Padding = new System.Windows.Forms.Padding(5, 0, 0, 0);
             dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.Black;
@@ -306,7 +358,7 @@
             this.dgvFlightSchedule.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 12F);
             dataGridViewCellStyle2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             dataGridViewCellStyle2.Padding = new System.Windows.Forms.Padding(5);
             dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(150)))), ((int)(((byte)(139)))));
@@ -314,7 +366,7 @@
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dgvFlightSchedule.DefaultCellStyle = dataGridViewCellStyle2;
             this.dgvFlightSchedule.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.dgvFlightSchedule.Location = new System.Drawing.Point(1, 599);
+            this.dgvFlightSchedule.Location = new System.Drawing.Point(0, 530);
             this.dgvFlightSchedule.Margin = new System.Windows.Forms.Padding(4);
             this.dgvFlightSchedule.MultiSelect = false;
             this.dgvFlightSchedule.Name = "dgvFlightSchedule";
@@ -328,90 +380,125 @@
             this.dgvFlightSchedule.RowTemplate.Height = 40;
             this.dgvFlightSchedule.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             this.dgvFlightSchedule.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvFlightSchedule.Size = new System.Drawing.Size(1020, 382);
+            this.dgvFlightSchedule.Size = new System.Drawing.Size(940, 200);
             this.dgvFlightSchedule.TabIndex = 29;
             // 
-            // label13
+            // lbTitle
             // 
-            this.label13.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.lbTitle.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.label13.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(150)))), ((int)(((byte)(136)))));
-            this.label13.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.label13.Font = new System.Drawing.Font("Segoe UI", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label13.ForeColor = System.Drawing.Color.White;
-            this.label13.Location = new System.Drawing.Point(-6, -1);
-            this.label13.Margin = new System.Windows.Forms.Padding(0);
-            this.label13.Name = "label13";
-            this.label13.Padding = new System.Windows.Forms.Padding(50, 0, 0, 0);
-            this.label13.Size = new System.Drawing.Size(1027, 90);
-            this.label13.TabIndex = 30;
-            this.label13.Text = "TicketCE";
-            this.label13.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.lbTitle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(150)))), ((int)(((byte)(136)))));
+            this.lbTitle.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.lbTitle.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold);
+            this.lbTitle.ForeColor = System.Drawing.Color.White;
+            this.lbTitle.Location = new System.Drawing.Point(0, 0);
+            this.lbTitle.Margin = new System.Windows.Forms.Padding(0);
+            this.lbTitle.Name = "lbTitle";
+            this.lbTitle.Padding = new System.Windows.Forms.Padding(55, 0, 0, 0);
+            this.lbTitle.Size = new System.Drawing.Size(940, 70);
+            this.lbTitle.TabIndex = 30;
+            this.lbTitle.Text = "TICKET";
+            this.lbTitle.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // btSubmit
+            // dpOrderDate
             // 
-            this.btSubmit.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(150)))), ((int)(((byte)(136)))));
-            this.btSubmit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btSubmit.ForeColor = System.Drawing.Color.White;
-            this.btSubmit.Location = new System.Drawing.Point(368, 1003);
-            this.btSubmit.Name = "btSubmit";
-            this.btSubmit.Size = new System.Drawing.Size(95, 39);
-            this.btSubmit.TabIndex = 31;
-            this.btSubmit.Text = "Submit";
-            this.btSubmit.UseVisualStyleBackColor = false;
+            this.dpOrderDate.CalendarForeColor = System.Drawing.Color.Black;
+            this.dpOrderDate.CalendarMonthBackground = System.Drawing.Color.White;
+            this.dpOrderDate.CalendarTitleBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(153)))), ((int)(((byte)(139)))));
+            this.dpOrderDate.CalendarTitleForeColor = System.Drawing.Color.White;
+            this.dpOrderDate.CustomFormat = "dd/MM/yyyy";
+            this.dpOrderDate.Enabled = false;
+            this.dpOrderDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dpOrderDate.Location = new System.Drawing.Point(649, 273);
+            this.dpOrderDate.Margin = new System.Windows.Forms.Padding(10, 15, 10, 15);
+            this.dpOrderDate.Name = "dpOrderDate";
+            this.dpOrderDate.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.dpOrderDate.Size = new System.Drawing.Size(220, 29);
+            this.dpOrderDate.TabIndex = 24;
             // 
-            // btCancel
+            // btnPassengerBrowse
             // 
-            this.btCancel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(57)))), ((int)(((byte)(13)))));
-            this.btCancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btCancel.ForeColor = System.Drawing.Color.White;
-            this.btCancel.Location = new System.Drawing.Point(511, 1003);
-            this.btCancel.Name = "btCancel";
-            this.btCancel.Size = new System.Drawing.Size(102, 38);
-            this.btCancel.TabIndex = 32;
-            this.btCancel.Text = "Cancel";
-            this.btCancel.UseVisualStyleBackColor = false;
+            this.btnPassengerBrowse.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnPassengerBrowse.FlatAppearance.BorderColor = System.Drawing.Color.Black;
+            this.btnPassengerBrowse.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnPassengerBrowse.Location = new System.Drawing.Point(405, 215);
+            this.btnPassengerBrowse.Margin = new System.Windows.Forms.Padding(0);
+            this.btnPassengerBrowse.Name = "btnPassengerBrowse";
+            this.btnPassengerBrowse.Size = new System.Drawing.Size(29, 29);
+            this.btnPassengerBrowse.TabIndex = 31;
+            this.btnPassengerBrowse.Text = "...";
+            this.btnPassengerBrowse.UseVisualStyleBackColor = true;
+            // 
+            // lbFromTo
+            // 
+            this.lbFromTo.Font = new System.Drawing.Font("Segoe UI Semibold", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbFromTo.Location = new System.Drawing.Point(493, 95);
+            this.lbFromTo.Margin = new System.Windows.Forms.Padding(50, 25, 10, 15);
+            this.lbFromTo.Name = "lbFromTo";
+            this.lbFromTo.Size = new System.Drawing.Size(375, 29);
+            this.lbFromTo.TabIndex = 0;
+            this.lbFromTo.Text = "From ... - to ...";
+            this.lbFromTo.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // btnEditFlightSchedule
+            // 
+            this.btnEditFlightSchedule.BackColor = System.Drawing.Color.White;
+            this.btnEditFlightSchedule.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(150)))), ((int)(((byte)(136)))));
+            this.btnEditFlightSchedule.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnEditFlightSchedule.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(150)))), ((int)(((byte)(136)))));
+            this.btnEditFlightSchedule.Location = new System.Drawing.Point(244, 471);
+            this.btnEditFlightSchedule.Margin = new System.Windows.Forms.Padding(10, 35, 10, 10);
+            this.btnEditFlightSchedule.Name = "btnEditFlightSchedule";
+            this.btnEditFlightSchedule.Size = new System.Drawing.Size(120, 45);
+            this.btnEditFlightSchedule.TabIndex = 32;
+            this.btnEditFlightSchedule.Text = "Edit Route";
+            this.btnEditFlightSchedule.UseVisualStyleBackColor = false;
             // 
             // FormTicketCE
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 28F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 21F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1022, 1055);
-            this.Controls.Add(this.btCancel);
-            this.Controls.Add(this.btSubmit);
-            this.Controls.Add(this.label13);
+            this.BackColor = System.Drawing.Color.White;
+            this.ClientSize = new System.Drawing.Size(941, 732);
+            this.Controls.Add(this.btnEditFlightSchedule);
+            this.Controls.Add(this.btnPassengerBrowse);
+            this.Controls.Add(this.lbTitle);
             this.Controls.Add(this.dgvFlightSchedule);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnSubmit);
-            this.Controls.Add(this.numericUpDown4);
+            this.Controls.Add(this.numTotalCost);
             this.Controls.Add(this.cboStatus);
-            this.Controls.Add(dateTimePicker1);
-            this.Controls.Add(this.comboBox1);
-            this.Controls.Add(this.numericUpDown3);
-            this.Controls.Add(this.numericUpDown2);
-            this.Controls.Add(this.numericUpDown1);
-            this.Controls.Add(this.textBox1);
-            this.Controls.Add(this.label12);
-            this.Controls.Add(this.label11);
-            this.Controls.Add(this.label10);
-            this.Controls.Add(this.label9);
-            this.Controls.Add(this.label8);
-            this.Controls.Add(this.label7);
-            this.Controls.Add(this.label6);
-            this.Controls.Add(this.label5);
-            this.Controls.Add(this.label4);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.label1);
-            this.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Controls.Add(this.dpOrderDate);
+            this.Controls.Add(this.cboSeatClass);
+            this.Controls.Add(this.numSeniorCount);
+            this.Controls.Add(this.numAdultCount);
+            this.Controls.Add(this.numChildrenCount);
+            this.Controls.Add(this.txtPassengerName);
+            this.Controls.Add(this.lbFlightSchedules);
+            this.Controls.Add(this.lbTotalCost);
+            this.Controls.Add(this.lbStatus);
+            this.Controls.Add(this.lbOrderDate);
+            this.Controls.Add(this.lbSeatClass);
+            this.Controls.Add(this.lbSeniorCount);
+            this.Controls.Add(this.lbAdultCount);
+            this.Controls.Add(this.lbChildrenCount);
+            this.Controls.Add(this.lbPassengerName);
+            this.Controls.Add(this.lbTicketInfo);
+            this.Controls.Add(this.lbPassengerInfo);
+            this.Controls.Add(this.lbFromTo);
+            this.Controls.Add(this.lbTicketCode);
+            this.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.MaximizeBox = false;
             this.Name = "FormTicketCE";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "FormTicketCE";
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown4)).EndInit();
+            this.Text = "Ticket";
+            this.Load += new System.EventHandler(this.FormTicketCE_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.numChildrenCount)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numAdultCount)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numSeniorCount)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numTotalCost)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvFlightSchedule)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -420,30 +507,32 @@
 
         #endregion
 
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.NumericUpDown numericUpDown1;
-        private System.Windows.Forms.NumericUpDown numericUpDown2;
-        private System.Windows.Forms.NumericUpDown numericUpDown3;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.Label lbTicketCode;
+        private System.Windows.Forms.Label lbPassengerInfo;
+        private System.Windows.Forms.Label lbTicketInfo;
+        private System.Windows.Forms.Label lbPassengerName;
+        private System.Windows.Forms.Label lbChildrenCount;
+        private System.Windows.Forms.Label lbAdultCount;
+        private System.Windows.Forms.Label lbSeniorCount;
+        private System.Windows.Forms.Label lbSeatClass;
+        private System.Windows.Forms.Label lbOrderDate;
+        private System.Windows.Forms.Label lbStatus;
+        private System.Windows.Forms.Label lbTotalCost;
+        private System.Windows.Forms.Label lbFlightSchedules;
+        private System.Windows.Forms.TextBox txtPassengerName;
+        private System.Windows.Forms.NumericUpDown numChildrenCount;
+        private System.Windows.Forms.NumericUpDown numAdultCount;
+        private System.Windows.Forms.NumericUpDown numSeniorCount;
+        private System.Windows.Forms.ComboBox cboSeatClass;
         private System.Windows.Forms.ComboBox cboStatus;
-        private System.Windows.Forms.NumericUpDown numericUpDown4;
+        private System.Windows.Forms.NumericUpDown numTotalCost;
         private System.Windows.Forms.Button btnSubmit;
         private System.Windows.Forms.Button btnCancel;
         private System.Windows.Forms.DataGridView dgvFlightSchedule;
-        private System.Windows.Forms.Label label13;
-        private System.Windows.Forms.Button btSubmit;
-        private System.Windows.Forms.Button btCancel;
+        private System.Windows.Forms.Label lbTitle;
+        private System.Windows.Forms.DateTimePicker dpOrderDate;
+        private System.Windows.Forms.Button btnPassengerBrowse;
+        private System.Windows.Forms.Label lbFromTo;
+        private System.Windows.Forms.Button btnEditFlightSchedule;
     }
 }

@@ -68,6 +68,7 @@ namespace ARSWinForm.HelperClass.ModelHelper
         {
             return await Get(id.ToString());
         }
+
     }
 
     class AirplaneTypeWrapper : AbstractModelWrapper<AirplaneType>
@@ -91,6 +92,29 @@ namespace ARSWinForm.HelperClass.ModelHelper
         public FlightScheduleWrapper()
         {
             MODEL_API = APIWrapper<FlightSchedule>.ARSAPI.FLIGHT_SCHEDULE;
+        }
+
+        public async Task<List<FlightSchedule>> List(long ticketID)
+        {
+            APIWrapper<FlightSchedule> apiWrapper = new APIWrapper<FlightSchedule>(APIWrapper<FlightSchedule>.ARSAPI.TICKET_FLIGHT_SCHEDULE, ticketID.ToString());
+            HttpResponseMessage response = await apiWrapper.GET();
+
+            if (response.IsSuccessStatusCode)
+            {
+                var responseData = response.Content.ReadAsStringAsync().Result;
+                JArray parsed = JArray.Parse(responseData.ToString());
+                List<FlightSchedule> lstResult = new List<FlightSchedule>();
+
+                foreach (var pair in parsed)
+                {
+                    FlightSchedule obj = ARSUtilities.JsonToObject<FlightSchedule>(pair.ToString());
+                    lstResult.Add(obj);
+                }
+
+                return lstResult;
+            }
+
+            return null;
         }
     }
 

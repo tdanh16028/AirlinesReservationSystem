@@ -114,5 +114,15 @@ namespace ARSWinForm
                 e.Cancel = true;
             }
         }
+
+        private void ticketToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            OpenChildForm(new FormTicketList());
+        }
+
+        private void airplaneTypeToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            OpenChildForm(new FormAirplaneTypeList());
+        }
     }
 }

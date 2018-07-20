@@ -58,8 +58,7 @@
             this.exitToolStripMenuItem});
             this.msMainMenu.Location = new System.Drawing.Point(0, 0);
             this.msMainMenu.Name = "msMainMenu";
-            this.msMainMenu.Padding = new System.Windows.Forms.Padding(8, 2, 0, 2);
-            this.msMainMenu.Size = new System.Drawing.Size(1605, 28);
+            this.msMainMenu.Size = new System.Drawing.Size(1204, 28);
             this.msMainMenu.TabIndex = 1;
             this.msMainMenu.Text = "menuStrip1";
             // 
@@ -70,14 +69,14 @@
             this.logoutToolStripMenuItem});
             this.authenticationToolStripMenuItem.Image = global::ARSWinForm.Properties.Resources.icons8_administrator_male_26;
             this.authenticationToolStripMenuItem.Name = "authenticationToolStripMenuItem";
-            this.authenticationToolStripMenuItem.Size = new System.Drawing.Size(138, 24);
+            this.authenticationToolStripMenuItem.Size = new System.Drawing.Size(109, 24);
             this.authenticationToolStripMenuItem.Text = "Authentication";
             // 
             // loginToolStripMenuItem
             // 
             this.loginToolStripMenuItem.Image = global::ARSWinForm.Properties.Resources.icons8_import_50;
             this.loginToolStripMenuItem.Name = "loginToolStripMenuItem";
-            this.loginToolStripMenuItem.Size = new System.Drawing.Size(216, 26);
+            this.loginToolStripMenuItem.Size = new System.Drawing.Size(107, 22);
             this.loginToolStripMenuItem.Text = "Login";
             this.loginToolStripMenuItem.Click += new System.EventHandler(this.loginToolStripMenuItem_Click);
             // 
@@ -86,7 +85,7 @@
             this.logoutToolStripMenuItem.Enabled = false;
             this.logoutToolStripMenuItem.Image = global::ARSWinForm.Properties.Resources.icons8_export_50;
             this.logoutToolStripMenuItem.Name = "logoutToolStripMenuItem";
-            this.logoutToolStripMenuItem.Size = new System.Drawing.Size(216, 26);
+            this.logoutToolStripMenuItem.Size = new System.Drawing.Size(107, 22);
             this.logoutToolStripMenuItem.Text = "Logout";
             this.logoutToolStripMenuItem.Click += new System.EventHandler(this.logoutToolStripMenuItem_Click);
             // 
@@ -99,7 +98,7 @@
             this.managementToolStripMenuItem.Enabled = false;
             this.managementToolStripMenuItem.Image = global::ARSWinForm.Properties.Resources.icons8_business_32;
             this.managementToolStripMenuItem.Name = "managementToolStripMenuItem";
-            this.managementToolStripMenuItem.Size = new System.Drawing.Size(129, 24);
+            this.managementToolStripMenuItem.Size = new System.Drawing.Size(101, 24);
             this.managementToolStripMenuItem.Text = "Management";
             // 
             // accountToolStripMenuItem
@@ -109,14 +108,14 @@
             this.customerProfileToolStripMenuItem});
             this.accountToolStripMenuItem.Image = global::ARSWinForm.Properties.Resources.icons8_administrator_male_26;
             this.accountToolStripMenuItem.Name = "accountToolStripMenuItem";
-            this.accountToolStripMenuItem.Size = new System.Drawing.Size(244, 26);
+            this.accountToolStripMenuItem.Size = new System.Drawing.Size(191, 26);
             this.accountToolStripMenuItem.Text = "Account";
             // 
             // adminToolStripMenuItem
             // 
             this.adminToolStripMenuItem.Image = global::ARSWinForm.Properties.Resources.icons8_administrator_male_26;
             this.adminToolStripMenuItem.Name = "adminToolStripMenuItem";
-            this.adminToolStripMenuItem.Size = new System.Drawing.Size(194, 26);
+            this.adminToolStripMenuItem.Size = new System.Drawing.Size(153, 22);
             this.adminToolStripMenuItem.Text = "Admin";
             this.adminToolStripMenuItem.Click += new System.EventHandler(this.adminToolStripMenuItem_Click);
             // 
@@ -124,7 +123,7 @@
             // 
             this.customerProfileToolStripMenuItem.Image = global::ARSWinForm.Properties.Resources.icons8_administrator_male_26;
             this.customerProfileToolStripMenuItem.Name = "customerProfileToolStripMenuItem";
-            this.customerProfileToolStripMenuItem.Size = new System.Drawing.Size(194, 26);
+            this.customerProfileToolStripMenuItem.Size = new System.Drawing.Size(153, 22);
             this.customerProfileToolStripMenuItem.Text = "Customer Profile";
             this.customerProfileToolStripMenuItem.Click += new System.EventHandler(this.customerProfileToolStripMenuItem_Click);
             // 
@@ -136,14 +135,14 @@
             this.classOfSeatToolStripMenuItem});
             this.airplaneToolStripMenuItem.Image = global::ARSWinForm.Properties.Resources.icons8_airport_24;
             this.airplaneToolStripMenuItem.Name = "airplaneToolStripMenuItem";
-            this.airplaneToolStripMenuItem.Size = new System.Drawing.Size(244, 26);
+            this.airplaneToolStripMenuItem.Size = new System.Drawing.Size(191, 26);
             this.airplaneToolStripMenuItem.Text = "Airplane";
             // 
             // airplaneToolStripMenuItem1
             // 
             this.airplaneToolStripMenuItem1.Image = global::ARSWinForm.Properties.Resources.icons8_airport_24;
             this.airplaneToolStripMenuItem1.Name = "airplaneToolStripMenuItem1";
-            this.airplaneToolStripMenuItem1.Size = new System.Drawing.Size(216, 26);
+            this.airplaneToolStripMenuItem1.Size = new System.Drawing.Size(184, 26);
             this.airplaneToolStripMenuItem1.Text = "Airplane";
             this.airplaneToolStripMenuItem1.Click += new System.EventHandler(this.airplaneToolStripMenuItem1_Click);
             // 
@@ -151,14 +150,15 @@
             // 
             this.airplaneTypeToolStripMenuItem.Image = global::ARSWinForm.Properties.Resources.icons8_airport_24;
             this.airplaneTypeToolStripMenuItem.Name = "airplaneTypeToolStripMenuItem";
-            this.airplaneTypeToolStripMenuItem.Size = new System.Drawing.Size(216, 26);
+            this.airplaneTypeToolStripMenuItem.Size = new System.Drawing.Size(184, 26);
             this.airplaneTypeToolStripMenuItem.Text = "Airplane Type";
+            this.airplaneTypeToolStripMenuItem.Click += new System.EventHandler(this.airplaneTypeToolStripMenuItem_Click);
             // 
             // classOfSeatToolStripMenuItem
             // 
             this.classOfSeatToolStripMenuItem.Image = global::ARSWinForm.Properties.Resources.icons8_passenger_26;
             this.classOfSeatToolStripMenuItem.Name = "classOfSeatToolStripMenuItem";
-            this.classOfSeatToolStripMenuItem.Size = new System.Drawing.Size(216, 26);
+            this.classOfSeatToolStripMenuItem.Size = new System.Drawing.Size(184, 26);
             this.classOfSeatToolStripMenuItem.Text = "Class of Seat";
             this.classOfSeatToolStripMenuItem.Click += new System.EventHandler(this.classOfSeatToolStripMenuItem_Click);
             // 
@@ -171,14 +171,14 @@
             this.ticketToolStripMenuItem});
             this.flightScheduleTicketToolStripMenuItem.Image = global::ARSWinForm.Properties.Resources.icons8_calendar_16;
             this.flightScheduleTicketToolStripMenuItem.Name = "flightScheduleTicketToolStripMenuItem";
-            this.flightScheduleTicketToolStripMenuItem.Size = new System.Drawing.Size(244, 26);
+            this.flightScheduleTicketToolStripMenuItem.Size = new System.Drawing.Size(191, 26);
             this.flightScheduleTicketToolStripMenuItem.Text = "Flight Schedule && Ticket";
             // 
             // cityToolStripMenuItem
             // 
             this.cityToolStripMenuItem.Image = global::ARSWinForm.Properties.Resources.icons8_city_50;
             this.cityToolStripMenuItem.Name = "cityToolStripMenuItem";
-            this.cityToolStripMenuItem.Size = new System.Drawing.Size(216, 26);
+            this.cityToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
             this.cityToolStripMenuItem.Text = "City";
             this.cityToolStripMenuItem.Click += new System.EventHandler(this.cityToolStripMenuItem_Click);
             // 
@@ -186,7 +186,7 @@
             // 
             this.routeToolStripMenuItem.Image = global::ARSWinForm.Properties.Resources.icons8_route_32;
             this.routeToolStripMenuItem.Name = "routeToolStripMenuItem";
-            this.routeToolStripMenuItem.Size = new System.Drawing.Size(216, 26);
+            this.routeToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
             this.routeToolStripMenuItem.Text = "Route";
             this.routeToolStripMenuItem.Click += new System.EventHandler(this.routeToolStripMenuItem_Click);
             // 
@@ -194,7 +194,7 @@
             // 
             this.flightScheduleToolStripMenuItem.Image = global::ARSWinForm.Properties.Resources.icons8_calendar_16;
             this.flightScheduleToolStripMenuItem.Name = "flightScheduleToolStripMenuItem";
-            this.flightScheduleToolStripMenuItem.Size = new System.Drawing.Size(216, 26);
+            this.flightScheduleToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
             this.flightScheduleToolStripMenuItem.Text = "Flight Schedule";
             this.flightScheduleToolStripMenuItem.Click += new System.EventHandler(this.flightScheduleToolStripMenuItem_Click);
             // 
@@ -202,27 +202,27 @@
             // 
             this.ticketToolStripMenuItem.Image = global::ARSWinForm.Properties.Resources.icons8_two_tickets_32;
             this.ticketToolStripMenuItem.Name = "ticketToolStripMenuItem";
-            this.ticketToolStripMenuItem.Size = new System.Drawing.Size(216, 26);
+            this.ticketToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
             this.ticketToolStripMenuItem.Text = "Ticket";
+            this.ticketToolStripMenuItem.Click += new System.EventHandler(this.ticketToolStripMenuItem_Click);
             // 
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Image = global::ARSWinForm.Properties.Resources.icons8_delete_48;
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(65, 24);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(57, 24);
             this.exitToolStripMenuItem.Text = "Exit";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
             // FormMain
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1605, 855);
+            this.ClientSize = new System.Drawing.Size(1204, 695);
             this.Controls.Add(this.msMainMenu);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.IsMdiContainer = true;
             this.MainMenuStrip = this.msMainMenu;
-            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "FormMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Airlines Reversation System";
