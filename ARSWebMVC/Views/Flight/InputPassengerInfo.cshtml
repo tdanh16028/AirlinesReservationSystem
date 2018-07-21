@@ -54,20 +54,13 @@
                     <div class="row">
                         <!-- Grid column -->
                         @{string currentDate = DateTime.Now.ToString("yyyy-MM-dd"); }
-                        <div class=" col-sm-12 col-md">
+                        <div class=" col-sm-12 col-md-4">
                             <div class="form-group">
                                 <label>Departure date :</label>
                                 @Html.Editor("departureDate", new { htmlAttributes = new { @class = "form-control", type = "date", Value = currentDate, min = currentDate } })
                             </div>
                         </div>
-                        <div class="col col-sm-2">
-                            Nếu ở trước chọn khứ hổi thì hiện form ngày về
-                        </div>
-                        <div class=" col-sm-12 col-md ">
-                            <!-- Default input -->
-                            <label>Pick the ending date :</label>
-                            @Html.Editor("returnDate", new { htmlAttributes = new { @class = "form-control", type = "date", Value = currentDate, min = currentDate } })
-                        </div>
+                      
                         <!-- Grid column -->
                     </div>
 
