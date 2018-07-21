@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
+using static ARSWebMVC.Controllers.ARSMVCUtilities;
 
 namespace eProject_main.Controllers
 {
@@ -71,7 +72,7 @@ namespace eProject_main.Controllers
                         CreditCard = res.CreditCard,
                         SkyMiles = Convert.ToInt32(res.SkyMiles)
                     };
-                    Session["UserProfile"] = userProfile;
+                    Session[SessionKey.UserProfile] = userProfile;
 
                     return RedirectToAction(action, controller, routeValue);
                 }
@@ -90,15 +91,15 @@ namespace eProject_main.Controllers
         public ActionResult Logout()
         {
             // Set session = null
-            Session["UserProfile"] = null;
+            Session[SessionKey.UserProfile] = null;
             // Return to homepage
             return RedirectToAction("Index", "Home");
         }
 
         public ActionResult ChangePassword()
         {
-            if (Session["UserProfile"] == null) return RedirectToAction("Login");
-            Profile userProfile = (Profile)Session["UserProfile"];
+            if (Session[SessionKey.UserProfile] == null) return RedirectToAction("Login");
+            Profile userProfile = (Profile)Session[SessionKey.UserProfile];
             return View(userProfile);
         }
         [HttpPost]
@@ -168,10 +169,10 @@ namespace eProject_main.Controllers
         public ActionResult EditProfile()
         {
             // If user is not loged in, redirect to login page
-            if (Session["UserProfile"] == null) return RedirectToAction("Login");
+            if (Session[SessionKey.UserProfile] == null) return RedirectToAction("Login");
 
             // Show User Profile
-            Profile userProfile = (Profile)Session["UserProfile"];
+            Profile userProfile = (Profile)Session[SessionKey.UserProfile];
             return View(userProfile);
         }
 
@@ -180,7 +181,7 @@ namespace eProject_main.Controllers
         public ActionResult EditProfile([Bind(Include = "UserID,FirstName,LastName,Address,PhoneNumber,EmailAddress,Sex,Age,CreditCard")]Profile profile, FormCollection form)
         {
             // If user is not loged in, redirect to login page
-            if (Session["UserProfile"] == null) return RedirectToAction("Login");
+            if (Session[SessionKey.UserProfile] == null) return RedirectToAction("Login");
             // Show User Profile
 
 
@@ -202,7 +203,7 @@ namespace eProject_main.Controllers
                     ARSMVCUtilities.GetDB().SaveChanges();
                 }
 
-                Session["UserProfile"] = profile;
+                Session[SessionKey.UserProfile] = rs;
 
                 return RedirectToAction("Profile");
             }
@@ -215,10 +216,10 @@ namespace eProject_main.Controllers
         public new ActionResult Profile()
         {
             // If user is not loged in, redirect to login page
-            if (Session["UserProfile"] == null) return RedirectToAction("Login");
+            if (Session[SessionKey.UserProfile] == null) return RedirectToAction("Login");
 
             // Show User Profile
-            Profile userProfile = (Profile)Session["UserProfile"];
+            Profile userProfile = (Profile)Session[SessionKey.UserProfile];
             return View(userProfile);
         }
 

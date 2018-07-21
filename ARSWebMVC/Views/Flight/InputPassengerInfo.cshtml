@@ -4,6 +4,44 @@
     ViewBag.Title = "Input Passennger Information";
 }
 
+@if (ViewBag.InputPassengerError != null)
+{
+    <div class="modal fade" id="modalError" tabindex="-1" role="dialog" aria-labelledby="modalError" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Details</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <p class="text-danger">@ViewBag.InputPassengerError</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- JQuery -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <!-- Bootstrap tooltips -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.13.0/umd/popper.min.js"></script>
+    <!-- Bootstrap core JavaScript -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <!-- MDB core JavaScript -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.5.4/js/mdb.min.js"></script>
+
+    <script type="text/javascript">
+        let btnShowError = $('<span data-toggle="modal" data-target="#modalError"></span>')[0];
+        document.body.append(btnShowError);
+        btnShowError.click();
+    </script>
+
+}
+
 <section class="datePicKer pt-5">
     <div class="container">
         <div class="card  animated wow fadeIn">
@@ -13,25 +51,25 @@
                 @using (Html.BeginForm("ChooseFlightSchedule", "Flight", FormMethod.Post))
                 {
                     <!-- Grid row -->
-                <div class="row">
-                    <!-- Grid column -->
-                    @{string currentDate = DateTime.Now.ToString("yyyy-MM-dd"); }
-                    <div class=" col-sm-12 col-md">
-                        <div class="form-group">
-                            <label>Departure date :</label>
-                            @Html.Editor("departureDate", new { htmlAttributes = new { @class = "form-control", type = "date", Value = currentDate, min = currentDate } })
+                    <div class="row">
+                        <!-- Grid column -->
+                        @{string currentDate = DateTime.Now.ToString("yyyy-MM-dd"); }
+                        <div class=" col-sm-12 col-md">
+                            <div class="form-group">
+                                <label>Departure date :</label>
+                                @Html.Editor("departureDate", new { htmlAttributes = new { @class = "form-control", type = "date", Value = currentDate, min = currentDate } })
+                            </div>
                         </div>
+                        <div class="col col-sm-2">
+                            Nếu ở trước chọn khứ hổi thì hiện form ngày về
+                        </div>
+                        <div class=" col-sm-12 col-md ">
+                            <!-- Default input -->
+                            <label>Pick the ending date :</label>
+                            @Html.Editor("returnDate", new { htmlAttributes = new { @class = "form-control", type = "date", Value = currentDate, min = currentDate } })
+                        </div>
+                        <!-- Grid column -->
                     </div>
-                    <div class="col col-sm-2">
-                        Nếu ở trước chọn khứ hổi thì hiện form ngày về
-                    </div>
-                    <div class=" col-sm-12 col-md ">
-                        <!-- Default input -->
-                        <label>Pick the ending date :</label>
-                        @Html.Editor("returnDate", new { htmlAttributes = new { @class = "form-control", type = "date", Value = currentDate, min = currentDate } })
-                    </div>
-                    <!-- Grid column -->
-                </div>
 
                     <div class="row pt-5">
                         <div class="col-md text-center">
@@ -54,19 +92,19 @@
                         </div>
 
                         @*@{
-                            List<SelectListItem> lstSeatClass = new List<SelectListItem>() {
-                                                        new SelectListItem() { Text = "First class", Value = "1", Selected = true },
-                                                        new SelectListItem() { Text = "Business class", Value = "2" },
-                                                        new SelectListItem() { Text = "Club class", Value = "3" }
-                                                    };
-                        }
+                                List<SelectListItem> lstSeatClass = new List<SelectListItem>() {
+                                                            new SelectListItem() { Text = "First class", Value = "1", Selected = true },
+                                                            new SelectListItem() { Text = "Business class", Value = "2" },
+                                                            new SelectListItem() { Text = "Club class", Value = "3" }
+                                                        };
+                            }
 
-                        <div class="col-md text-center">
-                            <div class="form-group">
-                                <label for="seat-class">Class</label>
-                                @Html.DropDownListFor(m => m.AirplaneClassID, lstSeatClass, new { id = "seat-class", @class = "form-control" })
-                            </div>
-                        </div>*@
+                            <div class="col-md text-center">
+                                <div class="form-group">
+                                    <label for="seat-class">Class</label>
+                                    @Html.DropDownListFor(m => m.AirplaneClassID, lstSeatClass, new { id = "seat-class", @class = "form-control" })
+                                </div>
+                            </div>*@
                     </div>
 
                     <div class="text-center mt-5">

@@ -1,6 +1,6 @@
 ﻿@using ARSWebMVC.Models
-@{ Profile user = (Profile)HttpContext.Current.Session["UserProfile"]; }
-@if (Session["UserProfile"] == null)
+@{ Profile user = (Profile)HttpContext.Current.Session[ARSWebMVC.Controllers.ARSMVCUtilities.SessionKey.UserProfile]; }
+@if (Session[ARSWebMVC.Controllers.ARSMVCUtilities.SessionKey.UserProfile] == null)
 {
     <li class="nav-item ml-md-auto">
         @*@Html.ActionLink("Login", "Login", "UserAccount", null, new { @class = "nav-link " })*@

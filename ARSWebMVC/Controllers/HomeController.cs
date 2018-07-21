@@ -44,8 +44,8 @@ namespace ARSWebMVC.Controllers
                 return RedirectToAction("QueryFlightDetails");
             }
 
-            //Search in the database returns the list of airplane code is "airplaneCode",if not find returned error message
-            List<FlightSchedule> rs = ARSMVCUtilities.GetDB().FlightSchedules.Where(s => s.AirplaneCode == airplaneCode).ToList();
+            //Search in the database returns the list of airplane code is "airplaneCode", if not find returned error message
+            List<FlightSchedule> rs = ARSMVCUtilities.GetDB().FlightSchedules.Where(s => s.AirplaneCode == airplaneCode && s.DepartureDate >= DateTime.Now).ToList();
             if (rs != null && rs.Count >0)
             {
                 return View(rs);

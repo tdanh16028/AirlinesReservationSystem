@@ -13,7 +13,7 @@
 
  
     @using ARSWebMVC.Models
-    @{ Profile user = (Profile)HttpContext.Current.Session["UserProfile"]; }
+    @{ Profile user = (Profile)HttpContext.Current.Session[ARSWebMVC.Controllers.ARSMVCUtilities.SessionKey.UserProfile]; }
 </head>
 
 <body>
