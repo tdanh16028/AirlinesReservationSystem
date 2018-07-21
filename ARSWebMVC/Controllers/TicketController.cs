@@ -269,7 +269,8 @@ namespace ARSWebMVC.Controllers
         public ActionResult ConfirmTicket(string ticketCode)
         {
 
-            var rs = ARSMVCUtilities.GetDB().Tickets.SingleOrDefault(s => s.TicketCode == ticketCode);
+            if (Session[SessionKey.UserProfile] == null) return RedirectToAction("Login", "UserAccount");
+            var rs = ARSMVCUtilities.GetDB().Tickets.SingleOrDefault(s => s.TicketCode == ticketCode && s.ProfileID == ((Profile)Session[SessionKey.UserProfile]).ID);
 
             if (rs != null)
             {
@@ -281,7 +282,7 @@ namespace ARSWebMVC.Controllers
             }
             else
             {
-                return RedirectToAction("TicketDetail");
+                return RedirectToAction("Index");
             }
         }
 
