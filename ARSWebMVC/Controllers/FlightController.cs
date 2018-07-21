@@ -94,7 +94,7 @@ namespace ARSWebMVC.Controllers
         {
             if (ticket.AdultCount == 0 && ticket.SeniorCount == 0)
             {
-                ViewBag.InputPassengerError = "At least one adult or senior passenger required to block/buy a ticket";
+                ViewBag.InputPassengerError = "At least one adult or senior passenger is required to block/buy a ticket";
                 return View("InputPassengerInfo", ticket);
             }
 
