@@ -39,7 +39,7 @@ namespace ARSWebMVC.Controllers
 
             if (code == null || code == "")
             {
-                ViewBag.ErrorMessage = "Invalid ConfirmationCode";
+                ViewBag.ErrorMessage = "Invalid Ticket Code";
                 return View();
             }
             else
@@ -51,7 +51,7 @@ namespace ARSWebMVC.Controllers
                 }
                 else
                 {
-                    ViewBag.ErrorMessage = "Invalid ConfirmationCode";
+                    ViewBag.ErrorMessage = "Invalid Ticket Code";
                     return View();
                 }
             }
