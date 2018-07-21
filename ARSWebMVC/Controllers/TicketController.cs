@@ -51,7 +51,7 @@ namespace ARSWebMVC.Controllers
                 }
                 else
                 {
-                    ViewBag.ErrorMessage = "Invalid Ticket Code";
+                    ViewBag.ErrorMessage = "Ticket not found";
                     return View();
                 }
             }
