@@ -36,6 +36,7 @@ namespace ARSWebMVC.Controllers
         {
             if (Session[SessionKey.UserProfile] == null) return RedirectToAction("Login","UserAccount");
             var code = form["txtConfirmationCode"];
+
             if (code == null || code == "")
             {
                 ViewBag.ErrorMessage = "Invalid ConfirmationCode";
@@ -43,7 +44,7 @@ namespace ARSWebMVC.Controllers
             }
             else
             {
-                Ticket rs = ARSMVCUtilities.GetDB().Tickets.SingleOrDefault(s => s.TicketCode == code);
+                Ticket rs = ARSMVCUtilities.GetDB().Tickets.SingleOrDefault(s => s.TicketCode == code && s.ProfileID == ((Profile)Session[SessionKey.UserProfile]).ID);
                 if (rs != null)
                 {
                     return RedirectToAction("TicketDetail", rs);
