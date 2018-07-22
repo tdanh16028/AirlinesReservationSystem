@@ -98,6 +98,10 @@ namespace ARSWinForm
                 currentRowIndex = dgvAirplaneClass.Rows.IndexOf(dgvAirplaneClass.SelectedRows[0]);
             }
 
+            // Luu lai dong hien tai dang o dau` bang? trong dataGridView
+            int firstRowIndex = dgvAirplaneClass.FirstDisplayedScrollingRowIndex;
+            if (firstRowIndex == -1) firstRowIndex = 0;
+
             // Goi API lay du lieu ve
             AirplaneClassWrapper airplaneClassWrapper = new AirplaneClassWrapper();
             List<AirplaneClass> lstAirplaneClass = await airplaneClassWrapper.List();
@@ -132,6 +136,9 @@ namespace ARSWinForm
 
                 // Chon lai dong ban dau duoc chon truoc khi reload
                 if (dgvAirplaneClass.Rows.Count > 0) dgvAirplaneClass.Rows[currentRowIndex].Selected = true;
+
+                // Cuon. toi' dong` duoc. chon.
+                if (dgvAirplaneClass.Rows.Count > 0) dgvAirplaneClass.FirstDisplayedScrollingRowIndex = firstRowIndex;
             }
         }
 

@@ -176,7 +176,7 @@ namespace ARSWinForm
                 if (dgvRoute.Rows.Count > 0) dgvRoute.Rows[currentRowIndex].Selected = true;
 
                 // Cuon. toi' dong` duoc. chon.
-                dgvRoute.FirstDisplayedScrollingRowIndex = firstRowIndex;
+                if (dgvRoute.Rows.Count > 0) dgvRoute.FirstDisplayedScrollingRowIndex = firstRowIndex;
             }
         }
         private Route GetSelectedRoute()

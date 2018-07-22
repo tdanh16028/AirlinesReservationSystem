@@ -184,7 +184,7 @@ namespace ARSWinForm
                 if (dgvTicket.Rows.Count > 0) dgvTicket.Rows[currentRowIndex].Selected = true;
 
                 // Cuon. toi' dong` duoc. chon.
-                dgvTicket.FirstDisplayedScrollingRowIndex = firstRowIndex;
+                if (dgvTicket.Rows.Count > 0) dgvTicket.FirstDisplayedScrollingRowIndex = firstRowIndex;
             }
         }
 

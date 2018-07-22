@@ -108,6 +108,10 @@ namespace ARSWinForm
                 currentRowIndex = dgvAdmin.Rows.IndexOf(dgvAdmin.SelectedRows[0]);
             }
 
+            // Luu lai dong hien tai dang o dau` bang? trong dataGridView
+            int firstRowIndex = dgvAdmin.FirstDisplayedScrollingRowIndex;
+            if (firstRowIndex == -1) firstRowIndex = 0;
+
             // Goi API lay du lieu ve
             AdminAccountWrapper adminAccountWrapper = new AdminAccountWrapper();
             List<AdminAccount> lstAdminAccount = await adminAccountWrapper.List();
@@ -149,6 +153,9 @@ namespace ARSWinForm
 
                 // Chon lai dong ban dau duoc chon truoc khi reload
                 if (dgvAdmin.Rows.Count > 0) dgvAdmin.Rows[currentRowIndex].Selected = true;
+
+                // Cuon. toi' dong` duoc. chon.
+                if (dgvAdmin.Rows.Count > 0) dgvAdmin.FirstDisplayedScrollingRowIndex = firstRowIndex;
             }
         }
 

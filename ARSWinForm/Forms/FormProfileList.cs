@@ -108,6 +108,10 @@ namespace ARSWinForm
                 currentRowIndex = dgvProfile.Rows.IndexOf(dgvProfile.SelectedRows[0]);
             }
 
+            // Luu lai dong hien tai dang o dau` bang? trong dataGridView
+            int firstRowIndex = dgvProfile.FirstDisplayedScrollingRowIndex;
+            if (firstRowIndex == -1) firstRowIndex = 0;
+
             // Goi API lay du lieu ve
             ProfileWrapper profileWrapper = new ProfileWrapper();
             List<Profile> lstProfile = await profileWrapper.List();
@@ -169,6 +173,9 @@ namespace ARSWinForm
 
                 // Chon lai dong ban dau duoc chon truoc khi reload
                 if (dgvProfile.Rows.Count > 0) dgvProfile.Rows[currentRowIndex].Selected = true;
+
+                // Cuon. toi' dong` duoc. chon.
+                if (dgvProfile.Rows.Count > 0) dgvProfile.FirstDisplayedScrollingRowIndex = firstRowIndex;
             }
         }
         private Profile GetSelectedProfile()

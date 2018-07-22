@@ -166,7 +166,7 @@ namespace ARSWinForm
                 if (dgvAirplaneType.Rows.Count > 0) dgvAirplaneType.Rows[currentRowIndex].Selected = true;
 
                 // Cuon. toi' dong` duoc. chon.
-                dgvAirplaneType.FirstDisplayedScrollingRowIndex = firstRowIndex;
+                if (dgvAirplaneType.Rows.Count > 0) dgvAirplaneType.FirstDisplayedScrollingRowIndex = firstRowIndex;
             }
         }
 

@@ -113,6 +113,7 @@ namespace ARSWinForm
             // Luu lai dong hien tai dang o dau` bang? trong dataGridView
             int firstRowIndex = dgvFlightSchedule.FirstDisplayedScrollingRowIndex;
             if (firstRowIndex == -1) firstRowIndex = 0;
+
             // Goi API lay du lieu ve
             FlightScheduleWrapper flightScheduleWrapper = new FlightScheduleWrapper();
             List<FlightSchedule> lstFlightSchedule = await flightScheduleWrapper.List();
@@ -192,7 +193,7 @@ namespace ARSWinForm
                 if (dgvFlightSchedule.Rows.Count > 0) dgvFlightSchedule.Rows[currentRowIndex].Selected = true;
 
                 // Cuon. toi' dong` duoc. chon.
-                dgvFlightSchedule.FirstDisplayedScrollingRowIndex = firstRowIndex;
+                if (dgvFlightSchedule.Rows.Count > 0) dgvFlightSchedule.FirstDisplayedScrollingRowIndex = firstRowIndex;
             }
         }
 
