@@ -106,6 +106,8 @@ namespace ARSWebMVC.Controllers
 
             List<List<FlightSchedule>> lstFinalFlightSchedule = new List<List<FlightSchedule>>();
 
+            DateTime start = DateTime.Now;
+
             // Lay danh sach tat ca cac chuyen bay cua chang duong dau tien
             List<FlightSchedule> lstStartFlightSchedule = dbFlightSchedule.Where(
                     fs => fs.RouteID == lstRoute[0].ID &&
@@ -133,6 +135,9 @@ namespace ARSWebMVC.Controllers
                     )
                 ).ToList()
             );
+
+            DateTime end = DateTime.Now;
+            Console.WriteLine((end - start).TotalSeconds);
 
             // Gan them du lieu len cho day du + chuyen vao Dictionary
             Dictionary<int, List<FlightSchedule>> dictListFlightSchedule = new Dictionary<int, List<FlightSchedule>>();
