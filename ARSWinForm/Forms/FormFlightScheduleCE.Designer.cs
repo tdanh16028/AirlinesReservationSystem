@@ -175,13 +175,14 @@
             this.label13.Padding = new System.Windows.Forms.Padding(50, 0, 0, 0);
             this.label13.Size = new System.Drawing.Size(455, 84);
             this.label13.TabIndex = 29;
-            this.label13.Text = "FlightScheduleCE";
+            this.label13.Text = "Flight Schedule";
             this.label13.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // FormFlightScheduleCE
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 28F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(454, 390);
             this.Controls.Add(this.label13);
             this.Controls.Add(this.dateTimePicker1);
@@ -198,7 +199,7 @@
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "FormFlightScheduleCE";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "CE_FlightSchedule";
+            this.Text = "Flight Schedule";
             this.Load += new System.EventHandler(this.FormFlightScheduleCE_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

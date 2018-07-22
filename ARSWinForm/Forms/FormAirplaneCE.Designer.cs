@@ -160,13 +160,14 @@
             this.label4.Padding = new System.Windows.Forms.Padding(50, 0, 0, 0);
             this.label4.Size = new System.Drawing.Size(426, 81);
             this.label4.TabIndex = 13;
-            this.label4.Text = "AirplaneCE";
+            this.label4.Text = "Airplane";
             this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // FormAirplaneCE
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 28F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(417, 330);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.rbtnInActive);
@@ -182,7 +183,7 @@
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "FormAirplaneCE";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "AirplaneCE";
+            this.Text = "Airplane";
             this.Load += new System.EventHandler(this.FormAirplaneCE_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

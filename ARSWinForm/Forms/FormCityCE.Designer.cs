@@ -121,13 +121,14 @@
             this.label1.Padding = new System.Windows.Forms.Padding(50, 0, 0, 0);
             this.label1.Size = new System.Drawing.Size(403, 90);
             this.label1.TabIndex = 8;
-            this.label1.Text = "CityCE";
+            this.label1.Text = "City";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // FormCityCE
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 28F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(402, 298);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.btnCancel);
@@ -140,7 +141,7 @@
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "FormCityCE";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "FormCityCE";
+            this.Text = "City";
             this.Load += new System.EventHandler(this.FormCityCE_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

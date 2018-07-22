@@ -165,13 +165,14 @@
             this.label1.Padding = new System.Windows.Forms.Padding(55, 0, 0, 0);
             this.label1.Size = new System.Drawing.Size(791, 70);
             this.label1.TabIndex = 6;
-            this.label1.Text = "City";
+            this.label1.Text = "List City";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // FormCityList
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 28F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(782, 553);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.btnReload);
@@ -184,7 +185,7 @@
             this.MinimumSize = new System.Drawing.Size(586, 480);
             this.Name = "FormCityList";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "CityList";
+            this.Text = "List City";
             this.Load += new System.EventHandler(this.FormCityList_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvCity)).EndInit();
             this.ResumeLayout(false);

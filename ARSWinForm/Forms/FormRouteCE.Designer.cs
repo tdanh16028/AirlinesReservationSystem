@@ -201,13 +201,14 @@
             this.label5.Padding = new System.Windows.Forms.Padding(50, 0, 0, 0);
             this.label5.Size = new System.Drawing.Size(470, 90);
             this.label5.TabIndex = 13;
-            this.label5.Text = "RouteCE";
+            this.label5.Text = "Route";
             this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // FormRouteCE
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 28F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(470, 459);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.btnCancel);
@@ -226,7 +227,7 @@
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "FormRouteCE";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "CE_Route";
+            this.Text = "Route";
             this.Load += new System.EventHandler(this.FormRouteCE_Load);
             ((System.ComponentModel.ISupportInitialize)(this.numSkyMiles)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numBasePrice)).EndInit();

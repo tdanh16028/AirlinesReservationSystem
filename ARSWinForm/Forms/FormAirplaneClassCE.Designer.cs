@@ -119,13 +119,14 @@
             this.label1.Padding = new System.Windows.Forms.Padding(55, 0, 0, 0);
             this.label1.Size = new System.Drawing.Size(415, 70);
             this.label1.TabIndex = 8;
-            this.label1.Text = "AirplaneClassCE";
+            this.label1.Text = "Airplane Class";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // FormAirplaneClassCE
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 28F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(411, 285);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.txtPriceRate);
@@ -138,7 +139,7 @@
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "FormAirplaneClassCE";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "AirplaneClassCE";
+            this.Text = "Airplane Class";
             this.Load += new System.EventHandler(this.FormAirplaneClassCE_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

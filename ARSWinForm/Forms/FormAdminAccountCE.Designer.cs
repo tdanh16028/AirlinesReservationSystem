@@ -210,13 +210,14 @@
             this.label1.Padding = new System.Windows.Forms.Padding(50, 0, 0, 0);
             this.label1.Size = new System.Drawing.Size(428, 85);
             this.label1.TabIndex = 15;
-            this.label1.Text = "AdminAccountCE";
+            this.label1.Text = "Admin Account";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // FormAdminAccountCE
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 28F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(426, 445);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.rbtnInActive);
@@ -236,7 +237,7 @@
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "FormAdminAccountCE";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "AdminAccountCE";
+            this.Text = "Admin Account";
             this.Load += new System.EventHandler(this.FormAdminAccountCE_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

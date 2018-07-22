@@ -55,7 +55,7 @@
             this.label1.Padding = new System.Windows.Forms.Padding(55, 0, 0, 0);
             this.label1.Size = new System.Drawing.Size(791, 70);
             this.label1.TabIndex = 12;
-            this.label1.Text = "FlightScheduleList";
+            this.label1.Text = "List Flight Schedule";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // dgvFlightSchedule
@@ -205,7 +205,7 @@
             this.MinimumSize = new System.Drawing.Size(586, 480);
             this.Name = "FormFlightScheduleList";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "FormFlightSchedule";
+            this.Text = "List Flight Schedule";
             this.Load += new System.EventHandler(this.FormFlightSchedule_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvFlightSchedule)).EndInit();
             this.ResumeLayout(false);
