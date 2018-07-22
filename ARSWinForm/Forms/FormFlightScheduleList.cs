@@ -171,7 +171,7 @@ namespace ARSWinForm
                     row["RouteID"] = flightSchedule.RouteID;
                     row["CityAName"] = cityA.Name;
                     row["CityBName"] = cityB.Name;
-                    row["DepartureDate"] = flightSchedule.DepartureDate;
+                    row["DepartureDate"] = flightSchedule.DepartureDate.ToString("dd/MM/yyyy");
                     row["FirstSeatAvail"] = flightSchedule.FirstSeatAvail;
                     row["BusinessSeatAvail"] = flightSchedule.BusinessSeatAvail;
                     row["ClubSeatAvail"] = flightSchedule.ClubSeatAvail;

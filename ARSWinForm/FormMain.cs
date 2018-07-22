@@ -1,4 +1,6 @@
 ﻿using ARSWinForm.Forms;
+using ARSWinForm.HelperClass.ModelHelper;
+using ARSWinForm.Model;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -19,6 +21,73 @@ namespace ARSWinForm
         public FormMain()
         {
             InitializeComponent();
+        }
+
+        private void FormMain_Load(object sender, EventArgs e)
+        {
+            // AutoGenerateFlightSchedule();
+        }
+
+        private async void AutoGenerateFlightSchedule()
+        {
+            DateTime startTime = DateTime.Now;
+            Console.WriteLine("Start at {0}", startTime);
+
+            FlightScheduleWrapper flightScheduleWrapper = new FlightScheduleWrapper();
+            AirplaneWrapper airplaneWrapper = new AirplaneWrapper();
+            AirplaneTypeWrapper airplaneTypeWrapper = new AirplaneTypeWrapper();
+            AirplaneInfoWrapper airplaneInfoWrapper = new AirplaneInfoWrapper();
+            RouteWrapper routeWrapper = new RouteWrapper();
+
+            List<Airplane> lstAirplane = await airplaneWrapper.List();
+            List<AirplaneType> lstAirplaneType = await airplaneTypeWrapper.List();
+            List<AirplaneInfo> lstAirplaneInfo = await airplaneInfoWrapper.List();
+            List<Route> lstRoute = await routeWrapper.List();
+
+            int flightScheduleOfCurrentRoute = 0;
+            int currentAirplaneIndex = 0;
+            int count = 0;
+
+            for (int routeIndex = 0, maxRouteIndex = lstRoute.Count - 1; routeIndex <= maxRouteIndex; routeIndex++)
+            {
+                Route currentRoute = lstRoute[routeIndex];
+
+                do
+                {
+                    Airplane currentAirplane = lstAirplane[currentAirplaneIndex++];
+                    AirplaneType currentAirplaneType = lstAirplaneType.Find(at => at.ID == currentAirplane.TypeID);
+                    List<AirplaneInfo> currentAirplaneInfo = lstAirplaneInfo.Where(ai => ai.AirplaneTypeID == currentAirplaneType.ID).ToList();
+                    DateTime departureDate = DateTime.Now.AddDays(flightScheduleOfCurrentRoute);
+
+                    FlightSchedule flightSchedule = new FlightSchedule()
+                    {
+                        AirplaneCode = currentAirplane.AirplaneCode,
+                        RouteID = currentRoute.ID,
+                        DepartureDate = departureDate,
+                        FirstSeatAvail = currentAirplaneInfo.Find(ai => ai.ClassID == 1).SeatCount,
+                        BusinessSeatAvail = currentAirplaneInfo.Find(ai => ai.ClassID == 2).SeatCount,
+                        ClubSeatAvail = currentAirplaneInfo.Find(ai => ai.ClassID == 3).SeatCount,
+                        IsActive = true
+                    };
+
+                    if (await flightScheduleWrapper.Post(flightSchedule))
+                    {
+                        Console.WriteLine("Add flight schedule #{0} success!", ++count);
+                    }
+                    else
+                    {
+                        Console.WriteLine("Add flight schedule #{0} failed!", ++count);
+                    }
+
+                    if (currentAirplaneIndex >= lstAirplane.Count) currentAirplaneIndex = 0;
+                } while (++flightScheduleOfCurrentRoute < 10);
+
+                flightScheduleOfCurrentRoute = 0;
+            }
+
+            DateTime endTime = DateTime.Now;
+            Console.WriteLine("End at {0}", startTime);
+            Console.WriteLine("Total time: {0}", (endTime - startTime).TotalSeconds);
         }
 
         private void OpenChildForm<T>(T form) where T : Form
@@ -69,11 +138,6 @@ namespace ARSWinForm
         private void flightScheduleToolStripMenuItem_Click(object sender, EventArgs e)
         {
             OpenChildForm(new FormFlightScheduleList());
-        }
-
-        private void FormMain_Load(object sender, EventArgs e)
-        {
-            
         }
 
         private void logoutToolStripMenuItem_Click(object sender, EventArgs e)
