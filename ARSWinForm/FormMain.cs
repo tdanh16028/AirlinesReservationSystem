@@ -28,6 +28,12 @@ namespace ARSWinForm
             // AutoGenerateFlightSchedule();
         }
 
+        /// <summary>
+        /// Only use for generate sample data of table FlightSchedule
+        /// This function will generate flight schedule for all route in database, 
+        /// each route will have <code>maxFlightSchedulePerRoute</code> flight schedules,
+        /// each flight schedule of route will apart one day, starting from today.
+        /// </summary>
         private async void AutoGenerateFlightSchedule()
         {
             DateTime startTime = DateTime.Now;
@@ -45,6 +51,7 @@ namespace ARSWinForm
             List<Route> lstRoute = await routeWrapper.List();
 
             int flightScheduleOfCurrentRoute = 0;
+            int maxFlightSchedulePerRoute = 10;
             int currentAirplaneIndex = 0;
             int count = 0;
 
@@ -80,7 +87,7 @@ namespace ARSWinForm
                     }
 
                     if (currentAirplaneIndex >= lstAirplane.Count) currentAirplaneIndex = 0;
-                } while (++flightScheduleOfCurrentRoute < 10);
+                } while (++flightScheduleOfCurrentRoute < maxFlightSchedulePerRoute);
 
                 flightScheduleOfCurrentRoute = 0;
             }
