@@ -148,7 +148,7 @@ namespace ARSWinForm
                 dgvAdmin.DataSource = table;
 
                 // Chon lai dong ban dau duoc chon truoc khi reload
-                dgvAdmin.Rows[currentRowIndex].Selected = true;
+                if (dgvAdmin.Rows.Count > 0) dgvAdmin.Rows[currentRowIndex].Selected = true;
             }
         }
 

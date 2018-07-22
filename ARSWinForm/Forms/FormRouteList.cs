@@ -173,7 +173,7 @@ namespace ARSWinForm
                 dgvRoute.Columns["CityBID"].Visible = false;
 
                 // Chon lai dong ban dau duoc chon truoc khi reload
-                dgvRoute.Rows[currentRowIndex].Selected = true;
+                if (dgvRoute.Rows.Count > 0) dgvRoute.Rows[currentRowIndex].Selected = true;
 
                 // Cuon. toi' dong` duoc. chon.
                 dgvRoute.FirstDisplayedScrollingRowIndex = firstRowIndex;

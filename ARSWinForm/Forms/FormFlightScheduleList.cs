@@ -189,7 +189,7 @@ namespace ARSWinForm
                 dgvFlightSchedule.Columns["RouteID"].Visible = false;
 
                 // Chon lai dong ban dau duoc chon truoc khi reload
-                dgvFlightSchedule.Rows[currentRowIndex].Selected = true;
+                if (dgvFlightSchedule.Rows.Count > 0) dgvFlightSchedule.Rows[currentRowIndex].Selected = true;
 
                 // Cuon. toi' dong` duoc. chon.
                 dgvFlightSchedule.FirstDisplayedScrollingRowIndex = firstRowIndex;

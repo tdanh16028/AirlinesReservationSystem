@@ -168,7 +168,7 @@ namespace ARSWinForm
                 dgvProfile.Columns["Sex"].Visible = false;
 
                 // Chon lai dong ban dau duoc chon truoc khi reload
-                dgvProfile.Rows[currentRowIndex].Selected = true;
+                if (dgvProfile.Rows.Count > 0) dgvProfile.Rows[currentRowIndex].Selected = true;
             }
         }
         private Profile GetSelectedProfile()

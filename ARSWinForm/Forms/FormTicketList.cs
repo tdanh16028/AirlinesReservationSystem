@@ -181,7 +181,7 @@ namespace ARSWinForm
                 dgvTicket.Columns["AirplaneClassID"].Visible = false;
 
                 // Chon lai dong ban dau duoc chon truoc khi reload
-                dgvTicket.Rows[currentRowIndex].Selected = true;
+                if (dgvTicket.Rows.Count > 0) dgvTicket.Rows[currentRowIndex].Selected = true;
 
                 // Cuon. toi' dong` duoc. chon.
                 dgvTicket.FirstDisplayedScrollingRowIndex = firstRowIndex;

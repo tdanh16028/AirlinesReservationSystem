@@ -131,7 +131,7 @@ namespace ARSWinForm
                 dgvAirplaneClass.DataSource = table;
 
                 // Chon lai dong ban dau duoc chon truoc khi reload
-                dgvAirplaneClass.Rows[currentRowIndex].Selected = true;
+                if (dgvAirplaneClass.Rows.Count > 0) dgvAirplaneClass.Rows[currentRowIndex].Selected = true;
             }
         }
 

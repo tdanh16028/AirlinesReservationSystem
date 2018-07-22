@@ -163,7 +163,7 @@ namespace ARSWinForm
                 dgvAirplaneType.DataSource = table;
 
                 // Chon lai dong ban dau duoc chon truoc khi reload
-                dgvAirplaneType.Rows[currentRowIndex].Selected = true;
+                if (dgvAirplaneType.Rows.Count > 0) dgvAirplaneType.Rows[currentRowIndex].Selected = true;
 
                 // Cuon. toi' dong` duoc. chon.
                 dgvAirplaneType.FirstDisplayedScrollingRowIndex = firstRowIndex;

@@ -109,7 +109,7 @@ namespace ARSWinForm
                 dgvCity.DataSource = table;
 
                 // Chon lai dong ban dau duoc chon truoc khi reload
-                dgvCity.Rows[currentRowIndex].Selected = true;
+                if (dgvCity.Rows.Count > 0) dgvCity.Rows[currentRowIndex].Selected = true;
             }
         }
         private City GetSelectedCity()
