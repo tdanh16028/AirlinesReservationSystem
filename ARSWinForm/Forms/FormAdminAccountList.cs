@@ -151,6 +151,10 @@ namespace ARSWinForm
                 // Gan bang WinForm len DataGridView
                 dgvAdmin.DataSource = table;
 
+                // An cot password
+                dgvAdmin.Columns["Username"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                dgvAdmin.Columns["Password"].Visible = false;
+
                 // Chon lai dong ban dau duoc chon truoc khi reload
                 if (dgvAdmin.Rows.Count > 0) dgvAdmin.Rows[currentRowIndex].Selected = true;
 

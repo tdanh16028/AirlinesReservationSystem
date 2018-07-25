@@ -59,7 +59,7 @@
             this.exitToolStripMenuItem});
             this.msMainMenu.Location = new System.Drawing.Point(0, 0);
             this.msMainMenu.Name = "msMainMenu";
-            this.msMainMenu.Size = new System.Drawing.Size(1204, 28);
+            this.msMainMenu.Size = new System.Drawing.Size(1274, 28);
             this.msMainMenu.TabIndex = 1;
             this.msMainMenu.Text = "menuStrip1";
             // 
@@ -220,11 +220,11 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(1204, 695);
+            this.ClientSize = new System.Drawing.Size(1274, 695);
             this.Controls.Add(this.msMainMenu);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.IsMdiContainer = true;
             this.MainMenuStrip = this.msMainMenu;
+            this.MinimumSize = new System.Drawing.Size(1280, 720);
             this.Name = "FormMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Airlines Reversation System";
