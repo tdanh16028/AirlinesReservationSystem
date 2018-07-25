@@ -221,6 +221,18 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="assets\fonts\font-awesome.min.css" />
+    <Content Include="assets\fonts\fontawesome-webfont.svg" />
+    <Content Include="assets\fonts\ionicons.min.css" />
+    <Content Include="assets\fonts\ionicons.svg" />
+    <Content Include="assets\img\1.jpg" />
+    <Content Include="assets\img\2.jpg" />
+    <Content Include="assets\img\3.jpg" />
+    <Content Include="assets\img\building.jpg" />
+    <Content Include="assets\img\desk.jpg" />
+    <Content Include="assets\img\iphone.svg" />
+    <Content Include="assets\img\loft.jpg" />
+    <Content Include="assets\img\screen-content-iphone-6.jpg" />
     <Content Include="Content\bootstrap-grid.css" />
     <Content Include="Content\bootstrap-grid.min.css" />
     <Content Include="Content\bootstrap-reboot.css" />
@@ -228,19 +240,19 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\BootstrapCustom.css" />
+    <Content Include="Content\myCss\Features-Blue.css" />
+    <Content Include="Content\myCss\Footer-Dark.css" />
+    <Content Include="Content\myCss\Header-Blue.css" />
+    <Content Include="Content\myCss\Lightbox-Gallery.css" />
+    <Content Include="Content\myCss\styles.css" />
+    <Content Include="Content\myCss\Team-Boxed.css" />
+    <Content Include="Content\myCss\Testimonials.css" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
-    <Content Include="Content\Site.css" />
+    <Content Include="Content\myCss\Site.css" />
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="images\35580.jpg" />
-    <Content Include="images\56940e67986905c14a1de5b04b49b15c.jpg" />
-    <Content Include="images\slide\366912.jpg" />
-    <Content Include="images\slide\369647.jpg" />
-    <Content Include="images\slide\606333.png" />
-    <Content Include="images\681111.jpg" />
-    <Content Include="images\bg_1.jpg" />
     <Content Include="Models\DBUserModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>DBUserModel.edmx</DependentUpon>
@@ -280,7 +292,15 @@
     <Content Include="Models\DBUserModel.edmx.diagram">
       <DependentUpon>DBUserModel.edmx</DependentUpon>
     </Content>
-    <None Include="Properties\PublishProfiles\AMDAirlines - Web Deploy.pubxml" />
+    <Content Include="assets\fonts\fontawesome-webfont.eot" />
+    <Content Include="assets\fonts\fontawesome-webfont.ttf" />
+    <Content Include="assets\fonts\fontawesome-webfont.woff" />
+    <Content Include="assets\fonts\fontawesome-webfont.woff2" />
+    <Content Include="assets\fonts\FontAwesome.otf" />
+    <Content Include="assets\fonts\ionicons.eot" />
+    <Content Include="assets\fonts\ionicons.ttf" />
+    <Content Include="assets\fonts\ionicons.woff" />
+    <None Include="Properties\PublishProfiles\ARSWebMVC - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />

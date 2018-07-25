@@ -12,7 +12,7 @@ namespace ARSWebMVC.Controllers
         DBUserEntities db = new DBUserEntities();
         public ActionResult Index()
         {
-            return RedirectToAction("CheckingAvailability");
+            return View();
         }
 
         public ActionResult CheckingAvailability() {

@@ -4,10 +4,10 @@
 {
     <li class="nav-item ml-md-auto">
         @*@Html.ActionLink("Login", "Login", "UserAccount", null, new { @class = "nav-link " })*@
-        <a id="btnlogin" class="nav-link" @*data-toggle="modal" data-target="#exampleModal"*@>Login</a>
+        <a id="btnlogin" class="nav-link " >Login</a>
     </li>
     <li class="nav-item ">
-        @Html.ActionLink("Register", "Register", "UserAccount", null, new { @class = "nav-link " })
+        @Html.ActionLink("Register", "Register", "UserAccount", null, new { @class = "nav-link btn-outline-light" })
     </li>
 }
 else
@@ -16,7 +16,7 @@ else
         <a class="nav-link dropdown-toggle " id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">@user.UserID.ToString()</a>
         <div class="dropdown-menu dropdown-primary" aria-labelledby="navbarDropdownMenuLink">
             @Html.ActionLink("Profile", "Profile", "UserAccount", null, new { @class = "dropdown-item" })
-            @Html.ActionLink("Lgout", "Logout", "UserAccount", null, new { @class = "dropdown-item" })
+            @Html.ActionLink("Log-out", "Logout", "UserAccount", null, new { @class = "dropdown-item" })
         </div>
     </li>
 }

@@ -52,3 +52,20 @@ a:hover, a:visited, a:active {
 }
 
 
+.footer-item {
+    padding: 50px;
+}
+
+    .footer-item i {
+        margin-right: 10px;
+    }
+
+    .footer-item ul {
+        list-style-type: none;
+        font-size: 14px;
+        padding: 0px;
+    }
+
+    .footer-item a {
+        color: black;
+    }

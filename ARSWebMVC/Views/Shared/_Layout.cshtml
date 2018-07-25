@@ -5,13 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title - My ASP.NET Application</title>
     <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet">
     <!-- Material Design Bootstrap -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.5.4/css/mdb.min.css" rel="stylesheet">
 
 
- 
+
     @using ARSWebMVC.Models
     @{ Profile user = (Profile)HttpContext.Current.Session[ARSWebMVC.Controllers.ARSMVCUtilities.SessionKey.UserProfile]; }
 </head>
@@ -19,10 +19,10 @@
 <body>
     @(TempData["Status"] = null)
     <!--Navbar-->
-    <nav class="navbar navbar-expand-md navbar-dark  teal scrolling-navbar fixed-top">
+    <nav class="navbar navbar-expand-md navbar-dark  header-blue scrolling-navbar fixed-top">
         <!-- Navbar brand -->
         <div class="container">
-            @Html.ActionLink("AirlinesReservation", "Index", "Home", null, new { @class = "navbar-brand" })
+            @Html.ActionLink("AMD Airlines", "Index", "Home", null, new { @class = "navbar-brand" })
             <!-- Collapse button -->
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#basicExampleNav" aria-controls="basicExampleNav"
                     aria-expanded="false" aria-label="Toggle navigation">
@@ -33,19 +33,16 @@
                 <!-- Links -->
                 <ul class="navbar-nav d-flex w-100">
                     <li class="nav-item ">
-                        @Html.ActionLink("CheckingAvailability", "CheckingAvailability", "Home", null, new { @class = "nav-link" })
+                        @Html.ActionLink("Find Flight", "CheckingAvailability", "Home", null, new { @class = "nav-link" })
                     </li>
+                    @if (Session["UserProfile"] != null)
+                    {
+                        <li class="nav-item">
+                            @Html.ActionLink("View Ticket Status", "Index", "Ticket", null, new { @class = "nav-link" })
+                        </li>
+                    }
                     <li class="nav-item">
-                        @Html.ActionLink("DatePic", "DatePic", "Home", null, new { @class = "nav-link" })
-                    </li>
-                    <li class="nav-item">
-                        @Html.ActionLink("TicketDetailTemp", "TicketDetailTemp", "Ticket", null, new { @class = "nav-link" })
-                    </li>
-                    <li class="nav-item">
-                        @Html.ActionLink("Ticket", "Index", "Ticket", null, new { @class = "nav-link" })
-                    </li>
-                    <li class="nav-item">
-                        @Html.ActionLink("QueryFlightDetails", "QueryFlightDetails", "Home", null, new { @class = "nav-link" })
+                        @Html.ActionLink("Query FlightDetails", "QueryFlightDetails", "Home", null, new { @class = "nav-link" })
                     </li>
                     @Html.Partial("_LoginPartial")
                 </ul>
@@ -66,13 +63,43 @@
             </div>
         </div>
     </div>
-    <div class="body-content pt-5 ">
+    <div class="body-content pb-5">
         @RenderBody()
-        <hr />
     </div>
-    <footer class="container web-footer">
-        <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
-    </footer>
+    <div class="footer-dark pt-5">
+        <footer>
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-6 col-md-3 item">
+                        <h3>Services</h3>
+                        <ul>
+                            <li><a href="#">Fly with us!</a></li>
+                            <li><a href="#">Query flight details</a></li>
+                            <li><a href="#">Checking availability</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-sm-6 col-md-3 item">
+                        <h3>About</h3>
+                        <ul>
+                            <li><a href="#">Company</a></li>
+                            <li><a href="#">Team</a></li>
+                            <li><a href="#">Careers</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-md-6 item text">
+                        <h3>AMD Airlines</h3>
+                        <p>Started in September 2004, with all the effort and passion of our beginning team, was bring up the company with over 27,000 employees and the best service that you can see now.</p>
+                    </div>
+                    <div class="col item social">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-snapchat-ghost"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a></div>
+                </div>
+                <p class="copyright">AMD Airlines © 2004 - 2017</p>
+            </div>
+        </footer>
+    </div>
 
 
     <!-- JQuery -->

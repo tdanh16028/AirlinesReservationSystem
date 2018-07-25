@@ -11,8 +11,7 @@ namespace ARSWebMVC.Models
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
-
+    
     public partial class FlightSchedule
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -24,11 +23,7 @@ namespace ARSWebMVC.Models
         public long ID { get; set; }
         public string AirplaneCode { get; set; }
         public int RouteID { get; set; }
-
-        [DataType(DataType.Date)]
-        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:yyyy-MM-dd}")]
         public System.DateTime DepartureDate { get; set; }
-
         public int FirstSeatAvail { get; set; }
         public int BusinessSeatAvail { get; set; }
         public int ClubSeatAvail { get; set; }
