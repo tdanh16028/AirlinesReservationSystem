@@ -90,7 +90,7 @@ namespace ARSWebMVC.Controllers
 
         // POST: Flight/ChooseFlightSchedule
         [HttpPost]
-        public ActionResult ChooseFlightSchedule(Ticket ticket, DateTime departureDate, DateTime returnDate)
+        public ActionResult ChooseFlightSchedule(Ticket ticket, DateTime departureDate)
         {
             if (ticket.AdultCount == 0 && ticket.SeniorCount == 0)
             {

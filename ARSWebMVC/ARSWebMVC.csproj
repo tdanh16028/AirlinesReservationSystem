@@ -300,7 +300,7 @@
     <Content Include="assets\fonts\ionicons.eot" />
     <Content Include="assets\fonts\ionicons.ttf" />
     <Content Include="assets\fonts\ionicons.woff" />
-    <None Include="Properties\PublishProfiles\ARSWebMVC - Web Deploy.pubxml" />
+    <None Include="Properties\PublishProfiles\AMDAirlines - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
