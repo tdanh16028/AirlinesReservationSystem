@@ -106,6 +106,8 @@ namespace ARSWebMVC.Controllers
 
             List<List<FlightSchedule>> lstFinalFlightSchedule = new List<List<FlightSchedule>>();
 
+            //DateTime start = DateTime.Now;
+
             // Lay danh sach tat ca cac chuyen bay cua chang duong dau tien
             List<FlightSchedule> lstStartFlightSchedule = dbFlightSchedule.Where(
                     fs => fs.RouteID == lstRoute[0].ID &&
@@ -120,8 +122,60 @@ namespace ARSWebMVC.Controllers
             foreach (FlightSchedule fs in lstStartFlightSchedule)
             {
                 List<FlightSchedule> lstCurrentTryFS = new List<FlightSchedule>() { fs };
-                RecursiveFindPossibleFlightSchedule(fs.DepartureDate, totalSeat, lstRoute, 0, ref lstCurrentTryFS, ref lstFinalFlightSchedule);
+                if (lstRoute.Count > 1)
+                {
+                    // Neu co nhieu hon 1 chang bay thi moi tim tiep
+                    RecursiveFindPossibleFlightSchedule(fs.DepartureDate, totalSeat, lstRoute, 0, ref lstCurrentTryFS, ref lstFinalFlightSchedule);
+                }
+                else
+                {
+                    // Neu chi co 1 chang bay thi them danh sach hien tai vao luon
+                    lstFinalFlightSchedule.Add(lstCurrentTryFS);
+                }
             }
+
+            //List<List<FlightSchedule>> lstFSOfEachRoute = new List<List<FlightSchedule>>();
+            //foreach (Route route in lstRoute)
+            //{
+            //    lstFSOfEachRoute.Add(
+            //        dbFlightSchedule.Where(
+            //            fs => fs.RouteID == route.ID &&
+            //            fs.DepartureDate >= departureDate
+            //        )
+            //        .OrderBy(fs => fs.DepartureDate)
+            //        .ToList()
+            //    );
+            //}
+
+            //List<FlightSchedule> lstCurrentFS;
+            //int[] aryCurrentFSIndex = new int[lstRoute.Count];
+            //aryCurrentFSIndex.Initialize();
+
+            //while (aryCurrentFSIndex[0] != lstFSOfEachRoute[0].Count)
+            //{
+            //    lstCurrentFS = new List<FlightSchedule>();
+
+            //    aryCurrentFSIndex[lstRoute.Count - 1]++;
+            //    for (int currentRouteIndex = lstRoute.Count - 1; currentRouteIndex > 0; currentRouteIndex--)
+            //    {
+            //        if (aryCurrentFSIndex[currentRouteIndex] == lstFSOfEachRoute[currentRouteIndex].Count)
+            //        {
+            //            aryCurrentFSIndex[currentRouteIndex] = 0;
+            //            aryCurrentFSIndex[currentRouteIndex - 1]++;
+            //        }
+            //    }
+
+            //    if (aryCurrentFSIndex[0] == lstFSOfEachRoute[0].Count) break;
+
+            //    for (int currentRouteIndex = 0, maxRouteIndex = lstRoute.Count - 1; currentRouteIndex <= maxRouteIndex; currentRouteIndex++)
+            //    {
+            //        int currentFSIndex = aryCurrentFSIndex[currentRouteIndex];
+            //        List<FlightSchedule> lstFSOfCurrentRoute = lstFSOfEachRoute[currentRouteIndex];
+            //        lstCurrentFS.Add(lstFSOfCurrentRoute[currentFSIndex]);
+            //    }
+
+            //    lstFinalFlightSchedule.Add(lstCurrentFS);
+            //}
 
             // Loc ra danh sach nhung chuyen bay con du ghe
             lstFinalFlightSchedule = new List<List<FlightSchedule>>(
@@ -133,6 +187,10 @@ namespace ARSWebMVC.Controllers
                     )
                 ).ToList()
             );
+
+
+            //DateTime end = DateTime.Now;
+            //Session["Time"] = ((end - start).TotalSeconds);
 
             // Gan them du lieu len cho day du + chuyen vao Dictionary
             Dictionary<int, List<FlightSchedule>> dictListFlightSchedule = new Dictionary<int, List<FlightSchedule>>();
