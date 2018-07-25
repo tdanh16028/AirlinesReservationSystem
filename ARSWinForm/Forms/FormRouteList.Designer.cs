@@ -36,7 +36,7 @@
             this.dgvRoute = new System.Windows.Forms.DataGridView();
             this.btnReload = new System.Windows.Forms.Button();
             this.btnEdit = new System.Windows.Forms.Button();
-            this.btnSubmit = new System.Windows.Forms.Button();
+            this.btnCreate = new System.Windows.Forms.Button();
             this.btnDelete = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvRoute)).BeginInit();
             this.SuspendLayout();
@@ -53,9 +53,9 @@
             this.label1.Margin = new System.Windows.Forms.Padding(0);
             this.label1.Name = "label1";
             this.label1.Padding = new System.Windows.Forms.Padding(55, 0, 0, 0);
-            this.label1.Size = new System.Drawing.Size(791, 70);
+            this.label1.Size = new System.Drawing.Size(781, 70);
             this.label1.TabIndex = 8;
-            this.label1.Text = "List Route";
+            this.label1.Text = "LIST ROUTE";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // dgvRoute
@@ -68,6 +68,9 @@
             dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.White;
             dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dgvRoute.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            this.dgvRoute.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.dgvRoute.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
             this.dgvRoute.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(247)))), ((int)(((byte)(247)))), ((int)(((byte)(247)))));
             this.dgvRoute.BorderStyle = System.Windows.Forms.BorderStyle.None;
@@ -116,7 +119,7 @@
             this.dgvRoute.RowTemplate.Height = 40;
             this.dgvRoute.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             this.dgvRoute.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvRoute.Size = new System.Drawing.Size(791, 405);
+            this.dgvRoute.Size = new System.Drawing.Size(781, 395);
             this.dgvRoute.TabIndex = 9;
             // 
             // btnReload
@@ -126,7 +129,7 @@
             this.btnReload.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(150)))), ((int)(((byte)(136)))));
             this.btnReload.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnReload.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(150)))), ((int)(((byte)(136)))));
-            this.btnReload.Location = new System.Drawing.Point(647, 485);
+            this.btnReload.Location = new System.Drawing.Point(639, 485);
             this.btnReload.Margin = new System.Windows.Forms.Padding(10);
             this.btnReload.Name = "btnReload";
             this.btnReload.Size = new System.Drawing.Size(120, 45);
@@ -142,7 +145,7 @@
             this.btnEdit.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(150)))), ((int)(((byte)(136)))));
             this.btnEdit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnEdit.ForeColor = System.Drawing.Color.White;
-            this.btnEdit.Location = new System.Drawing.Point(342, 485);
+            this.btnEdit.Location = new System.Drawing.Point(359, 485);
             this.btnEdit.Margin = new System.Windows.Forms.Padding(10);
             this.btnEdit.Name = "btnEdit";
             this.btnEdit.Size = new System.Drawing.Size(120, 45);
@@ -151,29 +154,30 @@
             this.btnEdit.UseVisualStyleBackColor = false;
             this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
             // 
-            // btnSubmit
+            // btnCreate
             // 
-            this.btnSubmit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnSubmit.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(150)))), ((int)(((byte)(136)))));
-            this.btnSubmit.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(150)))), ((int)(((byte)(136)))));
-            this.btnSubmit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSubmit.ForeColor = System.Drawing.Color.White;
-            this.btnSubmit.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnSubmit.Location = new System.Drawing.Point(187, 485);
-            this.btnSubmit.Margin = new System.Windows.Forms.Padding(10);
-            this.btnSubmit.Name = "btnSubmit";
-            this.btnSubmit.Size = new System.Drawing.Size(120, 45);
-            this.btnSubmit.TabIndex = 13;
-            this.btnSubmit.Text = "Submit";
-            this.btnSubmit.UseVisualStyleBackColor = false;
-            this.btnSubmit.Click += new System.EventHandler(this.btnSubmit_Click);
+            this.btnCreate.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnCreate.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(150)))), ((int)(((byte)(136)))));
+            this.btnCreate.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(150)))), ((int)(((byte)(136)))));
+            this.btnCreate.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCreate.ForeColor = System.Drawing.Color.White;
+            this.btnCreate.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnCreate.Location = new System.Drawing.Point(219, 485);
+            this.btnCreate.Margin = new System.Windows.Forms.Padding(10);
+            this.btnCreate.Name = "btnCreate";
+            this.btnCreate.Size = new System.Drawing.Size(120, 45);
+            this.btnCreate.TabIndex = 13;
+            this.btnCreate.Text = "Create";
+            this.btnCreate.UseVisualStyleBackColor = false;
+            this.btnCreate.Click += new System.EventHandler(this.btnSubmit_Click);
             // 
             // btnDelete
             // 
+            this.btnDelete.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnDelete.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(57)))), ((int)(((byte)(53)))));
             this.btnDelete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnDelete.ForeColor = System.Drawing.Color.White;
-            this.btnDelete.Location = new System.Drawing.Point(494, 485);
+            this.btnDelete.Location = new System.Drawing.Point(499, 485);
             this.btnDelete.Margin = new System.Windows.Forms.Padding(10);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(120, 45);
@@ -184,19 +188,18 @@
             // 
             // FormRouteList
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 28F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 21F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(778, 549);
             this.Controls.Add(this.btnReload);
             this.Controls.Add(this.btnEdit);
-            this.Controls.Add(this.btnSubmit);
+            this.Controls.Add(this.btnCreate);
             this.Controls.Add(this.btnDelete);
             this.Controls.Add(this.dgvRoute);
             this.Controls.Add(this.label1);
             this.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ForeColor = System.Drawing.Color.White;
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.Margin = new System.Windows.Forms.Padding(4);
             this.MinimumSize = new System.Drawing.Size(586, 480);
             this.Name = "FormRouteList";
@@ -213,7 +216,7 @@
         private System.Windows.Forms.DataGridView dgvRoute;
         private System.Windows.Forms.Button btnReload;
         private System.Windows.Forms.Button btnEdit;
-        private System.Windows.Forms.Button btnSubmit;
+        private System.Windows.Forms.Button btnCreate;
         private System.Windows.Forms.Button btnDelete;
     }
 }

@@ -51,6 +51,7 @@
             // 
             // msMainMenu
             // 
+            this.msMainMenu.BackColor = System.Drawing.Color.White;
             this.msMainMenu.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.msMainMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.authenticationToolStripMenuItem,
@@ -108,7 +109,7 @@
             this.customerProfileToolStripMenuItem});
             this.accountToolStripMenuItem.Image = global::ARSWinForm.Properties.Resources.icons8_administrator_male_26;
             this.accountToolStripMenuItem.Name = "accountToolStripMenuItem";
-            this.accountToolStripMenuItem.Size = new System.Drawing.Size(191, 26);
+            this.accountToolStripMenuItem.Size = new System.Drawing.Size(187, 22);
             this.accountToolStripMenuItem.Text = "Account";
             // 
             // adminToolStripMenuItem
@@ -135,14 +136,14 @@
             this.classOfSeatToolStripMenuItem});
             this.airplaneToolStripMenuItem.Image = global::ARSWinForm.Properties.Resources.icons8_airport_24;
             this.airplaneToolStripMenuItem.Name = "airplaneToolStripMenuItem";
-            this.airplaneToolStripMenuItem.Size = new System.Drawing.Size(191, 26);
+            this.airplaneToolStripMenuItem.Size = new System.Drawing.Size(187, 22);
             this.airplaneToolStripMenuItem.Text = "Airplane";
             // 
             // airplaneToolStripMenuItem1
             // 
             this.airplaneToolStripMenuItem1.Image = global::ARSWinForm.Properties.Resources.icons8_airport_24;
             this.airplaneToolStripMenuItem1.Name = "airplaneToolStripMenuItem1";
-            this.airplaneToolStripMenuItem1.Size = new System.Drawing.Size(184, 26);
+            this.airplaneToolStripMenuItem1.Size = new System.Drawing.Size(140, 22);
             this.airplaneToolStripMenuItem1.Text = "Airplane";
             this.airplaneToolStripMenuItem1.Click += new System.EventHandler(this.airplaneToolStripMenuItem1_Click);
             // 
@@ -150,7 +151,7 @@
             // 
             this.airplaneTypeToolStripMenuItem.Image = global::ARSWinForm.Properties.Resources.icons8_airport_24;
             this.airplaneTypeToolStripMenuItem.Name = "airplaneTypeToolStripMenuItem";
-            this.airplaneTypeToolStripMenuItem.Size = new System.Drawing.Size(184, 26);
+            this.airplaneTypeToolStripMenuItem.Size = new System.Drawing.Size(140, 22);
             this.airplaneTypeToolStripMenuItem.Text = "Airplane Type";
             this.airplaneTypeToolStripMenuItem.Click += new System.EventHandler(this.airplaneTypeToolStripMenuItem_Click);
             // 
@@ -158,7 +159,7 @@
             // 
             this.classOfSeatToolStripMenuItem.Image = global::ARSWinForm.Properties.Resources.icons8_passenger_26;
             this.classOfSeatToolStripMenuItem.Name = "classOfSeatToolStripMenuItem";
-            this.classOfSeatToolStripMenuItem.Size = new System.Drawing.Size(184, 26);
+            this.classOfSeatToolStripMenuItem.Size = new System.Drawing.Size(140, 22);
             this.classOfSeatToolStripMenuItem.Text = "Class of Seat";
             this.classOfSeatToolStripMenuItem.Click += new System.EventHandler(this.classOfSeatToolStripMenuItem_Click);
             // 
@@ -171,7 +172,7 @@
             this.ticketToolStripMenuItem});
             this.flightScheduleTicketToolStripMenuItem.Image = global::ARSWinForm.Properties.Resources.icons8_calendar_16;
             this.flightScheduleTicketToolStripMenuItem.Name = "flightScheduleTicketToolStripMenuItem";
-            this.flightScheduleTicketToolStripMenuItem.Size = new System.Drawing.Size(191, 26);
+            this.flightScheduleTicketToolStripMenuItem.Size = new System.Drawing.Size(187, 22);
             this.flightScheduleTicketToolStripMenuItem.Text = "Flight Schedule && Ticket";
             // 
             // cityToolStripMenuItem
@@ -218,6 +219,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1204, 695);
             this.Controls.Add(this.msMainMenu);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;

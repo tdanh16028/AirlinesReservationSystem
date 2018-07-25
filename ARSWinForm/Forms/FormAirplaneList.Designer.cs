@@ -35,7 +35,7 @@
             this.dgvAirplane = new System.Windows.Forms.DataGridView();
             this.btnReload = new System.Windows.Forms.Button();
             this.btnEdit = new System.Windows.Forms.Button();
-            this.btnSubmit = new System.Windows.Forms.Button();
+            this.btnCreate = new System.Windows.Forms.Button();
             this.btnDelete = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAirplane)).BeginInit();
             this.SuspendLayout();
@@ -52,9 +52,9 @@
             this.label1.Margin = new System.Windows.Forms.Padding(0);
             this.label1.Name = "label1";
             this.label1.Padding = new System.Windows.Forms.Padding(55, 0, 0, 0);
-            this.label1.Size = new System.Drawing.Size(791, 70);
+            this.label1.Size = new System.Drawing.Size(781, 70);
             this.label1.TabIndex = 9;
-            this.label1.Text = "List Airplane";
+            this.label1.Text = "AIRPLANE LIST";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // dgvAirplane
@@ -112,7 +112,7 @@
             this.dgvAirplane.RowTemplate.Height = 40;
             this.dgvAirplane.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             this.dgvAirplane.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvAirplane.Size = new System.Drawing.Size(791, 412);
+            this.dgvAirplane.Size = new System.Drawing.Size(781, 399);
             this.dgvAirplane.TabIndex = 10;
             // 
             // btnReload
@@ -147,22 +147,22 @@
             this.btnEdit.UseVisualStyleBackColor = false;
             this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
             // 
-            // btnSubmit
+            // btnCreate
             // 
-            this.btnSubmit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnSubmit.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(150)))), ((int)(((byte)(136)))));
-            this.btnSubmit.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(150)))), ((int)(((byte)(136)))));
-            this.btnSubmit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSubmit.ForeColor = System.Drawing.Color.White;
-            this.btnSubmit.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnSubmit.Location = new System.Drawing.Point(223, 489);
-            this.btnSubmit.Margin = new System.Windows.Forms.Padding(10);
-            this.btnSubmit.Name = "btnSubmit";
-            this.btnSubmit.Size = new System.Drawing.Size(120, 45);
-            this.btnSubmit.TabIndex = 17;
-            this.btnSubmit.Text = "Submit";
-            this.btnSubmit.UseVisualStyleBackColor = false;
-            this.btnSubmit.Click += new System.EventHandler(this.btnSubmit_Click);
+            this.btnCreate.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnCreate.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(150)))), ((int)(((byte)(136)))));
+            this.btnCreate.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(150)))), ((int)(((byte)(136)))));
+            this.btnCreate.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCreate.ForeColor = System.Drawing.Color.White;
+            this.btnCreate.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnCreate.Location = new System.Drawing.Point(223, 489);
+            this.btnCreate.Margin = new System.Windows.Forms.Padding(10);
+            this.btnCreate.Name = "btnCreate";
+            this.btnCreate.Size = new System.Drawing.Size(120, 45);
+            this.btnCreate.TabIndex = 17;
+            this.btnCreate.Text = "Create";
+            this.btnCreate.UseVisualStyleBackColor = false;
+            this.btnCreate.Click += new System.EventHandler(this.btnSubmit_Click);
             // 
             // btnDelete
             // 
@@ -180,13 +180,13 @@
             // 
             // FormAirplaneList
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 28F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 21F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(782, 553);
             this.Controls.Add(this.btnReload);
             this.Controls.Add(this.btnEdit);
-            this.Controls.Add(this.btnSubmit);
+            this.Controls.Add(this.btnCreate);
             this.Controls.Add(this.btnDelete);
             this.Controls.Add(this.dgvAirplane);
             this.Controls.Add(this.label1);
@@ -196,7 +196,7 @@
             this.MinimumSize = new System.Drawing.Size(586, 480);
             this.Name = "FormAirplaneList";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "List Airplane ";
+            this.Text = "Airplane List";
             this.Load += new System.EventHandler(this.Airplane_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvAirplane)).EndInit();
             this.ResumeLayout(false);
@@ -208,7 +208,7 @@
         private System.Windows.Forms.DataGridView dgvAirplane;
         private System.Windows.Forms.Button btnReload;
         private System.Windows.Forms.Button btnEdit;
-        private System.Windows.Forms.Button btnSubmit;
+        private System.Windows.Forms.Button btnCreate;
         private System.Windows.Forms.Button btnDelete;
     }
 }

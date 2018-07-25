@@ -51,7 +51,7 @@
             this.label2.Location = new System.Drawing.Point(29, 100);
             this.label2.Margin = new System.Windows.Forms.Padding(50, 15, 10, 15);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(104, 28);
+            this.label2.Size = new System.Drawing.Size(83, 21);
             this.label2.TabIndex = 1;
             this.label2.Text = "Username";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -63,7 +63,7 @@
             this.label3.Location = new System.Drawing.Point(29, 158);
             this.label3.Margin = new System.Windows.Forms.Padding(50, 15, 10, 15);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(97, 28);
+            this.label3.Size = new System.Drawing.Size(79, 21);
             this.label3.TabIndex = 2;
             this.label3.Text = "Password";
             this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -75,7 +75,7 @@
             this.label4.Location = new System.Drawing.Point(29, 216);
             this.label4.Margin = new System.Windows.Forms.Padding(50, 15, 10, 15);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(66, 28);
+            this.label4.Size = new System.Drawing.Size(53, 21);
             this.label4.TabIndex = 3;
             this.label4.Text = "Name";
             this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -87,7 +87,7 @@
             this.label5.Location = new System.Drawing.Point(29, 274);
             this.label5.Margin = new System.Windows.Forms.Padding(50, 15, 10, 15);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(51, 28);
+            this.label5.Size = new System.Drawing.Size(43, 21);
             this.label5.TabIndex = 4;
             this.label5.Text = "Role";
             this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -98,7 +98,7 @@
             this.txtUsername.Location = new System.Drawing.Point(177, 98);
             this.txtUsername.Margin = new System.Windows.Forms.Padding(10, 15, 10, 15);
             this.txtUsername.Name = "txtUsername";
-            this.txtUsername.Size = new System.Drawing.Size(220, 34);
+            this.txtUsername.Size = new System.Drawing.Size(220, 29);
             this.txtUsername.TabIndex = 6;
             // 
             // txtPassword
@@ -107,7 +107,7 @@
             this.txtPassword.Location = new System.Drawing.Point(177, 156);
             this.txtPassword.Margin = new System.Windows.Forms.Padding(10, 15, 10, 15);
             this.txtPassword.Name = "txtPassword";
-            this.txtPassword.Size = new System.Drawing.Size(220, 34);
+            this.txtPassword.Size = new System.Drawing.Size(220, 29);
             this.txtPassword.TabIndex = 7;
             // 
             // txtName
@@ -116,7 +116,7 @@
             this.txtName.Location = new System.Drawing.Point(177, 214);
             this.txtName.Margin = new System.Windows.Forms.Padding(10, 15, 10, 15);
             this.txtName.Name = "txtName";
-            this.txtName.Size = new System.Drawing.Size(220, 34);
+            this.txtName.Size = new System.Drawing.Size(220, 29);
             this.txtName.TabIndex = 8;
             // 
             // txtRole
@@ -125,7 +125,7 @@
             this.txtRole.Location = new System.Drawing.Point(177, 272);
             this.txtRole.Margin = new System.Windows.Forms.Padding(10, 15, 10, 15);
             this.txtRole.Name = "txtRole";
-            this.txtRole.Size = new System.Drawing.Size(220, 34);
+            this.txtRole.Size = new System.Drawing.Size(220, 29);
             this.txtRole.TabIndex = 9;
             // 
             // btnSubmit
@@ -163,7 +163,7 @@
             this.label6.Location = new System.Drawing.Point(29, 332);
             this.label6.Margin = new System.Windows.Forms.Padding(50, 15, 10, 15);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(67, 28);
+            this.label6.Size = new System.Drawing.Size(55, 21);
             this.label6.TabIndex = 12;
             this.label6.Text = "Status";
             this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -176,7 +176,7 @@
             this.rbtnActive.Location = new System.Drawing.Point(177, 330);
             this.rbtnActive.Margin = new System.Windows.Forms.Padding(10, 15, 10, 15);
             this.rbtnActive.Name = "rbtnActive";
-            this.rbtnActive.Size = new System.Drawing.Size(86, 32);
+            this.rbtnActive.Size = new System.Drawing.Size(69, 25);
             this.rbtnActive.TabIndex = 13;
             this.rbtnActive.TabStop = true;
             this.rbtnActive.Text = "Active";
@@ -190,7 +190,7 @@
             this.rbtnInActive.Location = new System.Drawing.Point(295, 330);
             this.rbtnInActive.Margin = new System.Windows.Forms.Padding(10, 15, 10, 15);
             this.rbtnInActive.Name = "rbtnInActive";
-            this.rbtnInActive.Size = new System.Drawing.Size(102, 32);
+            this.rbtnInActive.Size = new System.Drawing.Size(82, 25);
             this.rbtnInActive.TabIndex = 14;
             this.rbtnInActive.TabStop = true;
             this.rbtnInActive.Text = "InActive";
@@ -208,14 +208,14 @@
             this.label1.Margin = new System.Windows.Forms.Padding(0);
             this.label1.Name = "label1";
             this.label1.Padding = new System.Windows.Forms.Padding(50, 0, 0, 0);
-            this.label1.Size = new System.Drawing.Size(428, 85);
+            this.label1.Size = new System.Drawing.Size(428, 70);
             this.label1.TabIndex = 15;
-            this.label1.Text = "Admin Account";
+            this.label1.Text = "ADMIN ACCOUNT";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // FormAdminAccountCE
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 28F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 21F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(426, 445);
@@ -234,6 +234,7 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "FormAdminAccountCE";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

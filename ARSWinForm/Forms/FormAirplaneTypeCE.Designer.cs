@@ -215,7 +215,7 @@
             this.label5.Padding = new System.Windows.Forms.Padding(50, 0, 0, 0);
             this.label5.Size = new System.Drawing.Size(492, 70);
             this.label5.TabIndex = 17;
-            this.label5.Text = "Airplane Type";
+            this.label5.Text = "AIRPLANE TYPE";
             this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // label6
