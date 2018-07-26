@@ -25,6 +25,27 @@ namespace ARSWebMVC.Controllers
         // GET: Flight
         public ActionResult Index()
         {
+            // Lay danh sách người dùng
+            List<Profile> lstProfile = db.Profiles.ToList();
+
+            // Lấy danh sách chuyến bay, route, city
+            InitDB();
+
+            // Lặp qua từng người
+            // Lấy random ID của điểm đến + điểm kết thúc
+            // Truyền vào hàm ChooseRoute
+            // Lấy kết quả từ Session[SessionKey.ListPossibleRoute]
+            // Nếu có tuyến đường, chọn ngẫu nhiên một trong số đó lưu vào Session[SessionKey.ChosenRouteID] = dictRouteID;
+            // - Tạo Ticket mới với các thông số ngẫu nhiên
+            // - Ngày khởi hành bắt đầu từ hôm nay
+            // - Gọi hàm ChooseFlightSchedule, truyền tham số vào
+            // - Lấy danh sách chuyến bay từ Session[SessionKey.ListPossibleFlightSchedule]
+            // - Chọn ngẫu nhiên một trong các chuyến đó
+            // - Sử dụng code trong hàm PreviewTicket và AddTicket để thêm mới ticket, status ngẫu nhiên Block hoặc Reserved
+            // - Random Cancelled vé
+            // Nếu không có quay lại bước random ID
+
+
             return RedirectToAction("Index", "Home");
         }
 

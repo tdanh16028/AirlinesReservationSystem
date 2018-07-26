@@ -44,7 +44,8 @@ namespace ARSWebMVC.Controllers
             }
             else
             {
-                Ticket rs = ARSMVCUtilities.GetDB().Tickets.SingleOrDefault(s => s.TicketCode == code && s.ProfileID == ((Profile)Session[SessionKey.UserProfile]).ID);
+                Profile userProfile = (Profile)Session[SessionKey.UserProfile];
+                Ticket rs = ARSMVCUtilities.GetDB().Tickets.SingleOrDefault(s => s.TicketCode == code && s.ProfileID == userProfile.ID);
                 if (rs != null)
                 {
                     return RedirectToAction("TicketDetail", rs);
