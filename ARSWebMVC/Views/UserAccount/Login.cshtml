@@ -11,7 +11,7 @@
         @using (Html.BeginForm("Login", "UserAccount", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
         {
             @Html.AntiForgeryToken()
-            <p class="h4 text-center py-4">Login</p>
+            <p class="h4 text-center py-4 ">Login</p>
             <div class="text-md-center">
                 <span class="text-danger">
                     @ViewBag.ErrorMessage

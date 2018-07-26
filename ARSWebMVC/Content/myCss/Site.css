@@ -33,9 +33,10 @@ a:hover, a:visited, a:active {
     background-color: white;
     padding: 5%;
 }
-
+.selectpicker {
+    border: 1px solid #ccc;
+}
 .query-flight-details {
-
 }
 .ticketheader {
     
