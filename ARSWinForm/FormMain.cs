@@ -25,7 +25,7 @@ namespace ARSWinForm
 
         private void FormMain_Load(object sender, EventArgs e)
         {
-            AutoGenerateFlightSchedule();
+            // AutoGenerateFlightSchedule();
             
         }
 
