@@ -14,13 +14,14 @@
                         <!--Table head-->
                         <thead>
                             <tr>
-                                <th>FLIGHTCODE</th>
+                                <th>AIRPLANE CODE</th>
                                 <th>FROM</th>
                                 <th>TO</th>
-                                <th class="text-center">First Class Available</th>
-                                <th class="text-center">Business Class Available</th>
-                                <th class="text-center">Clubt Class Available</th>
-                                <th class="text-right">SkyMile</th>
+                                <th>DEPARTURE DATE</th>
+                                <th class="text-center text-uppercase">First Seat Available</th>
+                                <th class="text-center text-uppercase">Business Seat Available</th>
+                                <th class="text-center text-uppercase">Club Seat Available</th>
+                                <th class="text-right text-uppercase">SkyMile</th>
 
                             </tr>
                         </thead>
@@ -29,16 +30,16 @@
                         <tbody>
                             @foreach (var item in Model)
                             {
-                                <tr>
-                                    <th class="">@item.AirplaneCode</th>
-
-                                    <td class="align-self-center">@item.Route.CityA.Name</td>
-                                    <td class="align-self-center">@item.Route.CityB.Name</td>
-                                    <td class="text-center"><a class=" p-3">@item.FirstSeatAvail</a></td>
-                                    <td class="text-center"><a class="p-3">@item.BusinessSeatAvail</a></td>
-                                    <td class="text-center"><a class=" p-3">@item.ClubSeatAvail</a></td>
-                                    <td class="text-right">@item.Route.SkyMiles</td>
-                                </tr>
+                            <tr>
+                                <th class="text-center">@item.AirplaneCode</th>
+                                <td class="align-self-center">@item.Route.CityA.Name</td>
+                                <td class="align-self-center">@item.Route.CityB.Name</td>
+                                <td class="align-self-center text-center">@item.DepartureDate.ToString("dd/MM/yyyy")</td>
+                                <td class="text-center"><a class=" p-3">@item.FirstSeatAvail</a></td>
+                                <td class="text-center"><a class="p-3">@item.BusinessSeatAvail</a></td>
+                                <td class="text-center"><a class=" p-3">@item.ClubSeatAvail</a></td>
+                                <td class="text-right">@item.Route.SkyMiles</td>
+                            </tr>
                             }
                         </tbody>
                         <!--Table body-->

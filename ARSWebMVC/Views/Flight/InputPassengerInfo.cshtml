@@ -43,47 +43,46 @@
 }
 
 
-<section class="mt-5 mb-5 container pt-5 ">
+<section class="pt-5">
     @using (Html.BeginForm("ChooseFlightSchedule", "Flight", FormMethod.Post))
     {
-        <div class="card p-3 col col-md-6 m-auto">
-            <div class="mb-4"><span style="padding-bottom:5px;border-bottom:2px solid #00968b;"><i class="fa fa-info-circle mr-1"></i>Passenger Info</span></div>
-
-
+        <div class="card p-3 col col-sm-8 col-md-6 col-lg-4 m-auto">
+            <div class="mb-4">
+                <span style="padding-bottom:5px;border-bottom:2px solid #00968b;"><i class="fa fa-info-circle mr-1"></i>Passenger Info</span>
+            </div>
 
             <div class="input-group mb-2" style="border:1px solid #ccc;">
                 <div class="input-group-prepend"><span class="input-group-text" style="border-radius:0;border:0;background-color:white;min-width:60px;">Departure date</span></div>
                 @{string currentDate = DateTime.Now.ToString("yyyy-MM-dd"); }
-                @Html.Editor("departureDate", new { htmlAttributes = new { @class = "form-control", type = "date", Value = currentDate, min = currentDate } })
+                @Html.Editor("departureDate", new { htmlAttributes = new { @class = "form-control border-0", style = "border-left: 1px solid #ccc !important;", type = "date", Value = currentDate, min = currentDate } })
             </div>
 
-
-
-
             <div class="form-row mt-4">
-
 
                 <div class="col">
                     <div class="input-group mb-2" style="border:1px solid #ccc;">
                         <div class="input-group-prepend"><span class="input-group-text" style="border-radius:0;border:0;background-color:white;min-width:60px;">Child</span></div>
-                        @Html.EditorFor(m => m.ChildrenCount, new { htmlAttributes = new { id = "children-count", @class = "form-control", min = 0 } })
+                        @Html.EditorFor(m => m.ChildrenCount, new { htmlAttributes = new { id = "children-count", @class = "form-control border-0", style = "border-left: 1px solid #ccc !important;", min = 0 } })
                     </div>
                 </div>
-
 
                 <div class="col">
                     <div class="input-group mb-2" style="border:1px solid #ccc;">
                         <div class="input-group-prepend"><span class="input-group-text" style="border-radius:0;border:0;background-color:white;min-width:60px;">Adult</span></div>
-                        @Html.EditorFor(m => m.AdultCount, new { htmlAttributes = new { id = "adult-count", @class = "form-control", min = 0 } })
+                        @Html.EditorFor(m => m.AdultCount, new { htmlAttributes = new { id = "adult-count", @class = "form-control border-0", style = "border-left: 1px solid #ccc !important;", min = 0 } })
                     </div>
                 </div>
+
                 <div class="col">
                     <div class="input-group mb-2" style="border:1px solid #ccc;">
                         <div class="input-group-prepend"><span class="input-group-text" style="border-radius:0;border:0;background-color:white;min-width:60px;">Senior</span></div>
-                        @Html.EditorFor(m => m.SeniorCount, new { htmlAttributes = new { id = "senior-count", @class = "form-control", min = 0 } })
+                        @Html.EditorFor(m => m.SeniorCount, new { htmlAttributes = new { id = "senior-count", @class = "form-control border-0", style = "border-left: 1px solid #ccc !important;", min = 0 } })
                     </div>
                 </div>
-            </div><button class="btn btn-primary btn-block mt-4" type="submit" style="background:linear-gradient(135deg, rgb(0,150,139), #176e74);border:0;border-radius:0;margin-left:auto;">Submit</button>
+
+            </div>
+            
+            <button class="btn btn-primary btn-block mt-4" type="submit" style="background:linear-gradient(135deg, rgb(0,150,139), #176e74);border:0;border-radius:0;margin-left:auto;">Submit</button>
         </div>
     }
 </section>
