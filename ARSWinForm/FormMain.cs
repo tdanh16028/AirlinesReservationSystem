@@ -25,7 +25,7 @@ namespace ARSWinForm
 
         private void FormMain_Load(object sender, EventArgs e)
         {
-            // AutoGenerateFlightSchedule();
+            AutoGenerateFlightSchedule();
             
         }
 
@@ -52,7 +52,8 @@ namespace ARSWinForm
             List<Route> lstRoute = await routeWrapper.List();
 
             int flightScheduleOfCurrentRoute = 0;
-            int maxFlightSchedulePerRoute = 10;
+            int maxFlightSchedulePerRoute = 15;
+            DateTime startingDate = DateTime.Now;
             int currentAirplaneIndex = 0;
             int count = 0;
 
@@ -65,7 +66,7 @@ namespace ARSWinForm
                     Airplane currentAirplane = lstAirplane[currentAirplaneIndex++];
                     AirplaneType currentAirplaneType = lstAirplaneType.Find(at => at.ID == currentAirplane.TypeID);
                     List<AirplaneInfo> currentAirplaneInfo = lstAirplaneInfo.Where(ai => ai.AirplaneTypeID == currentAirplaneType.ID).ToList();
-                    DateTime departureDate = DateTime.Now.AddDays(flightScheduleOfCurrentRoute);
+                    DateTime departureDate = startingDate.AddDays(flightScheduleOfCurrentRoute);
 
                     FlightSchedule flightSchedule = new FlightSchedule()
                     {
