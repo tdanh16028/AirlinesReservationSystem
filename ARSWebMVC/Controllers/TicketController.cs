@@ -251,7 +251,8 @@ namespace ARSWebMVC.Controllers
         public ActionResult Cancelled(string ticketCode) {
 
             if (Session[SessionKey.UserProfile] == null) return RedirectToAction("Login", "UserAccount");
-            var rs = ARSMVCUtilities.GetDB().Tickets.SingleOrDefault(s => s.TicketCode == ticketCode && s.ProfileID == ((Profile)Session[SessionKey.UserProfile]).ID);
+            Profile profile = (Profile)Session[SessionKey.UserProfile];
+            var rs = ARSMVCUtilities.GetDB().Tickets.SingleOrDefault(s => s.TicketCode == ticketCode && s.ProfileID == profile.ID);
 
             if (rs != null)
             {
@@ -271,7 +272,8 @@ namespace ARSWebMVC.Controllers
         {
 
             if (Session[SessionKey.UserProfile] == null) return RedirectToAction("Login", "UserAccount");
-            var rs = ARSMVCUtilities.GetDB().Tickets.SingleOrDefault(s => s.TicketCode == ticketCode && s.ProfileID == ((Profile)Session[SessionKey.UserProfile]).ID);
+            Profile profile = (Profile)Session[SessionKey.UserProfile];
+            var rs = ARSMVCUtilities.GetDB().Tickets.SingleOrDefault(s => s.TicketCode == ticketCode && s.ProfileID == profile.ID);
 
             if (rs != null)
             {

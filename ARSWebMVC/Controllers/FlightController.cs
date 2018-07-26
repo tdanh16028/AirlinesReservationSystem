@@ -25,28 +25,156 @@ namespace ARSWebMVC.Controllers
         // GET: Flight
         public ActionResult Index()
         {
+            
+            return RedirectToAction("Index", "Home");
+        }
+
+        private void AutoGenerateTicket()
+        {
             // Lay danh sách người dùng
-            List<Profile> lstProfile = db.Profiles.ToList();
+            List<Profile> lstProfile = ARSMVCUtilities.GetDB().Profiles.ToList();
+            List<AirplaneClass> lstAirplaneClass = ARSMVCUtilities.GetDB().AirplaneClasses.ToList();
 
             // Lấy danh sách chuyến bay, route, city
             InitDB();
 
-            // Lặp qua từng người
-            // Lấy random ID của điểm đến + điểm kết thúc
-            // Truyền vào hàm ChooseRoute
-            // Lấy kết quả từ Session[SessionKey.ListPossibleRoute]
-            // Nếu có tuyến đường, chọn ngẫu nhiên một trong số đó lưu vào Session[SessionKey.ChosenRouteID] = dictRouteID;
-            // - Tạo Ticket mới với các thông số ngẫu nhiên
-            // - Ngày khởi hành bắt đầu từ hôm nay
-            // - Gọi hàm ChooseFlightSchedule, truyền tham số vào
-            // - Lấy danh sách chuyến bay từ Session[SessionKey.ListPossibleFlightSchedule]
-            // - Chọn ngẫu nhiên một trong các chuyến đó
-            // - Sử dụng code trong hàm PreviewTicket và AddTicket để thêm mới ticket, status ngẫu nhiên Block hoặc Reserved
-            // - Random Cancelled vé
-            // Nếu không có quay lại bước random ID
+            Random rnd = new Random();
+            bool skipThisCustomer = false;
+            DateTime currentDate = DateTime.Now;
+            int count = 1;
 
+            // Chạy từng ngày bắt đầu từ hôm nay tới 15 ngày tiếp theo
+            for (int i = 0; i < 15; i++)
+            {
+                currentDate = DateTime.Now.AddDays(i);
 
-            return RedirectToAction("Index", "Home");
+                // Lặp qua từng người
+                foreach (Profile profile in lstProfile)
+                {
+                    // 30% khach dat ve
+                    if (rnd.Next(1, 4) != 3) continue;
+
+                    int tryChooseFromToCount = 0;
+
+                    // Lấy random ID của điểm đến + điểm kết thúc
+                    int cityAID, cityBID;
+                    Dictionary<int, List<Route>> dictListRoute;
+
+                    do
+                    {
+                        cityAID = rnd.Next(1, 28);
+                        do
+                        {
+                            cityBID = rnd.Next(1, 28);
+                        } while (cityAID == cityBID);
+
+                        // Truyền vào hàm ChooseRoute
+                        ChooseRoute(cityAID, cityBID);
+
+                        // Lấy kết quả từ Session[SessionKey.ListPossibleRoute]
+                        dictListRoute = (Dictionary<int, List<Route>>)Session[SessionKey.ListPossibleRoute];
+
+                        // Nếu có tuyến đường, chọn ngẫu nhiên một trong số đó lưu vào Session[SessionKey.ChosenRouteID] = dictRouteID;
+                        if (dictListRoute.Count > 0)
+                        {
+                            int tryChooseRouteCount = 0;
+                            Dictionary<int, List<FlightSchedule>> dictListFlightSchedule;
+
+                            do
+                            {
+                                Session[SessionKey.ChosenRouteID] = rnd.Next(0, dictListRoute.Count);
+
+                                // - Tạo Ticket mới với các thông số ngẫu nhiên
+                                Ticket ticket = new Ticket()
+                                {
+                                    ID = 0,
+                                    TicketCode = "N/A",
+                                    Status = "",
+                                    ChildrenCount = rnd.Next(0, 3),
+                                    AdultCount = rnd.Next(1, 5),
+                                    SeniorCount = rnd.Next(0, 3),
+                                    AirplaneClassID = 1,
+                                    OrderDate = currentDate,
+                                    TotalCost = 0
+                                };
+
+                                // - Ngày khởi hành bắt đầu từ hôm nay
+                                DateTime departureDate = currentDate.AddDays(rnd.Next(0, (int)(DateTime.Now - currentDate).TotalDays + 1));
+
+                                // - Gọi hàm ChooseFlightSchedule, truyền tham số vào
+                                ChooseFlightSchedule(ticket, departureDate);
+
+                                // - Lấy danh sách chuyến bay từ Session[SessionKey.ListPossibleFlightSchedule]
+                                dictListFlightSchedule = (Dictionary<int, List<FlightSchedule>>)Session[SessionKey.ListPossibleFlightSchedule];
+
+                                if (dictListFlightSchedule.Count > 0)
+                                {
+                                    // - Chọn ngẫu nhiên một trong các chuyến đó
+                                    int lstFSChoice = rnd.Next(0, dictListFlightSchedule.Count);
+                                    int seatClassID = rnd.Next(1, 4);
+                                    string status = (rnd.Next(0, 2) == 1) ? "Blocked" : "Reserved";
+
+                                    // - Sử dụng code trong hàm PreviewTicket và AddTicket để thêm mới ticket, status ngẫu nhiên Block hoặc Reserved
+                                    ticket.ProfileID = profile.ID;
+                                    ticket.Profile = profile;
+                                    ticket.FlightSchedules = dictListFlightSchedule[lstFSChoice];
+                                    ticket.AirplaneClassID = seatClassID;
+                                    AirplaneClass airplaneClass = lstAirplaneClass.Find(ac => ac.ID == seatClassID);
+                                    ticket.AirplaneClass = airplaneClass;
+
+                                    int totalSeat = ticket.ChildrenCount + ticket.AdultCount + ticket.SeniorCount;
+                                    double priceRate = ticket.AirplaneClass.PriceRate;
+                                    double basePrice = ticket.FlightSchedules.Sum(fs => fs.Route.BasePrice);
+                                    ticket.TotalCost = Math.Round(basePrice * priceRate * totalSeat, 2);
+
+                                    try
+                                    {
+                                        ARSMVCUtilities.GetDB().Tickets.Add(ticket);
+                                        ARSMVCUtilities.GetDB().SaveChanges();
+
+                                        // - Random Cancelled vé
+                                        bool cancelled = (rnd.Next(1, 11) == 1) ? true : false;
+                                        if (cancelled)
+                                        {
+                                            ticket.Status = "Cancelled";
+                                        }
+
+                                        // Gen ticket code
+                                        ticket.TicketCode = "#" + ticket.ID.ToString();
+                                        ARSMVCUtilities.GetDB().Entry(ticket).State = System.Data.Entity.EntityState.Modified;
+                                        ARSMVCUtilities.GetDB().SaveChanges();
+
+                                        Console.WriteLine("#{0:0000}: Add ticket success.", count++);
+                                    }
+                                    catch (Exception ex)
+                                    {
+                                        while (ex.InnerException != null) ex = ex.InnerException;
+                                        Console.WriteLine("#{0:0000}: Add ticket failed. Error: {1}", count++, ex.Message);
+                                    }
+
+                                }
+                                else
+                                {
+                                    tryChooseRouteCount++;
+                                }
+
+                                if (tryChooseRouteCount >= 10) skipThisCustomer = true;
+                            } while (dictListFlightSchedule.Count == 0 && !skipThisCustomer);
+
+                        }
+                        else
+                        {
+                            tryChooseFromToCount++;
+                        }
+
+                        // Nếu không có quay lại bước random ID
+                        // Nếu quá số lần thử, bỏ qua người này
+                        if (tryChooseFromToCount >= 10) skipThisCustomer = true;
+                    } while (dictListRoute.Count == 0 && !skipThisCustomer);
+
+                }
+
+            }
         }
 
         // GET: Flight/ChooseRoute
