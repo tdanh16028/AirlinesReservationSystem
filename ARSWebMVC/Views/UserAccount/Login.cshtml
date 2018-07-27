@@ -2,51 +2,83 @@
 @{
     ViewBag.Title = "Login";
 }
-@*<section id="func-login" class="mt-5 mb-5">*@
-<section id="func-login" class="mt-5 mb-5 pt-5">
-    @*<div id="func-login-col" class="col-md-3 m-auto card">*@
-    <div id="func-login-col" class="m-auto col-md-4 card">
-        <!-- Card body -->
-        <!-- Material form register -->
-        @using (Html.BeginForm("Login", "UserAccount", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
-        {
-            @Html.AntiForgeryToken()
-            <p class="h4 text-center py-4 ">Login</p>
-            <div class="text-md-center">
-                <span class="text-danger">
-                    @ViewBag.ErrorMessage
-                </span>
-                @if (@TempData["Status"] != null)
-                {
-                    <span class="text-danger">Please Login</span>
-                    TempData.Keep("Status");
-                }
-            </div>
-            <!-- Material input -->
-         
-            <!-- Material input text -->
-            <div class="md-form">
-                <i class="fa fa-user prefix grey-text"></i>
-                @Html.TextBoxFor(m => m.UserID, "", new { @class = "form-control" })
-                <label for="UserID" class="font-weight-light">Your name</label>
-                @Html.ValidationMessageFor(m => m.UserID, "", new { @class = "text-danger" })
-            </div>
 
-            <!-- Material input password -->
-            <div class="md-form">
-                <i class="fa fa-lock prefix grey-text"></i>
-                @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
-                <label for="Password" class="font-weight-light">Your password</label>
-                @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
-            </div>
-
-            <div class="text-center py-4 mt-3">
-                <button class="btn teal" id="btn_login_submit" type="submit">Login</button>
-            </div>
-        }
-        <!-- Material form register -->
-        <!-- Card body -->
+@using (Html.BeginForm("Login", "UserAccount", FormMethod.Post, new { @class = "card p-3 col col-sm-8 col-md-6 col-lg-4 m-auto", role = "form" }))
+{
+    @Html.AntiForgeryToken()
+    <div class="mb-4">
+        <span style="padding-bottom:5px;border-bottom:2px solid #00968b;"><i class="fa fa-info-circle mr-1"></i>Login&nbsp;</span>
     </div>
-    <!-- Button trigger modal -->
-</section>
-<!-- Card -->
+
+    <div class="text-md-center">
+        <span class="text-danger">
+            @ViewBag.ErrorMessage
+        </span>
+        @if (@TempData["Status"] != null)
+        {
+            <span class="text-danger">Please Login</span>
+            TempData.Keep("Status");
+        }
+    </div>
+
+    <div class="input-group mb-2" style="border:1px solid #ccc;">
+        <div class="input-group-prepend"><span class="input-group-text" style="border-radius:0;border:0;background-color:white;min-width:120px;">Username</span></div>
+        @Html.TextBoxFor(m => m.UserID, "", new { @class = "form-control border-0", style = "border-left: 1px solid #ccc !important;" })
+        @Html.ValidationMessageFor(m => m.UserID, "", new { @class = "text-danger" })
+    </div>
+
+    <div class="input-group mb-2" style="border:1px solid #ccc;">
+        <div class="input-group-prepend"><span class="input-group-text" style="border-radius:0;border:0;background-color:white;min-width:120px;">Password</span></div>
+        @Html.PasswordFor(m => m.Password, new { @class = "form-control border-0", style = "border-left: 1px solid #ccc !important;" })
+        @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
+    </div>
+
+    <button id="btn_login_submit" class="btn btn-primary btn-block mt-4" type="submit" style="background:linear-gradient(135deg, rgb(0,150,139), #176e74);border:0;border-radius:0;margin-left:auto;">LOGIN</button>
+}
+
+@*<section id="func-login" class="mt-5 mb-5 pt-5">
+        <div id="func-login-col" class="m-auto col-md-4 card">
+            <!-- Card body -->
+            <!-- Material form register -->
+            @using (Html.BeginForm("Login", "UserAccount", FormMethod.Post, new { @class = "card p-3 col col-sm-8 col-md-6 col-lg-4 m-auto", role = "form" }))
+            {
+                @Html.AntiForgeryToken()
+                <p class="h4 text-center py-4 ">Login</p>
+                <div class="text-md-center">
+                    <span class="text-danger">
+                        @ViewBag.ErrorMessage
+                    </span>
+                    @if (@TempData["Status"] != null)
+                    {
+                        <span class="text-danger">Please Login</span>
+                        TempData.Keep("Status");
+                    }
+                </div>
+                <!-- Material input -->
+
+                <!-- Material input text -->
+                <div class="md-form">
+                    <i class="fa fa-user prefix grey-text"></i>
+                    @Html.TextBoxFor(m => m.UserID, "", new { @class = "form-control" })
+                    <label for="UserID" class="font-weight-light">Your name</label>
+                    @Html.ValidationMessageFor(m => m.UserID, "", new { @class = "text-danger" })
+                </div>
+
+                <!-- Material input password -->
+                <div class="md-form">
+                    <i class="fa fa-lock prefix grey-text"></i>
+                    @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
+                    <label for="Password" class="font-weight-light">Your password</label>
+                    @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
+                </div>
+
+                <div class="text-center py-4 mt-3">
+                    <button class="btn teal" id="btn_login_submit" type="submit">Login</button>
+                </div>
+            }
+            <!-- Material form register -->
+            <!-- Card body -->
+        </div>
+        <!-- Button trigger modal -->
+    </section>
+    <!-- Card -->*@

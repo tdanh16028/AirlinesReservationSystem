@@ -60,13 +60,13 @@
                                     <div class="col p-0 d-flex align-items-stretch justify-content-center">
                                         @if (lstFS.TrueForAll(fs => fs.FirstSeatAvail >= totalSeat))
                                         {
-                                            <button class="btn teal w-100 btnSeatClass" data-seatClass="1">
+                                            <button class="btn teal w-100 btnSeatClass border-0" data-seatClass="1" style="background:linear-gradient(135deg, rgb(0,150,139), #176e74);border-radius:0;">
                                                 $@Math.Round(totalBasePrice * dbAirplaneClass.Find(ac => ac.Class == "First").PriceRate * totalSeat, 2)
                                             </button>
                                         }
                                         else
                                         {
-                                            <button class="btn teal btn-outline-default w-100" disabled>
+                                            <button class="btn btn-outline-light w-100" disabled style="border: 1px solid #176e74!important;color: #176e74!important;">
                                                 N/A
                                             </button>
                                         }
@@ -74,13 +74,13 @@
                                     <div class="col p-0 d-flex align-items-stretch justify-content-center">
                                         @if (lstFS.TrueForAll(fs => fs.BusinessSeatAvail >= totalSeat))
                                         {
-                                            <button class="btn teal w-100 btnSeatClass" data-seatClass="2">
+                                            <button class="btn teal w-100 btnSeatClass border-0" data-seatClass="2" style="background:linear-gradient(135deg, rgb(0,150,139), #176e74);border-radius:0;">
                                                 $@Math.Round(totalBasePrice * dbAirplaneClass.Find(ac => ac.Class == "Business").PriceRate * totalSeat, 2)
                                             </button>
                                         }
                                         else
                                         {
-                                            <button class="btn teal btn-outline-default w-100" disabled>
+                                            <button class="btn btn-outline-light w-100" disabled style="border: 1px solid #176e74!important;color: #176e74!important;">
                                                 N/A
                                             </button>
                                         }
@@ -88,13 +88,13 @@
                                     <div class="col p-0 d-flex align-items-stretch justify-content-center">
                                         @if (lstFS.TrueForAll(fs => fs.ClubSeatAvail >= totalSeat))
                                         {
-                                            <button type="submit" class="btn teal w-100 btnSeatClass" data-seatClass="3">
+                                            <button type="submit" class="btn teal w-100 btnSeatClass border-0" data-seatClass="3" style="background:linear-gradient(135deg, rgb(0,150,139), #176e74);border-radius:0;">
                                                 $@Math.Round(totalBasePrice * dbAirplaneClass.Find(ac => ac.Class == "Club").PriceRate * totalSeat, 2)
                                             </button>
                                         }
                                         else
                                         {
-                                            <button class="btn teal btn-outline-default w-100" disabled>
+                                            <button class="btn btn-outline-light w-100" disabled style="border: 1px solid #176e74!important;color: #176e74!important;">
                                                 N/A
                                             </button>
                                         }

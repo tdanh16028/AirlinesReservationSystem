@@ -232,9 +232,14 @@ namespace ARSWebMVC.Controllers
         }
 
         // GET: Flight/ChooseFlightSchedule
-        public ActionResult ChooseFlightSchedule()
+        public ActionResult ChooseFlightSchedule(int page)
         {
-            return RedirectToAction("Index", "Home");
+            if (Session[SessionKey.ListPossibleFlightSchedule] == null)
+            {
+                return RedirectToAction("Index", "Home");
+            }
+
+            return View(Session[SessionKey.ListPossibleFlightSchedule]);
         }
 
         // POST: Flight/ChooseFlightSchedule
@@ -337,6 +342,8 @@ namespace ARSWebMVC.Controllers
                 ).ToList()
             );
 
+            // Get limit the first 30 flight schedule
+            if (lstFinalFlightSchedule.Count > 30) lstFinalFlightSchedule.RemoveRange(30, lstFinalFlightSchedule.Count - 30);
 
             //DateTime end = DateTime.Now;
             //Session["Time"] = ((end - start).TotalSeconds);
@@ -417,6 +424,15 @@ namespace ARSWebMVC.Controllers
 
             RecursiveFindPossibleRoute(cityAID, cityBID, ref lstRoute, ref lstListRoute);
 
+            // Sort from shortest way to longest way
+            lstListRoute.Sort(delegate (List<Route> lstX, List<Route> lstY)
+            {
+                return lstX.Sum(x => x.SkyMiles).CompareTo(lstY.Sum(y => y.SkyMiles));
+            });
+
+            // Get limit first 10 shortest route
+            if (lstListRoute.Count > 10) lstListRoute.RemoveRange(10, lstListRoute.Count - 10);
+
             // Get City object for all route
             foreach (List<Route> lstRouteItem in lstListRoute)
             {
@@ -426,12 +442,6 @@ namespace ARSWebMVC.Controllers
                     route.CityB = dbCities.Where(c => c.ID == route.CityBID).SingleOrDefault();
                 }
             }
-
-            // Sort from shortest way to longest way
-            lstListRoute.Sort(delegate (List<Route> lstX, List<Route> lstY)
-            {
-                return lstX.Sum(x => x.SkyMiles).CompareTo(lstY.Sum(y => y.SkyMiles));
-            });
 
             // Add to queue
             int i = 0;
@@ -446,7 +456,7 @@ namespace ARSWebMVC.Controllers
         private void RecursiveFindPossibleRoute(int cityAID, int cityBID, ref List<Route> lstRoute, ref List<List<Route>> lstListRoute, List<int> lstLimitID = null)
         {
 
-            Route route = dbRoutes.Where(r => r.CityAID == cityAID && r.CityBID == cityBID).SingleOrDefault();
+            Route route = dbRoutes.Where(r => r.CityAID == cityAID && r.CityBID == cityBID && r.IsActive).SingleOrDefault();
             if (route != null)
             {
                 lstRoute.Add(route);
@@ -454,10 +464,14 @@ namespace ARSWebMVC.Controllers
                 return;
             }
 
-            if (lstLimitID == null) lstLimitID = GetPossibleCityAID(cityBID);
+            if (lstLimitID == null)
+            {
+                lstLimitID = new List<int>();
+                GetPossibleCityAID(cityBID, ref lstLimitID);
+            }
 
             // Lay danh sach cac tuyen duong co the di tiep
-            List<Route> lstTryRoute = dbRoutes.Where(r => r.CityAID == cityAID && lstLimitID.Contains(r.CityBID)).ToList();
+            List<Route> lstTryRoute = dbRoutes.Where(r => r.CityAID == cityAID && lstLimitID.Contains(r.CityBID) && r.IsActive).ToList();
 
             foreach (Route tryRoute in lstTryRoute)
             {
@@ -488,19 +502,26 @@ namespace ARSWebMVC.Controllers
         }
 
         // Tim ra nhung thanh pho co the dan den B
-        private List<int> GetPossibleCityAID(int cityBID)
+        private void GetPossibleCityAID(int cityBID, ref List<int> lstResult)
         {
-            List<int> lstResult = new List<int>();
+            if (lstResult == null) lstResult = new List<int>();
 
-            List<int> lstCityAID = dbRoutes.Where(r => r.CityBID == cityBID && !lstResult.Contains(r.CityAID) && !lstResult.Contains(cityBID)).Select(r => r.CityAID).ToList();
+            // Copy to new list because cannot use ref variable in lambda expression
+            List<int> lstPassed = new List<int>(lstResult);
+
+            List<int> lstCityAID = dbRoutes.Where(r => 
+                r.CityBID == cityBID && 
+                !lstPassed.Contains(r.CityAID) &&
+                r.IsActive
+            ).Select(r => r.CityAID).ToList();
+
             lstResult.AddRange(lstCityAID);
 
             foreach (int id in lstCityAID)
             {
-                lstResult.AddRange(GetPossibleCityAID(id));
+                GetPossibleCityAID(id, ref lstResult);
             }
 
-            return lstResult;
         }
 
 

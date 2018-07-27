@@ -2,28 +2,14 @@
 @using ARSWebMVC.Models
 @{
     ViewBag.Title = "Choose Route";
+
+    if (Model.Count == 0)
+    {
+        ViewBag.ChooseRouteError = "There are no route available for the journey you've selected.";
+    }
 }
 
-@if (ViewBag.ChooseRouteError != null)
-{
-    <div class="modal fade" id="modalError" tabindex="-1" role="dialog" aria-labelledby="modalError" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered " role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title">Details</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <p class="text-danger">@ViewBag.ChooseRouteError</p>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-                </div>
-            </div>
-        </div>
-    </div>
+<section class="mt-4 pt-5">
 
     <!-- JQuery -->
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
@@ -34,74 +20,119 @@
     <!-- MDB core JavaScript -->
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.5.4/js/mdb.min.js"></script>
 
+    @using (Html.BeginForm("InputPassengerInfo", "Flight", FormMethod.Post))
+    {
+        <div class="card p-3 col col-sm-8 col-md-6 col-lg-4 m-auto">
+            <div class="mb-4">
+                <span style="padding-bottom:5px;border-bottom:2px solid #00968b;">@Model[0].First().CityA.Name<i class="fa fa-plane mx-2"></i>@Model[0].Last().CityB.Name&nbsp;</span>
+            </div>
+
+            <div class="input-group mb-2" style="border:1px solid #ccc;">
+                <div class="input-group-prepend"><span class="input-group-text" style="border-radius:0;border:0;background-color:white;min-width:60px;">Route</span></div>
+                <select name="dictRouteID" class="form-control border-0" style="border-left: 1px solid #ccc !important;">
+                    @for (int i = 0; i < Model.Count; i++)
+                    {
+                        <option value="@i" @(i == 0 ? "selected" : "")>[#@(i + 1)] Stops: @Model[i].Count, Skymile: @Model[i].Sum(r => r.SkyMiles)</option>
+                    }
+                </select>
+            </div>
+
+            <button class="btn btn-primary btn-block mt-4 border-0 ml-auto" type="submit" style="background:linear-gradient(135deg, rgb(0,150,139), #176e74);border-radius:0;">Choose</button>
+
+            <div class="">
+                <table id="tbListRoute" class="table table-hover">
+                    <!--Table head-->
+                    <thead>
+                        <tr>
+                            <th>FROM</th>
+                            <th>TO</th>
+                            <th>SKYMILE</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (ARSWebMVC.Models.Route route in Model[0])
+                        {
+                            <tr>
+                                <td>@route.CityA.Name</td>
+                                <td>@route.CityB.Name</td>
+                                <td>@route.SkyMiles</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    }
+
     <script type="text/javascript">
-        let btnShowError = $('<span data-toggle="modal" data-target="#modalError"></span>')[0];
-        document.body.append(btnShowError);
-        btnShowError.click();
+        $('[name="dictRouteID"]').on('change', function () {
+            let selectedID = $(this).val();
+            let aryListRoute = [];
+
+            @{
+                string jsonListRoute = "";
+                jsonListRoute = "[" +
+                    string.Join(",",
+                        Model.Select(m =>
+                            string.Format("[{0}]",
+                                string.Join(",",
+                                    m.Value.Select(r =>
+                                        string.Format(
+                                            "{{\"cityA\": \"{0}\", \"cityB\": \"{1}\", \"skymiles\": {2}}}",
+                                            r.CityA.Name, r.CityB.Name, r.SkyMiles
+                                        )
+                                    )
+                                )
+                            )
+                        )
+                    )
+                + "]";
+            }
+
+            aryListRoute = JSON.parse(`@Html.Raw(jsonListRoute)`);
+
+            let aryRoute = aryListRoute[selectedID];
+            $('#tbListRoute tbody').html('');
+
+            for (let i = 0; i < aryRoute.length; i++) {
+                $('#tbListRoute tbody').append(`
+                    <tr>
+                        <td>${aryRoute[i].cityA}</td>
+                        <td>${aryRoute[i].cityB}</td>
+                        <td>${aryRoute[i].skymiles}</td>
+                    </tr>
+                `);
+            }
+        });
     </script>
 
-}
-
-<section>
-    <div class="container card p-5 animated wow fadeIn mt-5">
-        <h2 class="text-center mb-4">Choose Route</h2>
-
-        @for (int i = 0; i < Model.Count; i++)
-        {
-            using (Html.BeginForm("InputPassengerInfo", "Flight", null, FormMethod.Post))
-            {
-                <input type="hidden" name="dictRouteID" value="@i" />
-                List<ARSWebMVC.Models.Route> lstRoute = Model[i];
-                <div>
-                    <div></div>
-                    <!-- Card -->
-                    <div class="card mb-3">
-                        <!-- Card content -->
-                        <div class="card-body">
-                            <div class="row ">
-                                <div class="col d-flex align-items-center "><h4 class="card-title mb-0">@lstRoute.First().CityA.Name to @lstRoute.Last().CityB.Name</h4></div>
-                                <div class="col d-flex align-items-center">
-                                    <div>@lstRoute.Count Stops ; <span>Skymile: @lstRoute.Sum(r => r.SkyMiles)</span></div>
-                                </div>
-                                <div class="col ">
-                                    <button class="btn-outline-default btn teal p-2" type="button" data-toggle="collapse" data-target="#collapseExample@(i)" aria-expanded="false" aria-controls="collapseExample">More Details</button>
-                                    <input type="submit" class="  btn teal p-2" value="Choose" />
-                                </div>
-                            </div>
-
-                            <!-- Button -->
-                        </div>
-                        <div class="collapse pl-3 pr-3" id="collapseExample@(i)">
-                            <div class="">
-                                <table class="table table-hover">
-                                    <!--Table head-->
-                                    <thead>
-                                        <tr>
-                                            <th>FROM</th>
-                                            <th>TO</th>
-                                            <th>SKYMILE</th>
-                                        </tr>
-                                    </thead>
-                                    @foreach (ARSWebMVC.Models.Route route in lstRoute)
-                                    {
-                                        <tbody>
-                                            <tr>
-                                                <td>@route.CityA.Name</td>
-                                                <td>@route.CityB.Name</td>
-                                                <td>@route.SkyMiles</td>
-                                            </tr>
-                                        </tbody>
-                                    }
-                                </table>
-                            </div>
-                        </div>
+    @if (ViewBag.ChooseRouteError != null)
+    {
+        <div class="modal fade" id="modalError" tabindex="-1" role="dialog" aria-labelledby="modalError" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered " role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Message</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
                     </div>
-                    <!-- Card -->
-                    <!-- / Collapse buttons -->
-                    <!-- Collapsible element -->
-
+                    <div class="modal-body">
+                        <p class="text-danger">@ViewBag.ChooseRouteError</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                    </div>
                 </div>
-            }
-        }
-    </div>
+            </div>
+        </div>
+
+        <script type="text/javascript">
+            let btnShowError = $('<span data-toggle="modal" data-target="#modalError"></span>')[0];
+            document.body.append(btnShowError);
+            btnShowError.click();
+        </script>
+
+    }
+
 </section>

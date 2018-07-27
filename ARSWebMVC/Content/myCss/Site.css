@@ -73,3 +73,7 @@ a:hover, a:visited, a:active {
     .footer-item a {
         color: black;
     }
+
+.btn-outline-light {
+    border-width: 1px !important;
+}

@@ -32,37 +32,32 @@
             <div class="collapse navbar-collapse" id="basicExampleNav">
                 <!-- Links -->
                 <ul class="navbar-nav d-flex w-100">
-                    <li class="nav-item ">
+                    <li class="nav-item d-flex align-items-center">
                         @Html.ActionLink("Find Flight", "CheckingAvailability", "Home", null, new { @class = "nav-link" })
                     </li>
                     @if (Session["UserProfile"] != null)
                     {
-                        <li class="nav-item">
+                        <li class="nav-item d-flex align-items-center">
                             @Html.ActionLink("View Ticket Status", "Index", "Ticket", null, new { @class = "nav-link" })
                         </li>
                     }
-                    <li class="nav-item">
+                    <li class="nav-item d-flex align-items-center">
                         @Html.ActionLink("Query FlightDetails", "QueryFlightDetails", "Home", null, new { @class = "nav-link" })
                     </li>
                     @Html.Partial("_LoginPartial")
                 </ul>
-
                 <!-- Links -->
             </div>
         </div>
         <!-- Collapsible content -->
     </nav><!-- Button trigger modal -->
     <!-- Modal -->
-    <div class="modal fade " id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class=" header-blue p-4"></div>
-                <div class="modal-body">
-                </div>
-            </div>
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document" style="margin-top: 8rem;">
+            <div class="modal-content"></div>
         </div>
     </div>
-    <div class="body-content pt-5 pb-5">
+    <div class="body-content mt-3 pt-3 pb-5">
         @RenderBody()
     </div>
     <div class="footer-dark pt-5">
@@ -90,10 +85,11 @@
                         <p>Started in September 2004, with all the effort and passion of our beginning team, was bring up the company with over 27,000 employees and the best service that you can see now.</p>
                     </div>
                     <div class="col item social">
-                    <a href="#"><i class="fab fa-facebook-f"></i></a>
-                    <a href="#"><i class="fab fa-twitter"></i></a>
-                    <a href="#"><i class="fab fa-snapchat-ghost"></i></a>
-                    <a href="#"><i class="fab fa-instagram"></i></a></div>
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-snapchat-ghost"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                    </div>
                 </div>
                 <p class="copyright">AMD Airlines © 2004 - 2017</p>
             </div>
