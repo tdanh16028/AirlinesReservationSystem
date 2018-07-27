@@ -25,7 +25,7 @@ namespace ARSWebMVC.Controllers
         // GET: Flight
         public ActionResult Index()
         {
-            
+            AutoGenerateTicket();
             return RedirectToAction("Index", "Home");
         }
 
