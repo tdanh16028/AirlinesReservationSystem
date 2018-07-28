@@ -10,6 +10,9 @@ namespace ARSWebMVC.Controllers
 {
     public class FlightController : Controller
     {
+        private static readonly int MAX_NUMBER_OF_ROUTE_ALLOW_WHEN_SEARCHING_ROUTE = 10;
+        private static readonly int MAX_NUMBER_OF_STOPS_ALLOW_WHEN_SEARCHING_ROUTE = 10;
+
         DBUserEntities db = new DBUserEntities();
         List<Route> dbRoutes;
         List<City> dbCities;
@@ -25,7 +28,7 @@ namespace ARSWebMVC.Controllers
         // GET: Flight
         public ActionResult Index()
         {
-            AutoGenerateTicket();
+            // AutoGenerateTicket();
             return RedirectToAction("Index", "Home");
         }
 
@@ -85,18 +88,20 @@ namespace ARSWebMVC.Controllers
                                 Session[SessionKey.ChosenRouteID] = rnd.Next(0, dictListRoute.Count);
 
                                 // - Tạo Ticket mới với các thông số ngẫu nhiên
-                                Ticket ticket = new Ticket()
-                                {
-                                    ID = 0,
-                                    TicketCode = "N/A",
-                                    Status = "",
-                                    ChildrenCount = rnd.Next(0, 3),
-                                    AdultCount = rnd.Next(1, 5),
-                                    SeniorCount = rnd.Next(0, 3),
-                                    AirplaneClassID = 1,
-                                    OrderDate = currentDate,
-                                    TotalCost = 0
-                                };
+                                Ticket ticket = GetDB().Tickets.Create();
+                                // new Ticket()
+                                //{
+                                ticket.ID = 0;
+                                ticket.TicketCode = DateTime.Now.Ticks.ToString();
+                                ticket.Status = "";
+                                ticket.ChildrenCount = rnd.Next(0, 3);
+                                ticket.AdultCount = rnd.Next(1, 5);
+                                ticket.SeniorCount = rnd.Next(0, 3);
+                                ticket.AirplaneClassID = 1;
+                                ticket.OrderDate = currentDate;
+                                ticket.TotalCost = 0;
+                                //};
+                                if (ticket.TicketCode.Length > 16) ticket.TicketCode = ticket.TicketCode.Substring(ticket.TicketCode.Length - 16);
 
                                 // - Ngày khởi hành bắt đầu từ hôm nay
                                 DateTime departureDate = currentDate.AddDays(rnd.Next(0, (int)(DateTime.Now - currentDate).TotalDays + 1));
@@ -110,19 +115,41 @@ namespace ARSWebMVC.Controllers
                                 if (dictListFlightSchedule.Count > 0)
                                 {
                                     // - Chọn ngẫu nhiên một trong các chuyến đó
-                                    int lstFSChoice = rnd.Next(0, dictListFlightSchedule.Count);
+                                    int totalSeat = ticket.ChildrenCount + ticket.AdultCount + ticket.SeniorCount;
                                     int seatClassID = rnd.Next(1, 4);
+                                    List<List<FlightSchedule>> lstListFS;
+
+                                    if (seatClassID == 1)
+                                    {
+                                        lstListFS = dictListFlightSchedule.Values.Where(lFS => lFS.TrueForAll(fs => fs.FirstSeatAvail >= totalSeat)).ToList();
+                                    }
+                                    else if(seatClassID == 2)
+                                    {
+                                        lstListFS = dictListFlightSchedule.Values.Where(lFS => lFS.TrueForAll(fs => fs.BusinessSeatAvail >= totalSeat)).ToList();
+                                    } else
+                                    {
+                                        lstListFS = dictListFlightSchedule.Values.Where(lFS => lFS.TrueForAll(fs => fs.ClubSeatAvail >= totalSeat)).ToList();
+                                    }
+
+                                    if (lstListFS.Count == 0)
+                                    {
+                                        tryChooseRouteCount++;
+                                        if (tryChooseRouteCount >= 10) skipThisCustomer = true;
+                                        continue;
+                                    }
+
+                                    int lstFSChoice = rnd.Next(0, lstListFS.Count);
                                     string status = (rnd.Next(0, 2) == 1) ? "Blocked" : "Reserved";
+                                    ticket.Status = status;
 
                                     // - Sử dụng code trong hàm PreviewTicket và AddTicket để thêm mới ticket, status ngẫu nhiên Block hoặc Reserved
                                     ticket.ProfileID = profile.ID;
                                     ticket.Profile = profile;
-                                    ticket.FlightSchedules = dictListFlightSchedule[lstFSChoice];
+                                    ticket.FlightSchedules = lstListFS[lstFSChoice];
                                     ticket.AirplaneClassID = seatClassID;
                                     AirplaneClass airplaneClass = lstAirplaneClass.Find(ac => ac.ID == seatClassID);
                                     ticket.AirplaneClass = airplaneClass;
 
-                                    int totalSeat = ticket.ChildrenCount + ticket.AdultCount + ticket.SeniorCount;
                                     double priceRate = ticket.AirplaneClass.PriceRate;
                                     double basePrice = ticket.FlightSchedules.Sum(fs => fs.Route.BasePrice);
                                     ticket.TotalCost = Math.Round(basePrice * priceRate * totalSeat, 2);
@@ -152,6 +179,7 @@ namespace ARSWebMVC.Controllers
                                         Console.WriteLine("#{0:0000}: Add ticket failed. Error: {1}", count++, ex.Message);
                                     }
 
+                                    db.Entry(ticket).State = System.Data.Entity.EntityState.Detached;
                                 }
                                 else
                                 {
@@ -422,16 +450,20 @@ namespace ARSWebMVC.Controllers
             List<List<Route>> lstListRoute = new List<List<Route>>();
             List<Route> lstRoute = new List<Route>();
 
-            RecursiveFindPossibleRoute(cityAID, cityBID, ref lstRoute, ref lstListRoute);
+            //RecursiveFindPossibleRoute(cityAID, cityBID, ref lstRoute, ref lstListRoute);
 
-            // Sort from shortest way to longest way
-            lstListRoute.Sort(delegate (List<Route> lstX, List<Route> lstY)
-            {
-                return lstX.Sum(x => x.SkyMiles).CompareTo(lstY.Sum(y => y.SkyMiles));
-            });
+            //// Sort from shortest way to longest way
+            //lstListRoute.Sort(delegate (List<Route> lstX, List<Route> lstY)
+            //{
+            //    return lstX.Sum(x => x.SkyMiles).CompareTo(lstY.Sum(y => y.SkyMiles));
+            //});
 
-            // Get limit first 10 shortest route
-            if (lstListRoute.Count > 10) lstListRoute.RemoveRange(10, lstListRoute.Count - 10);
+            //// Get limit first 10 shortest route
+            //if (lstListRoute.Count > 10) lstListRoute.RemoveRange(10, lstListRoute.Count - 10);
+
+            List<List<int>> lstListCitiesIDAtStopLevel = new List<List<int>>() { new List<int>() { cityAID } };
+            List<List<Route>> lstSequenceOfTryingRoute = new List<List<Route>>();
+            RecursiveFindRoute(cityBID, ref lstListCitiesIDAtStopLevel, ref lstSequenceOfTryingRoute, ref lstListRoute);
 
             // Get City object for all route
             foreach (List<Route> lstRouteItem in lstListRoute)
@@ -451,6 +483,160 @@ namespace ARSWebMVC.Controllers
             }
 
             return dictListRoute;
+        }
+
+        /// <summary>
+        /// Use to find all possible route to move from A -> B (Limit at <code>MAX_NUMBER_OF_ROUTE_ALLOW_WHEN_SEARCHING</code> routes)
+        /// </summary>
+        /// <param name="toCityID">The ID of final destination city (city B)</param>
+        /// <param name="lstListCitiesIDAtStopLevel">In the first time using, give this param a <code>new List<List<int>>() { new List<int>() { ID of the starting city here } }</code></param>
+        /// <param name="lstSequenceOfTryingRoute">Give this param a new instance of its type</param>
+        /// <param name="lstSequenceOfRouteFinal">Give this param a new instance of its type. This list will store all the possible found route</param>
+        private void RecursiveFindRoute(
+            int toCityID, 
+            ref List<List<int>> lstListCitiesIDAtStopLevel, 
+            ref List<List<Route>> lstSequenceOfTryingRoute, 
+            ref List<List<Route>> lstSequenceOfRouteFinal
+        )
+        {
+            InitDB();
+
+            // Lay danh sach thanh pho o StopLevel cao nhat hien tai
+            int currentStopLevel = lstListCitiesIDAtStopLevel.Count - 1;
+            List<int> lstFromCityID = lstListCitiesIDAtStopLevel[currentStopLevel];
+
+            // Tao ra danh sach city cua StopLevel tiep theo
+            List<int> lstNextStopLevelCityID = new List<int>();
+
+            // Tao ra danh sach route cua StopLevel tiep theo
+            List<Route> lstNextStopLevelRoute = new List<Route>();
+
+            foreach (int fromCityID in lstFromCityID)
+            {
+
+                Route directRoute = dbRoutes.Find(r => r.CityAID == fromCityID && r.CityBID == toCityID && r.IsActive);
+                if (directRoute != null)
+                {
+                    // Tim duoc duong di truc tiep tu FROM toi TO
+                    // Neu danh sach trying route khong co phan tu nao nghia la day la lan dau tien
+                    if (lstSequenceOfTryingRoute.Count == 0)
+                    {
+                        // Them truc tiep tuyen duong nay vao danh sach moi va add no vao final
+                        lstSequenceOfRouteFinal.Add(new List<Route>() { directRoute });
+                    }
+                    else
+                    {
+                        // Neu danh sach trying co phan tu nghia la day la lan thu 2 tro di ham nay duoc goi (da co 1 stop tro len)
+
+                        // Danh sach tuyen duong nguoc
+                        // Dung de truy nguoc ra tuyen duong da~ dan~ toi' day, sau do dao nguoc lai de ra tuyen duong dung
+                        List<List<Route>> lstListSequenceOfRouteReverse = new List<List<Route>>();
+                        lstListSequenceOfRouteReverse.Add(new List<Route>() { directRoute }); // Add tuyen duong cuoi cung vao lam tuyen duong dau tien (dao nguoc)
+
+                        // Danh sach route luc nao cung nho hon danh sach cityID 1 index
+                        // lstCityID:   0   1   2   3
+                        // lstRoute :     0   1   2
+                        // Phai bo qua luon stop level hien tai (cao nhat) cua danh sach route
+                        // Vi tuyen duong nay da dan den dich nen no khong nam trong danh sach route trying nua
+
+                        for (int iCSL = currentStopLevel - 1; iCSL >= 0; iCSL--)
+                        {
+                            // Dung de luu nhung tuyen duong moi duoc copy ra
+                            List<List<Route>> lstListRRCopy = new List<List<Route>>();
+
+                            // Lap qua tung tuyen duong dao nguoc
+                            foreach (List<Route> lstSequenceOfRouteReverse in lstListSequenceOfRouteReverse)
+                            {
+                                // Lay thanh pho khoi hanh cua tuyen duong cuoi cung trong danh sach dao nguoc hien tai
+                                int cityAID = lstSequenceOfRouteReverse.Last().CityAID;
+
+                                // Tim cac route trong danh sach route trying o stoplevel dang xet,
+                                // lay ra nhung route nao co CityBID == ID cua thanh pho khoi hanh vua lay o tren
+                                List<Route> lstRouteCanGoto = lstSequenceOfTryingRoute[iCSL].Where(r => r.CityBID == cityAID).ToList();
+
+                                // Lap qua tung route tim duoc
+                                for (int iRCG = lstRouteCanGoto.Count - 1; iRCG >= 0; iRCG--)
+                                {
+                                    if (iRCG == 0)
+                                    {
+                                        // Neu da la route cuoi cung trong danh sach CanGoto thi add truc tiep vao tuyen duong dao nguoc luon
+                                        lstSequenceOfRouteReverse.Add(lstRouteCanGoto[iRCG]);
+                                    } else
+                                    {
+                                        // Neu khong phai la route cuoi cung trong ds CG, thi phai copy tuyen duong dao nguoc hien tai ra
+                                        // De nhung route sau con co tuyen duong goc ma gan' them vao
+                                        List<Route> lstRRCopy = new List<Route>(lstSequenceOfRouteReverse);
+                                        lstRRCopy.Add(lstRouteCanGoto[iRCG]);
+
+                                        // Add tuyen duong dao nguoc moi copy vao danh sach nhung tuyen duong dao nguoc
+                                        lstListRRCopy.Add(lstRRCopy);
+                                    }
+                                }
+                            }
+
+                            // Cap nhat danh sach cac tuyen duong dao nguoc (them nhung tuyen duong vua copy ra vao danh sach goc)
+                            lstListSequenceOfRouteReverse.AddRange(lstListRRCopy);
+                        }
+
+                        // Sau khi truy nguoc lai het cac stop level, ta se co mot danh sach cac tuyen duong dao nguoc
+                        // Lap qua tung tuyen duong dao nguoc nay
+                        foreach (List<Route> lstSequenceOfRouteReverse in lstListSequenceOfRouteReverse)
+                        {
+                            // Dao nguoc lai de co duoc thu tu dung
+                            lstSequenceOfRouteReverse.Reverse();
+
+                            // Add tuyen duong dung nay vao danh sach cuoi cung
+                            lstSequenceOfRouteFinal.Add(lstSequenceOfRouteReverse);
+                        }
+                                                
+                    }
+
+                    // Sau khi di duoc toi day thi ta da co duoc mot so tuyen duong trong danh sach final roi
+                    // Sort lai tui no theo thu tu tang dan skymiles
+                    lstSequenceOfRouteFinal.Sort(delegate (List<Route> lstX, List<Route> lstY)
+                    {
+                        return lstX.Sum(x => x.SkyMiles).CompareTo(lstY.Sum(y => y.SkyMiles));
+                    });
+
+                    // Neu vuot qua so luong tuyen duong toi da cho phep thi return luon
+                    if (lstSequenceOfRouteFinal.Count >= MAX_NUMBER_OF_ROUTE_ALLOW_WHEN_SEARCHING_ROUTE)
+                    {
+                        lstSequenceOfRouteFinal.RemoveRange(MAX_NUMBER_OF_ROUTE_ALLOW_WHEN_SEARCHING_ROUTE, lstSequenceOfRouteFinal.Count - MAX_NUMBER_OF_ROUTE_ALLOW_WHEN_SEARCHING_ROUTE);
+                        return;
+                    }
+
+                    // Nhay sang thanh pho tiep theo trong danh sach
+                    continue;
+                }
+
+                // Neu khong tim duoc duong di truc tiep thi tim danh sach cac thanh pho ma FROM co the di chuyen den
+                List<int> lstNextTryingCityID = dbRoutes.Where(r => r.CityAID == fromCityID && r.IsActive).Select(r => r.CityBID).ToList();
+
+                // Loc bo nhung thanh pho bi trung lai voi StopLevel hien tai (listFromCityID hien tai) va StopLevel tiep theo (moi tao)
+                // Add nhung thanh pho khong trung vao StopLevel tiep theo
+                lstNextStopLevelCityID.AddRange(
+                    lstNextTryingCityID.Where(id => 
+                        !lstFromCityID.Contains(id) && 
+                        !lstNextStopLevelCityID.Contains(id)
+                    ).ToList()
+                );
+
+                // Add nhung route nay vao danh sach nhung route cua StopLevel tiep theo
+                lstNextStopLevelRoute.AddRange(dbRoutes.Where(r => r.CityAID == fromCityID && r.IsActive).ToList());
+
+            }
+
+            // Khi ra toi day la da lap qua het nhung thanh pho o stop level hien tai roi
+            // Da luu het danh sach thanh pho o stop level tiep theo
+            lstListCitiesIDAtStopLevel.Add(lstNextStopLevelCityID);
+
+            // Da luu het danh sach nhung route tu stop level hien tai toi stop level tiep theo
+            lstSequenceOfTryingRoute.Add(lstNextStopLevelRoute);
+
+            // Goi lai chinh ham nay de tiep tuc tim kiem neu so luong stops chua vuot qua so luong toi da cho phep
+            if (currentStopLevel >= MAX_NUMBER_OF_STOPS_ALLOW_WHEN_SEARCHING_ROUTE) return;
+            RecursiveFindRoute(toCityID, ref lstListCitiesIDAtStopLevel, ref lstSequenceOfTryingRoute, ref lstSequenceOfRouteFinal);
+
         }
 
         private void RecursiveFindPossibleRoute(int cityAID, int cityBID, ref List<Route> lstRoute, ref List<List<Route>> lstListRoute, List<int> lstLimitID = null)

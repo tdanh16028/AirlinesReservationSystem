@@ -8,11 +8,20 @@ namespace ARSWebMVC.Controllers
 {
     public class ARSMVCUtilities
     {
-        private static readonly DBUserEntities db = new DBUserEntities();
+        private static DBUserEntities db = new DBUserEntities();
+
+        static ARSMVCUtilities() {
+            
+        }
 
         public static DBUserEntities GetDB()
         {
             return db;
+        }
+
+        public static void RefreshDB()
+        {
+            db = new DBUserEntities();
         }
 
         public static class SessionKey

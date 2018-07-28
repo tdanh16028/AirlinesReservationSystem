@@ -55,6 +55,10 @@ a:hover, a:visited, a:active {
     overflow: auto;
 }
 
+body {
+    background-image: url('../../assets/img/site-bg.jpg');
+    background-size: cover;
+}
 
 .footer-item {
     padding: 50px;
