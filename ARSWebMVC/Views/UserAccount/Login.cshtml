@@ -22,13 +22,13 @@
     </div>
 
     <div class="input-group mb-1" style="border:1px solid #ccc;">
-        <div class="input-group-prepend"><span class="input-group-text" style="border-radius:0;border:0;background-color:white;min-width:120px;">Username</span></div>
+        <div class="input-group-prepend"><span class="input-group-text" style="border-radius:0;border:0;background-color:white;min-width:100px;">Username</span></div>
         @Html.TextBoxFor(m => m.UserID, "", new { @class = "form-control border-0", style = "border-left: 1px solid #ccc !important;" })
     </div>
     @Html.ValidationMessageFor(m => m.UserID, "", new { @class = "mb-2 text-danger small font-italic" })
 
     <div class="input-group mb-1" style="border:1px solid #ccc;">
-        <div class="input-group-prepend"><span class="input-group-text" style="border-radius:0;border:0;background-color:white;min-width:120px;">Password</span></div>
+        <div class="input-group-prepend"><span class="input-group-text" style="border-radius:0;border:0;background-color:white;min-width:100px;">Password</span></div>
         @Html.PasswordFor(m => m.Password, new { @class = "form-control border-0", style = "border-left: 1px solid #ccc !important;" })
     </div>
     @Html.ValidationMessageFor(m => m.Password, "", new { @class = "mb-2 text-danger small font-italic" })

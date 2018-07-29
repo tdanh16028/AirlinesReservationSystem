@@ -23,14 +23,18 @@
         </div>
 
         <div class="card-body row">
-            <div class="col-3">FROM</div>
-            <div class="col-3">TO</div>
-            <div class="col">
+            <div class="col-5 col-lg-6">
                 <div class="row">
-                    <div class="col p-0 text-center">FIRST CLASS</div>
-                    <div class="col p-0 text-center">BUSINESS CLASS</div>
-                    <div class="col p-0 text-center">CLUB CLASS</div>
-                    <div class="col-1 p-0"></div>
+                    <div class="col-6">FROM</div>
+                    <div class="col-6">TO</div>
+                </div>
+            </div>
+            <div class="col-7 col-lg-6">
+                <div class="row">
+                    <div class="col p-0 text-center">FIRST<br/>CLASS</div>
+                    <div class="col p-0 text-center">BUSINESS<br />CLASS</div>
+                    <div class="col p-0 text-center">CLUB<br />CLASS</div>
+                    <div class="col-1 p-0 text-center"></div>
                 </div>
             </div>
         </div>
@@ -48,15 +52,19 @@
 
                 <div class="card border-light mt-3">
                     <div class="card-body row">
-                        <div class="col-3 d-flex flex-column justify-content-center align-items-start">
-                            @lstFS.First().Route.CityA.Name<br />
-                            <span class="badge badge-dark">@lstFS.First().DepartureDate.ToString("dd/MM/yyyy")</span>
+                        <div class="col-5 col-lg-6">
+                            <div class="row">
+                                <div class="col d-flex flex-column justify-content-center align-items-start">
+                                    @lstFS.First().Route.CityA.Name<br />
+                                    <span class="badge badge-dark">@lstFS.First().DepartureDate.ToString("dd/MM/yyyy")</span>
+                                </div>
+                                <div class="col d-flex flex-column justify-content-center align-items-start">
+                                    @lstFS.Last().Route.CityB.Name<br />
+                                    <span class="badge badge-dark">@lstFS.Last().DepartureDate.ToString("dd/MM/yyyy")</span>
+                                </div>
+                            </div>
                         </div>
-                        <div class="col-3 d-flex flex-column justify-content-center align-items-start">
-                            @lstFS.Last().Route.CityB.Name<br />
-                            <span class="badge badge-dark">@lstFS.Last().DepartureDate.ToString("dd/MM/yyyy")</span>
-                        </div>
-                        <div class="col">
+                        <div class="col-7 col-lg-6">
                             <div class="row">
                                 <div class="col p-0 d-flex align-items-stretch justify-content-center">
                                     @if (lstFS.TrueForAll(fs => fs.FirstSeatAvail >= totalSeat))
@@ -184,7 +192,7 @@
     </div>
 
     <div class="modal fade" id="modalDetails" tabindex="-1" role="dialog" aria-labelledby="modalDetails" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered modal-fluid" role="document">
+        <div class="modal-dialog modal-dialog-centered modal-fluid mw-100" role="document">
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title">Details</h5>
