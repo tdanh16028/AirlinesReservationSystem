@@ -18,14 +18,14 @@ namespace ARSWebMVC.Controllers
             
             if (Session[SessionKey.UserProfile] == null)
             {
-                TempData["lastPageVisit"] = new Dictionary<String, Object>() {
+                Session["lastPageVisit"] = new Dictionary<String, Object>() {
                     { "actionName", "Index" },
                     { "controllerName", "Ticket" }
                 };
                 return RedirectToAction("Login", "UserAccount");
             }
             else {
-                TempData["lastPageVisit"] = null;
+                Session["lastPageVisit"] = null;
                 return View();
             }
 
@@ -195,7 +195,7 @@ namespace ARSWebMVC.Controllers
 
             if (Session[SessionKey.UserProfile] == null)
             {
-                TempData["lastPageVisit"] = new Dictionary<String, Object>() {
+                Session["lastPageVisit"] = new Dictionary<String, Object>() {
                     { "actionName", "PreviewTicket" },
                     { "controllerName", "Ticket" }
                 };
