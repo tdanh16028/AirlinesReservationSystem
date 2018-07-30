@@ -76,6 +76,10 @@ namespace ARSWinForm
                 currentRowIndex = dgvCity.Rows.IndexOf(dgvCity.SelectedRows[0]);
             }
 
+            // Luu lai dong hien tai dang o dau` bang? trong dataGridView
+            int firstRowIndex = dgvCity.FirstDisplayedScrollingRowIndex;
+            if (firstRowIndex == -1) firstRowIndex = 0;
+
             // Goi API lay du lieu ve
             CityWrapper cityWrapper = new CityWrapper();
             List<City> lstCity = await cityWrapper.List();
@@ -109,7 +113,10 @@ namespace ARSWinForm
                 dgvCity.DataSource = table;
 
                 // Chon lai dong ban dau duoc chon truoc khi reload
-                dgvCity.Rows[currentRowIndex].Selected = true;
+                if (dgvCity.Rows.Count > 0) dgvCity.Rows[currentRowIndex].Selected = true;
+
+                // Cuon. toi' dong` duoc. chon.
+                if (dgvCity.Rows.Count > 0) dgvCity.FirstDisplayedScrollingRowIndex = firstRowIndex;
             }
         }
         private City GetSelectedCity()

@@ -10,6 +10,21 @@
     <AssemblyName>ARSWinForm</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -161,12 +176,6 @@
     <Compile Include="Forms\FormRouteList.designer.cs">
       <DependentUpon>FormRouteList.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\FormLogin.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\FormLogin.designer.cs">
-      <DependentUpon>FormLogin.cs</DependentUpon>
-    </Compile>
     <Compile Include="Forms\FormTicketCE.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -178,6 +187,12 @@
     </Compile>
     <Compile Include="Forms\FormTicketList.designer.cs">
       <DependentUpon>FormTicketList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\FormLogin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FormLogin.Designer.cs">
+      <DependentUpon>FormLogin.cs</DependentUpon>
     </Compile>
     <Compile Include="FormTest.cs">
       <SubType>Form</SubType>
@@ -289,14 +304,14 @@
     <EmbeddedResource Include="Forms\FormRouteList.resx">
       <DependentUpon>FormRouteList.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\FormLogin.resx">
-      <DependentUpon>FormLogin.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Forms\FormTicketCE.resx">
       <DependentUpon>FormTicketCE.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\FormTicketList.resx">
       <DependentUpon>FormTicketList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FormLogin.resx">
+      <DependentUpon>FormLogin.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormTest.resx">
       <DependentUpon>FormTest.cs</DependentUpon>
@@ -309,6 +324,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <EntityDeploy Include="Model\DBUserModel.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
@@ -332,6 +348,20 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Image\icons8-administrator-male-26.png" />
+    <Content Include="Image\icons8-airport-24.png" />
+    <Content Include="Image\icons8-airport-48.png" />
+    <Content Include="Image\icons8-airport-64.png" />
+    <Content Include="Image\icons8-business-32.png" />
+    <Content Include="Image\icons8-calendar-16.png" />
+    <Content Include="Image\icons8-city-50.png" />
+    <Content Include="Image\icons8-delete-48.png" />
+    <Content Include="Image\icons8-export-50.png" />
+    <Content Include="Image\icons8-import-50.png" />
+    <Content Include="Image\icons8-passenger-26.png" />
+    <Content Include="Image\icons8-route-32.png" />
+    <Content Include="Image\icons8-ticket-50.png" />
+    <Content Include="Image\icons8-two-tickets-32.png" />
     <Content Include="Model\DBUserModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>DBUserModel.Context.cs</LastGenOutput>
@@ -342,10 +372,32 @@
       <DependentUpon>DBUserModel.edmx</DependentUpon>
       <LastGenOutput>DBUserModel.cs</LastGenOutput>
     </Content>
+    <None Include="Resources\icons8-cancel-16.png" />
+    <None Include="Resources\icons8-pencil-24.png" />
+    <None Include="Resources\icons8-add-16.png" />
+    <None Include="Resources\icons8-passenger-26.png" />
+    <None Include="Resources\icons8-business-32.png" />
+    <None Include="Resources\icons8-delete-48.png" />
+    <None Include="Resources\icons8-two-tickets-32.png" />
+    <None Include="Resources\icons8-route-32.png" />
+    <None Include="Resources\icons8-city-50.png" />
+    <None Include="Resources\icons8-calendar-16.png" />
+    <None Include="Resources\icons8-airport-48.png" />
+    <None Include="Resources\icons8-airport-24.png" />
+    <None Include="Resources\icons8-ticket-50.png" />
+    <None Include="Resources\icons8-export-50.png" />
+    <None Include="Resources\icons8-import-50.png" />
+    <None Include="Resources\icons8-administrator-male-26.png" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

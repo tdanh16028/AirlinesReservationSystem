@@ -18,8 +18,7 @@ namespace ARSWinForm
         {
             LoadDataGridView();
         }
-
-        private void btnCreate_Click(object sender, System.EventArgs e)
+        private void btnCreate_Click(object sender, EventArgs e)
         {
             FormProfileCE f = new FormProfileCE();
             // f.MdiParent = this.MdiParent;
@@ -29,9 +28,9 @@ namespace ARSWinForm
 
             // Load lai bang sau khi form Create da tat
             LoadDataGridView();
-        }
 
-        private void btnEdit_Click(object sender, System.EventArgs e)
+        }
+        private void btnEdit_Click(object sender, EventArgs e)
         {
             // Lay tai khoan admin dang duoc chon trong bang
             Profile profile = GetSelectedProfile();
@@ -53,7 +52,6 @@ namespace ARSWinForm
             // Load lai bang sau khi form Edit da tat
             LoadDataGridView();
         }
-
 
         private async void btnDelete_Click(object sender, System.EventArgs e)
         {
@@ -110,6 +108,10 @@ namespace ARSWinForm
                 currentRowIndex = dgvProfile.Rows.IndexOf(dgvProfile.SelectedRows[0]);
             }
 
+            // Luu lai dong hien tai dang o dau` bang? trong dataGridView
+            int firstRowIndex = dgvProfile.FirstDisplayedScrollingRowIndex;
+            if (firstRowIndex == -1) firstRowIndex = 0;
+
             // Goi API lay du lieu ve
             ProfileWrapper profileWrapper = new ProfileWrapper();
             List<Profile> lstProfile = await profileWrapper.List();
@@ -125,6 +127,7 @@ namespace ARSWinForm
             table.Columns.Add("PhoneNumber");
             table.Columns.Add("EmailAddress");
             table.Columns.Add("Sex");
+            table.Columns.Add("Gender");
             table.Columns.Add("Age");
             table.Columns.Add("CreditCard");
             table.Columns.Add("SkyMiles");
@@ -149,6 +152,7 @@ namespace ARSWinForm
                     row["PhoneNumber"] = profile.PhoneNumber;
                     row["EmailAddress"] = profile.EmailAddress;
                     row["Sex"] = profile.Sex;
+                    row["Gender"] = profile.Sex ? "Male" : "Female";
                     row["Age"] = profile.Age;
                     row["CreditCard"] = profile.CreditCard;
                     row["SkyMiles"] = profile.SkyMiles;
@@ -163,8 +167,15 @@ namespace ARSWinForm
                 // Gan bang WinForm len DataGridView
                 dgvProfile.DataSource = table;
 
+                // An di mot so cot trong bang
+                dgvProfile.Columns["Password"].Visible = false;
+                dgvProfile.Columns["Sex"].Visible = false;
+
                 // Chon lai dong ban dau duoc chon truoc khi reload
-                dgvProfile.Rows[currentRowIndex].Selected = true;
+                if (dgvProfile.Rows.Count > 0) dgvProfile.Rows[currentRowIndex].Selected = true;
+
+                // Cuon. toi' dong` duoc. chon.
+                if (dgvProfile.Rows.Count > 0) dgvProfile.FirstDisplayedScrollingRowIndex = firstRowIndex;
             }
         }
         private Profile GetSelectedProfile()
@@ -195,6 +206,11 @@ namespace ARSWinForm
 
             // Tra AdminAccount vua tao ve
             return profile;
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

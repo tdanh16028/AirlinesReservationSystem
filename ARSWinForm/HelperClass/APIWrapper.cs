@@ -22,7 +22,8 @@ namespace ARSWinForm.HelperClass
             FLIGHT_SCHEDULE,
             PROFILE,
             ROUTE,
-            TICKET
+            TICKET,
+            TICKET_FLIGHT_SCHEDULE
         }
 
         private const string HOST_NAME = "http://localhost:49261";
@@ -38,7 +39,8 @@ namespace ARSWinForm.HelperClass
             { ARSAPI.FLIGHT_SCHEDULE, "/FlightSchedules" },
             { ARSAPI.PROFILE, "/Profiles" },
             { ARSAPI.ROUTE, "/Routes" },
-            { ARSAPI.TICKET, "/Tickets" }
+            { ARSAPI.TICKET, "/Tickets" },
+            { ARSAPI.TICKET_FLIGHT_SCHEDULE, "/TicketFlightSchedules" }
         };
 
         private HttpClient client = new HttpClient();

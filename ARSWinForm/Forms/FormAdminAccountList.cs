@@ -22,7 +22,7 @@ namespace ARSWinForm
             LoadDataGridView();
         }
 
-        private void btnCreate_Click(object sender, EventArgs e)
+        private void btnSubmit_Click(object sender, EventArgs e)
         {
             FormAdminAccountCE f = new FormAdminAccountCE();
             // f.MdiParent = this.MdiParent;
@@ -33,7 +33,6 @@ namespace ARSWinForm
             // Load lai bang sau khi form Create da tat
             LoadDataGridView();
         }
-
         private void btnEdit_Click(object sender, EventArgs e)
         {
             // Lay tai khoan admin dang duoc chon trong bang
@@ -56,7 +55,6 @@ namespace ARSWinForm
             // Load lai bang sau khi form Edit da tat
             LoadDataGridView();
         }
-        
         private async void btnDelete_Click(object sender, EventArgs e)
         {
             // Lay tai khoan admin dang duoc chon trong bang
@@ -85,18 +83,17 @@ namespace ARSWinForm
                 // Load lai bang
                 LoadDataGridView();
 
-            } else
+            }
+            else
             {
                 // Neu ket qua that bai, hien thong bao loi
                 MessageBox.Show("An error has occurred!\n" + adminAccountWrapper.GetErrorMessage(), "Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-
         private void btnReload_Click(object sender, EventArgs e)
         {
             LoadDataGridView();
         }
-
         public async void LoadDataGridView()
         {
             // Luu lai dong hien tai dang chon
@@ -110,6 +107,10 @@ namespace ARSWinForm
             {
                 currentRowIndex = dgvAdmin.Rows.IndexOf(dgvAdmin.SelectedRows[0]);
             }
+
+            // Luu lai dong hien tai dang o dau` bang? trong dataGridView
+            int firstRowIndex = dgvAdmin.FirstDisplayedScrollingRowIndex;
+            if (firstRowIndex == -1) firstRowIndex = 0;
 
             // Goi API lay du lieu ve
             AdminAccountWrapper adminAccountWrapper = new AdminAccountWrapper();
@@ -150,8 +151,15 @@ namespace ARSWinForm
                 // Gan bang WinForm len DataGridView
                 dgvAdmin.DataSource = table;
 
+                // An cot password
+                dgvAdmin.Columns["Username"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                dgvAdmin.Columns["Password"].Visible = false;
+
                 // Chon lai dong ban dau duoc chon truoc khi reload
-                dgvAdmin.Rows[currentRowIndex].Selected = true;
+                if (dgvAdmin.Rows.Count > 0) dgvAdmin.Rows[currentRowIndex].Selected = true;
+
+                // Cuon. toi' dong` duoc. chon.
+                if (dgvAdmin.Rows.Count > 0) dgvAdmin.FirstDisplayedScrollingRowIndex = firstRowIndex;
             }
         }
 
