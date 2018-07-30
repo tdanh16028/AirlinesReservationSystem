@@ -218,7 +218,7 @@ namespace ARSWebMVC.Controllers
             if (fromCityID == toCityID)
             {
                 TempData["ChooseFromToError"] = "Origin and destination city must be difference";
-                return RedirectToAction("Index", "Home");
+                return RedirectToAction("CheckingAvailability", "Home");
             }
 
             InitDB();
