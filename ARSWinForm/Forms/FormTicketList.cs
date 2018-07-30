@@ -41,6 +41,12 @@ namespace ARSWinForm
                 return;
             }
 
+            if (ticket.Status == "Cancelled")
+            {
+                MessageBox.Show("This ticket was already cancelled!", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+
             // Neu co may bay dang duoc chon thi sua cot IsActive lai thanh False
             ticket.Status = "Cancelled";
 
@@ -52,7 +58,7 @@ namespace ARSWinForm
             if (isSuccess)
             {
                 // Neu ket qua la thanh cong, hien thong bao thanh cong
-                MessageBox.Show("Airplane status was set to inactive!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Ticket successfully cancelled!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                 // Load lai bang
                 LoadDataGridView();
@@ -151,7 +157,7 @@ namespace ARSWinForm
                     row["ID"] = ticket.ID;
                     row["TicketCode"] = ticket.TicketCode;
                     row["ProfileID"] = ticket.ProfileID;
-                    row["PassengerName"] = ticket.Profile.FirstName + ticket.Profile.LastName;
+                    row["PassengerName"] = ticket.Profile.FirstName + " " + ticket.Profile.LastName;
                     row["From"] = ticket.FlightSchedules.First().Route.CityA.Name;
                     row["To"] = ticket.FlightSchedules.Last().Route.CityB.Name;
                     row["Status"] = ticket.Status;
