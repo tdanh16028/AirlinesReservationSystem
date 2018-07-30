@@ -18,7 +18,7 @@ namespace ARSWebAPI.Models
         public int ClassID { get; set; }
         public int SeatCount { get; set; }
     
-        public virtual AirplaneClass AirplaneClass { get; set; }
         public virtual AirplaneType AirplaneType { get; set; }
+        public virtual AirplaneClass AirplaneClass { get; set; }
     }
 }

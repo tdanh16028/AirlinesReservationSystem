@@ -10,6 +10,21 @@
     <AssemblyName>ARSWinForm</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -31,8 +46,23 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=11.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.11.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Net.Http.Formatting">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.2.4\lib\net45\System.Net.Http.Formatting.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -50,10 +80,241 @@
     <Compile Include="FormMain.Designer.cs">
       <DependentUpon>FormMain.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\FormAdminAccountCE.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FormAdminAccountCE.designer.cs">
+      <DependentUpon>FormAdminAccountCE.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\FormAdminAccountList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FormAdminAccountList.designer.cs">
+      <DependentUpon>FormAdminAccountList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\FormAirplaneCE.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FormAirplaneCE.designer.cs">
+      <DependentUpon>FormAirplaneCE.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\FormAirplaneClassCE.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FormAirplaneClassCE.designer.cs">
+      <DependentUpon>FormAirplaneClassCE.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\FormAirplaneClassList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FormAirplaneClassList.designer.cs">
+      <DependentUpon>FormAirplaneClassList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\FormAirplaneList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FormAirplaneList.designer.cs">
+      <DependentUpon>FormAirplaneList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\FormAirplaneTypeCE.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FormAirplaneTypeCE.designer.cs">
+      <DependentUpon>FormAirplaneTypeCE.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\FormAirplaneTypeList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FormAirplaneTypeList.designer.cs">
+      <DependentUpon>FormAirplaneTypeList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\FormCityCE.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FormCityCE.designer.cs">
+      <DependentUpon>FormCityCE.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\FormCityList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FormCityList.designer.cs">
+      <DependentUpon>FormCityList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\FormFlightScheduleCE.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FormFlightScheduleCE.designer.cs">
+      <DependentUpon>FormFlightScheduleCE.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\FormFlightScheduleList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FormFlightScheduleList.designer.cs">
+      <DependentUpon>FormFlightScheduleList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\FormProfileCE.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FormProfileCE.designer.cs">
+      <DependentUpon>FormProfileCE.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\FormProfileList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FormProfileList.designer.cs">
+      <DependentUpon>FormProfileList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\FormRouteCE.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FormRouteCE.designer.cs">
+      <DependentUpon>FormRouteCE.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\FormRouteList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FormRouteList.designer.cs">
+      <DependentUpon>FormRouteList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\FormTicketCE.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FormTicketCE.designer.cs">
+      <DependentUpon>FormTicketCE.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\FormTicketList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FormTicketList.designer.cs">
+      <DependentUpon>FormTicketList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\FormLogin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FormLogin.Designer.cs">
+      <DependentUpon>FormLogin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormTest.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormTest.Designer.cs">
+      <DependentUpon>FormTest.cs</DependentUpon>
+    </Compile>
+    <Compile Include="HelperClass\APIHelper.cs" />
+    <Compile Include="HelperClass\APIWrapper.cs" />
+    <Compile Include="HelperClass\ARSUtilities.cs" />
+    <Compile Include="HelperClass\EnumFormMode.cs" />
+    <Compile Include="HelperClass\ModelHelper\AbstractModelWrapper.cs" />
+    <Compile Include="HelperClass\ModelHelper\ModelWrapper.cs" />
+    <Compile Include="Model\AdminAccount.cs">
+      <DependentUpon>DBUserModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Airplane.cs">
+      <DependentUpon>DBUserModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\AirplaneClass.cs">
+      <DependentUpon>DBUserModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\AirplaneInfo.cs">
+      <DependentUpon>DBUserModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\AirplaneType.cs">
+      <DependentUpon>DBUserModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\City.cs">
+      <DependentUpon>DBUserModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\DBUserModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DBUserModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\DBUserModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DBUserModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\DBUserModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DBUserModel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Model\FlightSchedule.cs">
+      <DependentUpon>DBUserModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Profile.cs">
+      <DependentUpon>DBUserModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Route.cs">
+      <DependentUpon>DBUserModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Ticket.cs">
+      <DependentUpon>DBUserModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="FormMain.resx">
       <DependentUpon>FormMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FormAdminAccountCE.resx">
+      <DependentUpon>FormAdminAccountCE.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FormAdminAccountList.resx">
+      <DependentUpon>FormAdminAccountList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FormAirplaneCE.resx">
+      <DependentUpon>FormAirplaneCE.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FormAirplaneClassCE.resx">
+      <DependentUpon>FormAirplaneClassCE.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FormAirplaneClassList.resx">
+      <DependentUpon>FormAirplaneClassList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FormAirplaneList.resx">
+      <DependentUpon>FormAirplaneList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FormAirplaneTypeCE.resx">
+      <DependentUpon>FormAirplaneTypeCE.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FormAirplaneTypeList.resx">
+      <DependentUpon>FormAirplaneTypeList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FormCityCE.resx">
+      <DependentUpon>FormCityCE.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FormCityList.resx">
+      <DependentUpon>FormCityList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FormFlightScheduleCE.resx">
+      <DependentUpon>FormFlightScheduleCE.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FormFlightScheduleList.resx">
+      <DependentUpon>FormFlightScheduleList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FormProfileCE.resx">
+      <DependentUpon>FormProfileCE.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FormProfileList.resx">
+      <DependentUpon>FormProfileList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FormRouteCE.resx">
+      <DependentUpon>FormRouteCE.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FormRouteList.resx">
+      <DependentUpon>FormRouteList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FormTicketCE.resx">
+      <DependentUpon>FormTicketCE.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FormTicketList.resx">
+      <DependentUpon>FormTicketList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FormLogin.resx">
+      <DependentUpon>FormLogin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormTest.resx">
+      <DependentUpon>FormTest.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -63,7 +324,16 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
+    <EntityDeploy Include="Model\DBUserModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>DBUserModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="Model\DBUserModel.edmx.diagram">
+      <DependentUpon>DBUserModel.edmx</DependentUpon>
+    </None>
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -76,6 +346,58 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Image\icons8-administrator-male-26.png" />
+    <Content Include="Image\icons8-airport-24.png" />
+    <Content Include="Image\icons8-airport-48.png" />
+    <Content Include="Image\icons8-airport-64.png" />
+    <Content Include="Image\icons8-business-32.png" />
+    <Content Include="Image\icons8-calendar-16.png" />
+    <Content Include="Image\icons8-city-50.png" />
+    <Content Include="Image\icons8-delete-48.png" />
+    <Content Include="Image\icons8-export-50.png" />
+    <Content Include="Image\icons8-import-50.png" />
+    <Content Include="Image\icons8-passenger-26.png" />
+    <Content Include="Image\icons8-route-32.png" />
+    <Content Include="Image\icons8-ticket-50.png" />
+    <Content Include="Image\icons8-two-tickets-32.png" />
+    <Content Include="Model\DBUserModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>DBUserModel.Context.cs</LastGenOutput>
+      <DependentUpon>DBUserModel.edmx</DependentUpon>
+    </Content>
+    <Content Include="Model\DBUserModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>DBUserModel.edmx</DependentUpon>
+      <LastGenOutput>DBUserModel.cs</LastGenOutput>
+    </Content>
+    <None Include="Resources\icons8-cancel-16.png" />
+    <None Include="Resources\icons8-pencil-24.png" />
+    <None Include="Resources\icons8-add-16.png" />
+    <None Include="Resources\icons8-passenger-26.png" />
+    <None Include="Resources\icons8-business-32.png" />
+    <None Include="Resources\icons8-delete-48.png" />
+    <None Include="Resources\icons8-two-tickets-32.png" />
+    <None Include="Resources\icons8-route-32.png" />
+    <None Include="Resources\icons8-city-50.png" />
+    <None Include="Resources\icons8-calendar-16.png" />
+    <None Include="Resources\icons8-airport-48.png" />
+    <None Include="Resources\icons8-airport-24.png" />
+    <None Include="Resources\icons8-ticket-50.png" />
+    <None Include="Resources\icons8-export-50.png" />
+    <None Include="Resources\icons8-import-50.png" />
+    <None Include="Resources\icons8-administrator-male-26.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
