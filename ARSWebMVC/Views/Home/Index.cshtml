@@ -2,68 +2,133 @@
 @{
     ViewBag.Title = "Home Page";
 }
-<section class="query-flight-details pt-5">
-    <div class="container">
-
-        <div class="row p-5">
-            <div class="col-md-4">
-                <h2>Chào mừng đến với trang web của tui</h2>
-            </div>
-            <div class="col-md-8 form  wow fadeIn">
-                <form class=" p-3" style="background-color: white;">
-                    <label class="radio-inline mr-2">
-                        <input type="radio" name="optradio"> <span>Round trip</span>
-                    </label>
-                    <label class="radio-inline">
-                        <input type="radio" name="optradio"><span class="ml-2">One way</span>
-                    </label>
-
-                    <div class="row">
-                        <div class="form-group col-md-4">
-                            <label for="exampleInputEmail1">FORM</label>
-                            <input class="form-control" id="exampleInputEmail1">
-                        </div>
-                        <div class="form-group col-md-4">
-                            <label for="exampleInputEmail1">TO</label>
-                            <input class="form-control" id="exampleInputEmail1">
-                        </div>
-                        <div class="form-group col-md-4">
-                            <label for="exampleInputEmail1">Depart</label>
-                            <input class="form-control" id="exampleInputEmail1">
-                        </div>
-                        <div class="form-group col-md-4">
-                            <label for="exampleInputEmail1">Return</label>
-                            <input class="form-control" id="exampleInputEmail1">
-                        </div>
-                        <div class="form-group col-md-4">
-                            <label for="exampleFormControlSelect1">Number of passengers</label>
-                            <select class="form-control" id="exampleFormControlSelect1">
-                                <option>1</option>
-                                <option>2</option>
-                                <option>3</option>
-                                <option>4</option>
-                                <option>5</option>
-                                <option>6</option>
-                            </select>
-                        </div>
-                        <div class="form-group col-md-4">
-                            <label for="exampleFormControlSelect1">Class</label>
-                            <select class="form-control" id="exampleFormControlSelect1">
-                                <option>1</option>
-                                <option>2</option>
-                                <option>3</option>
-                                <option>4</option>
-                                <option>5</option>
-                            </select>
-                        </div>
-                    </div>
-                    <button class="btn btn-dark col-md-4">Tìm máy bay</button>
-                </form>
+<div class="header-blue" style="margin-top: -6rem;">
+    <div class="container hero">
+        <div class="row">
+            <div class="col-12 offset-xl-1">
+                <h1>Fly with the world's most awarded airline!</h1>
+                <p><em>"AMD Airlines is honoured to be named ‘World’s Best Airline’ in the SkyMag awards, and I dedicate it to the 27,000 SIA Group employees who focus every day on delivering the world’s best travel experience to our customers"</em><br><em>- said AMD Airlines CEO -</em><br></p>
+                
+                @Html.ActionLink("Flying now!", "CheckingAvailability", "Home", null, new { @class = "btn btn-outline-light py-2 action-button" })
             </div>
         </div>
-
     </div>
-    <!-- Button trigger modal -->
-    <!-- Button trigger modal -->
-
-</section>
+</div>
+<div class="photo-gallery">
+    <div class="container">
+        <div class="intro">
+            <h2 class="text-center">Gallery</h2>
+            <p class="text-center">Explore awesome experiences when flying with us!</p>
+        </div>
+        <div class="row photos">
+            <div class="col-sm-6 col-md-4 col-lg-3 item"><a href="/assets/img/desk.jpg" data-lightbox="photos"><img class="img-fluid" src="assets/img/desk.jpg"></a></div>
+            <div class="col-sm-6 col-md-4 col-lg-3 item"><a href="/assets/img/building.jpg" data-lightbox="photos"><img class="img-fluid" src="assets/img/building.jpg"></a></div>
+            <div class="col-sm-6 col-md-4 col-lg-3 item"><a href="/assets/img/loft.jpg" data-lightbox="photos"><img class="img-fluid" src="assets/img/loft.jpg"></a></div>
+            <div class="col-sm-6 col-md-4 col-lg-3 item"><a href="/assets/img/building.jpg" data-lightbox="photos"><img class="img-fluid" src="assets/img/building.jpg"></a></div>
+            <div class="col-sm-6 col-md-4 col-lg-3 item"><a href="/assets/img/loft.jpg" data-lightbox="photos"><img class="img-fluid" src="assets/img/loft.jpg"></a></div>
+            <div class="col-sm-6 col-md-4 col-lg-3 item"><a href="/assets/img/desk.jpg" data-lightbox="photos"><img class="img-fluid" src="assets/img/desk.jpg"></a></div>
+        </div>
+    </div>
+</div>
+<div class="testimonials-clean">
+    <div class="container">
+        <div class="intro">
+            <h2 class="text-center">Testimonials </h2>
+            <p class="text-center">How customer says about us?</p>
+        </div>
+        <div class="row people">
+            <div class="col-md-6 col-lg-4 item">
+                <div class="box">
+                    <p class="description">Very well! I almost satisfied about what AMD Airlines was done. Keep going on!</p>
+                </div>
+                <div class="author">
+                    <img class="rounded-circle" src="~/assets/img/1.jpg">
+                    <h5 class="name">Ben Johnson</h5>
+                    <p class="title">CEO of Company Inc.</p>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-4 item">
+                <div class="box">
+                    <p class="description">The best airline I ever used. Everything is excellent. I love it! Will recommend it for my friends.</p>
+                </div>
+                <div class="author">
+                    <img class="rounded-circle" src="~/assets/img/3.jpg">
+                    <h5 class="name">Carl Kent</h5>
+                    <p class="title">Founder of Style Co.</p>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-4 item">
+                <div class="box">
+                    <p class="description">You should try it ASAP! It's perfect! I cannot complain about anything. It is the best airline!</p>
+                </div>
+                <div class="author">
+                    <img class="rounded-circle" src="~/assets/img/2.jpg">
+                    <h5 class="name">Emily Clark</h5>
+                    <p class="title">Owner of Creative Ltd.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="features-blue">
+    <div class="container">
+        <div class="intro">
+            <h2 class="text-center">Features</h2>
+            <p class="text-center">We ensure provide the best service for you! </p>
+        </div>
+        <div class="row features">
+            <div class="col-sm-6 col-md-4 item">
+                <i class="fas fa-map-marker-alt icon"></i>
+                <h3 class="name">Works everywhere</h3>
+                <p class="description">We provide fly service to over 50 cities all around US and will expand to more country in the next future</p>
+            </div>
+            <div class="col-sm-6 col-md-4 item">
+                <i class="far fa-clock icon"></i>
+                <h3 class="name">Always available</h3>
+                <p class="description">You can fly whenever you want. We have many flight schedules in every day. Just search for a trip on our website within under one minute and you are ready to go!</p>
+            </div>
+            <div class="col-sm-6 col-md-4 item">
+                <i class="fa fa-list-alt icon"></i>
+                <h3 class="name">Flexible</h3>
+                <p class="description">We provide a flexible service that you can not only buy a ticket but also block them for a while or reschedule a reserved ticket.</p>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="team-boxed" style="margin-bottom: -3rem;">
+    <div class="container">
+        <div class="intro">
+            <h2 class="text-center">Team </h2>
+            <p class="text-center">Let meet the most important persons who are the spirit of AMD Airlines</p>
+        </div>
+        <div class="row people">
+            <div class="col-md-6 col-lg-4 item">
+                <div class="box">
+                    <img class="rounded-circle" src="~/assets/img/1.jpg">
+                    <h3 class="name">Ben Johnson</h3>
+                    <p class="title">CEO</p>
+                    <p class="description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus risus nisl, auctor vitae tristique id, sagittis finibus tortor.</p>
+                    <div class="social"><a href="#"><i class="fab fa-facebook-f"></i></a><a href="#"><i class="fab fa-twitter"></i></i></a><a href="#"><i class="fab fa-instagram"></i></a></div>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-4 item">
+                <div class="box">
+                    <img class="rounded-circle" src="~/assets/img/2.jpg">
+                    <h3 class="name">Emily Clark</h3>
+                    <p class="title">CUSTOMER CARE</p>
+                    <p class="description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus risus nisl, auctor vitae tristique id, sagittis finibus tortor. </p>
+                    <div class="social"><a href="#"><i class="fab fa-facebook-f"></i></a><a href="#"><i class="fab fa-twitter"></i></i></a><a href="#"><i class="fab fa-instagram"></i></a></div>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-4 item">
+                <div class="box">
+                    <img class="rounded-circle" src="~/assets/img/3.jpg">
+                    <h3 class="name">Carl Kent</h3>
+                    <p class="title">TECHNICAL SUPPORT</p>
+                    <p class="description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus risus nisl, auctor vitae tristique id, sagittis finibus tortor. </p>
+                    <div class="social"><a href="#"><i class="fab fa-facebook-f"></i></a><a href="#"><i class="fab fa-twitter"></i></a><a href="#"><i class="fab fa-instagram"></i></a></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

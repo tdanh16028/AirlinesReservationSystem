@@ -1,18 +1,18 @@
 ﻿@model ARSWebMVC.Models.Profile
 
 @{
-    ViewBag.Title = "Updateprofile";
+    ViewBag.Title = "Update Profile";
 }
 
 
-<div class=" pt-5">
+<div class=" pt-5 animated wow fadeIn mt-5">
 
-    @using (Html.BeginForm("EditProfile", "UserAccount", FormMethod.Post, new { @class = "well form-horizontal col-md-4 col-sm-12 card m-auto p-md-5" }))
+    @using (Html.BeginForm("EditProfile", "UserAccount", FormMethod.Post, new { @class = "well form-horizontal col-sm-12 col-md-8 col-lg-6 col-xl-4 card m-auto p-md-5" }))
     {
 
 
         <!-- Form Name -->
-        <legend><center><h2><b>@ViewBag.Title</b></h2></center></legend><br>
+        <h2><b>@ViewBag.Title</b></h2>
 
         <!-- Text input-->
 

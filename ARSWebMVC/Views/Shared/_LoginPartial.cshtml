@@ -1,22 +1,22 @@
 ﻿@using ARSWebMVC.Models
-@{ Profile user = (Profile)HttpContext.Current.Session["UserProfile"]; }
-@if (Session["UserProfile"] == null)
+@{ Profile user = (Profile)HttpContext.Current.Session[ARSWebMVC.Controllers.ARSMVCUtilities.SessionKey.UserProfile]; }
+@if (Session[ARSWebMVC.Controllers.ARSMVCUtilities.SessionKey.UserProfile] == null)
 {
-<li class="nav-item ml-md-auto">
-    @*@Html.ActionLink("Login", "Login", "UserAccount", null, new { @class = "nav-link " })*@
-    <a id="btnlogin"  class="nav-link">Login</a>
-</li>
-    <li class="nav-item ">
-        @Html.ActionLink("Register", "Register", "UserAccount", null, new { @class = "nav-link " })
+    <li class="nav-item ml-md-auto d-flex align-items-center">
+        @*@Html.ActionLink("Login", "Login", "UserAccount", null, new { @class = "nav-link " })*@
+        <a href="#" id="btnLogin" class="login navbar-text nav-link">Log In</a>
+    </li>
+    <li class="nav-item d-flex align-items-center" style="max-width: 120px;">
+        @Html.ActionLink("Sign Up", "Register", "UserAccount", null, new { @class = " btn-outline-light action-button nav-link ml-md-3" })
     </li>
 }
 else
 {
-    <li class="nav-item dropdown ml-md-auto">
+    <li class="nav-item dropdown ml-md-auto d-flex align-items-center">
         <a class="nav-link dropdown-toggle " id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">@user.UserID.ToString()</a>
         <div class="dropdown-menu dropdown-primary" aria-labelledby="navbarDropdownMenuLink">
             @Html.ActionLink("Profile", "Profile", "UserAccount", null, new { @class = "dropdown-item" })
-            @Html.ActionLink("(logout)", "Logout", "UserAccount", null, new { @class = "dropdown-item" })
+            @Html.ActionLink("Log-out", "Logout", "UserAccount", null, new { @class = "dropdown-item" })
         </div>
     </li>
 }

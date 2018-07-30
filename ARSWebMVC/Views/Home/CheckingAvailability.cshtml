@@ -1,0 +1,86 @@
+﻿@using ARSWebMVC.Models
+@model List<City>
+
+@{
+    ViewBag.Title = "CheckingAvailability";
+}
+
+@if (TempData["ChooseFromToError"] != null)
+{
+    <div class="modal fade" id="modalError" tabindex="-1" role="dialog" aria-labelledby="modalError" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Details</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <p class="text-danger">@TempData["ChooseFromToError"]</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- JQuery -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <!-- Bootstrap tooltips -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.13.0/umd/popper.min.js"></script>
+    <!-- Bootstrap core JavaScript -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <!-- MDB core JavaScript -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.5.4/js/mdb.min.js"></script>
+
+    <script type="text/javascript">
+        let btnShowError = $('<span data-toggle="modal" data-target="#modalError"></span>')[0];
+        document.body.append(btnShowError);
+        btnShowError.click();
+    </script>
+
+}
+
+
+    <section class="">
+        @using (Html.BeginForm("ChooseRoute", "Flight", null, FormMethod.Post, new { @class = "form-ticketstatus card m-auto p-3 col-sm-8 col-md-6 col-lg-4" }))
+        {
+            <div class="mb-4">
+                <span style="padding-bottom:5px;border-bottom:2px solid #00968b;"><i class="fa fa-plane mr-1"></i>Find Flight&nbsp;</span>
+            </div>
+
+            <div class="input-group mb-2" style="border:1px solid #ccc;">
+                <span class="col-md-2 col-3 p-2">FROM</span>
+                <select id="from-city" name="fromCityID" class="selectpicker col-md-10 col-9 p-2 border-0" style="border-left: 1px solid #ccc !important;" searchable="Search here..">
+                    @foreach (City city in Model)
+                    {
+                        string text = @city.Code + " - " + @city.Name;
+                        <option value="@city.ID" data-tokens="@text">@text</option>
+                    }
+                </select>
+
+            </div>
+
+            <div class="input-group mb-2" style="border:1px solid #ccc;">
+                <span class="col-md-2 col-3 p-2">TO</span>
+                <select id="to-city" name="toCityID" class="selectpicker col-md-10 col-9 p-2 border-0" style="border-left: 1px solid #ccc !important;" searchable="Search here..">
+                    @foreach (City city in Model)
+                    {
+                        string text = @city.Code + " - " + @city.Name;
+                        <option value="@city.ID" data-tokens="@text">@text</option>
+                    }
+                </select>
+            </div>
+
+            <span class="small font-italic"><u>Note</u>: The departure city and the destination city must not be the same!</span>
+
+            <button class="btn btn-primary btn-block mt-4"
+                    type="submit" style="background:linear-gradient(135deg, rgb(0,150,139), #176e74);border:0;border-radius:0;margin-left:auto;">
+                Search
+            </button>
+
+
+        }
+    </section>

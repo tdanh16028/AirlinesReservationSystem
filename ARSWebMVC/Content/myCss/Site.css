@@ -1,5 +1,8 @@
 ﻿
+
+
 body {
+    font-family: 'Source Sans Pro', sans-serif;
     background-color: rgba(0, 0, 0, 0.07);
 }
 
@@ -33,9 +36,10 @@ a:hover, a:visited, a:active {
     background-color: white;
     padding: 5%;
 }
-
+.selectpicker {
+    border: 1px solid #ccc;
+}
 .query-flight-details {
-
 }
 .ticketheader {
     
@@ -51,4 +55,29 @@ a:hover, a:visited, a:active {
     overflow: auto;
 }
 
+body {
+    background-image: url('../../assets/img/site-bg.jpg');
+    background-size: cover;
+}
 
+.footer-item {
+    padding: 50px;
+}
+
+    .footer-item i {
+        margin-right: 10px;
+    }
+
+    .footer-item ul {
+        list-style-type: none;
+        font-size: 14px;
+        padding: 0px;
+    }
+
+    .footer-item a {
+        color: black;
+    }
+
+.btn-outline-light {
+    border-width: 1px !important;
+}

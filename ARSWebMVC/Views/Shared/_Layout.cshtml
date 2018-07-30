@@ -1,39 +1,28 @@
 ﻿<!DOCTYPE html>
-<html>
+<html style="height: 100%">
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title - My ASP.NET Application</title>
     <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
-    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet">
     <!-- Material Design Bootstrap -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.5.4/css/mdb.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700">
 
 
-    <!-- JQuery -->
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <!-- Bootstrap tooltips -->
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.13.0/umd/popper.min.js"></script>
-    <!-- Bootstrap core JavaScript -->
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/js/bootstrap.min.js"></script>
-    <!-- MDB core JavaScript -->
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.5.4/js/mdb.min.js"></script>
-
-    @Styles.Render("~/Content/css")
-    @Scripts.Render("~/bundles/modernizr")
     @using ARSWebMVC.Models
-    @{ Profile user = (Profile)HttpContext.Current.Session["UserProfile"]; }
+    @{ Profile user = (Profile)HttpContext.Current.Session[ARSWebMVC.Controllers.ARSMVCUtilities.SessionKey.UserProfile]; }
 </head>
 
-<body>
+<body class="d-flex flex-column" style="min-height: 100%">
     @(TempData["Status"] = null)
     <!--Navbar-->
-    <nav class="navbar navbar-expand-md navbar-dark  teal scrolling-navbar fixed-top">
+    <nav class="navbar navbar-expand-md navbar-dark  header-blue scrolling-navbar fixed-top pb-2">
         <!-- Navbar brand -->
         <div class="container">
-            @Html.ActionLink("AirlinesReservation", "Index", "Home", null, new { @class = "navbar-brand" })
+            @Html.ActionLink("AMD Airlines", "Index", "Home", null, new { @class = "navbar-brand font-weight-bold" })
             <!-- Collapse button -->
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#basicExampleNav" aria-controls="basicExampleNav"
                     aria-expanded="false" aria-label="Toggle navigation">
@@ -43,20 +32,17 @@
             <div class="collapse navbar-collapse" id="basicExampleNav">
                 <!-- Links -->
                 <ul class="navbar-nav d-flex w-100">
-                    <li class="nav-item ">
-                        @Html.ActionLink("CheckingAvailability", "CheckingAvailability", "Home", null, new { @class = "nav-link" })
+                    <li class="nav-item d-flex align-items-center">
+                        @Html.ActionLink("Find Flight", "CheckingAvailability", "Home", null, new { @class = "nav-link" })
                     </li>
-                    <li class="nav-item">
-                        @Html.ActionLink("DatePic", "DatePic", "Home", null, new { @class = "nav-link" })
-                    </li>
-                    <li class="nav-item">
-                        @Html.ActionLink("TicketDetailTemp", "TicketDetailTemp", "Ticket", null, new { @class = "nav-link" })
-                    </li>
-                    <li class="nav-item">
-                        @Html.ActionLink("Ticket", "Index", "Ticket", null, new { @class = "nav-link" })
-                    </li>
-                    <li class="nav-item">
-                        @Html.ActionLink("QueryFlightDetails", "QueryFlightDetails", "Home", null, new { @class = "nav-link" })
+                    @if (Session["UserProfile"] != null)
+                    {
+                        <li class="nav-item d-flex align-items-center">
+                            @Html.ActionLink("View Ticket Status", "Index", "Ticket", null, new { @class = "nav-link" })
+                        </li>
+                    }
+                    <li class="nav-item d-flex align-items-center">
+                        @Html.ActionLink("Query Flight Details", "QueryFlightDetails", "Home", null, new { @class = "nav-link" })
                     </li>
                     @Html.Partial("_LoginPartial")
                 </ul>
@@ -67,23 +53,62 @@
     </nav><!-- Button trigger modal -->
     <!-- Modal -->
     <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <button type="button" class="close text-right pr-4 pt-4" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-                <div class="modal-body">
-                </div>
-            </div>
+        <div class="modal-dialog" role="document" style="margin-top: 8rem;">
+            <div class="modal-content"></div>
         </div>
     </div>
-    <div class="body-content pt-5 ">
-        @RenderBody()
-        <hr />
+    <div class="body-content mt-5 py-5 d-flex flex-row align-items-center" style="flex: 1 1 auto;">
+        <div class="w-100">
+            @RenderBody()
+        </div>
     </div>
-    <footer class="container web-footer">
-        <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
-    </footer>
+    <div class="footer-dark pt-5">
+        <footer>
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-6 col-md-3 item">
+                        <h3>Services</h3>
+                        <ul>
+                            <li><a href="#">Fly with us!</a></li>
+                            <li><a href="#">Query flight details</a></li>
+                            <li><a href="#">Checking availability</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-sm-6 col-md-3 item">
+                        <h3>About</h3>
+                        <ul>
+                            <li><a href="#">Company</a></li>
+                            <li><a href="#">Team</a></li>
+                            <li><a href="#">Careers</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-md-6 item text">
+                        <h3>AMD Airlines</h3>
+                        <p>Started in September 2004, with all the effort and passion of our beginning team, was bring up the company with over 27,000 employees and the best service that you can see now.</p>
+                    </div>
+                    <div class="col item social">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-snapchat-ghost"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                <p class="copyright">AMD Airlines © 2004 - 2017</p>
+            </div>
+        </footer>
+    </div>
+
+
+    <!-- JQuery -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <!-- Bootstrap tooltips -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.13.0/umd/popper.min.js"></script>
+    <!-- Bootstrap core JavaScript -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <!-- MDB core JavaScript -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.5.4/js/mdb.min.js"></script>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
     <script src="~/Scripts/MyJQuery.js"></script>
     @RenderSection("scripts", required: false)
 </body>

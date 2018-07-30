@@ -3,25 +3,22 @@
     ViewBag.Title = "Index";
 }
 
-
-<div class="container mt-5 card ">
-    @using (Html.BeginForm("Index", "Ticket", null, FormMethod.Post, new { @class = " form-ticketstatus card-panel col-10 m-auto p-md-5 pt-5 pb-5" }))
+<section class="">
+    @using (Html.BeginForm("Index", "Ticket", null, FormMethod.Post, new { @class = "" }))
     {
-        <h2>TicketStatus</h2>
-        <hr />
-        <div class="form-group row">
-            <label class="col-md-3 col-sm-12 col-form-label text-dark">ConfirmationCode&nbsp;: </label>
-            <div class="col-md d-md-inline-flex">
-                <input type="text" name="txtConfirmationCode" class=" col-md-4 form-control " placeholder="Your Code">
-                <span class="text-danger col-md pt-2">@ViewBag.ErrorMessage</span>
-            </div>
+    <div class="card p-3 col col-sm-8 col-md-6 col-lg-4 m-auto">
+        <div class="mb-4">
+            <span style="padding-bottom:5px;border-bottom:2px solid #00968b;"><i class="fa fa-info-circle mr-1"></i>View ticket status&nbsp;</span>
         </div>
-        
-        <hr />
-        @Html.ActionLink("Home Page", "Index", "Home", null, new { @class = " btn-outline-default  btn mr-4 teal" })
 
-        <button type="submit" class="btn teal">
-            Submit
-        </button>
+        <div class="input-group mb-2" style="border:1px solid #ccc;">
+            <div class="input-group-prepend"><span class="input-group-text" style="border-radius:0;border:0;background-color:white;min-width:60px;">Ticket code</span></div>
+            <input type="text" name="txtConfirmationCode" class="form-control border-0" , style="border-left: 1px solid #ccc !important;">
+        </div>
+        <span class="small font-italic"><u>Note</u>: Ticket code must include the # (hash symbol) character before it!</span>
+        <span class="text-danger font-italic">@ViewBag.ErrorMessage</span>
+
+        <button class="btn btn-primary btn-block mt-4" type="submit" style="background:linear-gradient(135deg, rgb(0,150,139), #176e74);border:0;border-radius:0;margin-left:auto;">Submit</button>
+    </div>
     }
-</div>
+</section>

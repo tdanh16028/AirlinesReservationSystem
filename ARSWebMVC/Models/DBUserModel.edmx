@@ -30,6 +30,7 @@
           </Key>
           <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Class" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="PriceRate" Type="float" Nullable="false" />
         </EntityType>
         <EntityType Name="AirplaneInfo">
           <Key>
@@ -54,7 +55,7 @@
           </Key>
           <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Code" Type="varchar" MaxLength="3" Nullable="false" />
-          <Property Name="City" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
         </EntityType>
         <EntityType Name="FlightSchedule">
           <Key>
@@ -78,7 +79,7 @@
           <Property Name="Password" Type="varchar" MaxLength="32" Nullable="false" />
           <Property Name="FirstName" Type="nvarchar" MaxLength="20" Nullable="false" />
           <Property Name="LastName" Type="nvarchar" MaxLength="20" Nullable="false" />
-          <Property Name="Address" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Address" Type="varchar" MaxLength="200" Nullable="false" />
           <Property Name="PhoneNumber" Type="varchar" MaxLength="15" Nullable="false" />
           <Property Name="EmailAddress" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="Sex" Type="bit" Nullable="false" />
@@ -343,6 +344,7 @@
           <Property Name="Class" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
           <NavigationProperty Name="AirplaneInfoes" Relationship="Self.FK_AirplaneInfo_AirplaneClass" FromRole="AirplaneClass" ToRole="AirplaneInfo" />
           <NavigationProperty Name="Tickets" Relationship="Self.FK_Ticket_AirplaneClass" FromRole="AirplaneClass" ToRole="Ticket" />
+          <Property Name="PriceRate" Type="Double" Nullable="false" />
         </EntityType>
         <EntityType Name="AirplaneInfo">
           <Key>
@@ -371,9 +373,9 @@
           </Key>
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Code" Type="String" MaxLength="3" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="City1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <NavigationProperty Name="Routes" Relationship="Self.FK_Route_CityA" FromRole="City" ToRole="Route" />
           <NavigationProperty Name="Routes1" Relationship="Self.FK_Route_CityB" FromRole="City" ToRole="Route" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="FlightSchedule">
           <Key>
@@ -400,7 +402,7 @@
           <Property Name="Password" Type="String" MaxLength="32" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="FirstName" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="LastName" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Address" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Address" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="PhoneNumber" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="EmailAddress" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Sex" Type="Boolean" Nullable="false" />
@@ -420,8 +422,8 @@
           <Property Name="SkyMiles" Type="Int32" Nullable="false" />
           <Property Name="BasePrice" Type="Double" Nullable="false" />
           <Property Name="IsActive" Type="Boolean" Nullable="false" />
-          <NavigationProperty Name="City" Relationship="Self.FK_Route_CityA" FromRole="Route" ToRole="City" />
-          <NavigationProperty Name="City1" Relationship="Self.FK_Route_CityB" FromRole="Route" ToRole="City" />
+          <NavigationProperty Name="CityA" Relationship="Self.FK_Route_CityA" FromRole="Route" ToRole="City" />
+          <NavigationProperty Name="CityB" Relationship="Self.FK_Route_CityB" FromRole="Route" ToRole="City" />
           <NavigationProperty Name="FlightSchedules" Relationship="Self.FK_FlightSchedule_Route" FromRole="Route" ToRole="FlightSchedule" />
         </EntityType>
         <EntityType Name="Ticket">
@@ -636,6 +638,7 @@
           <EntitySetMapping Name="AirplaneClasses">
             <EntityTypeMapping TypeName="DBUserModel.AirplaneClass">
               <MappingFragment StoreEntitySet="AirplaneClass">
+                <ScalarProperty Name="PriceRate" ColumnName="PriceRate" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="Class" ColumnName="Class" />
               </MappingFragment>
@@ -662,9 +665,9 @@
           <EntitySetMapping Name="Cities">
             <EntityTypeMapping TypeName="DBUserModel.City">
               <MappingFragment StoreEntitySet="City">
+                <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="Code" ColumnName="Code" />
-                <ScalarProperty Name="City1" ColumnName="City" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

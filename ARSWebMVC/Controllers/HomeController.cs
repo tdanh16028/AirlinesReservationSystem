@@ -12,7 +12,7 @@ namespace ARSWebMVC.Controllers
         DBUserEntities db = new DBUserEntities();
         public ActionResult Index()
         {
-            return RedirectToAction("CheckingAvailability");
+            return View();
         }
 
         public ActionResult CheckingAvailability() {
@@ -34,25 +34,35 @@ namespace ARSWebMVC.Controllers
         {
             return View();
         }
+
         //Post FlightStatus from QueryFlightDetails
         [HttpPost]
-        public ActionResult FlightStatus(string airplaneCode)
+        public ActionResult FlightStatus(string airplaneCode, DateTime? departureDate = null)
         {
             // if airplaneCode == null => back to QueryFlightDetails
             if (airplaneCode == null)
             {
-                return RedirectToAction("QueryFlightDetails");
+                ViewBag.QueryFlightDetailsError = "Airplane code is required";
+                return View("QueryFlightDetails");
             }
 
-            //Search in the database returns the list of airplane code is "airplaneCode",if not find returned error message
-            List<FlightSchedule> rs = ARSMVCUtilities.GetDB().FlightSchedules.Where(s => s.AirplaneCode == airplaneCode).ToList();
-            if (rs != null && rs.Count >0)
+            //Search in the database returns the list of airplane code is "airplaneCode", if not find returned error message
+            List<FlightSchedule> rs;
+            if (departureDate == null)
+            {
+                rs = ARSMVCUtilities.GetDB().FlightSchedules.Where(s => s.AirplaneCode == airplaneCode && s.DepartureDate >= DateTime.Now).ToList();
+            } else
+            {
+                rs = ARSMVCUtilities.GetDB().FlightSchedules.Where(s => s.AirplaneCode == airplaneCode && s.DepartureDate == departureDate).ToList();
+            }
+            
+            if (rs != null && rs.Count > 0)
             {
                 return View(rs);
             }
             else
             {
-                ViewBag.FlightStatusErrorMessage = "Not found";
+                ViewBag.QueryFlightDetailsError = "The airplane " + airplaneCode + " does not have any flight schedule at the given date";
                 return View("QueryFlightDetails");
             }
         }
