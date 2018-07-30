@@ -43,9 +43,9 @@ namespace eProject_main.Controllers
             string controller = "Home";
             object routeValue = null;
 
-            if (TempData["lastPageVisit"] != null)
+            if (Session["lastPageVisit"] != null)
             {
-                Dictionary<String, Object> lastPageVisit = (Dictionary<String, Object>)TempData["lastPageVisit"];
+                Dictionary<String, Object> lastPageVisit = (Dictionary<String, Object>)Session["lastPageVisit"];
                 action = lastPageVisit["actionName"].ToString();
                 controller = lastPageVisit["controllerName"].ToString();
                 routeValue = lastPageVisit.ContainsKey("routeValue") ? lastPageVisit["routeValue"] : null;
